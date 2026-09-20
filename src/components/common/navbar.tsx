@@ -179,12 +179,18 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            className="h-9 w-9 rounded-md border border-border bg-background hover:bg-accent flex items-center justify-center text-foreground transition-colors cursor-pointer shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
+            className="h-9 w-9 rounded-full flex items-center justify-center cursor-pointer select-none transition-all duration-200 
+              bg-gradient-to-b from-secondary/80 to-secondary/30 dark:from-muted/70 dark:to-muted/30 
+              backdrop-blur-xl 
+              border border-border/40 dark:border-white/10 
+              shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06),inset_0_1px_1px_0_rgba(255,255,255,0.5)] 
+              dark:shadow-[0_2px_12px_-2px_rgba(0,0,0,0.4),inset_0_1px_1px_0_rgba(255,255,255,0.08)] 
+              hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 text-foreground"
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-foreground transition-transform duration-200 rotate-90 scale-100" />
+              <X className="w-4 h-4 transition-transform duration-200 rotate-90 scale-100" />
             ) : (
-              <Menu className="w-5 h-5 text-foreground transition-transform duration-200" />
+              <Menu className="w-4 h-4 transition-transform duration-200" />
             )}
           </button>
         </div>
