@@ -24,13 +24,13 @@ export function HeroSection() {
       <div className="absolute top-1/4 left-10 w-[400px] h-[300px] bg-primary/10 dark:bg-primary/15 blur-[130px] rounded-full pointer-events-none -z-10" />
       <div className="absolute top-1/3 right-10 w-[350px] h-[300px] bg-blue-500/10 dark:bg-indigo-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      {/* Blueprint Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none -z-10" />
+      {/* Blueprint Grid Background — Spacious layout with larger columns & wider gaps */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:56px_56px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center">
-          {/* Left Column: Tight, High-Impact & Premium Content */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
+          {/* Left Column: Responsive (Centered when broken into single column <lg, Left-aligned on desktop lg:) */}
+          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
             {/* Compact Top Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 dark:border-primary/30 bg-primary/5 dark:bg-primary/10 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -63,15 +63,15 @@ export function HeroSection() {
               </span>
             </h1>
 
-            {/* Concise Subheadline (2 lines max on desktop) */}
-            <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
+            {/* Concise Subheadline */}
+            <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Skip crowded batches. Get personalized 1-on-1 mentorship, instant
               AI mock scoring, and guaranteed score improvement with official exam
               booking support.
             </p>
 
             {/* Focused 3 Key Points */}
-            <div className="space-y-2 pt-0.5">
+            <div className="space-y-2 pt-0.5 text-left inline-flex flex-col items-start mx-auto lg:mx-0">
               {KEY_HIGHLIGHTS.map((point, i) => (
                 <div key={i} className="flex items-center gap-2.5">
                   <div className="h-4.5 w-4.5 rounded-full flex items-center justify-center bg-amber-500/15 dark:bg-amber-400/20 text-amber-600 dark:text-amber-400 shrink-0">
@@ -85,7 +85,7 @@ export function HeroSection() {
             </div>
 
             {/* Tight CTA Actions */}
-            <div className="pt-1 flex flex-wrap items-center gap-3">
+            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full">
               <Link href="/register" className="inline-block group focus:outline-none">
                 <button className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-primary hover:via-blue-600 hover:to-indigo-600 shadow-[0_4px_14px_-2px_rgba(11,58,130,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
@@ -107,7 +107,7 @@ export function HeroSection() {
             </div>
 
             {/* Minimal Social Proof Row */}
-            <div className="pt-2 flex flex-wrap items-center gap-4 border-t border-border/40">
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 border-t border-border/40 w-full">
               <div className="flex items-center gap-1.5">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
@@ -118,7 +118,7 @@ export function HeroSection() {
                   ))}
                 </div>
                 <span className="text-xs font-bold text-foreground">4.9/5</span>
-                <span className="text-xs text-muted-foreground">(500+ Students)</span>
+                <span className="text-xs text-muted-foreground">(150+ Students)</span>
               </div>
 
               <div className="h-3.5 w-px bg-border/80 hidden sm:block" />

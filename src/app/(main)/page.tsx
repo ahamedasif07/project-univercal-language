@@ -1,5 +1,6 @@
 import React from "react";
 import { HeroSection } from "@/components/modules/home/hero-section";
+import { StatsSection } from "@/components/modules/home/stats-section";
 
 export const metadata = {
   title: "Universal Language | Bangladesh's Best 1-to-1 PTE Coaching & Exam Booking",
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       <HeroSection />
+      <StatsSection />
     </div>
   );
 }
