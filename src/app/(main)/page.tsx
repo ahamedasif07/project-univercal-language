@@ -1,16 +1,16 @@
 import React from "react";
+import { HeroSection } from "@/components/modules/home/hero-section";
+
+export const metadata = {
+  title: "Universal Language | Bangladesh's Best 1-to-1 PTE Coaching & Exam Booking",
+  description:
+    "Score 79+ in PTE Academic in just 12 classes with 1-to-1 Pearson certified mentorship, AI scoring mock exam portal, and seamless exam booking in Bangladesh.",
+};
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-6 text-center">
-      <div className="space-y-3">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-          Home Page
-        </h1>
-        <p className="text-muted-foreground text-sm">
-          Clean slate ready for step-by-step development.
-        </p>
-      </div>
+    <div className="w-full">
+      <HeroSection />
     </div>
   );
 }
