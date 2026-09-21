@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="350" viewBox="0 0 550 350">
+  <defs>
+    <clipPath id="flag-clip">
+      <rect width="550" height="350" rx="18" ry="18" />
+    </clipPath>
+    <g id="star">
+      <polygon points="0,-12 3.7,-3.7 12,-3.7 5.3,1.7 7.7,10 0,5 -7.7,10 -5.3,1.7 -12,-3.7 -3.7,-3.7" fill="#ffffff" />
+    </g>
+  </defs>
+  <g clip-path="url(#flag-clip)">
+    <rect width="550" height="175" y="0" fill="#ed2939" />
+    <rect width="550" height="175" y="175" fill="#ffffff" />
+    <path d="M 140,45 A 48,48 0 1,0 140,130 A 40,40 0 1,1 140,45 Z" fill="#ffffff" />
+    <g transform="translate(152, 87)">
+      <use href="#star" transform="translate(0, -22) scale(0.65)" />
+      <use href="#star" transform="translate(21, -7) scale(0.65)" />
+      <use href="#star" transform="translate(13, 17) scale(0.65)" />
+      <use href="#star" transform="translate(-13, 17) scale(0.65)" />
+      <use href="#star" transform="translate(-21, -7) scale(0.65)" />
+    </g>
+  </g>
+  <rect width="550" height="350" rx="18" ry="18" fill="none" stroke="#ffffff" stroke-width="16" opacity="0.45"/>
+</svg>

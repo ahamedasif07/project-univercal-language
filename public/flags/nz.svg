@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="350" viewBox="0 0 550 350">
+  <defs>
+    <clipPath id="flag-clip">
+      <rect width="550" height="350" rx="18" ry="18" />
+    </clipPath>
+    <clipPath id="canton">
+      <rect width="275" height="175" />
+    </clipPath>
+    <g id="nz-star">
+      <polygon points="0,-16 4.8,-4.8 16,-4.8 7.2,2.4 10.4,13.6 0,6.4 -10.4,13.6 -7.2,2.4 -16,-4.8 -4.8,-4.8" fill="#ffffff" />
+      <polygon points="0,-12 3.6,-3.6 12,-3.6 5.4,1.8 7.8,10.2 0,4.8 -7.8,10.2 -5.4,1.8 -12,-3.6 -3.6,-3.6" fill="#cc142b" />
+    </g>
+  </defs>
+  <g clip-path="url(#flag-clip)">
+    <rect width="550" height="350" fill="#00247d" />
+    <g clip-path="url(#canton)">
+      <rect width="275" height="175" fill="#012169" />
+      <path d="M0,0 L275,175 M275,0 L0,175" stroke="#ffffff" stroke-width="35" />
+      <path d="M0,0 L137.5,87.5 M275,0 L137.5,87.5 M0,175 L137.5,87.5 M275,175 L137.5,87.5" stroke="#c8102e" stroke-width="13" />
+      <path d="M137.5,0 V175 M0,87.5 H275" stroke="#ffffff" stroke-width="55" />
+      <path d="M137.5,0 V175 M0,87.5 H275" stroke="#c8102e" stroke-width="33" />
+    </g>
+    <use href="#nz-star" x="410" y="65" />
+    <use href="#nz-star" x="460" y="165" />
+    <use href="#nz-star" x="410" y="275" />
+    <use href="#nz-star" x="360" y="175" />
+  </g>
+  <rect width="550" height="350" rx="18" ry="18" fill="none" stroke="#ffffff" stroke-width="16" opacity="0.45"/>
+</svg>

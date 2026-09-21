@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="350" viewBox="0 0 550 350">
+  <defs>
+    <clipPath id="flag-clip">
+      <rect width="550" height="350" rx="18" ry="18" />
+    </clipPath>
+    <g id="star">
+      <polygon points="0,-6 1.8,-1.8 6,-1.8 2.6,0.8 3.8,4.8 0,2.4 -3.8,4.8 -2.6,0.8 -6,-1.8 -1.8,-1.8" fill="#ffffff" />
+    </g>
+  </defs>
+  <g clip-path="url(#flag-clip)">
+    <rect width="550" height="350" fill="#ffffff" />
+    <rect y="0" width="550" height="26.92" fill="#b22234" />
+    <rect y="53.85" width="550" height="26.92" fill="#b22234" />
+    <rect y="107.69" width="550" height="26.92" fill="#b22234" />
+    <rect y="161.54" width="550" height="26.92" fill="#b22234" />
+    <rect y="215.38" width="550" height="26.92" fill="#b22234" />
+    <rect y="269.23" width="550" height="26.92" fill="#b22234" />
+    <rect y="323.08" width="550" height="26.92" fill="#b22234" />
+    <rect width="250" height="188.46" fill="#3c3b6e" />
+    <g transform="translate(12, 12)">
+      <use href="#star" x="20" y="16" /><use href="#star" x="60" y="16" /><use href="#star" x="100" y="16" /><use href="#star" x="140" y="16" /><use href="#star" x="180" y="16" /><use href="#star" x="220" y="16" />
+      <use href="#star" x="40" y="36" /><use href="#star" x="80" y="36" /><use href="#star" x="120" y="36" /><use href="#star" x="160" y="36" /><use href="#star" x="200" y="36" />
+      <use href="#star" x="20" y="56" /><use href="#star" x="60" y="56" /><use href="#star" x="100" y="56" /><use href="#star" x="140" y="56" /><use href="#star" x="180" y="56" /><use href="#star" x="220" y="56" />
+      <use href="#star" x="40" y="76" /><use href="#star" x="80" y="76" /><use href="#star" x="120" y="76" /><use href="#star" x="160" y="76" /><use href="#star" x="200" y="76" />
+      <use href="#star" x="20" y="96" /><use href="#star" x="60" y="96" /><use href="#star" x="100" y="96" /><use href="#star" x="140" y="96" /><use href="#star" x="180" y="96" /><use href="#star" x="220" y="96" />
+      <use href="#star" x="40" y="116" /><use href="#star" x="80" y="116" /><use href="#star" x="120" y="116" /><use href="#star" x="160" y="116" /><use href="#star" x="200" y="116" />
+      <use href="#star" x="20" y="136" /><use href="#star" x="60" y="136" /><use href="#star" x="100" y="136" /><use href="#star" x="140" y="136" /><use href="#star" x="180" y="136" /><use href="#star" x="220" y="136" />
+      <use href="#star" x="40" y="156" /><use href="#star" x="80" y="156" /><use href="#star" x="120" y="156" /><use href="#star" x="160" y="156" /><use href="#star" x="200" y="156" />
+    </g>
+  </g>
+  <rect width="550" height="350" rx="18" ry="18" fill="none" stroke="#ffffff" stroke-width="16" opacity="0.45"/>
+</svg>

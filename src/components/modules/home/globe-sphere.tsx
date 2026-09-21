@@ -144,8 +144,20 @@ type Country = (typeof COUNTRIES)[number];
 
 // ── Theme colours ────────────────────────────────────────────────────────────
 const PALETTE = {
-  dark:  { wire: 0xb8ccee, wireOp: 0.28 },
-  light: { wire: 0x0a2d6e, wireOp: 0.40 },
+  dark: {
+    wire: 0x93c5fd,
+    wireOp: 0.35,
+    glow: 0x38bdf8,
+    glowOp: 0.16,
+    glowOuterOp: 0.06,
+  },
+  light: {
+    wire: 0x0369a1,
+    wireOp: 0.42,
+    glow: 0x0284c7,
+    glowOp: 0.14,
+    glowOuterOp: 0.05,
+  },
 };
 type ThemeKey = keyof typeof PALETTE;
 
@@ -153,18 +165,6 @@ function currentTheme(): ThemeKey {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
-// ── Flag sprite — emoji only, no background ─────────────────────────────────
-function makeFlagCanvas(flag: string): HTMLCanvasElement {
-  const cv = document.createElement("canvas");
-  cv.width = 128; cv.height = 128;
-  const ctx = cv.getContext("2d")!;
-  ctx.clearRect(0, 0, 128, 128);
-  ctx.font = "88px serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(flag, 64, 72);
-  return cv;
-}
 
 // ── lat/lon → 3D sphere position ─────────────────────────────────────────────
 function latLonToVec3(lat: number, lon: number, r: number): THREE.Vector3 {
@@ -231,7 +231,7 @@ export function GlobeSphere() {
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // Wireframe — 16×12 spacious triangular grid, smaller radius to prevent clipping
+    // Wireframe lines with subtle feathered glow
     const wireGeo = new THREE.SphereGeometry(2.1, 16, 12);
     const wireMat = new THREE.MeshBasicMaterial({
       color: P.wire, wireframe: true,
@@ -239,17 +239,58 @@ export function GlobeSphere() {
     });
     globeGroup.add(new THREE.Mesh(wireGeo, wireMat));
 
-    // ── FLAG SPRITES ─────────────────────────────────────────────────────────
+    // Subtle line glow layer 1 (inner soft halo)
+    const glowMat1 = new THREE.MeshBasicMaterial({
+      color: P.glow, wireframe: true,
+      transparent: true, opacity: P.glowOuterOp,
+      blending: thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending,
+      depthWrite: false,
+    });
+    const glowMesh1 = new THREE.Mesh(wireGeo, glowMat1);
+    glowMesh1.scale.setScalar(0.996);
+    globeGroup.add(glowMesh1);
+
+    // Subtle line glow layer 2 (tight luminous core glow)
+    const glowMat2 = new THREE.MeshBasicMaterial({
+      color: P.glow, wireframe: true,
+      transparent: true, opacity: P.glowOp,
+      blending: thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending,
+      depthWrite: false,
+    });
+    const glowMesh2 = new THREE.Mesh(wireGeo, glowMat2);
+    glowMesh2.scale.setScalar(1.005);
+    globeGroup.add(glowMesh2);
+
+    // Subtle line glow layer 3 (soft outer aura)
+    const glowMat3 = new THREE.MeshBasicMaterial({
+      color: P.glow, wireframe: true,
+      transparent: true, opacity: P.glowOuterOp,
+      blending: thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending,
+      depthWrite: false,
+    });
+    const glowMesh3 = new THREE.Mesh(wireGeo, glowMat3);
+    glowMesh3.scale.setScalar(1.010);
+    globeGroup.add(glowMesh3);
+
+    // ── FLAG SPRITES (Square vector flag images) ──────────────────────────────
     const spriteMap = new Map<THREE.Sprite, string>(); // sprite → country id
+    const textureLoader = new THREE.TextureLoader();
+    const BASE_W = 0.33; // ~55px on screen
+    const BASE_H = 0.21; // ~35px on screen
+    const HOVER_W = 0.44;
+    const HOVER_H = 0.28;
 
     COUNTRIES.forEach((country) => {
-      const cv  = makeFlagCanvas(country.flag);
-      const tex = new THREE.CanvasTexture(cv);
+      const tex = textureLoader.load(`/flags/${country.id}.svg`);
+      tex.colorSpace = THREE.SRGBColorSpace;
       const mat = new THREE.SpriteMaterial({
-        map: tex, transparent: true, opacity: 0.95, depthWrite: false,
+        map: tex,
+        transparent: true,
+        opacity: 0.92,
+        depthWrite: false,
       });
       const sprite = new THREE.Sprite(mat);
-      sprite.scale.set(0.50, 0.50, 1);
+      sprite.scale.set(BASE_W, BASE_H, 1);
 
       const pos = latLonToVec3(country.lat, country.lon, 2.3);
       sprite.position.copy(pos);
@@ -264,23 +305,52 @@ export function GlobeSphere() {
     dir.position.set(5, 7, 4);
     scene.add(dir);
 
-    // ── RAYCASTER for flag click ─────────────────────────────────────────────
+    // ── RAYCASTER for flag click & hover ──────────────────────────────────────
     const raycaster = new THREE.Raycaster();
     const pointer   = new THREE.Vector2();
     const sprites   = Array.from(spriteMap.keys());
+    let hoveredSprite: THREE.Sprite | null = null;
 
-    const onClick = (e: MouseEvent) => {
+    const getIntersectedSprite = (e: MouseEvent) => {
       const rect = renderer.domElement.getBoundingClientRect();
       pointer.x = ((e.clientX - rect.left) / rect.width)  * 2 - 1;
       pointer.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
       const hits = raycaster.intersectObjects(sprites);
-      if (hits.length > 0) {
-        const id = spriteMap.get(hits[0].object as THREE.Sprite);
+      return hits.length > 0 ? (hits[0].object as THREE.Sprite) : null;
+    };
+
+    const onClick = (e: MouseEvent) => {
+      const hit = getIntersectedSprite(e);
+      if (hit) {
+        // Quick bounce on click
+        hit.scale.set(HOVER_W * 1.12, HOVER_H * 1.12, 1);
+        const id = spriteMap.get(hit);
         if (id && callbackRef.current) callbackRef.current(id);
       }
     };
     renderer.domElement.addEventListener("click", onClick);
+
+    const onPointerMove = (e: MouseEvent) => {
+      if (dragging) return;
+      const hit = getIntersectedSprite(e);
+      if (hit) {
+        hoveredSprite = hit;
+        renderer.domElement.style.cursor = "pointer";
+      } else {
+        hoveredSprite = null;
+        renderer.domElement.style.cursor = "grab";
+      }
+    };
+    renderer.domElement.addEventListener("mousemove", onPointerMove);
+
+    const onPointerLeave = () => {
+      if (!dragging) {
+        hoveredSprite = null;
+        renderer.domElement.style.cursor = "grab";
+      }
+    };
+    renderer.domElement.addEventListener("mouseleave", onPointerLeave);
 
     // ── THEME OBSERVER ───────────────────────────────────────────────────────
     const observer = new MutationObserver(() => {
@@ -289,6 +359,18 @@ export function GlobeSphere() {
       thm = n; P = PALETTE[thm];
       (wireMat as THREE.MeshBasicMaterial).color.setHex(P.wire);
       wireMat.opacity = P.wireOp;
+      glowMat1.color.setHex(P.glow);
+      glowMat1.opacity = P.glowOuterOp;
+      glowMat1.blending = thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending;
+      glowMat1.needsUpdate = true;
+      glowMat2.color.setHex(P.glow);
+      glowMat2.opacity = P.glowOp;
+      glowMat2.blending = thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending;
+      glowMat2.needsUpdate = true;
+      glowMat3.color.setHex(P.glow);
+      glowMat3.opacity = P.glowOuterOp;
+      glowMat3.blending = thm === "dark" ? THREE.AdditiveBlending : THREE.NormalBlending;
+      glowMat3.needsUpdate = true;
       starMat.color.setHex(thm === "dark" ? 0xffffff : 0x1a2a4a);
       starMat.opacity = thm === "dark" ? 0.45 : 0.08;
     });
@@ -298,14 +380,20 @@ export function GlobeSphere() {
 
     // ── DRAG ────────────────────────────────────────────────────────────────
     let dragging = false, px = 0, py = 0, vx = 0, vy = 0;
-    const onDown = (e: MouseEvent) => { dragging = true; px = e.clientX; py = e.clientY; };
+    const onDown = (e: MouseEvent) => {
+      dragging = true; px = e.clientX; py = e.clientY;
+      renderer.domElement.style.cursor = "grabbing";
+    };
     const onMove = (e: MouseEvent) => {
       if (!dragging) return;
       vx = (e.clientY - py) * 0.003; vy = (e.clientX - px) * 0.003;
       globeGroup.rotation.x += vx; globeGroup.rotation.y += vy;
       px = e.clientX; py = e.clientY;
     };
-    const onUp = () => { dragging = false; };
+    const onUp = () => {
+      dragging = false;
+      renderer.domElement.style.cursor = hoveredSprite ? "pointer" : "grab";
+    };
     renderer.domElement.addEventListener("mousedown", onDown);
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
@@ -319,6 +407,23 @@ export function GlobeSphere() {
         globeGroup.rotation.y += 0.0008;
         globeGroup.rotation.x = Math.sin(t * 0.12) * 0.04;
       } else { vx *= 0.9; vy *= 0.9; }
+
+      // Smooth hover scale & opacity lerp
+      sprites.forEach((sp) => {
+        const isHover = (sp === hoveredSprite);
+        const targetW = isHover ? HOVER_W : BASE_W;
+        const targetH = isHover ? HOVER_H : BASE_H;
+        const currentW = sp.scale.x;
+        const currentH = sp.scale.y;
+        const nextW = currentW + (targetW - currentW) * 0.22;
+        const nextH = currentH + (targetH - currentH) * 0.22;
+        sp.scale.set(nextW, nextH, 1);
+
+        const mat = sp.material as THREE.SpriteMaterial;
+        const targetOp = isHover ? 1.0 : 0.90;
+        mat.opacity += (targetOp - mat.opacity) * 0.22;
+      });
+
       renderer.render(scene, camera);
     };
     animate();
@@ -336,10 +441,17 @@ export function GlobeSphere() {
       cancelAnimationFrame(frameRef.current);
       window.removeEventListener("resize", onResize);
       renderer.domElement.removeEventListener("click", onClick);
+      renderer.domElement.removeEventListener("mousemove", onPointerMove);
+      renderer.domElement.removeEventListener("mouseleave", onPointerLeave);
       renderer.domElement.removeEventListener("mousedown", onDown);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
       observer.disconnect();
+      wireGeo.dispose();
+      wireMat.dispose();
+      glowMat1.dispose();
+      glowMat2.dispose();
+      glowMat3.dispose();
       renderer.dispose();
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
     };
@@ -372,7 +484,11 @@ export function GlobeSphere() {
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <span className="text-4xl leading-none">{selected.flag}</span>
+                <img
+                  src={`/flags/${selected.id}.svg`}
+                  alt={selected.name}
+                  className="w-[55px] h-[35px] rounded-md object-cover shadow-md border-2 border-white/60 dark:border-white/20 shrink-0"
+                />
                 <div>
                   <h3 className="text-base font-black text-foreground leading-tight">
                     {selected.name}
