@@ -1,94 +1,219 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { X, GraduationCap, FileText, Globe2, ChevronRight } from "lucide-react";
 
-// PTE service labels — glowing sprites on globe surface
-const SERVICE_LABELS = [
-  { text: "79+",       color: "#f59e0b" },
-  { text: "PTE",       color: "#93c5fd" },
-  { text: "Speaking",  color: "#6ee7b7" },
-  { text: "Writing",   color: "#c4b5fd" },
-  { text: "Listening", color: "#67e8f9" },
-  { text: "Reading",   color: "#fca5a5" },
-  { text: "Pearson",   color: "#7dd3fc" },
-  { text: "AI Score",  color: "#f9a8d4" },
-  { text: "Mock",      color: "#fde68a" },
-  { text: "IELTS",     color: "#86efac" },
-  { text: "1-on-1",    color: "#d8b4fe" },
-  { text: "Exam BD",   color: "#99f6e4" },
-];
-
-// ── Per-theme colour palette ────────────────────────────────────────────────
-const THEME = {
-  dark: {
-    inner:        { color: 0x0a1e3d, emissive: 0x050d1c, opacity: 0.88 },
-    wire:         { color: 0xb8ccee, opacity: 0.30 },
-    atmo:         { color: 0x1a4fb5, opacity: 0.08 },
-    rings:        [
-      { color: 0xd0ddf5, opacity: 0.70 },
-      { color: 0x9fb8e8, opacity: 0.50 },
-      { color: 0x7a9ad4, opacity: 0.32 },
+// ── Country destination data ─────────────────────────────────────────────────
+const COUNTRIES = [
+  {
+    id: "au",
+    name: "Australia",
+    flag: "🇦🇺",
+    lat: -25,
+    lon: 133,
+    exams: [
+      { name: "PTE Academic", score: "65+", preferred: true },
+      { name: "IELTS",        score: "6.0+" },
     ],
-    ambient:      { color: 0x263d66, intensity: 3.0 },
-    dir1:         { color: 0x6699ff, intensity: 3.5, pos: new THREE.Vector3(5, 7, 4) },
-    dir2:         { color: 0x223366, intensity: 1.2, pos: new THREE.Vector3(-4, -2, -3) },
-    stars:        { color: 0xffffff, opacity: 0.50 },
-    label:        { opacity: 0.92, shadowBlur: 22 },
+    visas: ["Student Visa (Subclass 500)", "Skilled Independent (189)", "TSS Visa (482)"],
+    highlight: "Most popular destination for Bangladeshi students. PTE accepted at 99% of universities.",
   },
-  light: {
-    inner:        { color: 0xd0e8ff, emissive: 0xadd0f8, opacity: 0.52 },
-    wire:         { color: 0x0a2d6e, opacity: 0.42 },   // deep navy-blue
-    atmo:         { color: 0x3366cc, opacity: 0.05 },
-    rings:        [
-      { color: 0x0d4fa0, opacity: 0.55 },
-      { color: 0x0b3d88, opacity: 0.38 },
-      { color: 0x092e6a, opacity: 0.22 },
+  {
+    id: "uk",
+    name: "United Kingdom",
+    flag: "🇬🇧",
+    lat: 54,
+    lon: -2,
+    exams: [
+      { name: "PTE Academic", score: "51+", preferred: true },
+      { name: "IELTS",        score: "5.5+" },
     ],
-    ambient:      { color: 0x6688cc, intensity: 4.0 },
-    dir1:         { color: 0x2255cc, intensity: 3.0, pos: new THREE.Vector3(5, 7, 4) },
-    dir2:         { color: 0x7788bb, intensity: 1.5, pos: new THREE.Vector3(-4, -2, -3) },
-    stars:        { color: 0x1a2a4a, opacity: 0.08 },
-    label:        { opacity: 1.0,   shadowBlur: 0 },
+    visas: ["Student Visa", "Skilled Worker Visa", "Graduate Visa"],
+    highlight: "UK Graduate Route lets you stay 2 years post-study. PTE widely accepted.",
   },
-} as const;
-type Theme = keyof typeof THEME;
+  {
+    id: "ca",
+    name: "Canada",
+    flag: "🇨🇦",
+    lat: 56,
+    lon: -96,
+    exams: [
+      { name: "PTE Academic", score: "65+", preferred: true },
+      { name: "IELTS",        score: "6.0+" },
+    ],
+    visas: ["Study Permit", "Express Entry (PR)", "PNP"],
+    highlight: "Express Entry PR pathway open to PTE Academic holders. Fast processing.",
+  },
+  {
+    id: "us",
+    name: "United States",
+    flag: "🇺🇸",
+    lat: 37,
+    lon: -95,
+    exams: [
+      { name: "TOEFL",        score: "80+" },
+      { name: "IELTS",        score: "6.5+" },
+      { name: "PTE Academic", score: "53+" },
+    ],
+    visas: ["F-1 Student Visa", "H-1B Work Visa", "OPT/CPT"],
+    highlight: "PTE increasingly accepted. OPT allows 3 years post-study work for STEM.",
+  },
+  {
+    id: "nz",
+    name: "New Zealand",
+    flag: "🇳🇿",
+    lat: -40,
+    lon: 174,
+    exams: [
+      { name: "PTE Academic", score: "50+", preferred: true },
+      { name: "IELTS",        score: "5.5+" },
+    ],
+    visas: ["Student Visa", "Skilled Migrant Category", "Post-Study Work Visa"],
+    highlight: "Post-study work visa for 1–3 years. PTE accepted nationwide.",
+  },
+  {
+    id: "de",
+    name: "Germany",
+    flag: "🇩🇪",
+    lat: 51,
+    lon: 10,
+    exams: [
+      { name: "IELTS",        score: "6.0+" },
+      { name: "PTE Academic", score: "59+" },
+    ],
+    visas: ["Student Visa", "Job Seeker Visa", "EU Blue Card"],
+    highlight: "Many programs taught in English. No tuition fee at public universities.",
+  },
+  {
+    id: "sg",
+    name: "Singapore",
+    flag: "🇸🇬",
+    lat: 1,
+    lon: 103,
+    exams: [
+      { name: "PTE Academic", score: "50+", preferred: true },
+      { name: "IELTS",        score: "6.0+" },
+    ],
+    visas: ["Student Pass", "Employment Pass", "S Pass"],
+    highlight: "Financial hub of Asia. Strong job market. PTE preferred by NUS, NTU.",
+  },
+  {
+    id: "ie",
+    name: "Ireland",
+    flag: "🇮🇪",
+    lat: 53,
+    lon: -8,
+    exams: [
+      { name: "PTE Academic", score: "60+", preferred: true },
+      { name: "IELTS",        score: "6.0+" },
+    ],
+    visas: ["Study Visa", "Critical Skills Permit", "General Employment Permit"],
+    highlight: "EU gateway. 2-year graduate stay-back. Tech hub for Google, Meta, Apple.",
+  },
+  {
+    id: "ae",
+    name: "UAE",
+    flag: "🇦🇪",
+    lat: 24,
+    lon: 54,
+    exams: [
+      { name: "PTE Academic", score: "45+" },
+      { name: "IELTS",        score: "5.5+" },
+    ],
+    visas: ["Student Visa", "Skilled Worker Visa", "Golden Visa"],
+    highlight: "Tax-free salaries. Rapidly growing education sector. PTE accepted widely.",
+  },
+  {
+    id: "jp",
+    name: "Japan",
+    flag: "🇯🇵",
+    lat: 36,
+    lon: 138,
+    exams: [
+      { name: "IELTS",        score: "5.5+" },
+      { name: "PTE Academic", score: "42+" },
+      { name: "JLPT",         score: "N4+" },
+    ],
+    visas: ["Student Visa", "Skilled Labour Visa", "Specified Skilled Worker"],
+    highlight: "Scholarships from MEXT. Engineering & tech demand high. Low cost of living.",
+  },
+] as const;
 
-function currentTheme(): Theme {
+type Country = (typeof COUNTRIES)[number];
+
+// ── Theme colours ────────────────────────────────────────────────────────────
+const PALETTE = {
+  dark:  { wire: 0xb8ccee, wireOp: 0.28 },
+  light: { wire: 0x0a2d6e, wireOp: 0.40 },
+};
+type ThemeKey = keyof typeof PALETTE;
+
+function currentTheme(): ThemeKey {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
+// ── Flag sprite — emoji only, no background ─────────────────────────────────
+function makeFlagCanvas(flag: string): HTMLCanvasElement {
+  const cv = document.createElement("canvas");
+  cv.width = 128; cv.height = 128;
+  const ctx = cv.getContext("2d")!;
+  ctx.clearRect(0, 0, 128, 128);
+  ctx.font = "88px serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(flag, 64, 72);
+  return cv;
+}
+
+// ── lat/lon → 3D sphere position ─────────────────────────────────────────────
+function latLonToVec3(lat: number, lon: number, r: number): THREE.Vector3 {
+  const phi   = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+    r  * Math.cos(phi),
+    r  * Math.sin(phi) * Math.sin(theta),
+  );
+}
+
+// ── Component ────────────────────────────────────────────────────────────────
 export function GlobeSphere() {
-  const mountRef    = useRef<HTMLDivElement>(null);
-  const frameRef    = useRef<number>(0);
+  const mountRef   = useRef<HTMLDivElement>(null);
+  const frameRef   = useRef<number>(0);
+  const callbackRef = useRef<((id: string) => void) | null>(null);
+
+  const [selected, setSelected] = useState<Country | null>(null);
+
+  useEffect(() => {
+    callbackRef.current = (id: string) => {
+      const c = COUNTRIES.find((x) => x.id === id) ?? null;
+      setSelected(c);
+    };
+  });
 
   useEffect(() => {
     if (!mountRef.current) return;
     const container = mountRef.current;
     const W = container.clientWidth;
     const H = container.clientHeight;
-    let t: Theme = currentTheme();
-    let C = THEME[t];
+    let thm: ThemeKey = currentTheme();
+    let P = PALETTE[thm];
 
-    // ── SCENE ───────────────────────────────────────────────────────────────
-    const scene = new THREE.Scene();
+    // ── SCENE ────────────────────────────────────────────────────────────────
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(56, W / H, 0.1, 200);
+    camera.position.set(0, 0, 5.4);
 
-    // ── CAMERA — FOV wide enough to show globe + rings without clipping ─────
-    // z=6.2 + FOV=54 gives comfortable framing for sphere r≈1.9 + rings r≈3.2
-    const camera = new THREE.PerspectiveCamera(54, W / H, 0.1, 200);
-    camera.position.set(0, 0, 6.2);
-
-    // ── RENDERER — alpha transparent (inherits page bg) ─────────────────────
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(W, H);
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // ── STARFIELD ────────────────────────────────────────────────────────────
-    const STAR_N = 300;
-    const starBuf = new Float32Array(STAR_N * 3);
-    for (let i = 0; i < STAR_N; i++) {
+    // ── STARS ────────────────────────────────────────────────────────────────
+    const starBuf = new Float32Array(280 * 3);
+    for (let i = 0; i < 280; i++) {
       starBuf[i * 3]     = (Math.random() - 0.5) * 80;
       starBuf[i * 3 + 1] = (Math.random() - 0.5) * 80;
       starBuf[i * 3 + 2] = (Math.random() - 0.5) * 80;
@@ -96,8 +221,9 @@ export function GlobeSphere() {
     const starGeo = new THREE.BufferGeometry();
     starGeo.setAttribute("position", new THREE.BufferAttribute(starBuf, 3));
     const starMat = new THREE.PointsMaterial({
-      color: C.stars.color, size: 0.07,
-      transparent: true, opacity: C.stars.opacity,
+      color: thm === "dark" ? 0xffffff : 0x1a2a4a,
+      size: 0.065, transparent: true,
+      opacity: thm === "dark" ? 0.45 : 0.08,
     });
     scene.add(new THREE.Points(starGeo, starMat));
 
@@ -105,87 +231,72 @@ export function GlobeSphere() {
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // ── TRIANGULAR WIREFRAME ONLY (interior fully transparent) ───────────────
-    // 22×18 segments gives dense triangular geodesic look matching reference
-    const wireGeo = new THREE.SphereGeometry(1.91, 22, 18);
+    // Wireframe — 16×12 spacious triangular grid, smaller radius to prevent clipping
+    const wireGeo = new THREE.SphereGeometry(2.1, 16, 12);
     const wireMat = new THREE.MeshBasicMaterial({
-      color: C.wire.color, wireframe: true,
-      transparent: true, opacity: C.wire.opacity,
+      color: P.wire, wireframe: true,
+      transparent: true, opacity: P.wireOp,
     });
     globeGroup.add(new THREE.Mesh(wireGeo, wireMat));
 
-    // ── LIGHTING ─────────────────────────────────────────────────────────────
-    const ambLight = new THREE.AmbientLight(C.ambient.color, C.ambient.intensity);
-    scene.add(ambLight);
-    const dir1 = new THREE.DirectionalLight(C.dir1.color, C.dir1.intensity);
-    dir1.position.copy(C.dir1.pos); scene.add(dir1);
-    const dir2 = new THREE.DirectionalLight(C.dir2.color, C.dir2.intensity);
-    dir2.position.copy(C.dir2.pos); scene.add(dir2);
+    // ── FLAG SPRITES ─────────────────────────────────────────────────────────
+    const spriteMap = new Map<THREE.Sprite, string>(); // sprite → country id
 
-    // ── LABEL SPRITES ────────────────────────────────────────────────────────
-    function makeSprite(text: string, color: string): THREE.Sprite {
-      const isLight = t === "light";
-      const cv      = document.createElement("canvas");
-      cv.width = 320; cv.height = 96;
-      const ctx = cv.getContext("2d")!;
-      ctx.clearRect(0, 0, 320, 96);
-      ctx.font         = "bold 40px Inter,sans-serif";
-      ctx.textAlign    = "center";
-      ctx.textBaseline = "middle";
-      if (isLight) {
-        // White halo + dark inner stroke → readable on any light bg
-        ctx.strokeStyle = "rgba(255,255,255,0.96)";
-        ctx.lineWidth   = 8; ctx.lineJoin = "round";
-        ctx.strokeText(text, 160, 48);
-        ctx.strokeStyle = "rgba(5,15,45,0.55)";
-        ctx.lineWidth   = 3;
-        ctx.strokeText(text, 160, 48);
-      } else {
-        ctx.shadowColor = color;
-        ctx.shadowBlur  = C.label.shadowBlur;
-      }
-      ctx.fillStyle = color;
-      ctx.fillText(text, 160, 48);
+    COUNTRIES.forEach((country) => {
+      const cv  = makeFlagCanvas(country.flag);
       const tex = new THREE.CanvasTexture(cv);
       const mat = new THREE.SpriteMaterial({
-        map: tex, transparent: true, opacity: C.label.opacity, depthWrite: false,
+        map: tex, transparent: true, opacity: 0.95, depthWrite: false,
       });
-      const sp = new THREE.Sprite(mat);
-      sp.scale.set(0.95, 0.32, 1);
-      return sp;
-    }
+      const sprite = new THREE.Sprite(mat);
+      sprite.scale.set(0.50, 0.50, 1);
 
-    // Golden-ratio spiral distribution
-    SERVICE_LABELS.forEach((lbl, i) => {
-      const sp     = makeSprite(lbl.text, lbl.color);
-      const golden = Math.PI * (3 - Math.sqrt(5));
-      const y      = 1 - (i / (SERVICE_LABELS.length - 1)) * 2;
-      const rad    = Math.sqrt(Math.max(0, 1 - y * y));
-      const ang    = golden * i;
-      const r      = 2.04;
-      sp.position.set(r * rad * Math.cos(ang), r * y, r * rad * Math.sin(ang));
-      globeGroup.add(sp);
+      const pos = latLonToVec3(country.lat, country.lon, 2.3);
+      sprite.position.copy(pos);
+
+      globeGroup.add(sprite);
+      spriteMap.set(sprite, country.id);
     });
 
-    // ── THEME MUTATION → live material update ─────────────────────────────
-    function applyTheme() {
-      C = THEME[t];
-      (wireMat as THREE.MeshBasicMaterial).color.setHex(C.wire.color);
-      wireMat.opacity  = C.wire.opacity;
-      starMat.color.setHex(C.stars.color);
-      starMat.opacity = C.stars.opacity;
-      ambLight.color.setHex(C.ambient.color);
-      ambLight.intensity = C.ambient.intensity;
-      dir1.color.setHex(C.dir1.color); dir1.intensity = C.dir1.intensity;
-    }
+    // ── LIGHTING ─────────────────────────────────────────────────────────────
+    scene.add(new THREE.AmbientLight(0x334466, 2.8));
+    const dir = new THREE.DirectionalLight(0x6699ff, 3.2);
+    dir.position.set(5, 7, 4);
+    scene.add(dir);
+
+    // ── RAYCASTER for flag click ─────────────────────────────────────────────
+    const raycaster = new THREE.Raycaster();
+    const pointer   = new THREE.Vector2();
+    const sprites   = Array.from(spriteMap.keys());
+
+    const onClick = (e: MouseEvent) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width)  * 2 - 1;
+      pointer.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(sprites);
+      if (hits.length > 0) {
+        const id = spriteMap.get(hits[0].object as THREE.Sprite);
+        if (id && callbackRef.current) callbackRef.current(id);
+      }
+    };
+    renderer.domElement.addEventListener("click", onClick);
+
+    // ── THEME OBSERVER ───────────────────────────────────────────────────────
     const observer = new MutationObserver(() => {
-      const nxt = currentTheme();
-      if (nxt === t) return;
-      t = nxt; applyTheme();
+      const n = currentTheme();
+      if (n === thm) return;
+      thm = n; P = PALETTE[thm];
+      (wireMat as THREE.MeshBasicMaterial).color.setHex(P.wire);
+      wireMat.opacity = P.wireOp;
+      starMat.color.setHex(thm === "dark" ? 0xffffff : 0x1a2a4a);
+      starMat.opacity = thm === "dark" ? 0.45 : 0.08;
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, {
+      attributes: true, attributeFilter: ["class"],
+    });
 
-    // ── MOUSE DRAG ───────────────────────────────────────────────────────────
+    // ── DRAG ────────────────────────────────────────────────────────────────
     let dragging = false, px = 0, py = 0, vx = 0, vy = 0;
     const onDown = (e: MouseEvent) => { dragging = true; px = e.clientX; py = e.clientY; };
     const onMove = (e: MouseEvent) => {
@@ -199,18 +310,15 @@ export function GlobeSphere() {
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
 
-    // ── ANIMATION ────────────────────────────────────────────────────────────
+    // ── ANIMATE ──────────────────────────────────────────────────────────────
     const clock = new THREE.Clock();
     const animate = () => {
       frameRef.current = requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
+      const t = clock.getElapsedTime();
       if (!dragging) {
-        globeGroup.rotation.y += 0.0008;                     // slow steady spin
-        globeGroup.rotation.x  = Math.sin(elapsed * 0.12) * 0.04; // gentle tilt
-      } else {
-        vx *= 0.9; vy *= 0.9;
-      }
-      // Rings removed — globe only
+        globeGroup.rotation.y += 0.0008;
+        globeGroup.rotation.x = Math.sin(t * 0.12) * 0.04;
+      } else { vx *= 0.9; vy *= 0.9; }
       renderer.render(scene, camera);
     };
     animate();
@@ -224,10 +332,10 @@ export function GlobeSphere() {
     };
     window.addEventListener("resize", onResize);
 
-    // ── CLEANUP ──────────────────────────────────────────────────────────────
     return () => {
       cancelAnimationFrame(frameRef.current);
       window.removeEventListener("resize", onResize);
+      renderer.domElement.removeEventListener("click", onClick);
       renderer.domElement.removeEventListener("mousedown", onDown);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseup", onUp);
@@ -238,19 +346,113 @@ export function GlobeSphere() {
   }, []);
 
   return (
-    <div className="relative w-full" aria-label="Interactive 3D Globe">
-      {/*
-        overflow:visible so the outermost ring can bleed beyond the div edge
-        (the section's overflow-x-clip clips the page scroll — not this canvas)
-      */}
+    <div className="relative w-full" aria-label="Interactive 3D World Globe">
+      {/* Three.js canvas */}
       <div
         ref={mountRef}
-        className="w-full h-[460px] sm:h-[530px] lg:h-[580px] cursor-grab active:cursor-grabbing"
+        className="w-full h-[480px] sm:h-[560px] lg:h-[620px] cursor-grab active:cursor-grabbing"
         style={{ touchAction: "none", overflow: "visible" }}
       />
-      <p className="mt-1 text-[10px] font-medium text-muted-foreground/45 tracking-widest select-none uppercase text-center">
-        🌐 Drag to rotate · Auto-spinning
+
+      <p className="mt-1 text-[10px] font-medium text-muted-foreground/40 tracking-widest select-none uppercase text-center">
+        🌐 Click a flag · Drag to rotate
       </p>
+
+      {/* ── COUNTRY POPUP ────────────────────────────────────────────────── */}
+      {selected && (
+        <div
+          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+          style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+          <div
+            className="pointer-events-auto w-[92%] max-w-sm rounded-2xl border border-white/10 dark:border-white/10
+              bg-white/95 dark:bg-[#0d1b33]/96 backdrop-blur-xl shadow-2xl
+              p-5 animate-in fade-in slide-in-from-bottom-4 duration-300"
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <span className="text-4xl leading-none">{selected.flag}</span>
+                <div>
+                  <h3 className="text-base font-black text-foreground leading-tight">
+                    {selected.name}
+                  </h3>
+                  <p className="text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1">
+                    <Globe2 className="w-3 h-3" />
+                    Study &amp; Immigration Destination
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelected(null)}
+                className="rounded-full p-1.5 hover:bg-muted/60 text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Highlight */}
+            <p className="text-[12px] text-muted-foreground leading-relaxed mb-4 border-l-2 border-primary pl-3">
+              {selected.highlight}
+            </p>
+
+            {/* Exam Requirements */}
+            <div className="mb-4">
+              <h4 className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
+                <FileText className="w-3.5 h-3.5" />
+                Required Exams
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {selected.exams.map((ex) => (
+                  <div
+                    key={ex.name}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold border transition-all ${
+                      "preferred" in ex && ex.preferred
+                        ? "bg-primary/10 border-primary/30 text-primary dark:text-blue-300"
+                        : "bg-muted/50 border-border text-foreground/80"
+                    }`}
+                  >
+                    <span>{ex.name}</span>
+                    <span className="font-black">{ex.score}</span>
+                    {"preferred" in ex && ex.preferred && (
+                      <span className="text-[9px] bg-primary text-white rounded px-1 py-0.5 uppercase font-bold">
+                        Preferred
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Visa Types */}
+            <div className="mb-4">
+              <h4 className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5" />
+                Available Visa Pathways
+              </h4>
+              <ul className="space-y-1">
+                {selected.visas.map((v) => (
+                  <li key={v} className="flex items-center gap-2 text-[12px] text-foreground/90">
+                    <ChevronRight className="w-3 h-3 text-primary shrink-0" />
+                    {v}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CTA */}
+            <button
+              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#0b3a82] to-blue-600
+                text-white text-[12px] font-bold tracking-wide hover:opacity-90
+                transition-all active:scale-[0.98] shadow-md"
+              onClick={() => setSelected(null)}
+            >
+              Book Free Consultation →
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

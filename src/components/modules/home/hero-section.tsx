@@ -30,7 +30,7 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center min-h-[500px] lg:min-h-[560px]">
           {/* Left Column: Tight, High-Impact & Premium Content */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
             {/* Compact Top Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 dark:border-primary/30 bg-primary/5 dark:bg-primary/10 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -130,8 +130,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 3D Globe — rings intentionally bleed right like reference */}
-          <div className="lg:col-span-5 relative flex items-center justify-center w-full h-full" style={{ overflow: "visible" }}>
+          {/* Right Column: 3D Globe — 50% width, no clipping */}
+          <div className="lg:col-span-6 relative flex items-center justify-center w-full h-full" style={{ overflow: "visible" }}>
             <GlobeSphere />
           </div>
         </div>
