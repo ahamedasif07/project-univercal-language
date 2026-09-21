@@ -203,7 +203,7 @@ export function GlobeSphere() {
     // ── SCENE ────────────────────────────────────────────────────────────────
     const scene  = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(56, W / H, 0.1, 200);
-    camera.position.set(0, 0, 5.4);
+    camera.position.set(0, 0.15, 5.4);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -350,7 +350,7 @@ export function GlobeSphere() {
       {/* Three.js canvas */}
       <div
         ref={mountRef}
-        className="w-full h-[480px] sm:h-[560px] lg:h-[620px] cursor-grab active:cursor-grabbing"
+        className="w-full h-[420px] sm:h-[480px] lg:h-[520px] cursor-grab active:cursor-grabbing"
         style={{ touchAction: "none", overflow: "visible" }}
       />
 

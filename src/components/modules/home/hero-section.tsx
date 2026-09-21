@@ -19,7 +19,7 @@ const KEY_HIGHLIGHTS = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-x-clip pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-14 lg:pb-18">
+    <section className="relative overflow-x-clip pt-3 pb-8 sm:pt-5 sm:pb-12 lg:pt-6 lg:pb-14">
       {/* Subtle Background Ambient Glows */}
       <div className="absolute top-1/4 left-10 w-[400px] h-[300px] bg-primary/10 dark:bg-primary/15 blur-[130px] rounded-full pointer-events-none -z-10" />
       <div className="absolute top-1/3 right-10 w-[350px] h-[300px] bg-blue-500/10 dark:bg-indigo-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
@@ -28,7 +28,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center min-h-[500px] lg:min-h-[560px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center">
           {/* Left Column: Tight, High-Impact & Premium Content */}
           <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
             {/* Compact Top Pill */}
