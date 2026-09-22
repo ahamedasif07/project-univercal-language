@@ -1,12 +1,13 @@
 import React from "react";
 import { HeroSection } from "@/components/modules/home/hero-section";
 import { StatsSection } from "@/components/modules/home/stats-section";
+import { CoursePromoSection } from "@/components/modules/home/promo-slider";
 import { DestinationsSection } from "@/components/modules/home/destinations-section";
 
 export const metadata = {
-  title: "Universal Language | Bangladesh's Best 1-to-1 PTE Coaching & Exam Booking",
+  title: "Universal Language | Premier PTE, IELTS, German & Study Abroad Academy",
   description:
-    "Score 79+ in PTE Academic in just 12 classes with 1-to-1 Pearson certified mentorship, AI scoring mock exam portal, and seamless exam booking in Bangladesh.",
+    "Bangladesh's trusted international education hub. Certified PTE Academic & IELTS coaching, German & Japanese language training, study abroad counseling, and authorized exam booking in Dhaka.",
 };
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
     <div className="w-full">
       <HeroSection />
       <StatsSection />
+      <CoursePromoSection />
       <DestinationsSection />
     </div>
   );

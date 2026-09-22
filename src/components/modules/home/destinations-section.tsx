@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import {
   GraduationCap,
   Globe2,
@@ -11,11 +9,8 @@ import {
   FileText,
   Clock,
   Briefcase,
-  ShieldCheck,
   Building2,
-  X,
   Plane,
-  Sparkles,
   Award,
   Compass,
 } from "lucide-react";
@@ -27,6 +22,15 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 
+export type DestinationRegion =
+  | "all"
+  | "europe"
+  | "north-america"
+  | "oceania"
+  | "asia";
+
+export type DestinationCategory = "all" | "popular" | "europe" | "pacific";
+
 export interface DestinationCountry {
   id: string;
   name: string;
@@ -34,7 +38,8 @@ export interface DestinationCountry {
   flagSvg: string;
   landmarkName: string;
   landmarkImage: string;
-  category: "all" | "popular" | "europe" | "pacific";
+  region?: "europe" | "north-america" | "oceania" | "asia";
+  category?: DestinationCategory;
   pteScore: string;
   pteBadge: string;
   shortSummary: string;
@@ -66,6 +71,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Sydney Opera House & Harbour",
     landmarkImage:
       "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop",
+    region: "oceania",
     category: "popular",
     pteScore: "50+ to 65+",
     pteBadge: "PTE Score: 50+",
@@ -107,6 +113,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Big Ben & Westminster, London",
     landmarkImage:
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop",
+    region: "europe",
     category: "popular",
     pteScore: "51+ to 62+",
     pteBadge: "PTE Score: 51+",
@@ -148,6 +155,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Toronto Skyline & Canadian Lakes",
     landmarkImage:
       "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop",
+    region: "north-america",
     category: "popular",
     pteScore: "60+ to 65+",
     pteBadge: "PTE Score: 60+",
@@ -189,6 +197,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "New York City & Manhattan",
     landmarkImage:
       "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=800&auto=format&fit=crop",
+    region: "north-america",
     category: "popular",
     pteScore: "53+ to 68+",
     pteBadge: "PTE Score: 53+",
@@ -230,6 +239,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Queenstown & Milford Sound",
     landmarkImage:
       "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?q=80&w=800&auto=format&fit=crop",
+    region: "oceania",
     category: "pacific",
     pteScore: "50+ to 58+",
     pteBadge: "PTE Score: 50+",
@@ -269,6 +279,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Neuschwanstein Castle & Berlin",
     landmarkImage:
       "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=800&auto=format&fit=crop",
+    region: "europe",
     category: "europe",
     pteScore: "59+ to 65+",
     pteBadge: "PTE Score: 59+",
@@ -310,6 +321,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Marina Bay Sands & Supertrees",
     landmarkImage:
       "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop",
+    region: "asia",
     category: "pacific",
     pteScore: "50+ to 65+",
     pteBadge: "PTE Score: 50+",
@@ -349,6 +361,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Dublin Trinity College & River Liffey",
     landmarkImage:
       "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=800&auto=format&fit=crop",
+    region: "europe",
     category: "europe",
     pteScore: "58+ to 63+",
     pteBadge: "PTE Score: 58+",
@@ -388,6 +401,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Burj Khalifa & Downtown Dubai",
     landmarkImage:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop",
+    region: "asia",
     category: "pacific",
     pteScore: "45+ to 55+",
     pteBadge: "PTE Score: 45+",
@@ -427,6 +441,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     landmarkName: "Mount Fuji & Tokyo Metropolis",
     landmarkImage:
       "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop",
+    region: "asia",
     category: "pacific",
     pteScore: "42+ to 50+",
     pteBadge: "PTE Score: 42+",
@@ -462,9 +477,8 @@ export const DESTINATIONS: DestinationCountry[] = [
 ];
 
 export function DestinationsSection() {
-  const [selectedCategory, setSelectedCategory] = useState<
-    "all" | "popular" | "europe" | "pacific"
-  >("all");
+  const [selectedCategory, setSelectedCategory] =
+    useState<DestinationCategory>("all");
   const [activeCountry, setActiveCountry] = useState<DestinationCountry | null>(
     null
   );
@@ -517,7 +531,7 @@ export function DestinationsSection() {
                 key={tab.id}
                 onClick={() =>
                   setSelectedCategory(
-                    tab.id as "all" | "popular" | "europe" | "pacific"
+                    tab.id as DestinationCategory
                   )
                 }
                 className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
@@ -629,6 +643,10 @@ export function DestinationsSection() {
         >
           {activeCountry && (
             <div className="relative pb-8 flex flex-col justify-between min-h-full">
+              <SheetHeader className="sr-only">
+                <SheetTitle>{activeCountry.name}</SheetTitle>
+                <SheetDescription>{activeCountry.shortSummary}</SheetDescription>
+              </SheetHeader>
               <div>
                 {/* Sheet Hero Image Banner with Flag Overlay */}
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-muted">
@@ -819,7 +837,7 @@ export function DestinationsSection() {
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:opacity-95 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md active:scale-[0.98] cursor-pointer"
                 >
-                  <Sparkles className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                   <span>Free Consultation for {activeCountry.name}</span>
                 </a>
 

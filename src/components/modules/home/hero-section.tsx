@@ -2,55 +2,48 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  CheckCircle2,
-  ArrowRight,
-  PhoneCall,
-  Star,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, PhoneCall, Star, BadgeCheck, CheckCircle2 } from "lucide-react";
 import { GlobeSphere } from "./globe-sphere";
-
-const KEY_HIGHLIGHTS = [
-  "100+ students scored 79+ on their first attempt",
-  "Score Guarantee — complimentary repeat classes if needed",
-  "Official Pearson PTE exam booking center in Bangladesh",
-];
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-x-clip pt-3 pb-8 sm:pt-5 sm:pb-12 lg:pt-6 lg:pb-14">
+    <section className="relative overflow-x-clip pt-3 pb-8 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-16">
       {/* Subtle Background Ambient Glows */}
-      <div className="absolute top-1/4 left-10 w-[400px] h-[300px] bg-primary/10 dark:bg-primary/15 blur-[130px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-[350px] h-[300px] bg-blue-500/10 dark:bg-indigo-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-10 w-[450px] h-[350px] bg-primary/10 dark:bg-primary/15 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[350px] bg-blue-500/10 dark:bg-indigo-500/15 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      {/* Blueprint Grid Background — Spacious layout with larger columns & wider gaps */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:56px_56px] pointer-events-none -z-10" />
+      {/* Blueprint Grid Texture */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:52px_52px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center">
-          {/* Left Column: Responsive (Centered when broken into single column <lg, Left-aligned on desktop lg:) */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
-            {/* Compact Top Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 dark:border-primary/30 bg-primary/5 dark:bg-primary/10 backdrop-blur-md">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+          {/* ── Left Column: Welcoming & Authoritative Brand Gateway ── */}
+          <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            {/* Welcoming Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 dark:border-primary/30 bg-primary/5 dark:bg-primary/10 backdrop-blur-md shadow-2xs">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-[11px] sm:text-xs font-bold tracking-wider uppercase text-primary dark:text-blue-300">
-                Pearson Certified 1-to-1 PTE Coaching
+                Welcome to Universal Language • Your Global Future Starts Here
               </span>
             </div>
 
-            {/* Controlled, Impactful Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-foreground leading-[1.15]">
-              Score 79+ in PTE Academic in Just{" "}
-              <span className="relative inline-block text-amber-500 dark:text-amber-400">
-                12 Classes!
+            {/* Welcoming & High-Impact Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-5xl font-black tracking-tight text-foreground leading-[1.14]">
+              Welcome to{" "}
+              <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
+                Universal Language.
+              </span>
+              Your Gateway to{" "}
+              <span className="relative inline-block text-amber-500 dark:text-amber-400 whitespace-nowrap">
+                Global Success.
                 <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-amber-400/60 dark:text-amber-400/40"
+                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-amber-400/70 dark:text-amber-400/50"
                   viewBox="0 0 100 12"
                   preserveAspectRatio="none"
+                  aria-hidden="true"
                 >
                   <path
                     d="M0,8 Q50,0 100,8"
@@ -63,75 +56,69 @@ export function HeroSection() {
               </span>
             </h1>
 
-            {/* Concise Subheadline */}
-            <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Skip crowded batches. Get personalized 1-on-1 mentorship, instant
-              AI mock scoring, and guaranteed score improvement with official exam
-              booking support.
+            {/* Professional, Short & Reassuring Subtext */}
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Your complete academy for{" "}
+              <strong>PTE Academic, IELTS, German & Japanese</strong>. From target test
+              scores to university admissions and visas across Australia, Canada, the UK,
+              and Europe — we guide every step of your journey.
             </p>
 
-            {/* Focused 3 Key Points */}
-            <div className="space-y-2 pt-0.5 text-left inline-flex flex-col items-start mx-auto lg:mx-0">
-              {KEY_HIGHLIGHTS.map((point, i) => (
-                <div key={i} className="flex items-center gap-2.5">
-                  <div className="h-4.5 w-4.5 rounded-full flex items-center justify-center bg-amber-500/15 dark:bg-amber-400/20 text-amber-600 dark:text-amber-400 shrink-0">
-                    <CheckCircle2 className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-medium text-foreground/90">
-                    {point}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Tight CTA Actions */}
-            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full">
+            {/* ── Conversion-Driven Action Buttons ── */}
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5 w-full">
               <Link href="/register" className="inline-block group focus:outline-none">
-                <button className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-primary hover:via-blue-600 hover:to-indigo-600 shadow-[0_4px_14px_-2px_rgba(11,58,130,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
+                <button className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-primary hover:via-blue-600 hover:to-indigo-600 shadow-[0_4px_14px_-2px_rgba(11,58,130,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                  <span className="relative z-10">Book Free Consultation</span>
+                  <span className="relative z-10">Start Free Consultation</span>
                   <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </Link>
 
               <a
-                href="https://wa.me/8801700000000"
+                href="https://wa.me/8801674166241?text=Hello%20Universal%20Language,%20I%20want%20to%20inquire%20about%20PTE,%20IELTS,%20German,%20Japanese,%20and%20Study%20Abroad%20programs."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4.5 py-3 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/80 hover:bg-secondary/60 transition-all hover:scale-[1.01] active:scale-[0.98] text-foreground cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/80 hover:bg-secondary/60 transition-all hover:scale-[1.01] active:scale-[0.98] text-foreground cursor-pointer shadow-2xs"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-500" />
-                <span>Call / WhatsApp</span>
+                <span>Call / WhatsApp Desk</span>
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
               </a>
             </div>
 
-            {/* Minimal Social Proof Row */}
-            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 border-t border-border/40 w-full">
+            {/* ── Trust & Credibility Footnote ── */}
+            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-4 border-t border-border/40 w-full text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                    />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-foreground">4.9/5</span>
-                <span className="text-xs text-muted-foreground">(150+ Students)</span>
+                <span className="font-bold text-foreground">4.9/5</span>
+                <span>(250+ Success Stories)</span>
               </div>
 
               <div className="h-3.5 w-px bg-border/80 hidden sm:block" />
 
-              <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-                <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                <span>Pearson Authorized Partner</span>
+              <div className="flex items-center gap-1.5 font-medium">
+                <BadgeCheck className="w-3.5 h-3.5 text-primary" />
+                <span>Pearson Certified Partner</span>
+              </div>
+
+              <div className="h-3.5 w-px bg-border/80 hidden sm:block" />
+
+              <div className="flex items-center gap-1 font-medium text-emerald-600 dark:text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>96% Visa & Test Pass Rate</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Globe — 50% width, no clipping */}
-          <div className="lg:col-span-6 relative flex items-center justify-center w-full h-full" style={{ overflow: "visible" }}>
+          {/* ── Right Column: 3D Interactive Global Destination Sphere ── */}
+          <div
+            className="lg:col-span-6 relative flex items-center justify-center w-full h-full"
+            style={{ overflow: "visible" }}
+          >
             <GlobeSphere />
           </div>
         </div>
@@ -139,3 +126,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+export default HeroSection;
