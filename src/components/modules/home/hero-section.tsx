@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, PhoneCall, Star, BadgeCheck, CheckCircle2 } from "lucide-react";
 import { GlobeSphere } from "./globe-sphere";
 
@@ -25,24 +26,51 @@ export function HeroSection() {
               <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
                 Universal Language.
               </span>
-              Score High and
-              <span className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap">
+              Score High and{" "}
+              <motion.span
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap"
+              >
                 Study Abroad.
                 <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-primary/70 dark:text-blue-400/70"
+                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-primary/80 dark:text-blue-400/90 overflow-visible"
                   viewBox="0 0 100 12"
                   preserveAspectRatio="none"
                   aria-hidden="true"
                 >
-                  <path
+                  <motion.path
                     d="M0,8 Q50,0 100,8"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="3"
                     strokeLinecap="round"
+                    variants={{
+                      hidden: {
+                        pathLength: 0,
+                        opacity: 0,
+                        transition: { duration: 0.2 },
+                      },
+                      visible: {
+                        pathLength: 1,
+                        opacity: 1,
+                        transition: {
+                          pathLength: {
+                            duration: 1.1,
+                            ease: [0.22, 1, 0.36, 1],
+                            delay: 0.2,
+                          },
+                          opacity: {
+                            duration: 0.2,
+                            delay: 0.05,
+                          },
+                        },
+                      },
+                    }}
                   />
                 </svg>
-              </span>
+              </motion.span>
             </h1>
 
             {/* Grounded, Student-Centric Subtext (Zero AI Buzzwords) */}

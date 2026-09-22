@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -286,23 +287,50 @@ export function CoursePromoSection() {
             <div className="space-y-2.5">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-foreground leading-[1.15]">
                 Score 79+ in PTE Academic in Just{" "}
-                <span className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap">
+                <motion.span
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap"
+                >
                   12 Classes!
                   <svg
-                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/70 dark:text-blue-400/70"
+                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/80 dark:text-blue-400/90 overflow-visible"
                     viewBox="0 0 120 14"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <path
+                    <motion.path
                       d="M2,10 Q60,1 118,10"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="3.5"
                       strokeLinecap="round"
+                      variants={{
+                        hidden: {
+                          pathLength: 0,
+                          opacity: 0,
+                          transition: { duration: 0.2 },
+                        },
+                        visible: {
+                          pathLength: 1,
+                          opacity: 1,
+                          transition: {
+                            pathLength: {
+                              duration: 1.1,
+                              ease: [0.22, 1, 0.36, 1],
+                              delay: 0.2,
+                            },
+                            opacity: {
+                              duration: 0.2,
+                              delay: 0.05,
+                            },
+                          },
+                        },
+                      }}
                     />
                   </svg>
-                </span>
+                </motion.span>
               </h2>
 
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">

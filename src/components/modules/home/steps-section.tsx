@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
 import {
   Users,
   ClipboardCheck,
@@ -10,7 +9,6 @@ import {
   GraduationCap,
   CalendarCheck,
   PlaneTakeoff,
-  Sparkles,
   ArrowRight,
   PhoneCall,
   CheckCircle2,
@@ -133,29 +131,6 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
 export function StepsSection() {
   return (
     <section
@@ -172,15 +147,8 @@ export function StepsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3"
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-primary" />
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
             <span>Proven 6-Step Methodology</span>
           </div>
 
@@ -193,30 +161,20 @@ export function StepsSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            We&apos;ve streamlined everything so you can focus on scoring, not figuring out what to do next.
-            A scientifically structured preparation framework engineered to eliminate retake anxiety on your very first attempt.
+            We&apos;ve streamlined everything so you can focus on scoring, not figuring
+            out what to do next. A scientifically structured preparation framework
+            engineered to eliminate retake anxiety on your very first attempt.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 6 Steps Grid: Framer Motion Staggered Container */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
-        >
+        {/* 6 Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {PROCESS_STEPS.map((step) => {
             const Icon = step.icon;
             return (
-              <motion.div
+              <div
                 key={step.step}
-                variants={cardVariants}
-                whileHover={{
-                  y: -7,
-                  transition: { duration: 0.25, ease: "easeOut" },
-                }}
-                className="group relative flex flex-col h-full rounded-2xl sm:rounded-3xl border border-border/80 dark:border-white/10 bg-card/95 dark:bg-card/45 backdrop-blur-xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_-12px_rgba(11,58,130,0.22)] dark:hover:shadow-[0_20px_45px_-12px_rgba(59,130,246,0.15)] hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300"
+                className="group relative flex flex-col h-full rounded-2xl sm:rounded-3xl border border-border/80 dark:border-white/10 bg-card/95 dark:bg-card/45 backdrop-blur-xl overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_-12px_rgba(11,58,130,0.22)] dark:hover:shadow-[0_20px_45px_-12px_rgba(59,130,246,0.15)] hover:border-primary/50 dark:hover:border-primary/50 hover:-translate-y-1.5 transition-all duration-300"
               >
                 {/* ── Top Rich Colored Hero Header Zone ── */}
                 <div
@@ -235,9 +193,9 @@ export function StepsSection() {
                   <div className="relative z-10 flex items-center justify-between gap-2">
                     {/* Stage Pill */}
                     <span
-                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full backdrop-blur-md text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs ${step.badgeAccent}`}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs ${step.badgeAccent}`}
                     >
-                      <Sparkles className="w-3 h-3" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-85" />
                       {step.stage}
                     </span>
 
@@ -307,19 +265,13 @@ export function StepsSection() {
                     <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300 text-primary" />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* ── Bottom Call To Action Area ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 sm:mt-16 flex flex-col items-center justify-center text-center space-y-4"
-        >
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center text-center space-y-4">
           {/* Main Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <Link href="/register" className="inline-block group focus:outline-none">
@@ -342,21 +294,7 @@ export function StepsSection() {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              100% Free Initial Assessment
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-primary" />
-              Pearson Certified Mentors
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-blue-500 dark:text-blue-400" />
-              Guaranteed 79+ First-Attempt Roadmap
-            </span>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
