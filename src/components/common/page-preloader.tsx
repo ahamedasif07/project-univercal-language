@@ -7,14 +7,14 @@ export function PagePreloader() {
   const [shouldMount, setShouldMount] = useState(true);
 
   useEffect(() => {
-    // Show the rotating globe loader for ~950ms, then smoothly fade out
+    // Show the rotating globe loader for ~750ms, then smoothly dissolve out
     const fadeTimer = setTimeout(() => {
       setIsLoaded(true);
-    }, 950);
+    }, 750);
 
     const unmountTimer = setTimeout(() => {
       setShouldMount(false);
-    }, 1550);
+    }, 1250);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -42,7 +42,7 @@ export function PagePreloader() {
         margin: 0,
         padding: 0,
       }}
-      className={`bg-background/98 dark:bg-[#060b14]/98 backdrop-blur-2xl transition-opacity transition-transform duration-500 ease-out select-none ${
+      className={`bg-background dark:bg-[#060b14] transition-opacity transition-transform duration-500 ease-out select-none ${
         isLoaded
           ? "opacity-0 scale-95 pointer-events-none"
           : "opacity-100 scale-100 pointer-events-auto"
@@ -51,223 +51,122 @@ export function PagePreloader() {
     >
       <div className="relative flex flex-col items-center justify-center">
         {/* Soft Ambient Radial Glow matching site palette */}
-        <div className="absolute w-44 h-44 bg-blue-500/20 dark:bg-cyan-500/20 blur-2xl rounded-full pointer-events-none animate-pulse" />
+        <div className="absolute w-44 h-44 bg-blue-500/15 dark:bg-cyan-500/15 blur-2xl rounded-full pointer-events-none [transform:translateZ(0)]" />
 
-        {/* ── 3D Rotating Globe Loader SVG ── */}
-        <div className="relative z-10 w-20 h-20 flex items-center justify-center">
-          <svg
-            viewBox="0 0 100 100"
-            className="w-full h-full block"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="globeAtmosphere" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#38bdf8" />
-                <stop offset="50%" stopColor="#2563eb" />
-                <stop offset="100%" stopColor="#0b3a82" />
-              </linearGradient>
+        {/* ── True 3D GPU-Composited Rotating Globe ── */}
+        <div className="relative w-24 h-24 flex items-center justify-center [perspective:600px] select-none pointer-events-none">
+          {/* Inner Glowing Core */}
+          <div
+            className="absolute w-16 h-16 rounded-full pointer-events-none [transform:translateZ(0)]"
+            style={{
+              background:
+                "radial-gradient(circle at 35% 35%, rgba(56,189,248,0.25) 0%, rgba(37,99,235,0.12) 50%, rgba(11,58,130,0.3) 100%)",
+              boxShadow:
+                "0 0 25px rgba(56,189,248,0.3), inset 0 0 15px rgba(56,189,248,0.2)",
+            }}
+          />
 
-              <radialGradient id="globeDepth" cx="40%" cy="40%" r="60%">
-                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
-                <stop offset="70%" stopColor="#1e3a8a" stopOpacity="0.10" />
-                <stop offset="100%" stopColor="#0f172a" stopOpacity="0.25" />
-              </radialGradient>
+          {/* Glowing Atmospheric Glass Rim */}
+          <div
+            className="absolute w-[68px] h-[68px] rounded-full border border-sky-400/50 pointer-events-none [transform:translateZ(0)]"
+            style={{
+              boxShadow:
+                "0 0 18px rgba(56,189,248,0.4), inset 0 0 12px rgba(37,99,235,0.25)",
+            }}
+          />
 
-              <linearGradient id="orbitGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
-                <stop offset="60%" stopColor="#2563eb" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
-              </linearGradient>
+          {/* 3D Wireframe Sphere (Pure GPU Rotation on Compositor Thread) */}
+          <div className="globe-sphere-gpu absolute w-[64px] h-[64px] [transform-style:preserve-3d]">
+            {/* Longitude Meridians (Standing vertically at 30° radial intervals) */}
+            <div className="globe-ring [transform:rotateY(0deg)] border-blue-400/60" />
+            <div className="globe-ring [transform:rotateY(30deg)] border-sky-400/50" />
+            <div className="globe-ring [transform:rotateY(60deg)] border-blue-300/55" />
+            <div className="globe-ring [transform:rotateY(90deg)] border-sky-400/60" />
+            <div className="globe-ring [transform:rotateY(120deg)] border-blue-400/50" />
+            <div className="globe-ring [transform:rotateY(150deg)] border-sky-300/55" />
 
-              <clipPath id="globeSphereClip">
-                <circle cx="50" cy="50" r="32" />
-              </clipPath>
+            {/* Latitude Parallels (Lying horizontally) */}
+            <div className="globe-ring [transform:rotateX(90deg)] border-sky-400/70 border-[1.5px]" />
+            <div className="globe-ring !w-[50px] !h-[50px] [transform:rotateX(90deg)_translateZ(18px)] border-sky-400/40" />
+            <div className="globe-ring !w-[50px] !h-[50px] [transform:rotateX(90deg)_translateZ(-18px)] border-sky-400/40" />
+          </div>
 
-              <style>{`
-                /* Butter-Smooth 60/120fps Sinusoidal Harmonic Projection */
-                @keyframes spinMeridianSmooth {
-                  0% { transform: scaleX(1); opacity: 0.85; }
-                  5% { transform: scaleX(0.951); opacity: 0.88; }
-                  10% { transform: scaleX(0.809); opacity: 0.92; }
-                  15% { transform: scaleX(0.588); opacity: 0.95; }
-                  20% { transform: scaleX(0.309); opacity: 0.95; }
-                  25% { transform: scaleX(0); opacity: 0.9; }
-                  30% { transform: scaleX(-0.309); opacity: 0.82; }
-                  35% { transform: scaleX(-0.588); opacity: 0.74; }
-                  40% { transform: scaleX(-0.809); opacity: 0.65; }
-                  45% { transform: scaleX(-0.951); opacity: 0.58; }
-                  50% { transform: scaleX(-1); opacity: 0.55; }
-                  55% { transform: scaleX(-0.951); opacity: 0.48; }
-                  60% { transform: scaleX(-0.809); opacity: 0.40; }
-                  65% { transform: scaleX(-0.588); opacity: 0.32; }
-                  70% { transform: scaleX(-0.309); opacity: 0.28; }
-                  75% { transform: scaleX(0); opacity: 0.25; }
-                  80% { transform: scaleX(0.309); opacity: 0.32; }
-                  85% { transform: scaleX(0.588); opacity: 0.45; }
-                  90% { transform: scaleX(0.809); opacity: 0.60; }
-                  95% { transform: scaleX(0.951); opacity: 0.75; }
-                  100% { transform: scaleX(1); opacity: 0.85; }
-                }
-
-                @keyframes orbitSpinSmooth {
-                  0% {
-                    transform: rotate(0deg);
-                  }
-                  100% {
-                    transform: rotate(360deg);
-                  }
-                }
-
-                @keyframes shimmerBar {
-                  0% {
-                    transform: translateX(-100%);
-                  }
-                  100% {
-                    transform: translateX(100%);
-                  }
-                }
-
-                .meridian-1,
-                .meridian-2,
-                .meridian-3 {
-                  transform-box: view-box;
-                  transform-origin: 50px 50px;
-                  will-change: transform, opacity;
-                  animation: spinMeridianSmooth 2.8s linear infinite;
-                }
-
-                .meridian-2 {
-                  animation-delay: -0.933s;
-                }
-
-                .meridian-3 {
-                  animation-delay: -1.867s;
-                }
-
-                .orbit-track {
-                  transform-box: view-box;
-                  transform-origin: 50px 50px;
-                  will-change: transform;
-                  animation: orbitSpinSmooth 3.2s linear infinite;
-                }
-
-                .shimmer-progress {
-                  will-change: transform;
-                  animation: shimmerBar 1.4s ease-in-out infinite;
-                }
-              `}</style>
-            </defs>
-
-            {/* Orbiting ring around globe */}
-            <g className="orbit-track">
-              <ellipse
-                cx="50"
-                cy="50"
-                rx="44"
-                ry="15"
-                fill="none"
-                stroke="url(#orbitGlow)"
-                strokeWidth="1.6"
-              />
-              {/* Orbiting Satellite Dot */}
-              <circle cx="94" cy="50" r="2.5" fill="#38bdf8" className="drop-shadow-[0_0_6px_#38bdf8]" />
-            </g>
-
-            {/* Globe Sphere Interior (clipped) */}
-            <g clipPath="url(#globeSphereClip)">
-              {/* Semi-transparent sphere core */}
-              <circle cx="50" cy="50" r="32" fill="url(#globeDepth)" />
-
-              {/* Tilted Earth Axis Group */}
-              <g transform="rotate(-22 50 50)">
-                {/* Latitude Parallels */}
-                <ellipse
-                  cx="50"
-                  cy="50"
-                  rx="32"
-                  ry="10"
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="1"
-                  strokeOpacity="0.65"
-                />
-                <ellipse
-                  cx="50"
-                  cy="36"
-                  rx="27"
-                  ry="7.5"
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="0.9"
-                  strokeOpacity="0.45"
-                />
-                <ellipse
-                  cx="50"
-                  cy="64"
-                  rx="27"
-                  ry="7.5"
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="0.9"
-                  strokeOpacity="0.45"
-                />
-
-                {/* Rotating Longitude Meridians */}
-                <ellipse
-                  className="meridian-1"
-                  cx="50"
-                  cy="50"
-                  rx="32"
-                  ry="32"
-                  fill="none"
-                  stroke="#60a5fa"
-                  strokeWidth="1.1"
-                />
-                <ellipse
-                  className="meridian-2"
-                  cx="50"
-                  cy="50"
-                  rx="32"
-                  ry="32"
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="1.1"
-                />
-                <ellipse
-                  className="meridian-3"
-                  cx="50"
-                  cy="50"
-                  rx="32"
-                  ry="32"
-                  fill="none"
-                  stroke="#93c5fd"
-                  strokeWidth="1.1"
-                />
-              </g>
-            </g>
-
-            {/* Glowing Outer Sphere Rim */}
-            <circle
-              cx="50"
-              cy="50"
-              r="32"
-              fill="none"
-              stroke="url(#globeAtmosphere)"
-              strokeWidth="2"
-            />
-          </svg>
+          {/* Tilted Satellite Orbit */}
+          <div className="globe-orbit-gpu absolute w-[94px] h-[94px] rounded-full [transform-style:preserve-3d] pointer-events-none">
+            <div className="absolute inset-0 rounded-full border border-transparent border-t-sky-400/85 border-r-blue-500/40 border-l-sky-400/40 shadow-[0_0_10px_rgba(56,189,248,0.3)]" />
+            <div className="absolute -top-[3px] left-1/2 -ml-[3px] w-2 h-2 rounded-full bg-sky-300 shadow-[0_0_8px_2px_#38bdf8]" />
+          </div>
         </div>
 
         {/* Minimal Progress Line & Brand Tag */}
         <div className="mt-5 flex flex-col items-center space-y-2">
           <div className="relative w-24 h-[2px] rounded-full bg-muted/60 dark:bg-white/10 overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent shimmer-progress" />
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent shimmer-progress [transform:translateZ(0)]" />
           </div>
           <span className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground/70 uppercase">
             Universal Language
           </span>
         </div>
       </div>
+
+      <style>{`
+        @keyframes spinGlobeGPU {
+          from {
+            transform: rotateX(-18deg) rotateY(0deg);
+          }
+          to {
+            transform: rotateX(-18deg) rotateY(360deg);
+          }
+        }
+
+        @keyframes spinOrbitGPU {
+          from {
+            transform: rotateX(72deg) rotateY(16deg) rotateZ(0deg);
+          }
+          to {
+            transform: rotateX(72deg) rotateY(16deg) rotateZ(360deg);
+          }
+        }
+
+        @keyframes shimmerBar {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        .globe-sphere-gpu {
+          will-change: transform;
+          animation: spinGlobeGPU 3.2s linear infinite;
+          transform: translateZ(0);
+        }
+
+        .globe-orbit-gpu {
+          will-change: transform;
+          animation: spinOrbitGPU 2.6s linear infinite;
+          transform: translateZ(0);
+        }
+
+        .globe-ring {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          border-width: 1px;
+          border-style: solid;
+          backface-visibility: visible;
+          pointer-events: none;
+        }
+
+        .shimmer-progress {
+          will-change: transform;
+          animation: shimmerBar 1.4s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }
