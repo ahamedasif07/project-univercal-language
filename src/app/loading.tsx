@@ -19,18 +19,19 @@ export default function Loading() {
         margin: 0,
         padding: 0,
       }}
-      className="bg-background/98 dark:bg-[#060b14]/98 backdrop-blur-2xl select-none"
+      className="bg-background/95 dark:bg-[#060b14]/96 backdrop-blur-md select-none"
     >
       <div className="relative flex flex-col items-center justify-center">
         {/* Soft Ambient Radial Glow */}
-        <div className="absolute w-44 h-44 bg-blue-500/20 dark:bg-cyan-500/20 blur-2xl rounded-full pointer-events-none animate-pulse" />
+        <div className="absolute w-44 h-44 bg-blue-500/15 dark:bg-cyan-500/15 blur-2xl rounded-full pointer-events-none animate-pulse will-change-[opacity]" />
 
         {/* ── 3D Rotating Globe Loader SVG ── */}
-        <div className="relative z-10 w-20 h-20 flex items-center justify-center">
+        <div className="relative z-10 w-20 h-20 flex items-center justify-center [contain:paint]">
           <svg
             viewBox="0 0 100 100"
             className="w-full h-full block"
             xmlns="http://www.w3.org/2000/svg"
+            shapeRendering="geometricPrecision"
           >
             <defs>
               <linearGradient id="loadGlobeAtmosphere" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -56,30 +57,32 @@ export default function Loading() {
               </clipPath>
 
               <style>{`
-                @keyframes spinMeridianLoad {
-                  0% {
-                    transform: scaleX(1);
-                    opacity: 0.8;
-                  }
-                  25% {
-                    transform: scaleX(0);
-                    opacity: 0.35;
-                  }
-                  50% {
-                    transform: scaleX(-1);
-                    opacity: 0.8;
-                  }
-                  75% {
-                    transform: scaleX(0);
-                    opacity: 0.35;
-                  }
-                  100% {
-                    transform: scaleX(1);
-                    opacity: 0.8;
-                  }
+                /* Butter-Smooth 60/120fps Sinusoidal Harmonic Projection */
+                @keyframes spinMeridianSmooth {
+                  0% { transform: scaleX(1); opacity: 0.85; }
+                  5% { transform: scaleX(0.951); opacity: 0.88; }
+                  10% { transform: scaleX(0.809); opacity: 0.92; }
+                  15% { transform: scaleX(0.588); opacity: 0.95; }
+                  20% { transform: scaleX(0.309); opacity: 0.95; }
+                  25% { transform: scaleX(0); opacity: 0.9; }
+                  30% { transform: scaleX(-0.309); opacity: 0.82; }
+                  35% { transform: scaleX(-0.588); opacity: 0.74; }
+                  40% { transform: scaleX(-0.809); opacity: 0.65; }
+                  45% { transform: scaleX(-0.951); opacity: 0.58; }
+                  50% { transform: scaleX(-1); opacity: 0.55; }
+                  55% { transform: scaleX(-0.951); opacity: 0.48; }
+                  60% { transform: scaleX(-0.809); opacity: 0.40; }
+                  65% { transform: scaleX(-0.588); opacity: 0.32; }
+                  70% { transform: scaleX(-0.309); opacity: 0.28; }
+                  75% { transform: scaleX(0); opacity: 0.25; }
+                  80% { transform: scaleX(0.309); opacity: 0.32; }
+                  85% { transform: scaleX(0.588); opacity: 0.45; }
+                  90% { transform: scaleX(0.809); opacity: 0.60; }
+                  95% { transform: scaleX(0.951); opacity: 0.75; }
+                  100% { transform: scaleX(1); opacity: 0.85; }
                 }
 
-                @keyframes orbitSpinLoad {
+                @keyframes orbitSpinSmooth {
                   0% {
                     transform: rotate(0deg);
                   }
@@ -88,23 +91,42 @@ export default function Loading() {
                   }
                 }
 
-                .meridian-load-1 {
-                  animation: spinMeridianLoad 2.8s linear infinite;
-                  transform-origin: 50px 50px;
+                @keyframes shimmerBar {
+                  0% {
+                    transform: translateX(-100%);
+                  }
+                  100% {
+                    transform: translateX(100%);
+                  }
                 }
-                .meridian-load-2 {
-                  animation: spinMeridianLoad 2.8s linear infinite;
-                  animation-delay: -0.93s;
-                  transform-origin: 50px 50px;
-                }
+
+                .meridian-load-1,
+                .meridian-load-2,
                 .meridian-load-3 {
-                  animation: spinMeridianLoad 2.8s linear infinite;
-                  animation-delay: -1.86s;
+                  transform-box: view-box;
                   transform-origin: 50px 50px;
+                  will-change: transform, opacity;
+                  animation: spinMeridianSmooth 2.8s linear infinite;
                 }
+
+                .meridian-load-2 {
+                  animation-delay: -0.933s;
+                }
+
+                .meridian-load-3 {
+                  animation-delay: -1.867s;
+                }
+
                 .orbit-track-load {
-                  animation: orbitSpinLoad 3.2s linear infinite;
+                  transform-box: view-box;
                   transform-origin: 50px 50px;
+                  will-change: transform;
+                  animation: orbitSpinSmooth 3.2s linear infinite;
+                }
+
+                .shimmer-progress {
+                  will-change: transform;
+                  animation: shimmerBar 1.4s ease-in-out infinite;
                 }
               `}</style>
             </defs>
@@ -209,9 +231,9 @@ export default function Loading() {
         {/* Minimal Progress Line & Brand Tag */}
         <div className="mt-5 flex flex-col items-center space-y-2">
           <div className="relative w-24 h-[2px] rounded-full bg-muted/60 dark:bg-white/10 overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[shimmer_1.3s_infinite]" />
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent shimmer-progress" />
           </div>
-          <span className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground/60 uppercase">
+          <span className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground/70 uppercase">
             Universal Language
           </span>
         </div>

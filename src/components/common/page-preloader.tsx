@@ -84,30 +84,32 @@ export function PagePreloader() {
               </clipPath>
 
               <style>{`
-                @keyframes spinMeridian {
-                  0% {
-                    transform: scaleX(1);
-                    opacity: 0.8;
-                  }
-                  25% {
-                    transform: scaleX(0);
-                    opacity: 0.35;
-                  }
-                  50% {
-                    transform: scaleX(-1);
-                    opacity: 0.8;
-                  }
-                  75% {
-                    transform: scaleX(0);
-                    opacity: 0.35;
-                  }
-                  100% {
-                    transform: scaleX(1);
-                    opacity: 0.8;
-                  }
+                /* Butter-Smooth 60/120fps Sinusoidal Harmonic Projection */
+                @keyframes spinMeridianSmooth {
+                  0% { transform: scaleX(1); opacity: 0.85; }
+                  5% { transform: scaleX(0.951); opacity: 0.88; }
+                  10% { transform: scaleX(0.809); opacity: 0.92; }
+                  15% { transform: scaleX(0.588); opacity: 0.95; }
+                  20% { transform: scaleX(0.309); opacity: 0.95; }
+                  25% { transform: scaleX(0); opacity: 0.9; }
+                  30% { transform: scaleX(-0.309); opacity: 0.82; }
+                  35% { transform: scaleX(-0.588); opacity: 0.74; }
+                  40% { transform: scaleX(-0.809); opacity: 0.65; }
+                  45% { transform: scaleX(-0.951); opacity: 0.58; }
+                  50% { transform: scaleX(-1); opacity: 0.55; }
+                  55% { transform: scaleX(-0.951); opacity: 0.48; }
+                  60% { transform: scaleX(-0.809); opacity: 0.40; }
+                  65% { transform: scaleX(-0.588); opacity: 0.32; }
+                  70% { transform: scaleX(-0.309); opacity: 0.28; }
+                  75% { transform: scaleX(0); opacity: 0.25; }
+                  80% { transform: scaleX(0.309); opacity: 0.32; }
+                  85% { transform: scaleX(0.588); opacity: 0.45; }
+                  90% { transform: scaleX(0.809); opacity: 0.60; }
+                  95% { transform: scaleX(0.951); opacity: 0.75; }
+                  100% { transform: scaleX(1); opacity: 0.85; }
                 }
 
-                @keyframes orbitSpin {
+                @keyframes orbitSpinSmooth {
                   0% {
                     transform: rotate(0deg);
                   }
@@ -116,23 +118,42 @@ export function PagePreloader() {
                   }
                 }
 
-                .meridian-1 {
-                  animation: spinMeridian 2.8s linear infinite;
-                  transform-origin: 50px 50px;
+                @keyframes shimmerBar {
+                  0% {
+                    transform: translateX(-100%);
+                  }
+                  100% {
+                    transform: translateX(100%);
+                  }
                 }
-                .meridian-2 {
-                  animation: spinMeridian 2.8s linear infinite;
-                  animation-delay: -0.93s;
-                  transform-origin: 50px 50px;
-                }
+
+                .meridian-1,
+                .meridian-2,
                 .meridian-3 {
-                  animation: spinMeridian 2.8s linear infinite;
-                  animation-delay: -1.86s;
+                  transform-box: view-box;
                   transform-origin: 50px 50px;
+                  will-change: transform, opacity;
+                  animation: spinMeridianSmooth 2.8s linear infinite;
                 }
+
+                .meridian-2 {
+                  animation-delay: -0.933s;
+                }
+
+                .meridian-3 {
+                  animation-delay: -1.867s;
+                }
+
                 .orbit-track {
-                  animation: orbitSpin 3.2s linear infinite;
+                  transform-box: view-box;
                   transform-origin: 50px 50px;
+                  will-change: transform;
+                  animation: orbitSpinSmooth 3.2s linear infinite;
+                }
+
+                .shimmer-progress {
+                  will-change: transform;
+                  animation: shimmerBar 1.4s ease-in-out infinite;
                 }
               `}</style>
             </defs>
@@ -240,9 +261,9 @@ export function PagePreloader() {
         {/* Minimal Progress Line & Brand Tag */}
         <div className="mt-5 flex flex-col items-center space-y-2">
           <div className="relative w-24 h-[2px] rounded-full bg-muted/60 dark:bg-white/10 overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[shimmer_1.3s_infinite]" />
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent shimmer-progress" />
           </div>
-          <span className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground/60 uppercase">
+          <span className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground/70 uppercase">
             Universal Language
           </span>
         </div>
