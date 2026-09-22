@@ -352,7 +352,7 @@ export function StepsSection() {
               Pearson Certified Mentors
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-amber-500" />
+              <Award className="w-4 h-4 text-blue-500 dark:text-blue-400" />
               Guaranteed 79+ First-Attempt Roadmap
             </span>
           </div>

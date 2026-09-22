@@ -133,7 +133,7 @@ export function PromoSlider({ className }: { className?: string }) {
       aria-label="PTE Course Promotional Offers Carousel"
     >
       {/* Ambient Multi-Layered Backlight Glow */}
-      <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-tr from-primary/25 via-blue-600/20 to-amber-500/25 blur-2xl -z-10 opacity-70 group-hover:opacity-95 transition-opacity duration-700" />
+      <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-tr from-primary/25 via-blue-600/20 to-blue-400/20 blur-2xl -z-10 opacity-70 group-hover:opacity-95 transition-opacity duration-700" />
 
       {/* Main Poster Display Card (Cleaned without top tabs) */}
       <div className="relative aspect-square w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-border/70 dark:border-white/15 bg-card">
@@ -168,7 +168,7 @@ export function PromoSlider({ className }: { className?: string }) {
 
                 {/* Top Corner Badge: Offer Tag */}
                 <div className="absolute top-3.5 left-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 shadow-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                   <span className="text-[11px] font-bold text-white tracking-wide uppercase">
                     {slide.tag}
                   </span>
@@ -183,7 +183,7 @@ export function PromoSlider({ className }: { className?: string }) {
                 <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-white flex items-center justify-between gap-2 shadow-lg">
                   <div className="truncate">
                     <p className="text-xs font-black truncate">{slide.title}</p>
-                    <p className="text-[11px] text-amber-300 font-semibold truncate">
+                    <p className="text-[11px] text-blue-300 font-semibold truncate">
                       {slide.discountText}
                     </p>
                   </div>
@@ -247,7 +247,7 @@ export function PromoSlider({ className }: { className?: string }) {
           </span>
           <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-primary to-amber-500 rounded-full transition-all duration-100 ease-linear"
+              className="h-full bg-gradient-to-r from-[#0b3a82] via-primary to-blue-500 rounded-full transition-all duration-100 ease-linear"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -266,7 +266,7 @@ export function CoursePromoSection() {
     >
       {/* Background Ambience & Grid Texture */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[350px] bg-primary/10 dark:bg-primary/15 blur-[140px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-[450px] h-[350px] bg-amber-500/10 dark:bg-amber-500/15 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-[450px] h-[350px] bg-blue-500/10 dark:bg-blue-500/15 blur-[130px] rounded-full pointer-events-none -z-10" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800e_1px,transparent_1px),linear-gradient(to_bottom,#8080800e_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -286,10 +286,10 @@ export function CoursePromoSection() {
             <div className="space-y-2.5">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-foreground leading-[1.15]">
                 Score 79+ in PTE Academic in Just{" "}
-                <span className="relative inline-block text-amber-500 dark:text-amber-400 whitespace-nowrap">
+                <span className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap">
                   12 Classes!
                   <svg
-                    className="absolute -bottom-2 left-0 w-full h-3 text-amber-400/70 dark:text-amber-400/50"
+                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/70 dark:text-blue-400/70"
                     viewBox="0 0 120 14"
                     preserveAspectRatio="none"
                     aria-hidden="true"
@@ -321,7 +321,7 @@ export function CoursePromoSection() {
                 "Achieve target score within 30 days (12 intensive classes)",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5">
-                  <div className="h-4.5 w-4.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="h-4.5 w-4.5 rounded-full bg-primary/15 text-primary dark:text-blue-400 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                   <span className="text-xs sm:text-sm font-medium text-foreground/90">
@@ -332,9 +332,9 @@ export function CoursePromoSection() {
             </div>
 
             {/* Compact, Sleek Admission Offer Strip */}
-            <div className="w-full flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/5 backdrop-blur-sm">
+            <div className="w-full flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl border border-primary/30 bg-primary/5 backdrop-blur-sm">
               <div className="flex items-center gap-2.5">
-                <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-amber-500 text-white">
+                <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-primary text-white">
                   10% Off
                 </span>
                 <div className="text-xs">
@@ -354,9 +354,9 @@ export function CoursePromoSection() {
                 className="relative group/claim inline-flex items-center shrink-0 focus:outline-none"
               >
                 {/* Radiant Pulsing Backlight Glow */}
-                <span className="absolute -inset-1 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 opacity-75 blur-md group-hover/claim:opacity-100 transition-opacity duration-300 animate-pulse" />
+                <span className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#0b3a82] via-primary to-blue-500 opacity-75 blur-md group-hover/claim:opacity-100 transition-opacity duration-300 animate-pulse" />
 
-                <span className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold tracking-wide text-white bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 shadow-md active:scale-95 transition-all duration-200">
+                <span className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold tracking-wide text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-primary hover:via-blue-600 hover:to-indigo-600 shadow-md active:scale-95 transition-all duration-200">
                   <span>Claim Offer</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/claim:translate-x-0.5" />
                 </span>

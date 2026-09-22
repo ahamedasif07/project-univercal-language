@@ -580,7 +580,7 @@ export function DestinationsSection() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
-            Target Your <span className="text-amber-500 dark:text-amber-400">Dream Destination</span>
+            Target Your <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">Dream Destination</span>
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
@@ -774,7 +774,7 @@ export function DestinationsSection() {
                     </div>
 
                     {/* PTE Score Pill */}
-                    <div className="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-black bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 shrink-0">
+                    <div className="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-black bg-primary/10 text-primary dark:text-blue-300 border border-primary/20 shrink-0">
                       {country.pteBadge}
                     </div>
                   </div>
@@ -849,7 +849,7 @@ export function DestinationsSection() {
                       </div>
                     </div>
 
-                    <div className="hidden sm:inline-flex items-center px-3 py-1 rounded-lg text-xs font-black bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40">
+                    <div className="hidden sm:inline-flex items-center px-3 py-1 rounded-lg text-xs font-black bg-primary/10 text-primary dark:text-blue-300 border border-primary/20">
                       {activeCountry.pteBadge}
                     </div>
                   </div>
@@ -982,7 +982,7 @@ export function DestinationsSection() {
                   {/* Key Advantages List */}
                   <div className="space-y-2 pt-1">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                      <Award className="w-3.5 h-3.5 text-amber-500" />
+                      <Award className="w-3.5 h-3.5 text-primary" />
                       Why Study in {activeCountry.name}
                     </h3>
                     <ul className="space-y-1.5">

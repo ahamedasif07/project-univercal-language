@@ -19,17 +19,6 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* ── Left Column: Grounded, Authentic & Human Institute Gateway ── */}
           <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-            {/* Real Credential Eyebrow Pill */}
-            {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 dark:border-primary/30 bg-primary/5 dark:bg-primary/10 backdrop-blur-md shadow-2xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="text-[11px] sm:text-xs font-bold tracking-wider uppercase text-primary dark:text-blue-300">
-                Pearson Certified Partner • PTE, IELTS, German &amp; Japanese
-              </span>
-            </div> */}
-
             {/* Direct, Human & Memorable Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-5xl font-black tracking-tight text-foreground leading-[1.15]">
               Welcome to{" "}
@@ -37,10 +26,10 @@ export function HeroSection() {
                 Universal Language.
               </span>
               Score High and
-              <span className="relative inline-block text-amber-500 dark:text-amber-400 whitespace-nowrap">
+              <span className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap">
                 Study Abroad.
                 <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-amber-400/70 dark:text-amber-400/50"
+                  className="absolute -bottom-1.5 left-0 w-full h-2.5 text-primary/70 dark:text-blue-400/70"
                   viewBox="0 0 100 12"
                   preserveAspectRatio="none"
                   aria-hidden="true"
