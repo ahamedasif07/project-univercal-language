@@ -85,7 +85,7 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
     }
   };
 
-  const whatsappLink = `https://wa.me/8801674166241?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20enrolling%20in%20${encodeURIComponent(
+  const whatsappLink = `https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20enrolling%20in%20${encodeURIComponent(
     course.title
   )}%20(${course.currency}%20${course.price.toLocaleString()}).%20Please%20confirm%20admission%20details.`;
 
@@ -189,27 +189,27 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                 </a>
 
                 <a
-                  href="tel:+8801674166241"
+                  href="tel:+8801831251910"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-slate-300 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer bg-white/60 dark:bg-slate-800/60"
                 >
                   <PhoneCall className="w-4 h-4 text-primary" />
-                  <span>Call: +880 1674 166 241</span>
+                  <span>Call: +880 1831-251910</span>
                 </a>
               </div>
             </div>
 
             {/* Right Column: Premium Sticky Pricing & Admission Card (5 cols) */}
             <div className="lg:col-span-5 w-full">
-              <div className="rounded-3xl bg-white dark:bg-slate-900 border-2 border-primary/20 dark:border-primary/40 shadow-xl overflow-hidden">
-                {/* Photo Header */}
-                <div className="relative h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-primary/20 dark:border-primary/40 shadow-lg overflow-hidden">
+                {/* Photo Header (Compact & Classy) */}
+                <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <img
                     src={course.thumbnailImage}
                     alt={course.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b2545]/90 via-[#0b2545]/30 to-transparent" />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs">
+                  <div className="absolute bottom-2.5 left-4 right-4 flex items-center justify-between text-white text-xs">
                     <span className="font-semibold text-blue-100">Standard Local Fee</span>
                     <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-bold text-[10px] uppercase">
                       All-Inclusive
@@ -217,19 +217,19 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                   </div>
                 </div>
 
-                {/* Card Content */}
-                <div className="p-6 sm:p-7 space-y-5">
+                {/* Card Content (Tighter padding) */}
+                <div className="p-5 sm:p-6 space-y-4">
                   <div className="flex items-baseline justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                     <div>
-                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
                         Course Investment
                       </span>
                       <div className="flex items-baseline gap-1.5 mt-0.5">
-                        <span className="text-sm font-bold text-primary">
+                        <span className="text-xs font-bold text-primary">
                           {course.priceNote ? `${course.priceNote} ` : ""}
                           {course.currency}
                         </span>
-                        <span className="text-3xl sm:text-4xl font-black text-[#0b2545] dark:text-white tracking-tight">
+                        <span className="text-2xl sm:text-3xl font-black text-[#0b2545] dark:text-white tracking-tight">
                           {course.price.toLocaleString()}
                         </span>
                       </div>
@@ -240,7 +240,7 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                         <span className="text-xs text-slate-400 line-through block">
                           {course.currency} {course.originalPrice.toLocaleString()}
                         </span>
-                        <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">
                           Save {course.currency} {(course.originalPrice - course.price).toLocaleString()}
                         </span>
                       </div>
@@ -673,20 +673,6 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
           </div>
         </section>
       </main>
-
-      {/* ── 8. Fixed Floating WhatsApp Admission Button ── */}
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-50 p-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 flex items-center justify-center cursor-pointer group"
-      >
-        <WhatsAppIcon className="w-6 h-6" />
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-2 text-xs font-bold transition-all duration-300">
-          WhatsApp Admission Desk
-        </span>
-      </a>
     </div>
   );
 }

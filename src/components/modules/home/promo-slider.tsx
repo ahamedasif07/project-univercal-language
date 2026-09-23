@@ -402,7 +402,7 @@ export function CoursePromoSection() {
               </Link>
 
               <a
-                href="https://wa.me/8801674166241?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20the%201-to-1%20PTE%20A-Z%20Masterclass%20and%20claim%20the%2010%%20discount."
+                href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20the%201-to-1%20PTE%20A-Z%20Masterclass%20and%20claim%20the%2010%%20discount."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4.5 py-3 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/80 hover:bg-secondary/60 transition-all hover:scale-[1.01] active:scale-[0.98] text-foreground cursor-pointer"

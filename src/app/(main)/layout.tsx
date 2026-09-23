@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/common/navbar";
 import { PagePreloader } from "@/components/common/page-preloader";
+import { FloatingWhatsApp } from "@/components/common/floating-whatsapp";
 
 export default function MainLayout({
   children,
@@ -12,6 +13,7 @@ export default function MainLayout({
       <PagePreloader />
       <Navbar />
       <main className="flex-1">{children}</main>
+      <FloatingWhatsApp />
     </div>
   );
 }

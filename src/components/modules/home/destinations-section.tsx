@@ -1003,7 +1003,7 @@ export function DestinationsSection() {
               {/* Sheet Bottom Fixed CTA */}
               <div className="px-6 pt-4 border-t border-border/60 bg-background/90 backdrop-blur-md sticky bottom-0 space-y-2">
                 <a
-                  href={`https://wa.me/8801700000000?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20studying%20or%20migrating%20to%20${encodeURIComponent(
+                  href={`https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20studying%20or%20migrating%20to%20${encodeURIComponent(
                     activeCountry.name
                   )}.%20Please%20guide%20me%20on%20PTE%20requirements.`}
                   target="_blank"
