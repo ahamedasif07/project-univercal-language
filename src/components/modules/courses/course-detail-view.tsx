@@ -372,10 +372,10 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 Structured Class-by-Class Roadmap
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2545] dark:text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
                 Complete Curriculum &amp; Skill Milestones
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Every session is structured around Pearson AI machine-scoring algorithms to guarantee tangible score jumps.
               </p>
             </div>
@@ -455,10 +455,10 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 Pedagogical Framework
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2545] dark:text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
                 {course.overview.heading}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {course.overview.description}
               </p>
             </div>
@@ -491,7 +491,7 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 Value Stack Inclusions
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2545] dark:text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
                 Software Tools, Resources &amp; Mentorship Support
               </h2>
             </div>
@@ -524,10 +524,10 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 Candidate Assessment
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2545] dark:text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
                 Who Thrives in This Program?
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {course.whoIsThisFor.subtitle}
               </p>
             </div>
@@ -581,10 +581,10 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
         {/* ── 6. Frequently Asked Questions (FAQ) ── */}
         <section className="space-y-6 max-w-4xl mx-auto">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2545] dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               Clear answers regarding class scheduling, materials, and exam booking
             </p>
           </div>

@@ -43,28 +43,28 @@ export function CoursesServicesSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 dark:bg-blue-950/50 dark:border-blue-800/50 text-primary dark:text-blue-300 text-xs font-semibold uppercase tracking-wider shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5" />
             <span>Official Pearson Authorized Academy &amp; Booking Partner</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b2545] dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
             Choose The Right{" "}
-            <span className="font-serif italic font-medium text-primary dark:text-blue-400">
-              Pricing
+            <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
+              Pricing &amp; Package
             </span>{" "}
-            &amp; Package For You
+            For You
           </h2>
 
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Price applicable to Bangladesh-based/Local Students. For International Student pricing,
-            please contact us.
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Price applicable to Bangladesh-based/Local Students. For International Student
+            pricing, please contact us.
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="mt-10 flex justify-center">
+        <div className="flex justify-center">
           <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-inner">
             <button
               onClick={() => setActiveTab("all")}
@@ -134,8 +134,8 @@ export function CoursesServicesSection() {
                 Not sure which course matches your current English score?
               </h3>
               <p className="text-sm text-blue-100 max-w-2xl leading-relaxed">
-                Take our 10-minute diagnostic speaking evaluation with a certified Pearson trainer
-                and receive an exact score prediction &amp; custom study plan.
+                Take our 10-minute diagnostic speaking evaluation with a certified Pearson
+                trainer and receive an exact score prediction &amp; custom study plan.
               </p>
             </div>
 
@@ -207,12 +207,12 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
                   item.badge === "Most Popular"
                     ? "bg-primary font-black shadow-primary/30"
                     : item.badge === "Best For Beginners"
-                    ? "bg-[#0b3a82]"
-                    : item.badge === "Fastest Improvement"
-                    ? "bg-blue-600"
-                    : item.badge === "Group Learning"
-                    ? "bg-indigo-600"
-                    : "bg-[#0b2545]"
+                      ? "bg-[#0b3a82]"
+                      : item.badge === "Fastest Improvement"
+                        ? "bg-blue-600"
+                        : item.badge === "Group Learning"
+                          ? "bg-indigo-600"
+                          : "bg-[#0b2545]"
                 )}
               >
                 {item.badge}
@@ -225,9 +225,7 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
             <h3 className="text-base sm:text-lg font-bold tracking-tight text-white leading-tight drop-shadow-sm truncate">
               {item.title}
             </h3>
-            <p className="text-[11px] text-blue-100/90 truncate mt-0.5">
-              {item.tagline}
-            </p>
+            <p className="text-[11px] text-blue-100/90 truncate mt-0.5">{item.tagline}</p>
           </div>
         </div>
 
