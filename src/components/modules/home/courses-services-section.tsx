@@ -4,7 +4,6 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
@@ -216,7 +215,6 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
                     : "bg-[#0b2545]"
                 )}
               >
-                {item.badge === "Most Popular" && <Sparkles className="w-3 h-3 text-cyan-300" />}
                 {item.badge}
               </span>
             )}
