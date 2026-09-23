@@ -4,6 +4,7 @@ import { StatsSection } from "@/components/modules/home/stats-section";
 import { CoursePromoSection } from "@/components/modules/home/promo-slider";
 import { StepsSection } from "@/components/modules/home/steps-section";
 import { DestinationsSection } from "@/components/modules/home/destinations-section";
+import { CoursesServicesSection } from "@/components/modules/home/courses-services-section";
 
 export const metadata = {
   title: "Universal Language | Premier PTE, IELTS, German & Study Abroad Academy",
@@ -21,6 +22,7 @@ export default function HomePage() {
       <StepsSection />
 
       <DestinationsSection />
+      <CoursesServicesSection />
     </div>
   );
 }
