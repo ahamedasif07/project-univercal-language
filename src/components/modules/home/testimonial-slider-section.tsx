@@ -9,7 +9,6 @@ import {
   ChevronRight,
   CheckCircle2,
   MessageSquareQuote,
-  Sparkles,
 } from "lucide-react";
 import { STUDENT_TESTIMONIALS, StudentTestimonial } from "@/data/testimonials";
 
@@ -134,7 +133,7 @@ export function TestimonialSliderSection() {
             <div
               className="flex transition-transform duration-500 ease-out gap-6"
               style={{
-                transform: `translateX(-${currentIndex * (100 / visibleCards + (24 / visibleCards) * ((visibleCards - 1) / visibleCards))}%)`,
+                transform: `translateX(calc(-${currentIndex} * (100% + 24px) / ${visibleCards}))`,
               }}
             >
               {STUDENT_TESTIMONIALS.map((testimonial) => (
@@ -147,7 +146,7 @@ export function TestimonialSliderSection() {
                         ? "100%"
                         : visibleCards === 2
                         ? "calc(50% - 12px)"
-                        : "calc(33.333% - 16px)",
+                        : "calc((100% - 48px) / 3)",
                   }}
                 >
                   {/* Top Row: Stars + Quote Icon + Score Pill */}

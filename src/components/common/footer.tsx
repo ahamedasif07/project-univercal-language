@@ -94,7 +94,7 @@ export function Footer() {
                 <LinkedinIcon className="w-3.5 h-3.5" />
               </a>
               <a
-                href="https://wa.me/8801844909000"
+                href="https://wa.me/8801772224283"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Universal Language on WhatsApp"
@@ -185,14 +185,14 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-primary shrink-0" />
-                <a href="tel:+8801831251910" className="hover:text-slate-900 dark:hover:text-slate-100 font-medium">
-                  +880 1831-251910
+                <a href="tel:+8801772224283" className="hover:text-slate-900 dark:hover:text-slate-100 font-medium">
+                  0177 2224 283
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-primary shrink-0" />
-                <a href="mailto:info@universallanguage.com.bd" className="hover:text-slate-900 dark:hover:text-slate-100">
-                  info@universallanguage.com.bd
+                <a href="mailto:pte@uls.digital" className="hover:text-slate-900 dark:hover:text-slate-100">
+                  pte@uls.digital
                 </a>
               </div>
               <div className="flex items-start gap-2">

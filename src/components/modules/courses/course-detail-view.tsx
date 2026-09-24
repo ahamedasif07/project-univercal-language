@@ -85,7 +85,7 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
     }
   };
 
-  const whatsappLink = `https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20enrolling%20in%20${encodeURIComponent(
+  const whatsappLink = `https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20enrolling%20in%20${encodeURIComponent(
     course.title
   )}%20(${course.currency}%20${course.price.toLocaleString()}).%20Please%20confirm%20admission%20details.`;
 
@@ -189,11 +189,11 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                 </a>
 
                 <a
-                  href="tel:+8801831251910"
+                  href="tel:+8801772224283"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-slate-300 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer bg-white/60 dark:bg-slate-800/60"
                 >
                   <PhoneCall className="w-4 h-4 text-primary" />
-                  <span>Call: +880 1831-251910</span>
+                  <span>Call: 0177 2224 283</span>
                 </a>
               </div>
             </div>

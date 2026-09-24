@@ -344,7 +344,7 @@ export function FaqSection() {
 
           <div className="flex items-center gap-2.5 shrink-0">
             <a
-              href="https://wa.me/8801844909000"
+              href="https://wa.me/8801772224283"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold shadow-xs hover:bg-primary/90 transition-all cursor-pointer"
@@ -353,7 +353,7 @@ export function FaqSection() {
               <span>WhatsApp </span>
             </a>
             <a
-              href="tel:+8801831251910"
+              href="tel:+8801772224283"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-all cursor-pointer"
             >
               <PhoneCall className="w-4 h-4 text-slate-500" />

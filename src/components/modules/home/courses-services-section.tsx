@@ -141,7 +141,7 @@ export function CoursesServicesSection() {
 
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
               <a
-                href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20a%20free%20PTE%20level%20assessment%20and%20course%20guideline."
+                href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20want%20a%20free%20PTE%20level%20assessment%20and%20course%20guideline."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95"
@@ -151,11 +151,11 @@ export function CoursesServicesSection() {
               </a>
 
               <a
-                href="tel:+8801831251910"
+                href="tel:+8801772224283"
                 className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm transition-all border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <PhoneCall className="w-4 h-4 text-blue-300" />
-                <span>+880 1831-251910</span>
+                <span>0177 2224 283</span>
               </a>
             </div>
           </div>
@@ -169,7 +169,7 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
   const isMostPopular = item.badge === "Most Popular";
   const isOfficialService = item.category === "service";
 
-  const whatsappLink = `https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20${encodeURIComponent(
+  const whatsappLink = `https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20${encodeURIComponent(
     item.title
   )}%20(${item.currency}%20${item.price.toLocaleString()}).%20Please%20provide%20guidance.`;
 

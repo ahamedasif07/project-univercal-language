@@ -3,7 +3,7 @@
 import React from "react";
 
 export function FloatingWhatsApp() {
-  const phoneNumber = "8801831251910";
+  const phoneNumber = "8801772224283";
   const defaultMessage = encodeURIComponent(
     "Hello Universal Language, I would like to inquire about your PTE coaching and Study Abroad programs."
   );
@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with Universal Language on WhatsApp (+880 1831-251910)"
+        aria-label="Chat with Universal Language on WhatsApp (0177 2224 283)"
         className="relative flex items-center justify-center p-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:shadow-2xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 active:scale-90 cursor-pointer group"
       >
         {/* Subtle Ambient Pulse Ring */}

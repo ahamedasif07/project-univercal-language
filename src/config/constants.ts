@@ -21,3 +21,16 @@ export const APP_CONSTANTS = {
   DEBOUNCE_DELAY: 400,
   THEME_STORAGE_KEY: "app-theme",
 } as const;
+
+export const CONTACT_INFO = {
+  phone: "0177 2224 283",
+  phoneFormatted: "+880 1772-224283",
+  phoneRaw: "8801772224283",
+  telLink: "tel:+8801772224283",
+  whatsappNumber: "8801772224283",
+  whatsappLink: "https://wa.me/8801772224283",
+  email: "pte@uls.digital",
+  emailLink: "mailto:pte@uls.digital",
+  website: "www.uls.digital",
+} as const;
+

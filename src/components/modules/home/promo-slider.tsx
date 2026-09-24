@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -22,44 +22,54 @@ export interface PosterSlide {
   tag: string;
   image: string;
   alt: string;
-  link: string;
   discountText: string;
 }
 
 export const POSTER_SLIDES: PosterSlide[] = [
   {
     id: 1,
-    title: "PTE Academic A-Z Masterclass",
-    badge: "10% Instant Discount",
-    tag: "Special Admission Offer",
-    image: "/images/poster-1.jpg",
-    alt: "PTE Academic A-Z Full Course Private 1-on-1 Masterclass at Universal Language with 10% Discount",
-    link: "/register",
-    discountText: "Save BDT 1,000 (BDT 10,500 reg. BDT 11,500)",
+    title: "PTE Premium Course",
+    badge: "35% Special Discount",
+    tag: "Pearson Certified Strategy",
+    image: "/images/dic-image-1.jpeg",
+    alt: "PTE Premium Course at Universal Language with 35% Discount - 18 Live Classes, 4-8 Students, 5 Mock Tests",
+    discountText: "35% OFF • 18 Live Classes • 4-8 Students • 5 Mock Tests",
   },
   {
     id: 2,
-    title: "Score 79+ Guaranteed Masterclass",
-    badge: "Score Guarantee",
-    tag: "1-on-1 Intensive Mentorship",
-    image: "/images/poster-2.jpg",
-    alt: "Score 79+ Guaranteed PTE Academic 1-on-1 Coaching with Pearson Certified Expert at Universal Language",
-    link: "/register",
-    discountText: "Free Repeat Classes if Target Not Met",
+    title: "PTE Practical Simulation & Focused Course",
+    badge: "35% Special Discount",
+    tag: "Focused-Based Mini-Batch",
+    image: "/images/dic-image-2.jpeg",
+    alt: "PTE Practical Simulation and Focused-Based Mini-Batch Course with 35% Discount at Universal Language",
+    discountText: "35% OFF • 1 Month Premium Portal • Pearson Guided Strategies",
   },
   {
     id: 3,
-    title: "Official PTE Exam Booking Center",
-    badge: "Official Pearson Partner",
-    tag: "Instant Slot Confirmation",
-    image: "/images/poster-3.jpg",
-    alt: "Official Pearson PTE Exam Booking Center in Bangladesh with Zero Dual Currency Card Fees",
-    link: "/register",
-    discountText: "Zero Card Fees • Local bKash/Nagad/Bank",
+    title: "PTE Simulation & Mini-Batch Masterclass",
+    badge: "35% Special Discount",
+    tag: "Pearson Certified Partner",
+    image: "/images/dic-image-3.jpeg",
+    alt: "Official Pearson Partner PTE Focused-Based Mini-Batch Course with 35% Discount",
+    discountText: "35% OFF • 18 Live Classes • 1 Month Portal • 5 Mock Tests",
   },
 ];
 
-const AUTOPLAY_INTERVAL = 5500; // ms
+const AUTOPLAY_INTERVAL = 6000; // ms
+
+// Function to generate the dedicated WhatsApp enrollment link with the selected course flyer
+function getWhatsAppEnrollUrl(slide: PosterSlide) {
+  const phoneNumber = "8801772224283";
+  const message = [
+    `Hello Universal Language, I want to enroll in this course:`,
+    `📚 Course: ${slide.title}`,
+    `🎯 Offer: ${slide.badge} (${slide.discountText})`,
+    `🖼️ Selected Flyer: https://universallanguagebd.com${slide.image}`,
+    `Please share the batch schedule, enrollment process, and fee details.`,
+  ].join("\n");
+
+  return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+}
 
 export function PromoSlider({ className }: { className?: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -124,7 +134,7 @@ export function PromoSlider({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative w-full max-w-[460px] sm:max-w-[500px] lg:max-w-[520px] mx-auto select-none group",
+        "relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[470px] mx-auto select-none group",
         className
       )}
       onMouseEnter={() => setIsPaused(true)}
@@ -136,93 +146,117 @@ export function PromoSlider({ className }: { className?: string }) {
       {/* Ambient Multi-Layered Backlight Glow */}
       <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-tr from-primary/25 via-blue-600/20 to-blue-400/20 blur-2xl -z-10 opacity-70 group-hover:opacity-95 transition-opacity duration-700" />
 
-      {/* Main Poster Display Card (Cleaned without top tabs) */}
-      <div className="relative aspect-square w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-border/70 dark:border-white/15 bg-card">
-        {/* Slides Stack with smooth fade-in */}
-        {POSTER_SLIDES.map((slide, idx) => {
-          const isActive = idx === currentIndex;
-          return (
-            <div
-              key={slide.id}
-              className={cn(
-                "absolute inset-0 transition-all duration-700 ease-out",
-                isActive
-                  ? "opacity-100 scale-100 z-10 pointer-events-auto"
-                  : "opacity-0 scale-[1.03] z-0 pointer-events-none"
-              )}
-            >
-              <Link
-                href={slide.link}
-                className="block w-full h-full relative cursor-pointer group/link"
+      {/* Main Unified Poster Display & Enrollment Card */}
+      <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-border/80 dark:border-white/15 bg-card flex flex-col">
+        {/* ── 1. Poster Image Frame (Aspect 4/5 - Matches the exact 1080x1350 / 1122x1402 poster ratio) ── */}
+        {/* Completely unobstructed: No overlays, no text coverings, 100% full view */}
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-950/5 dark:bg-slate-950/40">
+          {POSTER_SLIDES.map((slide, idx) => {
+            const isActive = idx === currentIndex;
+            return (
+              <div
+                key={slide.id}
+                className={cn(
+                  "absolute inset-0 transition-opacity duration-500 ease-out",
+                  isActive
+                    ? "opacity-100 z-10 pointer-events-auto"
+                    : "opacity-0 z-0 pointer-events-none"
+                )}
               >
-                <Image
-                  src={slide.image}
-                  alt={slide.alt}
-                  fill
-                  priority={idx === 0}
-                  sizes="(max-width: 768px) 100vw, 520px"
-                  className="object-cover object-center w-full h-full transition-transform duration-700 group-hover/link:scale-102"
-                />
+                <a
+                  href={getWhatsAppEnrollUrl(slide)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full relative cursor-pointer group/poster"
+                  title={`Click to enroll in ${slide.title} via WhatsApp`}
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    fill
+                    priority={idx === 0}
+                    sizes="(max-width: 768px) 100vw, 470px"
+                    className="object-contain w-full h-full transition-transform duration-500 group-hover/poster:scale-[1.01]"
+                  />
+                </a>
+              </div>
+            );
+          })}
 
-                {/* Subtle gradient overlay to highlight text badges */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/30 pointer-events-none" />
+          {/* Previous & Next Navigation Arrows (Cleanly placed on side edges) */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrev();
+            }}
+            aria-label="Previous Slide"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-                {/* Top Corner Badge: Offer Tag */}
-                <div className="absolute top-3.5 left-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 shadow-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-[11px] font-bold text-white tracking-wide uppercase">
-                    {slide.tag}
-                  </span>
-                </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            aria-label="Next Slide"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
 
-                {/* Top Right: Slide Number Counter */}
-                <div className="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[11px] font-mono font-bold text-white shadow-md">
-                  0{idx + 1} / 0{totalSlides}
-                </div>
-
-                {/* Bottom Overlay Info Banner on Hover */}
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-white flex items-center justify-between gap-2 shadow-lg">
-                  <div className="truncate">
-                    <p className="text-xs font-black truncate">{slide.title}</p>
-                    <p className="text-[11px] text-blue-300 font-semibold truncate">
-                      {slide.discountText}
-                    </p>
-                  </div>
-                  <div className="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold shadow-sm group-hover/link:bg-blue-600 transition-colors">
-                    <span>Enroll</span>
-                    <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
-                  </div>
-                </div>
-              </Link>
+        {/* ── 2. Dedicated Slide Enrollment Section (Placed SEPARATELY below the image, NEVER covering it) ── */}
+        <div className="p-3.5 sm:p-4 bg-card/95 dark:bg-card border-t border-border/70 dark:border-white/10 flex flex-col gap-3">
+          {/* Active Course Details & Offer Badges */}
+          <div className="flex items-start justify-between gap-2.5">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                  {activeSlide.badge}
+                </span>
+                <span className="text-[11px] font-bold text-primary dark:text-blue-400 truncate">
+                  {activeSlide.tag}
+                </span>
+              </div>
+              <h3 className="text-sm sm:text-base font-extrabold text-foreground truncate">
+                {activeSlide.title}
+              </h3>
+              <p className="text-xs text-muted-foreground truncate mt-0.5">
+                {activeSlide.discountText}
+              </p>
             </div>
-          );
-        })}
 
-        {/* Previous & Next Navigation Arrows */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            goToPrev();
-          }}
-          aria-label="Previous Slide"
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-30 h-9 w-9 sm:h-10 sm:w-10 rounded-full flex items-center justify-center bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-md"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+            {/* Slide Index Pill */}
+            <span className="shrink-0 px-2 py-1 rounded-md bg-muted text-[11px] font-mono font-bold text-muted-foreground border border-border/50">
+              0{currentIndex + 1} / 0{totalSlides}
+            </span>
+          </div>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            goToNext();
-          }}
-          aria-label="Next Slide"
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-30 h-9 w-9 sm:h-10 sm:w-10 rounded-full flex items-center justify-center bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-md"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
+          {/* Dedicated WhatsApp Direct Enrollment CTA */}
+          <a
+            href={getWhatsAppEnrollUrl(activeSlide)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Enroll in ${activeSlide.title} on WhatsApp`}
+            className="group/cta relative flex items-center justify-center gap-2.5 w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#25D366] hover:bg-[#20ba59] shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/35 active:scale-[0.98] transition-all duration-200 cursor-pointer overflow-hidden"
+          >
+            {/* Authentic WhatsApp SVG Logo */}
+            <svg
+              className="w-4.5 h-4.5 fill-current shrink-0"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-10.416c-5.522 0-10 4.477-10 10 0 1.769.459 3.498 1.338 5.023l-1.422 5.195 5.344-1.401c1.465.799 3.117 1.22 4.74 1.22 5.523 0 10-4.478 10-10 0-5.523-4.477-10-10-10z" />
+            </svg>
+            <span>Enroll via WhatsApp (Claim 35% Discount)</span>
+            <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover/cta:translate-x-1" />
+          </a>
+        </div>
       </div>
 
-      {/* Bottom Progress Bar & Pagination Dots */}
+      {/* ── 3. Bottom Progress Bar & Pagination Dots ── */}
       <div className="mt-3.5 flex items-center justify-between gap-3 px-1">
         {/* Pagination Dots */}
         <div className="flex items-center gap-1.5">
@@ -230,7 +264,7 @@ export function PromoSlider({ className }: { className?: string }) {
             <button
               key={slide.id}
               onClick={() => goToIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
+              aria-label={`Go to slide ${idx + 1}: ${slide.title}`}
               className={cn(
                 "h-2 rounded-full transition-all duration-300 cursor-pointer",
                 idx === currentIndex
@@ -241,10 +275,10 @@ export function PromoSlider({ className }: { className?: string }) {
           ))}
         </div>
 
-        {/* Slide Title / Auto-advance Progress Line */}
-        <div className="flex items-center gap-2 flex-1 max-w-[220px]">
+        {/* Slide Counter / Auto-advance Progress Line */}
+        <div className="flex items-center gap-2 flex-1 max-w-[200px]">
           <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider truncate">
-            {activeSlide.badge}
+            Auto-Slide
           </span>
           <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
             <div
@@ -335,8 +369,8 @@ export function CoursePromoSection() {
 
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
                 Skip the crowded batches. Learn directly from a Pearson Certified
-                Expert with personalized 1-on-1 coaching, real-time AI mock
-                scoring, and official exam booking.
+                Expert with personalized coaching, real-time AI mock scoring,
+                and official Pearson exam booking assistance.
               </p>
             </div>
 
@@ -344,9 +378,9 @@ export function CoursePromoSection() {
             <div className="space-y-2.5 w-full text-left pt-0.5">
               {[
                 "100+ students successfully scored 79+ on first attempt",
-                "100% private 1-to-1 coaching — zero crowded batches",
+                "Private 1-to-1 coaching & focused mini-batches (4-8 students)",
                 "Score Guarantee — free repeat classes if needed",
-                "Achieve target score within 30 days (12 intensive classes)",
+                "Full 1-month AI practice portal with 5 complete mock tests",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5">
                   <div className="h-4.5 w-4.5 rounded-full bg-primary/15 text-primary dark:text-blue-400 flex items-center justify-center shrink-0">
@@ -362,16 +396,13 @@ export function CoursePromoSection() {
             {/* Compact, Sleek Admission Offer Strip */}
             <div className="w-full flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl border border-primary/30 bg-primary/5 backdrop-blur-sm">
               <div className="flex items-center gap-2.5">
-                <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-primary text-white">
-                  10% Off
+                <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white">
+                  35% Off
                 </span>
                 <div className="text-xs">
-                  <span className="font-black text-foreground">BDT 10,500</span>{" "}
-                  <span className="line-through text-muted-foreground text-[11px] mr-1">
-                    BDT 11,500
-                  </span>
+                  <span className="font-black text-foreground">Special Admission Offer</span>{" "}
                   <span className="text-muted-foreground hidden sm:inline">
-                    • 12 Private Classes + AI Mocks
+                    • 18 Live Classes + 1 Month AI Portal + 5 Mocks
                   </span>
                 </div>
               </div>
@@ -402,7 +433,7 @@ export function CoursePromoSection() {
               </Link>
 
               <a
-                href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20the%201-to-1%20PTE%20A-Z%20Masterclass%20and%20claim%20the%2010%%20discount."
+                href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20your%20PTE%20Masterclass%20and%20claim%20the%2035%%20discount."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4.5 py-3 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/80 hover:bg-secondary/60 transition-all hover:scale-[1.01] active:scale-[0.98] text-foreground cursor-pointer"

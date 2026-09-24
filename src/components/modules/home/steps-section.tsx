@@ -284,7 +284,7 @@ export function StepsSection() {
             </Link>
 
             <a
-              href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20your%206-step%20program%20for%20scoring%2079%2B."
+              href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20want%20to%20know%20more%20about%20your%206-step%20program%20for%20scoring%2079%2B."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/90 hover:bg-secondary/60 text-foreground transition-all hover:scale-[1.01] active:scale-[0.98] cursor-pointer shadow-2xs"

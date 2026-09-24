@@ -109,7 +109,7 @@ export function HeroSection() {
               </Link>
 
               <a
-                href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20inquire%20about%20your%20PTE,%20IELTS,%20German,%20Japanese,%20and%20Study%20Abroad%20programs."
+                href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20want%20to%20inquire%20about%20your%20PTE,%20IELTS,%20German,%20Japanese,%20and%20Study%20Abroad%20programs."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide border border-border/70 dark:border-white/15 bg-background/80 hover:bg-secondary/60 transition-all hover:scale-[1.01] active:scale-[0.98] text-foreground cursor-pointer shadow-2xs"
