@@ -2,16 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  ShieldCheck,
-  Building2,
-  GraduationCap,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  ArrowRight,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { AnimatedLogo } from "./animated-logo";
 
@@ -51,236 +42,161 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-border/70 bg-gradient-to-b from-card/60 via-background to-muted/20 text-foreground overflow-hidden">
-      {/* Decorative ambient background glows */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[250px] bg-primary/5 dark:bg-primary/8 blur-[140px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-blue-500/5 dark:bg-blue-500/8 blur-[130px] rounded-full pointer-events-none -z-10" />
+    <footer className="relative border-t border-slate-200/80 dark:border-white/[0.07] bg-slate-50/60 dark:bg-slate-950/70 text-slate-700 dark:text-slate-300 overflow-hidden">
+      {/* Subtle ambient lighting */}
+      <div className="absolute top-0 left-1/3 w-[450px] h-[180px] bg-primary/4 dark:bg-primary/6 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      {/* ── Top Institutional Trust Strip ── */}
-      <div className="border-b border-border/60 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground">
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <span className="inline-flex items-center gap-1.5 text-foreground/90 font-bold">
-              <Building2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Prime Minister&apos;s Office (NSDA) Registered</span>
-            </span>
-            <span className="hidden sm:inline-block text-border">•</span>
-            <span className="inline-flex items-center gap-1.5 text-foreground/90 font-bold">
-              <GraduationCap className="w-4 h-4 text-primary dark:text-blue-400" />
-              <span>Pearson Certified Master Trainers</span>
-            </span>
-            <span className="hidden md:inline-block text-border">•</span>
-            <span className="inline-flex items-center gap-1.5 text-foreground/90 font-bold">
-              <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span>Authorized Pearson Exam Voucher Partner</span>
-            </span>
-          </div>
-
-          <a
-            href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20would%20like%20to%20consult%20with%20your%20certified%20mentors."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-bold transition-colors"
-          >
-            <span>Talk to Certified Mentor</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-      </div>
-
-      {/* ── Main Multi-Column Footer Grid ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
-          {/* Column 1: Official Brand & Registration */}
-          <div className="space-y-4 sm:col-span-2 lg:col-span-2 pr-0 sm:pr-4">
+      {/* ── Main Minimal Grid ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+          {/* Column 1: Brand & Realistic About */}
+          <div className="space-y-3.5 pr-0 sm:pr-2">
             <Link
               href="/"
               className="inline-block transition-transform hover:scale-[1.02] focus:outline-none"
               aria-label="Universal Language Home"
             >
-              {/* Responsive SVG Logo with dark/light mode integration */}
-              <div className="h-10 sm:h-12 w-auto max-w-[240px] text-foreground">
-                <AnimatedLogo className="h-full w-full" />
-              </div>
+              <AnimatedLogo className="h-10 sm:h-11 w-auto text-[#0b3a82] dark:text-white transition-colors duration-300" />
             </Link>
 
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-md">
-              Bangladesh&apos;s trusted international education hub. Government registered under the Prime
-              Minister&apos;s Office (NSDA), authorized Pearson test voucher booking partner, and
-              home to Pearson-certified master trainers.
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Universal Language provides dedicated live PTE preparation, foreign language
+              courses, and official exam slot booking assistance for students and professionals.
             </p>
 
-            {/* Official Registration Pills */}
-            <div className="space-y-1.5 pt-1 text-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-card border border-border/80 shadow-2xs font-mono text-[11px] text-foreground">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>NSDA REG: NSDA/PMO/REG-2023-09418</span>
-              </div>
-            </div>
-
             {/* Social Media Links */}
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex items-center gap-2 pt-1">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Universal Language on Facebook"
-                className="w-8 h-8 rounded-lg bg-card border border-border/80 hover:border-primary hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all flex items-center justify-center cursor-pointer"
+                className="w-7.5 h-7.5 rounded-lg bg-white dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-primary text-slate-500 hover:text-primary transition-all flex items-center justify-center cursor-pointer"
               >
-                <FacebookIcon className="w-4 h-4" />
+                <FacebookIcon className="w-3.5 h-3.5" />
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Universal Language on YouTube"
-                className="w-8 h-8 rounded-lg bg-card border border-border/80 hover:border-red-500 hover:bg-red-500/10 text-muted-foreground hover:text-red-500 transition-all flex items-center justify-center cursor-pointer"
+                className="w-7.5 h-7.5 rounded-lg bg-white dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-red-500 text-slate-500 hover:text-red-500 transition-all flex items-center justify-center cursor-pointer"
               >
-                <YoutubeIcon className="w-4 h-4" />
+                <YoutubeIcon className="w-3.5 h-3.5" />
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Universal Language on LinkedIn"
-                className="w-8 h-8 rounded-lg bg-card border border-border/80 hover:border-blue-600 hover:bg-blue-600/10 text-muted-foreground hover:text-blue-600 transition-all flex items-center justify-center cursor-pointer"
+                className="w-7.5 h-7.5 rounded-lg bg-white dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-blue-600 text-slate-500 hover:text-blue-600 transition-all flex items-center justify-center cursor-pointer"
               >
-                <LinkedinIcon className="w-4 h-4" />
+                <LinkedinIcon className="w-3.5 h-3.5" />
               </a>
               <a
-                href="https://wa.me/8801831251910"
+                href="https://wa.me/8801844909000"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Universal Language on WhatsApp"
-                className="w-8 h-8 rounded-lg bg-card border border-border/80 hover:border-[#25D366] hover:bg-[#25D366]/10 text-muted-foreground hover:text-[#25D366] transition-all flex items-center justify-center cursor-pointer"
+                className="w-7.5 h-7.5 rounded-lg bg-white dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-[#25D366] text-slate-500 hover:text-[#25D366] transition-all flex items-center justify-center cursor-pointer"
               >
-                <WhatsAppIcon className="w-4 h-4" />
+                <WhatsAppIcon className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Preparation Courses */}
-          <div className="space-y-3.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-              PTE &amp; Language Courses
+          {/* Column 2: Courses */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Courses
             </h4>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
               <li>
-                <Link
-                  href="/courses/one-on-one-private-coaching"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  1-on-1 VIP Mentorship (79+)
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  PTE Academic Preparation
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses/crash-pte-score-booster"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Crash PTE Score Booster (10 Days)
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  1-on-1 &amp; Crash Batches
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses/focused-batch-small-group"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Small Group Executive Batch
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  German Language (A1–B1)
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  German Language (A1–B2)
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  Japanese Language
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Japanese Language Training
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  Spoken English Foundation
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Authorized Services */}
-          <div className="space-y-3.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-              Official Services
+          {/* Column 3: Quick Links */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Student Services
             </h4>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
               <li>
-                <Link
-                  href="/courses/official-pearson-pte-registration"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Official Pearson Exam Booking
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  PTE Exam Slot Booking
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses/pte-ai-practice-portal-subscriptions"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Alfa PTE VIP Portal Access
+                <Link href="/courses" className="hover:text-primary transition-colors inline-block">
+                  Alfa PTE Practice Portal
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/courses/official-pearson-pte-rescore-service"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Pearson Official QA Rescore
+                <Link href="/#destinations" className="hover:text-primary transition-colors inline-block">
+                  Study Destinations
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#destinations"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Study Abroad Counseling
+                <Link href="/#accreditations" className="hover:text-primary transition-colors inline-block">
+                  Accreditations &amp; Certificates
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#accreditations"
-                  className="hover:text-primary transition-colors inline-block"
-                >
-                  Legal Accreditations Archive
+                <Link href="/#faq" className="hover:text-primary transition-colors inline-block">
+                  Frequently Asked Questions
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Dhanmondi Campus & Contact */}
-          <div className="space-y-3.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-              Dhanmondi Campus
+          {/* Column 4: Contact & Support */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Contact &amp; Support
             </h4>
-            <div className="space-y-2.5 text-xs text-muted-foreground">
+            <div className="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span>Dhanmondi Campus, Dhaka 1209, Bangladesh</span>
+                <MapPin className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                <span>Dhaka, Bangladesh • Online Support</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary shrink-0" />
-                <a href="tel:+8801831251910" className="hover:text-foreground font-semibold">
+                <Phone className="w-3.5 h-3.5 text-primary shrink-0" />
+                <a href="tel:+8801831251910" className="hover:text-slate-900 dark:hover:text-slate-100 font-medium">
                   +880 1831-251910
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary shrink-0" />
-                <a href="mailto:info@universallanguage.com.bd" className="hover:text-foreground">
+                <Mail className="w-3.5 h-3.5 text-primary shrink-0" />
+                <a href="mailto:info@universallanguage.com.bd" className="hover:text-slate-900 dark:hover:text-slate-100">
                   info@universallanguage.com.bd
                 </a>
               </div>
-              <div className="flex items-start gap-2 pt-0.5">
-                <Clock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2">
+                <Clock className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                 <span>Sat – Thu: 10:00 AM – 8:00 PM</span>
               </div>
             </div>
@@ -288,14 +204,14 @@ export function Footer() {
         </div>
 
         {/* ── Bottom Sub-Footer Bar ── */}
-        <div className="mt-12 pt-8 border-t border-border/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="mt-10 pt-6 border-t border-slate-200/70 dark:border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
           <p className="text-center sm:text-left">
-            © {currentYear} {siteConfig.name} Academy. All rights reserved. Recognized by Prime Minister&apos;s Office (NSDA).
+            © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link href="/#accreditations" className="hover:text-primary transition-colors">
-              Legal Accreditations
+              Accreditations
             </Link>
             <Link href="/#faq" className="hover:text-primary transition-colors">
               FAQs

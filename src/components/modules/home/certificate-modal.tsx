@@ -233,7 +233,7 @@ export function CertificateModal({
             {/* Bottom Micro-line */}
             <div className="mt-3 pt-2 text-center border-t border-slate-200/60 dark:border-white/10">
               <p className="text-[8px] font-mono text-slate-400 uppercase tracking-widest">
-                UNIVERSAL LANGUAGE DHANMONDI CAMPUS • VERIFIED STATUTORY DOCUMENT
+                UNIVERSAL LANGUAGE • VERIFIED OFFICIAL STATUTORY DOCUMENT
               </p>
             </div>
           </div>
