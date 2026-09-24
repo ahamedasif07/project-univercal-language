@@ -62,13 +62,17 @@ export function PromoPopupModal() {
       />
 
       {/* Main Poster Container (Centrally aligned, responsive, 100% visible) */}
-      <div className="relative z-10 w-full max-w-[380px] sm:max-w-[430px] flex flex-col items-center animate-in zoom-in-95 duration-300">
-        {/* Floating Close 'X' Button on top-right outside the image */}
+      <div className="relative z-10 w-full max-w-[380px] sm:max-w-[430px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-slate-950 animate-in zoom-in-95 duration-300">
+        {/* Sleek Close 'X' Button INSIDE the top-right corner of the image */}
         <button
-          onClick={handleClose}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleClose();
+          }}
           type="button"
           aria-label="Close Promo Popup"
-          className="absolute -top-11 right-0 sm:-right-2 w-9 h-9 rounded-full bg-black/80 hover:bg-black text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer z-20 shadow-xl hover:scale-110 active:scale-95 focus:outline-none"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-black/75 hover:bg-black text-white border border-white/30 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer z-30 shadow-lg hover:scale-110 active:scale-95 focus:outline-none"
         >
           <X className="w-4 h-4 stroke-[2.5]" />
         </button>
@@ -79,7 +83,7 @@ export function PromoPopupModal() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleClose}
-          className="block relative aspect-[4/5] w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-slate-950 cursor-pointer group select-none transition-transform duration-300 hover:scale-[1.015]"
+          className="block relative aspect-[4/5] w-full cursor-pointer group select-none transition-transform duration-300 hover:scale-[1.01]"
           title="Click to open WhatsApp and inquire about Duolingo English Test"
         >
           <Image
