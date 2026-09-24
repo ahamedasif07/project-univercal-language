@@ -12,15 +12,13 @@ import {
   GraduationCap,
   Calendar,
 } from "lucide-react";
-import {
-  STUDENT_SUCCESS_STORIES,
-  StudentSuccessStory,
-} from "@/data/success-stories";
+import { STUDENT_SUCCESS_STORIES, StudentSuccessStory } from "@/data/success-stories";
 import { ScoreReportModal } from "./score-report-modal";
 
 export function SuccessStoriesSection() {
-  const [selectedStudent, setSelectedStudent] =
-    useState<StudentSuccessStory | null>(null);
+  const [selectedStudent, setSelectedStudent] = useState<StudentSuccessStory | null>(
+    null
+  );
 
   return (
     <section
@@ -36,41 +34,25 @@ export function SuccessStoriesSection() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:52px_52px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── Section Header with Top-Right Action Button ── */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
-          <div className="max-w-3xl space-y-3 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
-              <Trophy className="w-3.5 h-3.5" />
-              <span>Verified Pearson Academic Test Takers</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
-              Real Students,{" "}
-              <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
-                Real Results
-              </span>
-              , Real Success!
-            </h2>
-
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
-              Authentic Pearson score reports from Universal Language students who
-              cleared their target score on their very first attempt with private
-              1-on-1 mentorship.
-            </p>
+        {/* ── Centered Section Header ── */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <Trophy className="w-3.5 h-3.5" />
+            <span>Pearson Certified Hall of Fame</span>
           </div>
 
-          {/* Top-Right Action Button */}
-          <div className="flex justify-center lg:justify-end shrink-0">
-            <a
-              href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20enroll%20for%20PTE%20Academic%20Coaching."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-primary/40 bg-primary/10 hover:bg-primary text-primary hover:text-white dark:text-blue-300 dark:hover:text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs active:scale-95 cursor-pointer"
-            >
-              <span>Enroll Now</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
+            Real Scorecards,{" "}
+            <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
+              Guaranteed 79+ Milestones
+            </span>
+          </h2>
+
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Zero guesswork, zero empty claims. Explore authentic Pearson Academic
+            scorecards from ambitious Bangladeshi students who secured their dream PR and
+            global university cutoffs on the very first attempt.
+          </p>
         </div>
 
         {/* ── Student Results Cards Grid (1 col mobile, 2 tablet, 3 desktop) ── */}
@@ -184,42 +166,13 @@ export function SuccessStoriesSection() {
                     className="w-full py-2.5 px-4 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-white dark:text-blue-300 dark:hover:text-white font-bold text-xs transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-2xs group-hover:bg-primary group-hover:text-white active:scale-[0.98]"
                   >
                     <FileText className="w-4 h-4" />
-                    <span>View Official Score Report &amp; Skills</span>
+                    <span>Inspect Verified Score Report</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </button>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* ── Bottom Trust & Instant Counseling Callout ── */}
-        <div className="mt-14 rounded-3xl bg-gradient-to-r from-[#0b2545] via-[#0b3a82] to-[#124285] text-white p-6 sm:p-8 shadow-xl border border-blue-800/40 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-200 tracking-wider uppercase">
-              <ShieldCheck className="w-4 h-4 text-cyan-300" />
-              Guaranteed Result Framework
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold">
-              Ready to be our next 79+ success story?
-            </h3>
-            <p className="text-xs sm:text-sm text-blue-100 max-w-xl leading-relaxed">
-              Book a free diagnostic mock test with an official Pearson trainer
-              and get your exact target band roadmap within 24 hours.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
-            <a
-              href="https://wa.me/8801831251910?text=Hello%20Universal%20Language,%20I%20want%20to%20book%20a%20free%20PTE%20diagnostic%20evaluation."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-            >
-              <span>Get Free Assessment</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
         </div>
       </div>
 

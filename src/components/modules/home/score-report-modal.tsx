@@ -14,7 +14,6 @@ import {
   Building2,
   GraduationCap,
   Trophy,
-  BarChart3,
   QrCode,
   X,
 } from "lucide-react";
@@ -103,7 +102,12 @@ export function ScoreReportModal({
       icon: Headphones,
       color: "from-blue-600 to-indigo-600",
       textColor: "text-blue-600 dark:text-blue-400",
-      bgLight: "bg-blue-50 dark:bg-blue-950/60 border-blue-200/80 dark:border-blue-800/60",
+      bgLight:
+        "bg-blue-50/70 dark:bg-blue-950/30 border-blue-200/80 dark:border-blue-800/50",
+      iconBg: "bg-blue-100/80 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400",
+      gradStart: "#2563eb",
+      gradEnd: "#4f46e5",
+      ringTrack: "stroke-blue-200/60 dark:stroke-blue-900/40",
     },
     {
       name: "Reading",
@@ -111,7 +115,12 @@ export function ScoreReportModal({
       icon: BookOpen,
       color: "from-amber-500 to-yellow-600",
       textColor: "text-amber-600 dark:text-amber-400",
-      bgLight: "bg-amber-50 dark:bg-amber-950/60 border-amber-200/80 dark:border-amber-800/60",
+      bgLight:
+        "bg-amber-50/70 dark:bg-amber-950/30 border-amber-200/80 dark:border-amber-800/50",
+      iconBg: "bg-amber-100/80 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400",
+      gradStart: "#f59e0b",
+      gradEnd: "#d97706",
+      ringTrack: "stroke-amber-200/60 dark:stroke-amber-900/40",
     },
     {
       name: "Speaking",
@@ -119,7 +128,12 @@ export function ScoreReportModal({
       icon: Mic,
       color: "from-emerald-500 to-teal-600",
       textColor: "text-emerald-600 dark:text-emerald-400",
-      bgLight: "bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/80 dark:border-emerald-800/60",
+      bgLight:
+        "bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-200/80 dark:border-emerald-800/50",
+      iconBg: "bg-emerald-100/80 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400",
+      gradStart: "#10b981",
+      gradEnd: "#059669",
+      ringTrack: "stroke-emerald-200/60 dark:stroke-emerald-900/40",
     },
     {
       name: "Writing",
@@ -127,7 +141,12 @@ export function ScoreReportModal({
       icon: PenTool,
       color: "from-purple-600 to-pink-600",
       textColor: "text-purple-600 dark:text-purple-400",
-      bgLight: "bg-purple-50 dark:bg-purple-950/60 border-purple-200/80 dark:border-purple-800/60",
+      bgLight:
+        "bg-purple-50/70 dark:bg-purple-950/30 border-purple-200/80 dark:border-purple-800/50",
+      iconBg: "bg-purple-100/80 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400",
+      gradStart: "#9333ea",
+      gradEnd: "#c026d3",
+      ringTrack: "stroke-purple-200/60 dark:stroke-purple-900/40",
     },
   ];
 
@@ -257,14 +276,15 @@ export function ScoreReportModal({
             </div>
           </div>
 
-          {/* ── 4 Communicative Skills Cards with Animated Count-Up & Growing Progress Bars ── */}
-          <div className="space-y-2.5">
+          {/* ── 4 Communicative Skills Cards with Animated Radial Progress Rings (Round Design) ── */}
+          <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                 <Award className="w-3.5 h-3.5 text-primary" />
                 Communicative Skills
               </h4>
-              <span className="text-[11px] text-muted-foreground font-medium">
+              <span className="text-[11px] text-muted-foreground font-medium flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 Target Met: 79+ Each Band
               </span>
             </div>
@@ -272,99 +292,101 @@ export function ScoreReportModal({
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {skillItems.map((skill, idx) => {
                 const Icon = skill.icon;
-                const percentage = Math.round((skill.score / 90) * 100);
+                const radius = 38;
+                const circumference = 2 * Math.PI * radius; // ~238.761
+                const targetOffset =
+                  circumference - (skill.score / 90) * circumference;
 
                 return (
                   <div
                     key={skill.name}
-                    className={`p-3.5 rounded-2xl border ${skill.bgLight} space-y-2.5 shadow-2xs transition-all hover:scale-[1.02]`}
+                    className={`relative flex flex-col items-center justify-between p-3.5 sm:p-4 rounded-3xl border ${skill.bgLight} shadow-2xs hover:shadow-md transition-all duration-300 hover:scale-[1.02] text-center group`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wide text-foreground/90">
+                    {/* Top Row: Skill Name & Icon Badge */}
+                    <div className="flex items-center justify-between w-full pb-1.5 border-b border-border/40">
+                      <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-foreground/90">
                         {skill.name}
                       </span>
-                      <Icon className={`w-4 h-4 ${skill.textColor}`} />
+                      <div className={`p-1.5 rounded-lg ${skill.iconBg}`}>
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
                     </div>
 
-                    <div className="flex items-baseline justify-between">
-                      <span className="text-2xl sm:text-3xl font-black text-foreground">
-                        <AnimatedScoreCounter
-                          target={skill.score}
-                          started={hasAnimated}
-                          duration={1000 + idx * 100}
+                    {/* Circular / Radial Progress Ring (Round Design) */}
+                    <div className="relative flex items-center justify-center my-2 sm:my-2.5">
+                      <svg
+                        className="w-20 h-20 sm:w-22 sm:h-22 -rotate-90 transform"
+                        viewBox="0 0 100 100"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          <linearGradient
+                            id={`skill-ring-${skill.name}`}
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                          >
+                            <stop offset="0%" stopColor={skill.gradStart} />
+                            <stop offset="100%" stopColor={skill.gradEnd} />
+                          </linearGradient>
+                        </defs>
+
+                        {/* Background Ring Track */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r={radius}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="7"
+                          className={skill.ringTrack}
                         />
-                      </span>
-                      <span className="text-[11px] font-semibold text-muted-foreground">
-                        /90
-                      </span>
-                    </div>
 
-                    {/* Animated Progress Bar (Starts at 0% and grows to target) */}
-                    <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
-                      <div
-                        className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
-                        style={{
-                          width: hasAnimated ? `${percentage}%` : "0%",
-                          transitionDelay: `${idx * 120}ms`,
-                        }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* ── Skills Breakdown Comparative Horizontal Bar Chart (Matches Reference Flyer) ── */}
-          <div className="rounded-2xl border border-border/80 bg-card p-4 sm:p-5 space-y-3 shadow-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-border/60">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                <BarChart3 className="w-3.5 h-3.5 text-primary" />
-                Skills Breakdown Comparison
-              </h4>
-              <span className="text-[10px] font-semibold text-muted-foreground">
-                Scale: 10 – 90
-              </span>
-            </div>
-
-            <div className="space-y-2.5 pt-1">
-              {skillItems.map((skill, idx) => {
-                const percentage = Math.round((skill.score / 90) * 100);
-                return (
-                  <div key={skill.name} className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-foreground/90 w-20">
-                        {skill.name}
-                      </span>
-                      <div className="flex-1 mx-3 h-2.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-border/50 overflow-hidden">
-                        <div
-                          className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                        {/* Animated Gradient Score Ring */}
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r={radius}
+                          fill="none"
+                          stroke={`url(#skill-ring-${skill.name})`}
+                          strokeWidth="7"
+                          strokeLinecap="round"
+                          strokeDasharray={circumference}
                           style={{
-                            width: hasAnimated ? `${percentage}%` : "0%",
-                            transitionDelay: `${idx * 150 + 150}ms`,
+                            strokeDashoffset: hasAnimated
+                              ? targetOffset
+                              : circumference,
+                            transition:
+                              "stroke-dashoffset 1100ms cubic-bezier(0.16, 1, 0.3, 1)",
+                            transitionDelay: `${idx * 120}ms`,
                           }}
                         />
+                      </svg>
+
+                      {/* Center Score Counter inside Circle */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
+                        <span className="text-2xl sm:text-3xl font-black text-foreground tracking-tight leading-none">
+                          <AnimatedScoreCounter
+                            target={skill.score}
+                            started={hasAnimated}
+                            duration={1000 + idx * 100}
+                          />
+                        </span>
+                        <span className="text-[10px] font-bold text-muted-foreground/80 mt-0.5">
+                          /90
+                        </span>
                       </div>
-                      <span className="font-bold text-foreground w-8 text-right font-mono">
-                        <AnimatedScoreCounter
-                          target={skill.score}
-                          started={hasAnimated}
-                          duration={1000 + idx * 100}
-                        />
-                      </span>
+                    </div>
+
+                    {/* Bottom Status Badge */}
+                    <div className="w-full pt-1.5 border-t border-border/40 flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
+                      <span>{skill.score >= 79 ? "Superior 79+" : "Passed"}</span>
                     </div>
                   </div>
                 );
               })}
-            </div>
-
-            {/* Scale Axis Markers (10, 30, 50, 79 Target, 90) */}
-            <div className="flex justify-between text-[9px] font-mono text-muted-foreground/80 px-24 pt-1 border-t border-border/40">
-              <span>10</span>
-              <span>30</span>
-              <span>50</span>
-              <span className="font-bold text-primary">79 (Target)</span>
-              <span>90</span>
             </div>
           </div>
 
