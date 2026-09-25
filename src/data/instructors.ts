@@ -36,12 +36,12 @@ export interface Instructor {
 
 export const INSTRUCTORS: Instructor[] = [
   {
-    id: "showkat-chowdhury",
-    slug: "showkat-chowdhury",
-    name: "Showkat Chowdhury",
+    id: "sifat-hasan",
+    slug: "sifat-hasan",
+    name: "Sifat Hasan",
     role: "Founder & Chief Executive Officer (CEO)",
-    title: "Founder & Chief Executive Officer (CEO) | CRACK PTE & Universal Language",
-    organization: "CRACK PTE & Universal Language",
+    title: "Founder & Chief Executive Officer (CEO) | Universal Language",
+    organization: "Universal Language",
     scoreHighlight: "PTE 90/90 Overall",
     badge: "Pearson Master Trainer",
     image: "/images/instructors/showkat.jpg",
@@ -51,9 +51,9 @@ export const INSTRUCTORS: Instructor[] = [
     shortBio:
       "Visionary educator and certified Pearson Master Trainer who pioneered algorithm-calibrated PTE training frameworks in Bangladesh.",
     fullBio: [
-      "Showkat Chowdhury is the visionary Founder and Chief Academic Director of CRACK PTE and Universal Language. Having achieved a perfect 90/90 score on the PTE Academic exam himself, Showkat has spent the past decade demystifying the proprietary automated AI scoring algorithms used by Pearson.",
+      "Sifat Hasan is the visionary Founder and Chief Academic Director of Universal Language. Having achieved a perfect 90/90 score on the PTE Academic exam himself, Sifat has spent the past decade demystifying the proprietary automated AI scoring algorithms used by Pearson.",
       "His proprietary 'Algorithmic Fluency & Acoustic Calibration' method has empowered over 650 students—from medical doctors and nurses to IT professionals and engineers—to secure PR pathways and unconditional university admissions across Australia, Canada, the UK, and New Zealand.",
-      "Trained under senior Pearson South Asia academic leadership, Showkat is renowned for his precise diagnostic audits, turning students stuck at 58–64 into 79+ high-scorers within 4 to 6 weeks."
+      "Trained under senior Pearson South Asia academic leadership, Sifat is renowned for his precise diagnostic audits, turning students stuck at 58–64 into 79+ high-scorers within 4 to 6 weeks."
     ],
     quote:
       "PTE is not an exam of general literary English. It is an algorithmic evaluation system. Once you understand the machine's acoustic model and semantic weight, a 79+ or 90 score is entirely reproducible.",
@@ -93,7 +93,7 @@ export const INSTRUCTORS: Instructor[] = [
     ],
     socials: {
       whatsapp: "8801772224283",
-      email: "showkat@universallanguage.com.bd",
+      email: "sifat@universallanguage.com.bd",
       linkedin: "https://linkedin.com"
     }
   },
@@ -102,8 +102,8 @@ export const INSTRUCTORS: Instructor[] = [
     slug: "dr-sumya-sultana-swarna",
     name: "Dr. Sumya Sultana Swarna",
     role: "Senior Instructor & Medical English Lead",
-    title: "Senior Instructor | CRACK PTE",
-    organization: "CRACK PTE & Universal Language",
+    title: "Senior Instructor | Universal Language",
+    organization: "Universal Language",
     scoreHighlight: "PTE 86+ & OET Grade A",
     badge: "Senior Clinical & Academic Mentor",
     image: "/images/instructors/swarna.jpg",
@@ -114,7 +114,7 @@ export const INSTRUCTORS: Instructor[] = [
       "Physician and premier academic mentor specializing in high-stakes English examinations for doctors, healthcare workers, and postgraduate scholars.",
     fullBio: [
       "Dr. Sumya Sultana Swarna brings a uniquely analytical, methodical approach to English language coaching. As a qualified medical doctor and senior language pedagogue, she understands firsthand the immense pressure faced by healthcare professionals and postgraduate researchers aiming for overseas registration.",
-      "Dr. Swarna heads the Medical & Professional Migration Academic Wing at CRACK PTE / Universal Language. She has guided hundreds of physicians, dentists, nurses, and STEM academics to ace their mandatory English thresholds for AHPRA, GMC, and international licensing councils.",
+      "Dr. Swarna heads the Medical & Professional Migration Academic Wing at Universal Language. She has guided hundreds of physicians, dentists, nurses, and STEM academics to ace their mandatory English thresholds for AHPRA, GMC, and international licensing councils.",
       "Her instructional style combines psychological test confidence, structured contextual vocabulary retention, and meticulous written analysis to ensure zero grammatical penalty marks."
     ],
     quote:
@@ -164,8 +164,8 @@ export const INSTRUCTORS: Instructor[] = [
     slug: "samia-chowdhury",
     name: "Samia Chowdhury",
     role: "PTE Instructor & Oral Fluency Specialist",
-    title: "PTE Instructor | CRACK PTE",
-    organization: "CRACK PTE & Universal Language",
+    title: "PTE Instructor | Universal Language",
+    organization: "Universal Language",
     scoreHighlight: "PTE 88+ Oral Fluency 90",
     badge: "Phonetics & Pronunciation Lead",
     image: "/images/instructors/samia.jpg",

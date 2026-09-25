@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${instructor.name} - ${instructor.role} | Universal Language & CRACK PTE`,
+    title: `${instructor.name} - ${instructor.role} | Universal Language`,
     description: instructor.shortBio,
     alternates: {
       canonical: `https://universallanguage.com.bd/about/instructors/${instructor.slug}`,
@@ -212,13 +212,6 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 ))}
               </div>
 
-              {/* Personal Credo Quote */}
-              <div className="p-6 rounded-2xl bg-primary/5 dark:bg-primary/10 border-l-4 border-primary">
-                <p className="text-sm sm:text-base italic font-medium text-foreground/90 leading-relaxed">
-                  &ldquo;{instructor.quote}&rdquo;
-                </p>
-              </div>
-
               {/* Key Track Records */}
               <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-muted/40 border border-border/60">
                 <div className="flex items-center gap-3">
@@ -355,7 +348,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 Meet Other Certified Mentors
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground">
-                Explore our full academic directorate at Universal Language &amp; CRACK PTE
+                Explore our full academic directorate at Universal Language
               </p>
             </div>
             <Link

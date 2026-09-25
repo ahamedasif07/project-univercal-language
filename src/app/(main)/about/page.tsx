@@ -3,21 +3,18 @@ import { AboutHero } from "./_components/about-hero";
 import { AboutFounder } from "./_components/about-founder";
 import { AboutPhilosophy } from "./_components/about-philosophy";
 import { AboutFaculty } from "./_components/about-faculty";
-import { AboutMethodology } from "./_components/about-methodology";
-import { AboutContactSection } from "./_components/about-contact-section";
-import { AboutCta } from "./_components/about-cta";
 
 export const metadata: Metadata = {
   title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",
   description:
-    "Meet Showkat Chowdhury (Founder & CEO), Dr. Sumya Sultana Swarna, and Samia Chowdhury. Discover Universal Language & CRACK PTE's NSDA-registered curriculum, Pearson South Asia certified master trainers, and 98.8% target score success rate.",
+    "Meet Sifat Hasan (Founder & CEO), Dr. Sumya Sultana Swarna, and Samia Chowdhury. Discover Universal Language's NSDA-registered curriculum, Pearson South Asia certified master trainers, and 98.8% target score success rate.",
   alternates: {
     canonical: "https://universallanguage.com.bd/about",
   },
   openGraph: {
-    title: "About Universal Language & CRACK PTE Academy",
+    title: "About Universal Language Academy",
     description:
-      "Elite Pearson-certified language coaching in Dhaka, Bangladesh. Led by Founder & CEO Showkat Chowdhury and master faculty to achieve 79+ first-attempt milestones.",
+      "Elite Pearson-certified language coaching in Dhaka, Bangladesh. Led by Founder & CEO Sifat Hasan and master faculty to achieve 79+ first-attempt milestones.",
     url: "https://universallanguage.com.bd/about",
     siteName: "Universal Language",
     images: [
@@ -25,7 +22,7 @@ export const metadata: Metadata = {
         url: "/images/instructors/showkat.jpg",
         width: 1200,
         height: 630,
-        alt: "Showkat Chowdhury - Founder & CEO of Universal Language",
+        alt: "Sifat Hasan - Founder & CEO of Universal Language",
       },
     ],
   },
@@ -44,7 +41,7 @@ const aboutJsonLd = {
         "Premier Pearson PTE Academic, German & foreign language coaching in Dhaka, Bangladesh. Official Pearson exam voucher booking and Alfa PTE AI practice portal.",
       founder: {
         "@type": "Person",
-        name: "Showkat Chowdhury",
+        name: "Sifat Hasan",
         jobTitle: "Founder & Chief Executive Officer (CEO)",
         image: "https://universallanguage.com.bd/images/instructors/showkat.jpg",
       },
@@ -58,7 +55,7 @@ const aboutJsonLd = {
     {
       "@type": "Person",
       "@id": "https://universallanguage.com.bd/#founder",
-      name: "Showkat Chowdhury",
+      name: "Sifat Hasan",
       jobTitle: "Founder & Chief Executive Officer (CEO)",
       worksFor: {
         "@type": "EducationalOrganization",
@@ -66,7 +63,7 @@ const aboutJsonLd = {
       },
       image: "https://universallanguage.com.bd/images/instructors/showkat.jpg",
       description:
-        "Founder & CEO of Universal Language & CRACK PTE, Master of Education, Pearson South Asia Certified Master Trainer.",
+        "Founder & CEO of Universal Language, Master of Education, Pearson South Asia Certified Master Trainer.",
     },
   ],
 };
@@ -84,9 +81,6 @@ export default function AboutPage() {
       <AboutFounder />
       <AboutPhilosophy />
       <AboutFaculty />
-      <AboutMethodology />
-      <AboutContactSection />
-      <AboutCta />
     </div>
   );
 }

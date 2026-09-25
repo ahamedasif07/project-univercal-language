@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   ArrowRight,
   MessageCircle,
-  Quote,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 
@@ -19,7 +18,7 @@ export function AboutFounder() {
   const whatsappUrl =
     "https://wa.me/8801772224283?text=" +
     encodeURIComponent(
-      "Hello Showkat Chowdhury Sir, I would like to consult with you regarding PTE coaching and study abroad opportunities."
+      "Hello Sifat Hasan Sir, I would like to consult with you regarding PTE coaching and study abroad opportunities."
     );
 
   return (
@@ -47,7 +46,7 @@ export function AboutFounder() {
                 <div className="relative aspect-[3/4] w-full">
                   <Image
                     src="/images/instructors/showkat.jpg"
-                    alt="Showkat Chowdhury - Founder & CEO of Universal Language and CRACK PTE"
+                    alt="Sifat Hasan - Founder & CEO of Universal Language"
                     fill
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
@@ -69,7 +68,7 @@ export function AboutFounder() {
                       <span>Founder &amp; Chief Executive Officer</span>
                     </div>
                     <h3 className="text-2xl font-black text-white">
-                      Showkat Chowdhury
+                      Sifat Hasan
                     </h3>
                     <p className="text-xs text-blue-200">
                       Master of Education • Pearson South Asia Certified
@@ -120,24 +119,10 @@ export function AboutFounder() {
               </span>
             </h2>
 
-            {/* CEO Quote Card */}
-            <div className="relative p-6 sm:p-7 rounded-2xl bg-primary/5 dark:bg-primary/10 border-l-4 border-primary space-y-3">
-              <Quote className="w-8 h-8 text-primary/40 -mb-2" />
-              <p className="text-base sm:text-lg font-semibold text-foreground/90 italic leading-relaxed">
-                &ldquo;Our vision has always been straightforward: to liberate students from guesswork
-                and risky internet templates by delivering authentic, Pearson-calibrated language mastery
-                that guarantees target score breakthroughs.&rdquo;
-              </p>
-              <div className="text-xs font-bold text-primary dark:text-blue-400 tracking-wide uppercase">
-                — Showkat Chowdhury, Founder &amp; CEO
-              </div>
-            </div>
-
             {/* Narrative Body */}
             <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               <p>
-                When we established <strong className="text-foreground font-semibold">Universal Language</strong> and{" "}
-                <strong className="text-foreground font-semibold">CRACK PTE</strong>, we witnessed countless talented
+                When we established <strong className="text-foreground font-semibold">Universal Language</strong>, we witnessed countless talented
                 Bangladeshi professionals and university applicants getting stuck in repeating cycles, losing
                 time and exam fees due to outdated coaching methods.
               </p>
@@ -178,7 +163,7 @@ export function AboutFounder() {
               </a>
 
               <Link
-                href="/about/instructors/showkat-chowdhury"
+                href="/about/instructors/sifat-hasan"
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-xs sm:text-sm border border-border bg-card/60 dark:bg-card/40 text-foreground hover:bg-muted/80 hover:text-primary transition-all duration-200 cursor-pointer"
               >
                 <span>View Full Academic Profile</span>
