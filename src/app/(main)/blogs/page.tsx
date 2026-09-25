@@ -1,18 +1,22 @@
 import React from "react";
 import type { Metadata } from "next";
+import { BlogsHero } from "@/components/modules/blogs/_components/blogs-hero";
+import { BlogsGrid } from "@/components/modules/blogs/_components/blogs-grid";
 
 export const metadata: Metadata = {
-  title: "Blogs",
+  title: "Blog | Universal Language",
+  description:
+    "Expert PTE, IELTS, German language tips, exam booking guides, and study abroad insights from Universal Language's certified mentors in Bangladesh.",
+  alternates: {
+    canonical: "https://universallanguage.com.bd/blogs",
+  },
 };
 
 export default function BlogsPage() {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-6 text-center">
-      <div className="space-y-3">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-          Blogs Page
-        </h1>
-      </div>
+    <div className="w-full">
+      <BlogsHero />
+      <BlogsGrid />
     </div>
   );
 }
