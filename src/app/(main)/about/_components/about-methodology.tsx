@@ -53,14 +53,14 @@ export function AboutMethodology() {
       <Container>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider shadow-xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
             <span>The Proven Framework</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
             Our 4-Stage{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 dark:from-amber-400 dark:via-amber-300 dark:to-amber-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
               Target-Score
             </span>{" "}
             Architecture
@@ -83,14 +83,14 @@ export function AboutMethodology() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative p-6 sm:p-7 rounded-3xl bg-card border border-border/80 hover:border-amber-500/50 hover:shadow-xl dark:hover:shadow-amber-500/5 transition-all duration-300 flex flex-col justify-between"
+                className="group relative p-6 sm:p-7 rounded-3xl bg-card border border-border/80 hover:border-primary/50 hover:shadow-xl dark:hover:shadow-primary/5 transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Step indicator */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0b3a82]/8 dark:bg-[#0b3a82]/25 border border-[#0b3a82]/20 text-[#0b3a82] dark:text-blue-300 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-500/15 group-hover:border-amber-500/30 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-[#0b3a82]/8 dark:bg-[#0b3a82]/25 border border-[#0b3a82]/20 text-[#0b3a82] dark:text-blue-300 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#0b3a82] group-hover:text-white transition-all duration-300">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-2xl font-black text-muted-foreground/30 group-hover:text-amber-500/60 transition-colors">
+                  <span className="text-2xl font-black text-muted-foreground/30 group-hover:text-primary transition-colors">
                     {st.step}
                   </span>
                 </div>
@@ -105,7 +105,7 @@ export function AboutMethodology() {
                 </div>
 
                 {/* Highlight Tag */}
-                <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-amber-600 dark:text-amber-400">
+                <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-primary dark:text-blue-300">
                   <span>{st.highlight}</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </div>

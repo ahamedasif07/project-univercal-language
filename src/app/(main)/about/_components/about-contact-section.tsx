@@ -9,9 +9,8 @@ import {
   MapPin,
   Send,
   CheckCircle2,
-  Sparkles,
+  ShieldCheck,
   ArrowRight,
-  Globe,
   Clock,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
@@ -41,8 +40,8 @@ const CONTACT_CHANNELS = [
     value: "info@universallanguage.com.bd",
     action: "Inquiries & Corporate Training",
     href: "mailto:info@universallanguage.com.bd",
-    color: "text-amber-500",
-    bg: "bg-amber-500/10 border-amber-500/20",
+    color: "text-primary dark:text-blue-400",
+    bg: "bg-primary/10 border-primary/20",
   },
   {
     icon: MapPin,
@@ -50,8 +49,8 @@ const CONTACT_CHANNELS = [
     value: "Mirpur-10 Roundabout, Dhaka, Bangladesh",
     action: "Visit Saturday – Thursday (10am–8pm)",
     href: "https://maps.google.com/?q=Mirpur-10+Dhaka",
-    color: "text-purple-500",
-    bg: "bg-purple-500/10 border-purple-500/20",
+    color: "text-indigo-500",
+    bg: "bg-indigo-500/10 border-indigo-500/20",
   },
 ];
 
@@ -90,14 +89,14 @@ export function AboutContactSection() {
       <Container>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
             <span>Connect With Our Team</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
             Start Your{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 dark:from-amber-400 dark:via-amber-300 dark:to-amber-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
               Target Score Journey
             </span>{" "}
             Today
@@ -121,7 +120,7 @@ export function AboutContactSection() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="group block p-5 rounded-2xl bg-card border border-border/80 hover:border-amber-500/40 hover:shadow-lg transition-all duration-300"
+                    className="group block p-5 rounded-2xl bg-card border border-border/80 hover:border-primary/40 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${item.bg} group-hover:scale-110 transition-transform duration-300`}>
@@ -134,7 +133,7 @@ export function AboutContactSection() {
                         <div className="text-sm sm:text-base font-bold text-foreground truncate mt-0.5 group-hover:text-primary transition-colors">
                           {item.value}
                         </div>
-                        <div className="text-xs font-medium text-amber-600 dark:text-amber-400 mt-1 flex items-center gap-1">
+                        <div className="text-xs font-medium text-primary dark:text-blue-400 mt-1 flex items-center gap-1">
                           <span>{item.action}</span>
                           <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -147,7 +146,7 @@ export function AboutContactSection() {
 
             {/* Academy Timings Badge */}
             <div className="p-5 rounded-2xl bg-muted/40 border border-border/70 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary dark:text-blue-300 flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5" />
               </div>
               <div className="text-xs text-muted-foreground leading-relaxed">
@@ -204,7 +203,7 @@ export function AboutContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Tanvir Ahmed"
-                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
                     </div>
 
@@ -218,7 +217,7 @@ export function AboutContactSection() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="e.g. 017XXXXXXXX"
-                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
                     </div>
                   </div>
@@ -233,7 +232,7 @@ export function AboutContactSection() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="tanvir@example.com"
-                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
                     </div>
 
@@ -244,7 +243,7 @@ export function AboutContactSection() {
                       <select
                         value={formData.exam}
                         onChange={(e) => setFormData({ ...formData, exam: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       >
                         <option value="PTE Academic Masterclass">PTE Academic Masterclass (Target 79+)</option>
                         <option value="PTE Fast-Track Crash Batch">PTE Fast-Track Crash Batch</option>
@@ -264,13 +263,13 @@ export function AboutContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Share your target score, previous test experience (if any), and desired country..."
-                      className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 px-6 rounded-xl text-sm font-bold uppercase tracking-wider text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 hover:from-amber-300 hover:to-amber-200 shadow-xl shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 px-6 rounded-xl text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-[#082b61] hover:to-[#0b3a82] shadow-xl shadow-blue-900/25 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Submit &amp; Connect on WhatsApp</span>
                     <Send className="w-4 h-4" />

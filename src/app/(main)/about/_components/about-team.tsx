@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { BadgeCheck, Sparkles } from "lucide-react";
+import { BadgeCheck, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/common/container";
 
 const TEAM = [
@@ -39,7 +39,7 @@ export function AboutTeam() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/6 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5" />
+            <ShieldCheck className="w-3.5 h-3.5" />
             <span>Meet the Mentors</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">

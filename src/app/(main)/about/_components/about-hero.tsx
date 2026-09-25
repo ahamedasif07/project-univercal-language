@@ -4,9 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  Sparkles,
-  ArrowRight,
   ShieldCheck,
+  ArrowRight,
   Cpu,
   BarChart3,
   Award,
@@ -20,13 +19,13 @@ import { Container } from "@/components/common/container";
 const CORE_CAPABILITIES = [
   {
     icon: BarChart3,
-    title: "AI Diagnostic & Mock Evaluation",
+    title: "Diagnostic & Mock Evaluation",
     description: "Multi-dimensional diagnostic audit pinpointing exact algorithmic score gaps.",
   },
   {
     icon: Cpu,
     title: "Machine-Scoring Calibration",
-    description: "Reverse-engineered training aligned precisely with Pearson's automated AI engine.",
+    description: "Reverse-engineered training aligned precisely with Pearson's automated evaluation engine.",
   },
   {
     icon: Volume2,
@@ -52,10 +51,10 @@ const CORE_CAPABILITIES = [
 
 export function AboutHero() {
   return (
-    <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32 overflow-hidden bg-gradient-to-b from-background via-slate-50/50 to-background dark:via-slate-950/30">
+    <section className="relative pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-background via-slate-50/50 to-background dark:via-slate-950/30">
       {/* Decorative ambient glow orbs */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-blue-600/10 via-amber-500/10 to-indigo-600/10 dark:from-blue-500/15 dark:via-amber-400/10 dark:to-indigo-500/15 blur-[140px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-40 right-10 w-[420px] h-[300px] bg-amber-400/8 dark:bg-amber-400/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-blue-600/10 via-primary/10 to-indigo-600/10 dark:from-blue-500/15 dark:via-primary/10 dark:to-indigo-500/15 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-40 right-10 w-[420px] h-[300px] bg-blue-500/8 dark:bg-indigo-500/8 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0b3a8208_1px,transparent_1px),linear-gradient(to_bottom,#0b3a8208_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none -z-10" />
@@ -70,18 +69,18 @@ export function AboutHero() {
             className="lg:col-span-6 space-y-6 text-left"
           >
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-primary" />
               <span>Universal Language × CRACK PTE Academy</span>
             </div>
 
-            {/* Heading */}
+            {/* Heading matching home page title styling */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-foreground tracking-tight leading-[1.12]">
               PTE Academic{" "}
-              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 dark:from-amber-400 dark:via-amber-300 dark:to-amber-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
                 Expert Coaching
               </span>{" "}
-              & Strategic Pedagogy
+              &amp; Strategic Pedagogy
             </h1>
 
             {/* Subtext */}
@@ -104,7 +103,7 @@ export function AboutHero() {
                 href="#faculty-section"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm border border-border/80 bg-card/60 dark:bg-card/40 backdrop-blur-md text-foreground hover:bg-muted/80 hover:border-border transition-all duration-200 cursor-pointer"
               >
-                <GraduationCap className="w-4 h-4 text-amber-500" />
+                <GraduationCap className="w-4 h-4 text-primary" />
                 <span>Meet Our Faculty</span>
               </a>
             </div>
@@ -113,7 +112,7 @@ export function AboutHero() {
             <div className="pt-6 border-t border-border/60 grid grid-cols-3 gap-4">
               <div>
                 <div className="text-2xl sm:text-3xl font-black text-foreground">
-                  98.8<span className="text-amber-500">%</span>
+                  98.8<span className="text-primary">%</span>
                 </div>
                 <div className="text-xs font-medium text-muted-foreground mt-0.5">
                   Target Score Rate
@@ -129,7 +128,7 @@ export function AboutHero() {
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-black text-foreground">
-                  90<span className="text-amber-500">/90</span>
+                  90<span className="text-primary">/90</span>
                 </div>
                 <div className="text-xs font-medium text-muted-foreground mt-0.5">
                   Certified Mentors
@@ -156,7 +155,7 @@ export function AboutHero() {
                     Built around Pearson&apos;s authentic automated scoring rubric
                   </p>
                 </div>
-                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary dark:text-blue-300">
                   <CalendarCheck className="w-3 h-3" /> Live Batches
                 </span>
               </div>
@@ -171,12 +170,12 @@ export function AboutHero() {
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 + idx * 0.06 }}
-                      className="group relative rounded-2xl p-4 bg-muted/40 dark:bg-muted/15 border border-border/60 hover:border-amber-500/40 hover:bg-card/90 dark:hover:bg-card/70 hover:shadow-md transition-all duration-300"
+                      className="group relative rounded-2xl p-4 bg-muted/40 dark:bg-muted/15 border border-border/60 hover:border-primary/40 hover:bg-card/90 dark:hover:bg-card/70 hover:shadow-md transition-all duration-300"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/15 via-amber-500/10 to-transparent border border-amber-500/25 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary dark:text-blue-300 mb-3 group-hover:scale-110 transition-transform duration-300">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h4 className="text-sm font-bold text-foreground group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                      <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                         {cap.title}
                       </h4>
                       <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">

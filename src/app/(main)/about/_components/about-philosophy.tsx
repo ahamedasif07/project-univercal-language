@@ -11,13 +11,14 @@ import {
   Ticket,
   Quote,
   CheckCircle2,
+  ShieldCheck,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 
 const SERVICES = [
   {
     icon: BrainCircuit,
-    title: "Pearson AI Simulation Portal",
+    title: "Pearson Simulation Portal",
     description: "Official-calibrated mock portal replicating test center latency, noise, and exact scoring algorithms.",
   },
   {
@@ -63,26 +64,27 @@ export function AboutPhilosophy() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0b3a82]/20 dark:border-blue-400/30 bg-[#0b3a82]/5 dark:bg-blue-400/10 text-[#0b3a82] dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5" />
               <span>Our Pedagogical Vision</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.18]">
               We Believe:{" "}
-              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 dark:from-amber-400 dark:via-amber-300 dark:to-amber-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
                 Score Mastery
               </span>{" "}
               is a Science, Not Luck.
             </h2>
 
             {/* Quote Box */}
-            <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0b3a82]/8 via-[#0b3a82]/4 to-transparent dark:from-[#0b3a82]/25 dark:via-transparent border-l-4 border-amber-500 rounded-l-md space-y-3">
-              <Quote className="w-8 h-8 text-amber-500/40 -mb-2" />
+            <div className="relative p-6 sm:p-7 rounded-2xl bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-l-md space-y-3">
+              <Quote className="w-8 h-8 text-primary/40 -mb-2" />
               <p className="text-base sm:text-lg font-semibold text-foreground/90 italic leading-relaxed">
                 &ldquo;PTE success is not only about English proficiency. It&apos;s about understanding the
                 automated exam system strategically.&rdquo;
               </p>
-              <div className="text-xs font-bold text-amber-600 dark:text-amber-400 tracking-wide uppercase">
+              <div className="text-xs font-bold text-primary dark:text-blue-400 tracking-wide uppercase">
                 — Universal Language Academic Directorate
               </div>
             </div>
@@ -94,7 +96,7 @@ export function AboutPhilosophy() {
                 computational semantic scoring, and machine acoustic models.
               </p>
               <p>
-                At Universal Language, we train you from the perspective of the machine. We teach you how
+                At Universal Language, we train you from the perspective of the evaluation engine. We teach you how
                 the acoustic model interprets pause thresholds, how lexical collocations generate reading
                 points, and how structured essay blueprints eliminate syntax penalties.
               </p>
@@ -109,7 +111,7 @@ export function AboutPhilosophy() {
                 "Daily Speaking Diagnostic Labs",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -125,7 +127,7 @@ export function AboutPhilosophy() {
             className="lg:col-span-6"
           >
             <div className="mb-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300">
                 Institutional Capabilities
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-foreground mt-1">
@@ -143,12 +145,12 @@ export function AboutPhilosophy() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: idx * 0.07 }}
-                    className="group relative p-5 rounded-2xl bg-card border border-border/80 hover:border-amber-500/40 hover:shadow-lg dark:hover:shadow-amber-500/5 transition-all duration-300"
+                    className="group relative p-5 rounded-2xl bg-card border border-border/80 hover:border-primary/40 hover:shadow-lg dark:hover:shadow-primary/5 transition-all duration-300"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#0b3a82]/8 dark:bg-[#0b3a82]/20 border border-[#0b3a82]/20 text-[#0b3a82] dark:text-blue-300 flex items-center justify-center mb-3 group-hover:scale-105 group-hover:bg-amber-500/10 group-hover:border-amber-500/30 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary dark:text-blue-300 flex items-center justify-center mb-3 group-hover:scale-105 group-hover:bg-[#0b3a82] group-hover:text-white transition-all duration-300">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h4 className="text-sm font-bold text-foreground group-hover:text-[#0b3a82] dark:group-hover:text-blue-300 transition-colors">
+                    <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                       {srv.title}
                     </h4>
                     <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">

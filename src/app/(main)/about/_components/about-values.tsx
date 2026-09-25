@@ -20,9 +20,9 @@ const VALUES = [
     title: "Authentic Methods",
     description:
       "No leaked templates or risky recycled answers. We teach Pearson's authentic pedagogical framework — the same techniques that Pearson South Asia certified our trainers to deliver.",
-    gradient: "from-amber-500 to-orange-500",
-    bg: "bg-amber-500/10 border-amber-500/20",
-    text: "text-amber-600 dark:text-amber-400",
+    gradient: "from-blue-600 to-indigo-600",
+    bg: "bg-blue-500/10 border-blue-500/20",
+    text: "text-blue-600 dark:text-blue-400",
   },
   {
     icon: Heart,
