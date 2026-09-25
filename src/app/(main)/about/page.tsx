@@ -1,25 +1,43 @@
-import React from "react";
-import type { Metadata } from "next";
-import { AboutHero } from "@/components/modules/about/_components/about-hero";
-import { AboutValues } from "@/components/modules/about/_components/about-values";
-import { AboutTeam } from "@/components/modules/about/_components/about-team";
-import { AboutCta } from "@/components/modules/about/_components/about-cta";
+import { Metadata } from "next";
+import { AboutHero } from "./_components/about-hero";
+import { AboutPhilosophy } from "./_components/about-philosophy";
+import { AboutFaculty } from "./_components/about-faculty";
+import { AboutMethodology } from "./_components/about-methodology";
+import { AboutContactSection } from "./_components/about-contact-section";
+import { AboutCta } from "./_components/about-cta";
 
 export const metadata: Metadata = {
-  title: "About Us | Universal Language",
+  title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",
   description:
-    "Meet the Pearson-certified mentors behind Universal Language. Learn our mission, values, and the authentic methods that have guided 150+ students to their dream PTE, German, and IELTS scores.",
+    "Discover Universal Language & CRACK PTE. Meet our Pearson-certified mentors Showkat Chowdhury, Dr. Sumya Sultana Swarna, and Samia Chowdhury. Explore our algorithm-calibrated coaching, 98.8% target score pass rate, and full diagnostic framework.",
   alternates: {
     canonical: "https://universallanguage.com.bd/about",
+  },
+  openGraph: {
+    title: "About Universal Language & CRACK PTE Academy",
+    description:
+      "Elite Pearson-certified language coaching in Dhaka, Bangladesh. Guided by 90/90 master mentors to achieve 79+ first-attempt milestones.",
+    url: "https://universallanguage.com.bd/about",
+    siteName: "Universal Language",
+    images: [
+      {
+        url: "/images/instructors/showkat.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Universal Language Academic Mentors",
+      },
+    ],
   },
 };
 
 export default function AboutPage() {
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
       <AboutHero />
-      <AboutValues />
-      <AboutTeam />
+      <AboutPhilosophy />
+      <AboutFaculty />
+      <AboutMethodology />
+      <AboutContactSection />
       <AboutCta />
     </div>
   );

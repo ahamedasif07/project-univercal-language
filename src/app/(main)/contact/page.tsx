@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import { ContactHero } from "@/components/modules/contact/_components/contact-hero";
-import { ContactMain } from "@/components/modules/contact/_components/contact-main";
+import { ContactHero } from "./_components/contact-hero";
+import { ContactMain } from "./_components/contact-main";
 
 export const metadata: Metadata = {
   title: "Contact Us | Universal Language",
