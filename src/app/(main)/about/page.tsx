@@ -8,7 +8,7 @@ import { AccreditationsSection } from "@/components/modules/home/accreditations-
 export const metadata: Metadata = {
   title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",
   description:
-    "Meet Sifat Hasan (Founder & CEO), Dr. Sumya Sultana Swarna, and Samia Chowdhury. Discover Universal Language's NSDA-registered curriculum, Pearson South Asia certified master trainers, and 98.8% target score success rate.",
+    "Meet Sifat Hasan (Founder & CEO), MD Nakibul Quader Chowdhury (Head Instructor & Pearson Certified Trainer), and our elite faculty. Discover Universal Language's Pearson South Asia certified master trainers.",
   alternates: {
     canonical: "https://universallanguage.com.bd/about",
   },

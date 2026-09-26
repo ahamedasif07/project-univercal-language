@@ -18,9 +18,13 @@ import {
   BookOpen,
   ArrowLeft,
   ArrowRight,
+  Trophy,
+  Mail,
+  MapPin,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
-import { INSTRUCTORS, getInstructorBySlug } from "@/data/instructors";
+import { INSTRUCTORS, ALL_PROFILES, getInstructorBySlug } from "@/data/instructors";
+import { InstructorCertificatesGallery } from "./_components/instructor-certificates-gallery";
 
 interface PageProps {
   params: Promise<{
@@ -29,7 +33,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return INSTRUCTORS.map((inst) => ({
+  return ALL_PROFILES.map((inst) => ({
     slug: inst.slug,
   }));
 }
@@ -61,11 +65,11 @@ export default async function InstructorDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // Other mentors to navigate between
+  // Other mentors to navigate between (from faculty list)
   const otherInstructors = INSTRUCTORS.filter((inst) => inst.slug !== instructor.slug);
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Universal Language, I would like to consult with ${instructor.name} regarding my PTE / language preparation.`
+    `Hello Universal Language, I would like to consult with ${instructor.name} regarding my PTE / Duolingo / English preparation.`
   );
 
   return (
@@ -98,8 +102,8 @@ export default async function InstructorDetailPage({ params }: PageProps) {
 
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-            {/* Left: Full Portrait Card */}
-            <div className="lg:col-span-5">
+            {/* Left: Full Portrait Card & Contact Details */}
+            <div className="lg:col-span-5 space-y-6">
               <div className="relative rounded-3xl overflow-hidden border-2 border-primary/30 dark:border-primary/40 shadow-2xl bg-slate-900 group">
                 <div className="relative aspect-[3/4] w-full">
                   <Image
@@ -118,6 +122,19 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                     <span>{instructor.scoreHighlight}</span>
                   </div>
 
+                  {/* Official Level 2 Badge Overlay (if available) */}
+                  {instructor.officialBadgeImage && (
+                    <div className="absolute top-3 right-3 z-10 w-16 h-16 sm:w-20 sm:h-20 drop-shadow-2xl">
+                      <Image
+                        src={instructor.officialBadgeImage}
+                        alt="Pearson Level 2 Certified Badge"
+                        fill
+                        sizes="80px"
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+
                   {/* Bottom details on image */}
                   <div className="absolute bottom-5 left-5 right-5 z-10 text-white">
                     <p className="text-xs font-bold text-blue-300 uppercase tracking-widest">
@@ -134,7 +151,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
               </div>
 
               {/* Direct Booking Callout Card */}
-              <div className="mt-6 p-6 rounded-2xl bg-card border border-border/80 shadow-lg space-y-4">
+              <div className="p-6 rounded-2xl bg-card border border-border/80 shadow-lg space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                     <Calendar className="w-5 h-5" />
@@ -144,12 +161,12 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                       Book Direct 1-on-1 Mentorship
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      Diagnostic scorecard audit &amp; study plan
+                      Diagnostic scorecard audit &amp; personalized plan
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <a
                     href={`https://wa.me/${instructor.socials.whatsapp}?text=${whatsappMessage}`}
                     target="_blank"
@@ -160,14 +177,33 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                     <span>Consult on WhatsApp</span>
                   </a>
 
-                  <a
-                    href={`tel:+${instructor.socials.whatsapp}`}
-                    className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold border border-border/80 bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
-                  >
-                    <PhoneCall className="w-3.5 h-3.5 text-primary" />
-                    <span>Call Academy Desk</span>
-                  </a>
+                  {instructor.socials.phone && (
+                    <a
+                      href={`tel:${instructor.socials.phone.replace(/[^0-9+]/g, "")}`}
+                      className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold border border-border/80 bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
+                    >
+                      <PhoneCall className="w-3.5 h-3.5 text-primary" />
+                      <span>Direct: {instructor.socials.phone}</span>
+                    </a>
+                  )}
+
+                  {instructor.socials.email && (
+                    <a
+                      href={`mailto:${instructor.socials.email}`}
+                      className="w-full inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl text-xs font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-primary" />
+                      <span>{instructor.socials.email}</span>
+                    </a>
+                  )}
                 </div>
+
+                {instructor.socials.location && (
+                  <div className="pt-3 border-t border-border/60 flex items-center gap-2 text-xs text-muted-foreground">
+                    <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <span>{instructor.socials.location}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -175,9 +211,28 @@ export default async function InstructorDetailPage({ params }: PageProps) {
             <div className="lg:col-span-7 space-y-8">
               {/* Header block */}
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>{instructor.organization}</span>
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>{instructor.organization}</span>
+                  </div>
+
+                  {instructor.officialBadgeImage && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20">
+                      <div className="relative w-5 h-5 shrink-0">
+                        <Image
+                          src={instructor.officialBadgeImage}
+                          alt="Pearson Level 2"
+                          fill
+                          sizes="20px"
+                          className="object-contain"
+                        />
+                      </div>
+                      <span className="text-xs font-bold text-foreground">
+                        Pearson Level 2 Certified
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight">
@@ -230,7 +285,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                     <div className="text-xs sm:text-sm font-bold text-foreground">
                       {instructor.targetSuccessRate}
                     </div>
-                    <div className="text-[10px] text-muted-foreground">Pass Rate</div>
+                    <div className="text-[10px] text-muted-foreground">Achievement</div>
                   </div>
                 </div>
 
@@ -249,7 +304,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
                   <BookOpen className="w-5 h-5 text-primary" />
-                  <span>Biography &amp; Academic Background</span>
+                  <span>Biography &amp; Academic Philosophy</span>
                 </h3>
                 <div className="space-y-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {instructor.fullBio.map((paragraph, i) => (
@@ -258,7 +313,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Core Specialties & Frameworks */}
+              {/* Key Test Specialties & Frameworks */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
                   <BadgeCheck className="w-5 h-5 text-emerald-500" />
@@ -277,38 +332,103 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Certifications & Degrees */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-                <div className="space-y-3">
-                  <h4 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <Award className="w-4 h-4 text-blue-500" />
-                    <span>Official Certifications</span>
-                  </h4>
-                  <ul className="space-y-2">
-                    {instructor.certifications.map((cert) => (
-                      <li key={cert} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0 mt-2" />
-                        <span>{cert}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Higher Education */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-base font-bold text-foreground flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-primary" />
+                  <span>Higher Education</span>
+                </h4>
+                <ul className="space-y-2">
+                  {instructor.education.map((edu) => (
+                    <li key={edu} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2" />
+                      <span>{edu}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Official Certifications & Accreditations (Promoted up in place of work experience) */}
+              <div className="space-y-4 pt-4 border-t border-border/60">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                      <Award className="w-5 h-5 text-blue-500" />
+                      <span>Official Certifications &amp; Accreditations</span>
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                      Verified credentials awarded by Pearson Education, Mindtickle, and accredited authorities
+                    </p>
+                  </div>
+                  {instructor.officialBadgeImage && (
+                    <div className="flex items-center gap-2.5 p-2 rounded-xl bg-card border border-border/80 shadow-xs w-fit">
+                      <div className="relative w-9 h-9 shrink-0">
+                        <Image
+                          src={instructor.officialBadgeImage}
+                          alt="Pearson Level 2"
+                          fill
+                          sizes="36px"
+                          className="object-contain"
+                        />
+                      </div>
+                      <div className="text-left">
+                        <div className="text-[10px] font-bold uppercase text-primary">Pearson Level 2</div>
+                        <div className="text-xs font-bold text-foreground">Trainer 1 Professional</div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="space-y-3">
-                  <h4 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-primary" />
-                    <span>Higher Education</span>
-                  </h4>
-                  <ul className="space-y-2">
-                    {instructor.education.map((edu) => (
-                      <li key={edu} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2" />
-                        <span>{edu}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {instructor.certifications.map((cert) => (
+                    <div
+                      key={cert}
+                      className="flex items-start gap-2.5 p-3 rounded-xl bg-card border border-border/70 text-xs sm:text-sm text-foreground/90 font-medium"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <span>{cert}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              {/* Interactive Certificates Gallery (nakibul-c1 to nakibul-c7 with Level 2 Badge) */}
+              {instructor.certificatesGallery && instructor.certificatesGallery.length > 0 && (
+                <InstructorCertificatesGallery
+                  certificates={instructor.certificatesGallery}
+                  instructorName={instructor.name}
+                />
+              )}
+
+              {/* Awards & Achievements (if available) */}
+              {instructor.awards && instructor.awards.length > 0 && (
+                <div className="space-y-4 pt-4 border-t border-border/60">
+                  <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-500" />
+                    <span>Honors &amp; Key Achievements</span>
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {instructor.awards.map((award, i) => (
+                      <div
+                        key={i}
+                        className="p-4 rounded-2xl bg-card border border-border/80 flex items-start gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                          <Trophy className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-foreground">
+                            {award.title}
+                          </h4>
+                          <p className="text-xs text-muted-foreground mt-0.5">
+                            {award.organization} • {award.year}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Featured Courses Taught */}
               <div className="space-y-4 pt-4 border-t border-border/60">
@@ -397,3 +517,4 @@ export default async function InstructorDetailPage({ params }: PageProps) {
     </div>
   );
 }
+

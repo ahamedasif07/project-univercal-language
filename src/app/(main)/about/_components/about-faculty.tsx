@@ -64,6 +64,19 @@ export function AboutFaculty() {
                   </div>
                 </div>
 
+                {/* Official Level 2 Accredited Badge */}
+                {instructor.officialBadgeImage && (
+                  <div className="absolute top-3.5 right-3.5 z-10 w-11 h-11 drop-shadow-lg">
+                    <Image
+                      src={instructor.officialBadgeImage}
+                      alt="Pearson Level 2 Certified Badge"
+                      fill
+                      sizes="44px"
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+
                 {/* Minimalist Bottom Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-white space-y-3">
                   <div>
