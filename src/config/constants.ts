@@ -3,7 +3,17 @@ import { NavItem } from "@/types";
 export const MAIN_NAV_ITEMS: NavItem[] = [
   { title: "HOME", href: "/" },
   { title: "ABOUT US", href: "/about" },
-  { title: "SERVICES", href: "/services" },
+  {
+    title: "COURSES",
+    href: "/courses",
+    children: [
+      { title: "All Courses", href: "/courses" },
+      { title: "PTE Course", href: "/courses?tab=pte" },
+      { title: "IELTS Course", href: "/courses?tab=ielts" },
+      { title: "Duolingo Course", href: "/courses?tab=duolingo" },
+    ],
+  },
+  { title: "PARTNERS", href: "/partners" },
   { title: "SUCCESS STORIES", href: "/success-stories" },
   { title: "HOW IT WORKS", href: "/how-it-works" },
   { title: "FAQ", href: "/faq" },

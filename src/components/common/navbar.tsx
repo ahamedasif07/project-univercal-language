@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { MAIN_NAV_ITEMS } from "@/config/constants";
 import { ThemeToggle } from "./theme-toggle";
@@ -15,18 +16,21 @@ import {
   SheetDescription,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ArrowRight, Menu } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const [mobileCoursesOpen, setMobileCoursesOpen] = useState(true);
 
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Track window scroll for glassmorphism
   useEffect(() => {
@@ -38,6 +42,12 @@ export function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setCoursesDropdownOpen(false);
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   // GSAP Initial Entrance Animation
   useEffect(() => {
@@ -72,6 +82,19 @@ export function Navbar() {
     return () => ctx.revert();
   }, []);
 
+  const handleMouseEnterCourses = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setCoursesDropdownOpen(true);
+  };
+
+  const handleMouseLeaveCourses = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setCoursesDropdownOpen(false);
+    }, 200);
+  };
+
   return (
     <header
       ref={headerRef}
@@ -93,20 +116,122 @@ export function Navbar() {
           <AnimatedLogo className="h-10 sm:h-11 md:h-12 w-auto text-[#0b3a82] dark:text-white transition-colors duration-300" />
         </Link>
 
-        {/* Center: Desktop Navigation Links (Clean, Pure Text with Glowing Light Beam Underline) */}
+        {/* Center: Desktop Navigation Links */}
         <nav
           ref={navLinksRef}
-          className="hidden xl:flex items-center gap-6 2xl:gap-8"
+          className="hidden xl:flex items-center gap-4.5 2xl:gap-7"
           aria-label="Main Navigation"
         >
           {MAIN_NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const hasChildren = item.children && item.children.length > 0;
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/" && pathname.startsWith(item.href));
+
+            if (hasChildren) {
+              return (
+                <div
+                  key={item.title}
+                  className="nav-link-item relative group"
+                  onMouseEnter={handleMouseEnterCourses}
+                  onMouseLeave={handleMouseLeaveCourses}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setCoursesDropdownOpen((prev) => !prev)}
+                    className={cn(
+                      "group relative py-1 text-xs 2xl:text-[13px] font-semibold tracking-[0.12em] uppercase transition-colors duration-300 flex items-center gap-1 select-none focus:outline-none",
+                      isActive || coursesDropdownOpen
+                        ? "text-primary dark:text-primary font-bold"
+                        : "text-foreground/75 hover:text-primary dark:text-foreground/80 dark:hover:text-primary"
+                    )}
+                    aria-expanded={coursesDropdownOpen}
+                    aria-haspopup="true"
+                  >
+                    {/* Text with subtle micro-lift */}
+                    <span className="relative z-10 transition-transform duration-200 group-hover:-translate-y-[1px]">
+                      {item.title}
+                    </span>
+                    <ChevronDown
+                      className={cn(
+                        "w-3.5 h-3.5 transition-transform duration-200",
+                        coursesDropdownOpen && "rotate-180"
+                      )}
+                    />
+
+                    {/* Radiant Ambient Light Beam Underline */}
+                    <span
+                      className={cn(
+                        "absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-gradient-to-r from-transparent via-primary dark:via-sky-400 to-transparent transition-all duration-300 origin-center pointer-events-none",
+                        isActive || coursesDropdownOpen
+                          ? "scale-x-100 opacity-100 shadow-[0_0_8px_rgba(11,58,130,0.7)] dark:shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+                          : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100"
+                      )}
+                    />
+                  </Link>
+
+                  {/* Dropdown Menu (Classy, Ultra-Minimal Monochromatic Shadcn Design) */}
+                  <AnimatePresence>
+                    {coursesDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-56 z-50 pointer-events-auto"
+                      >
+                        <div className="rounded-xl p-1.5 bg-background/98 backdrop-blur-xl border border-border/80 shadow-xl shadow-black/10 dark:shadow-black/40 space-y-0.5">
+                          <Link
+                            href="/courses"
+                            onClick={() => setCoursesDropdownOpen(false)}
+                            className="group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold tracking-wide text-foreground/85 hover:text-foreground hover:bg-muted/70 transition-all duration-150 select-none"
+                          >
+                            <span>All Courses</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
+                          </Link>
+
+                          <div className="my-1 h-px bg-border/50" />
+
+                          <Link
+                            href="/courses?tab=pte"
+                            onClick={() => setCoursesDropdownOpen(false)}
+                            className="group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/70 transition-all duration-150 select-none"
+                          >
+                            <span>PTE Course</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
+                          </Link>
+
+                          <Link
+                            href="/courses?tab=ielts"
+                            onClick={() => setCoursesDropdownOpen(false)}
+                            className="group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/70 transition-all duration-150 select-none"
+                          >
+                            <span>IELTS Course</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
+                          </Link>
+
+                          <Link
+                            href="/courses?tab=duolingo"
+                            onClick={() => setCoursesDropdownOpen(false)}
+                            className="group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/70 transition-all duration-150 select-none"
+                          >
+                            <span>Duolingo Course</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150" />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "nav-link-item group relative py-1 text-xs 2xl:text-[13px] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 flex flex-col items-center select-none",
+                  "nav-link-item group relative py-1 text-xs 2xl:text-[13px] font-semibold tracking-[0.12em] uppercase transition-colors duration-300 flex flex-col items-center select-none",
                   isActive
                     ? "text-primary dark:text-primary font-bold"
                     : "text-foreground/75 hover:text-primary dark:text-foreground/80 dark:hover:text-primary"
@@ -168,7 +293,7 @@ export function Navbar() {
 
             <SheetContent
               side="right"
-              className="w-full sm:max-w-md h-full flex flex-col justify-between p-6 sm:p-8 bg-background/98 dark:bg-background/98 backdrop-blur-3xl border-l border-border/40 shadow-2xl"
+              className="w-full sm:max-w-md h-full flex flex-col justify-between p-6 sm:p-8 bg-background/98 dark:bg-background/98 backdrop-blur-3xl border-l border-border/40 shadow-2xl overflow-y-auto"
             >
               <div>
                 {/* Header with Brand Logo inside Sheet */}
@@ -185,9 +310,87 @@ export function Navbar() {
                 </SheetHeader>
 
                 {/* Navigation Links */}
-                <nav className="pt-6 space-y-1.5" aria-label="Mobile Navigation">
+                <nav className="pt-5 space-y-1.5" aria-label="Mobile Navigation">
                   {MAIN_NAV_ITEMS.map((item) => {
-                    const isActive = pathname === item.href;
+                    const hasChildren = item.children && item.children.length > 0;
+                    const isActive =
+                      pathname === item.href ||
+                      (item.href !== "/" && pathname.startsWith(item.href));
+
+                    if (hasChildren) {
+                      return (
+                        <div key={item.title} className="rounded-xl overflow-hidden">
+                          {/* Accordion Trigger */}
+                          <div
+                            onClick={() => setMobileCoursesOpen((prev) => !prev)}
+                            className={cn(
+                              "flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-[0.14em] uppercase transition-all duration-200 select-none cursor-pointer",
+                              isActive
+                                ? "bg-primary/10 text-primary font-bold"
+                                : "text-foreground/85 hover:bg-secondary/60 hover:text-primary"
+                            )}
+                          >
+                            <span>{item.title}</span>
+                            <ChevronDown
+                              className={cn(
+                                "w-4 h-4 transition-transform duration-200 text-muted-foreground",
+                                mobileCoursesOpen && "rotate-180"
+                              )}
+                            />
+                          </div>
+
+                          {/* Sub-menu (Clean Minimal Monochrome List) */}
+                          <AnimatePresence>
+                            {mobileCoursesOpen && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.18 }}
+                                className="overflow-hidden pl-3 pr-1 pt-1 pb-1 space-y-1 border-l-2 border-border/50 ml-4 my-1"
+                              >
+                                <Link
+                                  href="/courses"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-foreground/85 hover:text-foreground hover:bg-muted/60 transition-colors select-none"
+                                >
+                                  <span>All Courses</span>
+                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
+                                </Link>
+
+                                <Link
+                                  href="/courses?tab=pte"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 transition-colors select-none"
+                                >
+                                  <span>PTE Course</span>
+                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/60" />
+                                </Link>
+
+                                <Link
+                                  href="/courses?tab=ielts"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 transition-colors select-none"
+                                >
+                                  <span>IELTS Course</span>
+                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/60" />
+                                </Link>
+
+                                <Link
+                                  href="/courses?tab=duolingo"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 transition-colors select-none"
+                                >
+                                  <span>Duolingo Course</span>
+                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/60" />
+                                </Link>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
                     return (
                       <Link
                         key={item.href}

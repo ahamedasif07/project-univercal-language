@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -15,7 +16,7 @@ import {
 import { COURSES_AND_SERVICES, CoursePackage } from "@/data/courses";
 import { cn } from "@/lib/utils";
 
-type ActiveTab = "all" | "course" | "service";
+export type ActiveCourseTab = "all" | "pte" | "ielts" | "duolingo" | "service";
 
 function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -25,12 +26,52 @@ function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-export function CoursesServicesSection() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>("all");
+function CoursesServicesContent() {
+  const searchParams = useSearchParams();
+  const initialTab = (searchParams.get("tab") as ActiveCourseTab) || "all";
+  const [activeTab, setActiveTab] = useState<ActiveCourseTab>(
+    ["all", "pte", "ielts", "duolingo", "service"].includes(initialTab)
+      ? initialTab
+      : "all"
+  );
+
+  // Sync tab if URL changes
+  useEffect(() => {
+    const tabParam = searchParams.get("tab") as ActiveCourseTab;
+    if (tabParam && ["all", "pte", "ielts", "duolingo", "service"].includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
+
+  const pteCount = useMemo(
+    () => COURSES_AND_SERVICES.filter((i) => i.examType === "pte").length,
+    []
+  );
+  const ieltsCount = useMemo(
+    () => COURSES_AND_SERVICES.filter((i) => i.examType === "ielts").length,
+    []
+  );
+  const duolingoCount = useMemo(
+    () => COURSES_AND_SERVICES.filter((i) => i.examType === "duolingo").length,
+    []
+  );
+  const serviceCount = useMemo(
+    () =>
+      COURSES_AND_SERVICES.filter(
+        (i) => i.category === "service" || i.examType === "service"
+      ).length,
+    []
+  );
+  const allCount = COURSES_AND_SERVICES.length;
 
   const filteredItems = useMemo(() => {
     if (activeTab === "all") return COURSES_AND_SERVICES;
-    return COURSES_AND_SERVICES.filter((item) => item.category === activeTab);
+    if (activeTab === "service") {
+      return COURSES_AND_SERVICES.filter(
+        (item) => item.category === "service" || item.examType === "service"
+      );
+    }
+    return COURSES_AND_SERVICES.filter((item) => item.examType === activeTab);
   }, [activeTab]);
 
   return (
@@ -46,65 +87,96 @@ export function CoursesServicesSection() {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Official Pearson Authorized Academy &amp; Booking Partner</span>
+            <span>Pearson Certified Academy &amp; Authorized Exam Partner</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
             Choose The Right{" "}
             <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
-              Pricing &amp; Package
+              Course &amp; Package
             </span>{" "}
             For You
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Price applicable to Bangladesh-based/Local Students. For International Student
-            pricing, please contact us.
+            Comprehensive preparation for PTE Academic, IELTS, and Duolingo English Test (DET)
+            with 1-on-1 private mentoring, proven templates, and official test center support.
           </p>
         </div>
 
-        {/* Tab Switcher */}
+        {/* Tab Switcher (Classy, Minimal Unified Design) */}
         <div className="flex justify-center">
-          <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-inner">
+          <div className="inline-flex flex-wrap items-center justify-center p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-inner gap-1 max-w-full">
+            {/* All Courses Tab */}
             <button
               onClick={() => setActiveTab("all")}
               className={cn(
-                "relative px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none",
+                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
                 activeTab === "all"
-                  ? "bg-primary text-white shadow-sm"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              )}
-            >
-              All Packages (7)
-            </button>
-            <button
-              onClick={() => setActiveTab("course")}
-              className={cn(
-                "relative px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
-                activeTab === "course"
-                  ? "bg-primary text-white shadow-sm"
+                  ? "bg-primary text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               )}
             >
               <GraduationCap className="w-4 h-4" />
-              PTE Preparation Courses (4)
+              <span>All Courses ({allCount})</span>
             </button>
+
+            {/* PTE Course Tab */}
+            <button
+              onClick={() => setActiveTab("pte")}
+              className={cn(
+                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
+                activeTab === "pte"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              )}
+            >
+              <span>PTE Course ({pteCount})</span>
+            </button>
+
+            {/* IELTS Course Tab */}
+            <button
+              onClick={() => setActiveTab("ielts")}
+              className={cn(
+                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
+                activeTab === "ielts"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              )}
+            >
+              <span>IELTS Course ({ieltsCount})</span>
+            </button>
+
+            {/* Duolingo Course Tab */}
+            <button
+              onClick={() => setActiveTab("duolingo")}
+              className={cn(
+                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
+                activeTab === "duolingo"
+                  ? "bg-primary text-white shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              )}
+            >
+              <span>Duolingo Course ({duolingoCount})</span>
+            </button>
+
+            {/* Official Services Tab */}
             <button
               onClick={() => setActiveTab("service")}
               className={cn(
-                "relative px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
+                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
                 activeTab === "service"
-                  ? "bg-primary text-white shadow-sm"
+                  ? "bg-primary text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               )}
             >
               <ShieldCheck className="w-4 h-4" />
-              Official Pearson Services (3)
+              <span>Pearson Services ({serviceCount})</span>
             </button>
           </div>
         </div>
 
-        {/* Responsive Editorial Cards Grid (1 col on mobile, 2 on tablet, 3 on desktop) */}
+        {/* Responsive Editorial Cards Grid */}
         <div className="mt-12">
           <AnimatePresence mode="wait">
             <motion.div
@@ -162,6 +234,20 @@ export function CoursesServicesSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function CoursesServicesSection() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full py-20 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        </div>
+      }
+    >
+      <CoursesServicesContent />
+    </Suspense>
   );
 }
 

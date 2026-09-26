@@ -1,11 +1,20 @@
 export * from "./api";
 export * from "./blog";
 
+export interface NavSubItem {
+  title: string;
+  href: string;
+  description?: string;
+  badge?: string;
+  color?: "blue" | "maroon" | "green" | "default";
+}
+
 export interface NavItem {
   title: string;
   href: string;
   disabled?: boolean;
   external?: boolean;
+  children?: NavSubItem[];
 }
 
 export interface SiteConfig {

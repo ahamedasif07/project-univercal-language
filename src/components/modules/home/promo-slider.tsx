@@ -327,7 +327,7 @@ export function CoursePromoSection() {
                   viewport={{ once: false, amount: 0.3 }}
                   className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap"
                 >
-                  12 Classes!
+                  24 Classes!
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-3 text-primary/80 dark:text-blue-400/90 overflow-visible"
                     viewBox="0 0 120 14"
@@ -368,9 +368,9 @@ export function CoursePromoSection() {
               </h2>
 
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
-                Skip the crowded batches. Learn directly from a Pearson Certified
-                Expert with personalized coaching, real-time AI mock scoring,
-                and official Pearson exam booking assistance.
+                Skip the crowded batches. Learn directly from a Pearson Certified Expert
+                with personalized coaching, real-time AI mock scoring, and official
+                Pearson exam booking assistance.
               </p>
             </div>
 
@@ -400,7 +400,9 @@ export function CoursePromoSection() {
                   35% Off
                 </span>
                 <div className="text-xs">
-                  <span className="font-black text-foreground">Special Admission Offer</span>{" "}
+                  <span className="font-black text-foreground">
+                    Special Admission Offer
+                  </span>{" "}
                   <span className="text-muted-foreground hidden sm:inline">
                     • 18 Live Classes + 1 Month AI Portal + 5 Mocks
                   </span>
@@ -449,10 +451,7 @@ export function CoursePromoSection() {
               <div className="flex items-center gap-1.5">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                    />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <span className="font-bold text-foreground">4.9/5</span>
