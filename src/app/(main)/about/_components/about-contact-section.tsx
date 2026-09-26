@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   MessageSquare,
   Phone,
+  Mail,
   MapPin,
   Send,
   CheckCircle2,
@@ -29,6 +30,13 @@ const CONTACT_METHODS = [
     href: "tel:+8801772224283",
   },
   {
+    icon: Mail,
+    label: "Official Email",
+    value: "info@universallanguage.com.bd",
+    sub: "Inquiries & Corporate Training",
+    href: "mailto:info@universallanguage.com.bd",
+  },
+  {
     icon: MapPin,
     label: "Dhaka Campus",
     value: "Mirpur-10 Roundabout, Dhaka",
@@ -41,6 +49,7 @@ export function AboutContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    email: "",
     exam: "PTE Academic Masterclass",
     message: "",
   });
@@ -51,9 +60,10 @@ export function AboutContactSection() {
     if (!formData.name || !formData.phone) return;
 
     const text = encodeURIComponent(
-      `*Inquiry from Universal Language About Page*\n\n` +
+      `*Inquiry from Universal Language Contact Page*\n\n` +
       `👤 *Name:* ${formData.name}\n` +
       `📱 *Phone:* ${formData.phone}\n` +
+      `✉️ *Email:* ${formData.email || "N/A"}\n` +
       `🎯 *Program:* ${formData.exam}\n` +
       `📝 *Details:* ${formData.message || "Requesting 1-on-1 diagnostic audit"}`
     );
@@ -67,8 +77,8 @@ export function AboutContactSection() {
   return (
     <section id="contact-section" className="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-card/30 via-background to-background border-t border-border/50">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-          {/* Left Column: Direct Links */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start max-w-6xl mx-auto">
+          {/* Left Column: Direct Links & Instant WhatsApp Button */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
@@ -88,7 +98,32 @@ export function AboutContactSection() {
               </p>
             </div>
 
-            <div className="space-y-3 pt-2">
+            {/* Prominent Direct WhatsApp Contact Button */}
+            <a
+              href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20want%20to%20chat%20directly%20with%20an%20academic%20advisor."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-xl shadow-emerald-600/20 hover:shadow-emerald-600/35 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
+                  <MessageSquare className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-emerald-100 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                    Online &amp; Active Now
+                  </div>
+                  <div className="text-base font-black text-white">
+                    Chat Directly on WhatsApp
+                  </div>
+                </div>
+              </div>
+              <ArrowRight className="w-5 h-5 text-white/80" />
+            </a>
+
+            {/* Direct Contact Cards */}
+            <div className="space-y-3 pt-1">
               {CONTACT_METHODS.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -180,19 +215,34 @@ export function AboutContactSection() {
                     </div>
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="text-xs font-semibold text-foreground">Target Program</label>
-                    <select
-                      value={formData.exam}
-                      onChange={(e) => setFormData({ ...formData, exam: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                    >
-                      <option value="PTE Academic Masterclass (Target 79+)">PTE Academic Masterclass (Target 79+)</option>
-                      <option value="PTE Fast-Track Crash Batch">PTE Fast-Track Crash Batch</option>
-                      <option value="German Language (A1–B2)">German Language (A1–B2 Pathway)</option>
-                      <option value="IELTS Academic Prep">IELTS Academic (Band 7.5+)</option>
-                      <option value="1-on-1 VIP Diagnostic Audit">1-on-1 VIP Diagnostic Audit</option>
-                    </select>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-semibold text-foreground">
+                        Email Address (Optional)
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="yourname@gmail.com"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-semibold text-foreground">Target Program</label>
+                      <select
+                        value={formData.exam}
+                        onChange={(e) => setFormData({ ...formData, exam: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                      >
+                        <option value="PTE Academic Masterclass (Target 79+)">PTE Academic Masterclass (Target 79+)</option>
+                        <option value="PTE Fast-Track Crash Batch">PTE Fast-Track Crash Batch</option>
+                        <option value="German Language (A1–B2)">German Language (A1–B2 Pathway)</option>
+                        <option value="IELTS Academic Prep">IELTS Academic (Band 7.5+)</option>
+                        <option value="1-on-1 VIP Diagnostic Audit">1-on-1 VIP Diagnostic Audit</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="space-y-1">

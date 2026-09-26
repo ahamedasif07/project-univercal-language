@@ -29,8 +29,8 @@ export const CONTACT_INFO = {
   telLink: "tel:+8801772224283",
   whatsappNumber: "8801772224283",
   whatsappLink: "https://wa.me/8801772224283",
-  email: "pte@uls.digital",
-  emailLink: "mailto:pte@uls.digital",
-  website: "www.uls.digital",
+  email: "info@universallanguage.com.bd",
+  emailLink: "mailto:info@universallanguage.com.bd",
+  website: "www.universallanguage.com.bd",
 } as const;
 

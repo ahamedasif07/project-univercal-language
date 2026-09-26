@@ -35,14 +35,14 @@ export function ThemeToggle() {
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       {/* Ambient Celestial Glow behind icon on hover */}
-      <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.15),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(186,230,253,0.2),transparent_70%)]" />
+      <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(11,58,130,0.18),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(186,230,253,0.2),transparent_70%)]" />
 
-      {/* Sun Icon (Warm Amber with soft glow) */}
+      {/* Sun Icon (Rich Brand Blue with soft glow - no yellow/amber) */}
       <Sun
-        className="h-[1.12rem] w-[1.12rem] text-amber-500 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
+        className="h-[1.12rem] w-[1.12rem] text-[#0b3a82] dark:text-blue-400 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] 
           rotate-0 scale-100 opacity-100 
           dark:-rotate-90 dark:scale-0 dark:opacity-0 
-          drop-shadow-[0_0_6px_rgba(245,158,11,0.4)]"
+          drop-shadow-[0_0_6px_rgba(11,58,130,0.4)]"
       />
 
       {/* Moon Icon (Luminous Moonlight Sky Blue with soft glow) */}

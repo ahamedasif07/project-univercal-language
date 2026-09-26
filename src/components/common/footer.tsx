@@ -191,8 +191,8 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-primary shrink-0" />
-                <a href="mailto:pte@uls.digital" className="hover:text-slate-900 dark:hover:text-slate-100">
-                  pte@uls.digital
+                <a href="mailto:info@universallanguage.com.bd" className="hover:text-slate-900 dark:hover:text-slate-100">
+                  info@universallanguage.com.bd
                 </a>
               </div>
               <div className="flex items-start gap-2">

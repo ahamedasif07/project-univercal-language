@@ -98,7 +98,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     heroHighlight: "PTE Foundation",
     heroTitle: "Course in Bangladesh",
     heroSubtitle:
-      "Build the English foundation you need to crack the PTE exam through personal 1-to-1 mentoring, grammar training, PTE coaching and expert-proven strategies.",
+      "Build the English foundation you need to master the PTE exam through personal 1-to-1 mentoring, grammar training, PTE coaching and expert-proven strategies.",
     badge: "Best For Beginners",
     badgeType: "beginner",
     thumbnailImage:

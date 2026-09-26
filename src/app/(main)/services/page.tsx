@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { ServicesHero } from "./_components/services-hero";
 import { ServicesWhyUs } from "./_components/services-why-us";
 import { ServicesComparison } from "./_components/services-comparison";
-import { ServicesDecisionGuide } from "./_components/services-decision-guide";
 import { ServicesProcess } from "./_components/services-process";
 // ✅ Real home-page course cards — no duplicated card component
 import { CoursesServicesSection } from "@/components/modules/home/courses-services-section";
@@ -32,10 +31,7 @@ export default function ServicesPage() {
       {/* 4. Feature comparison table */}
       <ServicesComparison />
 
-      {/* 5. "Which package is right for me?" decision guide */}
-      <ServicesDecisionGuide />
-
-      {/* 6. 4-step enrollment process + CTA banner */}
+      {/* 5. 4-step enrollment process + CTA banner */}
       <ServicesProcess />
     </div>
   );
