@@ -72,7 +72,15 @@ export function InstructorCertificatesGallery({
       </div>
 
       {/* Grid of Certificate Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div
+        className={
+          certificates.length === 1
+            ? "max-w-md"
+            : certificates.length === 2
+            ? "grid grid-cols-1 sm:grid-cols-2 gap-5"
+            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        }
+      >
         {certificates.map((cert, index) => (
           <div
             key={cert.id}
@@ -169,30 +177,34 @@ export function InstructorCertificatesGallery({
                   priority
                 />
 
-                {/* Left / Right Arrow Controls */}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrev();
-                  }}
-                  aria-label="Previous certificate"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95 border border-white/20"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
+                {/* Left / Right Arrow Controls (only if multiple certificates) */}
+                {certificates.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePrev();
+                      }}
+                      aria-label="Previous certificate"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95 border border-white/20"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
 
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  aria-label="Next certificate"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95 border border-white/20"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleNext();
+                      }}
+                      aria-label="Next certificate"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95 border border-white/20"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
               </div>
 
               {/* Description & Footer Details */}

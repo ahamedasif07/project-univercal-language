@@ -317,135 +317,83 @@ export const INSTRUCTORS: Instructor[] = [
     },
   },
 
-  // Senior Instructor: Dr. Sumya Sultana Swarna
+  // Instructor: Amatulla Tasnim
   {
-    id: "dr-sumya-sultana-swarna",
-    slug: "dr-sumya-sultana-swarna",
-    name: "Dr. Sumya Sultana Swarna",
-    role: "Senior Instructor & Medical English Lead",
-    title: "Senior Instructor | Universal Language",
+    id: "amatulla-tasnim",
+    slug: "amatulla-tasnim",
+    name: "Amatulla Tasnim",
+    role: "PTE Trainer | English Language Mentor",
+    title: "PTE Trainer & English Language Mentor | Universal Language",
     organization: "Universal Language",
-    scoreHighlight: "PTE 86+ & OET Grade A",
-    badge: "Senior Clinical & Academic Mentor",
-    image: "/images/instructors/swarna.jpg",
-    experience: "6+ Years Mentoring",
-    studentsTrained: "420+ Healthcare Candidates",
-    targetSuccessRate: "97.5% Target Score",
+    scoreHighlight: "Pearson TTA Certified",
+    badge: "PTE Trainer & English Mentor",
+    image: "/images/instructors/amatulla-pp.jpeg",
+    experience: "Dedicated PTE Mentor",
+    studentsTrained: "70–80+ Target Guidance",
+    targetSuccessRate: "High Pass Rate",
     shortBio:
-      "Physician and premier academic mentor specializing in high-stakes English examinations for doctors, healthcare workers, and postgraduate scholars.",
+      "Dedicated to helping PTE aspirants achieve their desired scores, with experience guiding students toward 70–80+ scores through personalized strategies, structured practice, and continuous feedback.",
     fullBio: [
-      "Dr. Sumya Sultana Swarna brings a uniquely analytical, methodical approach to English language coaching. As a qualified medical doctor and senior language pedagogue, she understands firsthand the immense pressure faced by healthcare professionals and postgraduate researchers aiming for overseas registration.",
-      "Dr. Swarna heads the Medical & Professional Migration Academic Wing at Universal Language. She has guided hundreds of physicians, dentists, nurses, and STEM academics to ace their mandatory English thresholds for AHPRA, GMC, and international licensing councils.",
-      "Her instructional style combines psychological test confidence, structured contextual vocabulary retention, and meticulous written analysis to ensure zero grammatical penalty marks.",
+      "Amatulla Tasnim is a dedicated PTE Instructor at Universal Language, passionate about helping students achieve their desired English proficiency scores.",
+      "She is currently pursuing Electrical and Electronic Engineering (EEE) at a private university. Having personally taken both PTE and IELTS examinations twice, she understands the challenges students face throughout preparation and in the actual examination environment.",
+      "She has also completed a Pearson Teacher Training Academy professional training session on “Mapping the Learning Journey: How Level Test Guides Teaching Decisions,” strengthening her knowledge of effective language assessment and teaching practices.",
+      "Her teaching approach focuses on four core principles: Clarity (explaining complex concepts in a simple and understandable way), Practicality (focusing on real exam-style practice and effective strategies), Consistency (encouraging structured practice and regular feedback), and Confidence (preparing students to perform confidently under real test conditions).",
     ],
     quote:
-      "Confidence under timed examination conditions comes from systemic preparation. When you eliminate ambiguity, anxiety vanishes and your true proficiency shines.",
+      "Success in PTE comes from understanding the test, practising with the right strategies, and improving consistently.",
     specialties: [
-      "Medical & Nursing Professional Language Licensure (AHPRA & GMC)",
-      "Summarize Written Text & Essay Writing Architecture",
-      "Academic Reading Comprehension & Collocation Retention",
-      "Test Anxiety Mitigation & Cognitive Performance Under Pressure",
-      "Postgraduate & Master's Statement of Purpose Mentorship",
+      "PTE Academic Core Strategy & Module Mastery",
+      "Personalized Target Score Roadmaps (70–80+ Guidance)",
+      "Real Exam-Style Practice & Continuous Diagnostic Feedback",
+      "PTE & IELTS Test-Taking Psychology & Anxiety Management",
+      "Structured Daily Practice Protocols & Error Correction",
+      "Diagnostic Level Testing & Adaptive Learning Journey Mapping",
     ],
     certifications: [
-      "Pearson Certified Academic English Coach",
-      "Medical Communication & Clinical Dialogue Masterclass Trainer",
-      "British Council Advanced Academic Writing Fellow",
+      "Pearson Teacher Training Academy: Mapping the Learning Journey (How Level Test Guides Teaching Decisions)",
+      "Global Scale of English (GSE) Assessment Framework Trained",
+      "Pearson English Language Learning Webinar Professional Series",
     ],
     education: [
-      "Bachelor of Medicine & Bachelor of Surgery (MBBS)",
-      "Postgraduate Diploma in Health Informatics & Medical Pedagogy",
+      "B.Sc. in Electrical and Electronic Engineering (EEE) — Private University (Ongoing)",
+      "Dual PTE & IELTS Examination Background",
+    ],
+    certificatesGallery: [
+      {
+        id: "amatulla-c1",
+        image: "/images/instructors/amatulla-c1.jpeg",
+        title: "Mapping the Learning Journey: How Level Test Guides Teaching Decisions",
+        issuer: "Pearson Teacher Training Academy",
+        year: "March 2026",
+        badge: "Pearson TTA",
+        description:
+          "Official Pearson Certificate of Completion awarded to Amatulla Tasnim for attending 'Mapping the learning journey: How Level Test guides teaching decisions' with Samantha Bernardo, part of the Pearson Teacher Training Academy webinar series and Global Scale of English.",
+      },
     ],
     featuredCourses: [
       {
-        title: "Medical & Nursing PTE Fast-Track",
-        duration: "5 Weeks • 20 Live Sessions",
+        title: "PTE 70–80+ Target Score Mentorship Batch",
+        duration: "6 Weeks • 24 Live Sessions",
         description:
-          "Specialized batch tailored for doctors, pharmacists, and nurses targeting AHPRA / UK NMC registration.",
+          "Targeted PTE training covering all communicative skills with personalized strategy roadmaps and continuous mock diagnostics.",
       },
       {
-        title: "PTE Academic Writing & Reading Masterwork",
-        duration: "4 Weeks • 16 Sessions",
+        title: "PTE Strategic Foundation & Practice Workshop",
+        duration: "4 Weeks • 16 Intensive Classes",
         description:
-          "Master complex collocations, vocabulary banks, and foolproof templates for 79+ writing scores.",
+          "Master exam formats, build real exam stamina, and eliminate habitual score penalties through structured feedback.",
       },
     ],
     scorecardHighlights: [
-      { label: "PTE Overall", value: "86+", sublabel: "Academic Pathway" },
-      { label: "Reading Matrix", value: "88/90", sublabel: "High Collocation" },
-      { label: "Written Discourse", value: "90/90", sublabel: "Perfect Logic" },
-      { label: "OET Grade", value: "Grade A", sublabel: "Clinical English" },
+      { label: "Target Band", value: "70–80+", sublabel: "Score Strategy Focus" },
+      { label: "Accreditation", value: "Pearson TTA", sublabel: "Teacher Training Academy" },
+      { label: "Assessment", value: "GSE Aligned", sublabel: "Global Scale of English" },
+      { label: "Methodology", value: "4 Pillars", sublabel: "Clarity & Practicality" },
     ],
     socials: {
       whatsapp: "8801772224283",
-      email: "swarna@universallanguage.com.bd",
-      linkedin: "https://linkedin.com",
-    },
-  },
-
-  // Instructor: Samia Chowdhury
-  {
-    id: "samia-chowdhury",
-    slug: "samia-chowdhury",
-    name: "Samia Chowdhury",
-    role: "PTE Instructor & Oral Fluency Specialist",
-    title: "PTE Instructor | Universal Language",
-    organization: "Universal Language",
-    scoreHighlight: "PTE 88+ Oral Fluency 90",
-    badge: "Phonetics & Pronunciation Lead",
-    image: "/images/instructors/samia.jpg",
-    experience: "5+ Years Mentorship",
-    studentsTrained: "380+ Confident Speakers",
-    targetSuccessRate: "98.2% Speaking Target Score",
-    shortBio:
-      "Expert oral phonetics and pronunciation coach dedicated to helping non-native speakers conquer PTE voice recognition algorithms.",
-    fullBio: [
-      "Samia Chowdhury is renowned among PTE aspirants for solving the single biggest roadblock faced by South Asian test-takers: automated speaking evaluation penalties caused by pitch mismatch, unnatural mic hesitation, and breath pauses.",
-      "With specialized training in applied phonetics and cognitive linguistics, Samia developed the 'Steady-Stream Intonation Protocol' which allows students with diverse regional accents to consistently record 85+ and 90 scores in Speaking without attempting unnatural artificial accents.",
-      "She oversees the daily 1-on-1 Speaking Lab at Universal Language, providing minute-by-minute audio waveform analysis to calibrate student microphones, breathing points, and pace.",
-    ],
-    quote:
-      "You don't need a fake foreign accent to get 90 in PTE Speaking. The machine rewards clarity, consistent volume modulation, and steady oral cadence. We teach you exactly what the algorithm hears.",
-    specialties: [
-      "PTE Speaking Machine-Recognition Calibration",
-      "Read Aloud Chunking & Phrasing Modulation",
-      "Repeat Sentence Short-Term Working Memory Techniques",
-      "Describe Image & Retell Lecture Mental Mapping",
-      "Pronunciation & Intonation Correction for Non-Native Speakers",
-    ],
-    certifications: [
-      "Pearson Certified Academic Language Instructor",
-      "Applied English Phonetics & Speech Therapy Practitioner",
-      "TESOL / TEFL 150-Hour Certified Educator",
-    ],
-    education: [
-      "Master of Arts in Applied Linguistics & ELT",
-      "Bachelor of Arts in English Literature (Honours)",
-    ],
-    featuredCourses: [
-      {
-        title: "Speaking & Fluency 90 Breakthrough Lab",
-        duration: "3 Weeks • 12 Practical Labs",
-        description:
-          "Intensive 1-on-1 audio diagnostic labs calibrating microphone distance, intonation, and rhythm.",
-      },
-      {
-        title: "PTE Comprehensive Foundation Course",
-        duration: "6 Weeks • 22 Sessions",
-        description:
-          "From beginner grammar to 65+ confidence across all 4 communicative test modules.",
-      },
-    ],
-    scorecardHighlights: [
-      { label: "PTE Overall", value: "88", sublabel: "Band 8.5 Equivalent" },
-      { label: "Oral Fluency", value: "90/90", sublabel: "Perfect Cadence" },
-      { label: "Pronunciation", value: "89/90", sublabel: "Acoustic Clarity" },
-      { label: "Speaking Total", value: "90/90", sublabel: "Full Marks" },
-    ],
-    socials: {
-      whatsapp: "8801772224283",
-      email: "samia@universallanguage.com.bd",
-      linkedin: "https://linkedin.com",
+      email: "tasnim@universallanguage.com.bd",
+      location: "Dhaka, Bangladesh",
     },
   },
 ];
@@ -459,6 +407,8 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       inst.slug === slug ||
       inst.id === slug ||
       (slug === "nakibul" && inst.id === "nakibul-quader-chowdhury") ||
-      (slug === "nakibul-quader-chowdhury" && inst.id === "nakibul-quader-chowdhury")
+      (slug === "nakibul-quader-chowdhury" && inst.id === "nakibul-quader-chowdhury") ||
+      (slug === "amatulla" && inst.id === "amatulla-tasnim") ||
+      (slug === "tasnim" && inst.id === "amatulla-tasnim")
   );
 }

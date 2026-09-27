@@ -460,60 +460,62 @@ export default async function InstructorDetailPage({ params }: PageProps) {
       </section>
 
       {/* Other Instructors Showcase */}
-      <section className="pt-12 border-t border-border/60 bg-muted/15">
-        <Container>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-black text-foreground">
-                Meet Other Certified Mentors
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Explore our full academic directorate at Universal Language
-              </p>
-            </div>
-            <Link
-              href="/about#faculty-section"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary hover:text-blue-600 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Faculty Overview</span>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {otherInstructors.map((other) => (
+      {otherInstructors.length > 0 && (
+        <section className="pt-12 border-t border-border/60 bg-muted/15">
+          <Container>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-foreground">
+                  {otherInstructors.length === 1 ? "Meet Our Faculty Mentor" : "Meet Other Certified Mentors"}
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  Explore our academic directorate at Universal Language
+                </p>
+              </div>
               <Link
-                key={other.id}
-                href={`/about/instructors/${other.slug}`}
-                className="group p-5 rounded-2xl bg-card border border-border/80 hover:border-primary/50 hover:shadow-xl transition-all duration-300 flex items-center gap-5"
+                href="/about#faculty-section"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-primary hover:text-blue-600 transition-colors"
               >
-                <div className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-slate-900">
-                  <Image
-                    src={other.image}
-                    alt={other.name}
-                    fill
-                    sizes="96px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-primary dark:text-blue-300">
-                    {other.badge}
-                  </div>
-                  <h4 className="text-base font-bold text-foreground truncate group-hover:text-primary transition-colors">
-                    {other.name}
-                  </h4>
-                  <p className="text-xs text-muted-foreground truncate">{other.title}</p>
-                  <div className="mt-2 text-xs font-bold text-primary flex items-center gap-1">
-                    <span>View Profile</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Faculty Overview</span>
               </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
+            </div>
+
+            <div className={otherInstructors.length === 1 ? "max-w-2xl" : "grid grid-cols-1 md:grid-cols-2 gap-6"}>
+              {otherInstructors.map((other) => (
+                <Link
+                  key={other.id}
+                  href={`/about/instructors/${other.slug}`}
+                  className="group p-5 rounded-2xl bg-card border border-border/80 hover:border-primary/50 hover:shadow-xl transition-all duration-300 flex items-center gap-5"
+                >
+                  <div className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-slate-900">
+                    <Image
+                      src={other.image}
+                      alt={other.name}
+                      fill
+                      sizes="96px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-primary dark:text-blue-300">
+                      {other.badge}
+                    </div>
+                    <h4 className="text-base font-bold text-foreground truncate group-hover:text-primary transition-colors">
+                      {other.name}
+                    </h4>
+                    <p className="text-xs text-muted-foreground truncate">{other.title}</p>
+                    <div className="mt-2 text-xs font-bold text-primary flex items-center gap-1">
+                      <span>View Profile</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
     </div>
   );
 }
