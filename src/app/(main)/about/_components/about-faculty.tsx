@@ -31,8 +31,8 @@ export function AboutFaculty() {
           </p>
         </div>
 
-        {/* Classy 2-Mentor Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Classy Mentor Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {INSTRUCTORS.map((instructor, index) => (
             <motion.div
               key={instructor.id}

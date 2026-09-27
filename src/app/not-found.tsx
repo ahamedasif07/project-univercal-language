@@ -1,22 +1,23 @@
-import React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+import { Navbar } from "@/components/common/navbar";
+import { Footer } from "@/components/common/footer";
+import { FloatingWhatsApp } from "@/components/common/floating-whatsapp";
+import { NotFoundView } from "@/components/common/not-found-view";
 
-export default function NotFound() {
+export const metadata: Metadata = {
+  title: "404 - Page Not Located | Universal Language",
+  description: "The page or resource you are looking for does not exist on our global campus map.",
+};
+
+export default function RootNotFound() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] p-6 text-center">
-      <div className="text-7xl font-extrabold text-blue-600 dark:text-blue-400 mb-4 tracking-tighter">
-        404
-      </div>
-      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-        Page Not Found
-      </h1>
-      <p className="text-base text-slate-600 dark:text-slate-400 max-w-md mb-8">
-        Sorry, the page you are searching for does not exist or might have been relocated.
-      </p>
-      <Link href="/">
-        <Button size="lg">Return to Homepage</Button>
-      </Link>
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <NotFoundView />
+      </main>
+      <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }

@@ -6,12 +6,10 @@ import { Metadata } from "next";
 import {
   Award,
   BadgeCheck,
-  Calendar,
+  Briefcase,
   CheckCircle2,
   ChevronRight,
   GraduationCap,
-  MessageCircle,
-  PhoneCall,
   ShieldCheck,
   TrendingUp,
   Users,
@@ -19,8 +17,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Trophy,
-  Mail,
-  MapPin,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { INSTRUCTORS, ALL_PROFILES, getInstructorBySlug } from "@/data/instructors";
@@ -68,10 +64,6 @@ export default async function InstructorDetailPage({ params }: PageProps) {
   // Other mentors to navigate between (from faculty list)
   const otherInstructors = INSTRUCTORS.filter((inst) => inst.slug !== instructor.slug);
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Universal Language, I would like to consult with ${instructor.name} regarding my PTE / Duolingo / English preparation.`
-  );
-
   return (
     <div className="w-full min-h-screen pb-24 bg-gradient-to-b from-background via-slate-50/40 to-background dark:via-slate-950/20">
       {/* Breadcrumb Bar */}
@@ -102,7 +94,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
 
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-            {/* Left: Full Portrait Card & Contact Details */}
+            {/* Left: Full Portrait Card & Faculty Accreditation */}
             <div className="lg:col-span-5 space-y-6">
               <div className="relative rounded-3xl overflow-hidden border-2 border-primary/30 dark:border-primary/40 shadow-2xl bg-slate-900 group">
                 <div className="relative aspect-[3/4] w-full">
@@ -150,60 +142,54 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Direct Booking Callout Card */}
+              {/* Institutional Faculty Card */}
               <div className="p-6 rounded-2xl bg-card border border-border/80 shadow-lg space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                    <Calendar className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-foreground">
-                      Book Direct 1-on-1 Mentorship
+                      Universal Language Faculty
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      Diagnostic scorecard audit &amp; personalized plan
+                      Certified Academic Trainer &amp; Mentor
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-2.5">
-                  <a
-                    href={`https://wa.me/${instructor.socials.whatsapp}?text=${whatsappMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-[#082b61] hover:to-[#0b3a82] shadow-md transition-all cursor-pointer"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>Consult on WhatsApp</span>
-                  </a>
-
-                  {instructor.socials.phone && (
-                    <a
-                      href={`tel:${instructor.socials.phone.replace(/[^0-9+]/g, "")}`}
-                      className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold border border-border/80 bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
-                    >
-                      <PhoneCall className="w-3.5 h-3.5 text-primary" />
-                      <span>Direct: {instructor.socials.phone}</span>
-                    </a>
-                  )}
-
-                  {instructor.socials.email && (
-                    <a
-                      href={`mailto:${instructor.socials.email}`}
-                      className="w-full inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl text-xs font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                    >
-                      <Mail className="w-3.5 h-3.5 text-primary" />
-                      <span>{instructor.socials.email}</span>
-                    </a>
-                  )}
+                <div className="space-y-2 text-xs text-muted-foreground pt-1 border-t border-border/60">
+                  <div className="flex items-center justify-between py-1">
+                    <span className="font-medium text-foreground">Faculty Status</span>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                      Active Instructor
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-1">
+                    <span className="font-medium text-foreground">Class Delivery</span>
+                    <span>Online &amp; In-Person Batches</span>
+                  </div>
+                  <div className="flex items-center justify-between py-1">
+                    <span className="font-medium text-foreground">Curriculum</span>
+                    <span>Official Standard Aligned</span>
+                  </div>
                 </div>
 
-                {instructor.socials.location && (
-                  <div className="pt-3 border-t border-border/60 flex items-center gap-2 text-xs text-muted-foreground">
-                    <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>{instructor.socials.location}</span>
-                  </div>
-                )}
+                <div className="pt-2 space-y-2">
+                  <Link
+                    href="/courses"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-[#082b61] hover:to-[#0b3a82] shadow-md transition-all cursor-pointer"
+                  >
+                    <span>Explore Available Courses</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold border border-border/80 bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
+                  >
+                    <span>Admissions Office Inquiries</span>
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -348,6 +334,46 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 </ul>
               </div>
 
+              {/* Instructional & Professional Experience */}
+              {instructor.workExperience && instructor.workExperience.length > 0 && (
+                <div className="space-y-4 pt-4 border-t border-border/60">
+                  <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                    <Briefcase className="w-5 h-5 text-primary" />
+                    <span>Instructional Experience</span>
+                  </h3>
+                  <div className="space-y-3">
+                    {instructor.workExperience.map((exp, i) => (
+                      <div
+                        key={i}
+                        className="p-4 rounded-2xl bg-card border border-border/80 space-y-2"
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                          <h4 className="text-sm font-bold text-foreground">
+                            {exp.role}
+                          </h4>
+                          <span className="text-xs text-primary font-semibold">
+                            {exp.period}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground font-medium">
+                          {exp.organization}
+                        </p>
+                        {exp.highlights && exp.highlights.length > 0 && (
+                          <ul className="space-y-1.5 pt-1">
+                            {exp.highlights.map((item, hIdx) => (
+                              <li key={hIdx} className="text-xs text-muted-foreground flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0 mt-1.5" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Official Certifications & Accreditations (Promoted up in place of work experience) */}
               <div className="space-y-4 pt-4 border-t border-border/60">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -481,7 +507,15 @@ export default async function InstructorDetailPage({ params }: PageProps) {
               </Link>
             </div>
 
-            <div className={otherInstructors.length === 1 ? "max-w-2xl" : "grid grid-cols-1 md:grid-cols-2 gap-6"}>
+            <div
+              className={
+                otherInstructors.length === 1
+                  ? "max-w-2xl"
+                  : otherInstructors.length === 2
+                  ? "grid grid-cols-1 md:grid-cols-2 gap-6"
+                  : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              }
+            >
               {otherInstructors.map((other) => (
                 <Link
                   key={other.id}

@@ -54,9 +54,9 @@ export interface Instructor {
     value: string;
     sublabel: string;
   }[];
-  socials: {
-    whatsapp: string;
-    email: string;
+  socials?: {
+    whatsapp?: string;
+    email?: string;
     phone?: string;
     linkedin?: string;
     location?: string;
@@ -310,10 +310,7 @@ export const INSTRUCTORS: Instructor[] = [
       { label: "Specialization", value: "PTE & DET", sublabel: "Pearson & Duolingo" },
     ],
     socials: {
-      whatsapp: "8801913623541",
-      email: "nakibulcht@gmail.com",
-      phone: "+880 1913-623541",
-      location: "Nasirabad R/A, Chittagong, Bangladesh",
+      location: "Chittagong, Bangladesh",
     },
   },
 
@@ -391,8 +388,106 @@ export const INSTRUCTORS: Instructor[] = [
       { label: "Methodology", value: "4 Pillars", sublabel: "Clarity & Practicality" },
     ],
     socials: {
-      whatsapp: "8801772224283",
-      email: "tasnim@universallanguage.com.bd",
+      location: "Dhaka, Bangladesh",
+    },
+  },
+
+  // Instructor: Jamius Shams
+  {
+    id: "jamius-shams",
+    slug: "jamius-shams",
+    name: "Jamius Shams",
+    role: "English Language Trainer | IELTS & Spoken English",
+    title: "English Language Trainer & IELTS Specialist | Universal Language",
+    organization: "Universal Language",
+    scoreHighlight: "IELTS Band 7.0 (C1)",
+    badge: "IELTS & Spoken English Specialist",
+    image: "/images/instructors/jamius shams.jpeg",
+    experience: "Active IELTS & Spoken Trainer",
+    studentsTrained: "25+ Cohort Students",
+    targetSuccessRate: "CEFR C1 Level Standard",
+    shortBio:
+      "English Language Trainer with overall Band 7.0 (CEFR Level C1), delivering online, offline, and hybrid classes that turn practical, confidence-building strategies into measurable student progress.",
+    fullBio: [
+      "Jamius Shams is an accomplished English Language Trainer at Universal Language specializing in IELTS Academic and Spoken English. Holding an official overall Band 7.0 (CEFR Level C1) credential, Jamius brings pedagogical clarity, linguistic articulation, and real exam expertise to his students.",
+      "Delivering high-impact online, offline, and hybrid sessions, Jamius has conducted rigorous IELTS Academic and Spoken English batches. He excels at breaking down intricate question types, band descriptors, and strict time-management techniques into clear, practical, and executable steps.",
+      "With a recognized specialization in Writing and Speaking evaluation, his teaching style is centered on personalized diagnostic feedback, rigorous mock test simulations, and interactive language club facilitation—empowering learners to build authentic fluency, grammatical range, lexical precision, and test-day confidence.",
+    ],
+    quote:
+      "Language proficiency and exam success are not achieved through rote memorization. They are built through clear structure, individual attention, and steady diagnostic progress.",
+    specialties: [
+      "IELTS Academic Comprehensive Preparation (Band 7.0)",
+      "Task 1 & Task 2 Writing Evaluation & Band Scoring",
+      "Speaking Mock Interviews & Fluency Coaching",
+      "Reading & Listening Strategy & Time Management",
+      "1-on-1 Mentorship & Diagnostic Gap Feedback",
+      "Online, Offline & Hybrid Classroom Delivery",
+      "Public Speaking & Professional Communication",
+      "Fluency Building & Language Club Facilitation",
+    ],
+    certifications: [
+      "IELTS Academic Overall Band 7.0 (CEFR Level C1)",
+      "Professional Communication Certification — 8th National English Language Summit (2025)",
+      "Advanced Workshops on Professional Articulation & Impactful Communication",
+      "Diagnostic Assessment & Speaking Mock Evaluation Specialist",
+    ],
+    education: [
+      "Bachelor of Business Administration (BBA) — East West University (In Progress - 1st Year)",
+      "Higher Secondary Certificate (HSC) — Business Studies, BAF Shaheen College Dhaka (GPA 4.75/5.00, 2025)",
+      "Secondary School Certificate (SSC) — Business Studies, National Ideal School, Dhaka (GPA 4.72/5.00, 2023)",
+    ],
+    workExperience: [
+      {
+        role: "English Language Instructor | IELTS & Spoken English",
+        organization: "CILL",
+        period: "June 2026 – Present",
+        highlights: [
+          "Conduct IELTS Academic classes across online, offline, and hybrid formats to 25+ students tailored to their proficiency levels.",
+          "Break down question types, band descriptors, and time-management techniques into clear, practical steps.",
+          "Facilitate Language Club sessions through engaging discussions, presentations, and dynamic speaking activities.",
+          "Run IELTS Speaking mock tests, coaching fluency, vocabulary, grammar, and phonetic pronunciation.",
+          "Track student progress using mock tests, structured practice activities, Zoom, and Google Classroom.",
+        ],
+      },
+    ],
+    awards: [
+      {
+        title: "Professional Communication Certification",
+        organization: "8th National English Language Summit",
+        year: "2025",
+      },
+      {
+        title: "Lead Organizer — Life-Save Blood Donation Drive",
+        organization: "Local Hospitals & Volunteer Recruitment (50 units collected)",
+        year: "2025–2026",
+      },
+      {
+        title: "Senior Rover Mate",
+        organization: "BAF Shaheen College Dhaka Air Scout Group",
+        year: "2024–2026",
+      },
+    ],
+    featuredCourses: [
+      {
+        title: "IELTS Academic Band 7.0+ Comprehensive Batch",
+        duration: "8 Weeks • 32 Live Sessions",
+        description:
+          "Complete preparation across all 4 modules with intensive Writing Task 1 & 2 evaluation, live Speaking mock interviews, and timed Reading/Listening techniques.",
+      },
+      {
+        title: "Spoken English & Fluency Acceleration",
+        duration: "4 Weeks • 16 Intensive Classes",
+        description:
+          "Interactive speaking drills, pronunciation coaching, and active language club sessions designed to build real-world communication confidence.",
+      },
+    ],
+    scorecardHighlights: [
+      { label: "Overall Band", value: "7.0", sublabel: "Official IELTS" },
+      { label: "CEFR Level", value: "C1", sublabel: "Advanced Fluency" },
+      { label: "Teaching Format", value: "Hybrid", sublabel: "Online & Offline" },
+      { label: "Focus Skill", value: "W & S", sublabel: "Writing & Speaking" },
+    ],
+    socials: {
       location: "Dhaka, Bangladesh",
     },
   },
@@ -409,6 +504,8 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "nakibul" && inst.id === "nakibul-quader-chowdhury") ||
       (slug === "nakibul-quader-chowdhury" && inst.id === "nakibul-quader-chowdhury") ||
       (slug === "amatulla" && inst.id === "amatulla-tasnim") ||
-      (slug === "tasnim" && inst.id === "amatulla-tasnim")
+      (slug === "tasnim" && inst.id === "amatulla-tasnim") ||
+      (slug === "jamius" && inst.id === "jamius-shams") ||
+      (slug === "jamius-shams" && inst.id === "jamius-shams")
   );
 }
