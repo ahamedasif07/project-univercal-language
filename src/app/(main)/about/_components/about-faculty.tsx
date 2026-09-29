@@ -32,7 +32,7 @@ export function AboutFaculty() {
         </div>
 
         {/* Classy Mentor Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {INSTRUCTORS.map((instructor, index) => (
             <motion.div
               key={instructor.id}
@@ -48,7 +48,7 @@ export function AboutFaculty() {
                   src={instructor.image}
                   alt={instructor.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   priority={index === 0}
                 />
@@ -78,12 +78,12 @@ export function AboutFaculty() {
                 )}
 
                 {/* Minimalist Bottom Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-white space-y-3">
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10 text-white space-y-3">
                   <div>
-                    <h3 className="text-xl font-black text-white group-hover:text-blue-200 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-black text-white group-hover:text-blue-200 transition-colors line-clamp-1">
                       {instructor.name}
                     </h3>
-                    <p className="text-xs font-medium text-slate-300 mt-0.5">
+                    <p className="text-xs font-medium text-slate-300 mt-0.5 line-clamp-1">
                       {instructor.title}
                     </p>
                   </div>

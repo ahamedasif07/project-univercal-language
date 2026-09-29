@@ -491,6 +491,133 @@ export const INSTRUCTORS: Instructor[] = [
       location: "Dhaka, Bangladesh",
     },
   },
+  // Instructor: Papon Miah
+  {
+    id: "papon-miah",
+    slug: "papon-miah",
+    name: "Papon Miah",
+    role: "PTE Instructor | Pearson Certified",
+    title: "PTE Instructor & Pearson Certified Trainer | Universal Language",
+    organization: "Universal Language",
+    scoreHighlight: "Pearson TTA Certified",
+    badge: "PTE Instructor & Assessment Specialist",
+    image: "/images/instructors/papon-pp.jpeg",
+    experience: "Multi-Exam Veteran",
+    studentsTrained: "PTE Academic Focus",
+    targetSuccessRate: "Practical Strategies",
+    shortBio:
+      "Dedicated PTE Instructor at Universal Language, committed to helping students develop their English proficiency and achieve their target PTE outcomes through structured, practical, and personalized preparation.",
+    fullBio: [
+      "Papon Miah is a dedicated PTE Instructor at Universal Language, committed to helping students develop their English proficiency and achieve their target PTE outcomes through structured, practical, and personalized preparation.",
+      "He holds a B.Sc. in Electrical & Electronic Engineering (EEE) from City University, completed in 2024. Alongside his academic background, he has developed a strong focus on PTE Academic preparation, assessment strategies, and exam-oriented teaching.",
+      "Having personally taken the PTE Academic examination multiple times, he has gained valuable first-hand experience of the actual test environment, question patterns, time management, and the challenges candidates may encounter during the examination. This practical exposure allows him to provide students with realistic guidance that goes beyond theoretical preparation.",
+      "He has also completed professional training through the Pearson PTE Teacher Training Academy, strengthening his understanding of PTE Academic assessment and effective teaching practices across Speaking, Writing, Reading, and Listening.",
+      "His goal is to create a focused and supportive learning environment where students can understand the PTE assessment system, develop effective strategies, and approach the real examination with greater confidence and preparation.",
+    ],
+    quote:
+      "PTE preparation is most effective when theoretical strategies meet real exam environment reality. With structured practice, practical exposure, and clear diagnostic guidance, achieving your target score becomes a systematic process.",
+    specialties: [
+      "PTE Academic Complete 4-Module Preparation (Speaking, Writing, Reading, Listening)",
+      "Real Exam Center Environment & Time Management Strategies",
+      "Pearson Automated Assessment & AI Scoring Rubrics",
+      "Speaking Acoustic Delivery & Oral Fluency Calibration",
+      "Writing Module Scoring & Discourse Structure Analysis",
+      "Personalized Diagnostic Roadmaps & Test Anxiety Management",
+    ],
+    certifications: [
+      "Pearson PTE: PTE Academic for Teachers — Speaking",
+      "Pearson PTE: PTE Academic for Teachers — Writing",
+      "Pearson PTE: PTE Academic for Teachers — Listening",
+      "Pearson PTE: PTE Academic for Teachers — Reading",
+      "Pearson PTE: PTE Academic for Teachers — Scoring Speaking and Writing Questions",
+      "Pearson PTE: PTE Academic for Teachers — Introduction to PTE Academic & Scoring",
+      "Pearson PTE Teacher Training Academy Accredited",
+      "Global Scale of English (GSE) Assessment Framework",
+    ],
+    education: [
+      "B.Sc. in Electrical & Electronic Engineering (EEE) — City University (Graduated 2024)",
+      "PTE Academic Multiple Examination First-Hand Test-Taker Background",
+    ],
+    certificatesGallery: [
+      {
+        id: "papon-c1",
+        image: "/images/instructors/papon-c1.jpeg",
+        title: "PTE Academic for Teachers: Speaking",
+        issuer: "Pearson PTE",
+        badge: "Speaking",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Speaking course of study offered by Pearson PTE.",
+      },
+      {
+        id: "papon-c2",
+        image: "/images/instructors/papon-c2.jpeg",
+        title: "PTE Academic for Teachers: Writing",
+        issuer: "Pearson PTE",
+        badge: "Writing",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Writing course of study offered by Pearson PTE.",
+      },
+      {
+        id: "papon-c3",
+        image: "/images/instructors/papon-c3.jpeg",
+        title: "PTE Academic for Teachers: Listening",
+        issuer: "Pearson PTE",
+        badge: "Listening",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Listening course of study offered by Pearson PTE.",
+      },
+      {
+        id: "papon-c4",
+        image: "/images/instructors/papon-c4.jpeg",
+        title: "PTE Academic for Teachers: Reading",
+        issuer: "Pearson PTE",
+        badge: "Reading",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Reading course of study offered by Pearson PTE.",
+      },
+      {
+        id: "papon-c5",
+        image: "/images/instructors/papon-c5.jpeg",
+        title: "PTE Academic for Teachers: Scoring Speaking and Writing Questions",
+        issuer: "Pearson PTE",
+        badge: "Scoring & Assessment",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Scoring Speaking and Writing Questions course of study offered by Pearson PTE.",
+      },
+      {
+        id: "papon-c6",
+        image: "/images/instructors/papon-c6.jpeg",
+        title: "PTE Academic for Teachers: Introduction to PTE Academic & Scoring",
+        issuer: "Pearson PTE",
+        badge: "Introduction & Scoring",
+        description:
+          "Official Pearson Certificate of Completion awarded to Papon Miah for successfully completing PTE Academic for Teachers: Introduction to PTE Academic & Scoring course of study offered by Pearson PTE.",
+      },
+    ],
+    featuredCourses: [
+      {
+        title: "PTE Academic Complete Strategy & Practical Drill",
+        duration: "6 Weeks • 24 Live Sessions",
+        description:
+          "Master all 20 question types across Speaking, Writing, Reading, and Listening with real-exam timing guidelines and personalized feedback.",
+      },
+      {
+        title: "PTE Speaking & Writing Scoring Intensive",
+        duration: "3 Weeks • 12 Live Classes",
+        description:
+          "Focused training on machine scoring algorithms, acoustic clarity, grammar precision, and test-day anxiety management.",
+      },
+    ],
+    scorecardHighlights: [
+      { label: "Credentials", value: "6 Pearson Certs", sublabel: "Teacher Training Academy" },
+      { label: "Exam Experience", value: "Multi-Exam", sublabel: "First-Hand Test Taker" },
+      { label: "Core Focus", value: "4 Modules", sublabel: "Speaking, Writing, Reading, Listening" },
+      { label: "Approach", value: "Personalized", sublabel: "Practical & Diagnostic" },
+    ],
+    socials: {
+      location: "Dhaka, Bangladesh",
+    },
+  },
 ];
 
 // All profiles combined (includes Founder for direct routing / backwards-compatibility)
@@ -506,6 +633,8 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "amatulla" && inst.id === "amatulla-tasnim") ||
       (slug === "tasnim" && inst.id === "amatulla-tasnim") ||
       (slug === "jamius" && inst.id === "jamius-shams") ||
-      (slug === "jamius-shams" && inst.id === "jamius-shams")
+      (slug === "jamius-shams" && inst.id === "jamius-shams") ||
+      (slug === "papon" && inst.id === "papon-miah") ||
+      (slug === "papon-miah" && inst.id === "papon-miah")
   );
 }
