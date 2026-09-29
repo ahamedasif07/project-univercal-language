@@ -18,7 +18,6 @@ import {
   ChevronRight,
   Eye,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 import { CEO_CERTIFICATES, CeoCertificate } from "@/data/instructors";
 
@@ -62,7 +61,7 @@ export function CeoCertificates() {
           </div>
 
           <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-            <Sparkles className="w-4 h-4 text-primary" />
+            <FileText className="w-4 h-4 text-primary" />
             <span>Interactive PDF Credentials</span>
           </div>
         </div>

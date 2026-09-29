@@ -9,7 +9,6 @@ import {
   Award,
   ArrowRight,
   MessageCircle,
-  Sparkles,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 
@@ -84,7 +83,7 @@ export function AboutFounder() {
           >
             {/* Header Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-3.5 h-3.5" />
               <span>Leadership &amp; Vision</span>
             </div>
 
