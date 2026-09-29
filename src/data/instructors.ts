@@ -63,69 +63,170 @@ export interface Instructor {
   };
 }
 
+export interface CeoCertificate {
+  id: string;
+  pdf: string;
+  title: string;
+  category: string;
+  issuer: string;
+  date?: string;
+  description: string;
+}
+
+export const CEO_CERTIFICATES: CeoCertificate[] = [
+  {
+    id: "ceo-c1",
+    pdf: "/images/ceo/ceo-sifat-c1.pdf",
+    title: "PTE Academic for Teachers: Speaking",
+    category: "PTE Core Module",
+    issuer: "Pearson PTE",
+    date: "July 11, 2026",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT for successfully completing PTE Academic for Teachers: Speaking.",
+  },
+  {
+    id: "ceo-c2",
+    pdf: "/images/ceo/ceo-sifat-c2.pdf",
+    title: "PTE Academic for Teachers: Listening",
+    category: "PTE Core Module",
+    issuer: "Pearson PTE",
+    date: "Pearson TTA",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT for successfully completing PTE Academic for Teachers: Listening.",
+  },
+  {
+    id: "ceo-c3",
+    pdf: "/images/ceo/ceo-sifat-c3.pdf",
+    title: "PTE Academic for Teachers: Introduction to PTE Academic & Scoring",
+    category: "Assessment & Scoring",
+    issuer: "Pearson PTE",
+    date: "Pearson TTA",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT for successfully completing Introduction to PTE Academic & Scoring.",
+  },
+  {
+    id: "ceo-c4",
+    pdf: "/images/ceo/ceo-sifat-c4.pdf",
+    title: "PTE Academic for Teachers: Scoring & Module Evaluation",
+    category: "Assessment & Scoring",
+    issuer: "Pearson PTE",
+    date: "Pearson TTA",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT covering scoring algorithms and test specifications.",
+  },
+  {
+    id: "ceo-c5",
+    pdf: "/images/ceo/ceo-sifat-c5.pdf",
+    title: "PTE Academic for Teachers: Writing",
+    category: "PTE Core Module",
+    issuer: "Pearson PTE",
+    date: "Pearson TTA",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT for successfully completing PTE Academic for Teachers: Writing.",
+  },
+  {
+    id: "ceo-c6",
+    pdf: "/images/ceo/ceo-sifat-c6.pdf",
+    title: "PTE Academic for Teachers: Reading",
+    category: "PTE Core Module",
+    issuer: "Pearson PTE",
+    date: "Pearson TTA",
+    description:
+      "Official Pearson Certificate of Completion awarded to MD SOHANOR RAHMAN SHIFAT for successfully completing PTE Academic for Teachers: Reading.",
+  },
+  {
+    id: "ceo-c7",
+    pdf: "/images/ceo/ceo-sifat-c7.pdf",
+    title: "Teaching PTE Pronunciation: Techniques for Accuracy and Intelligibility",
+    category: "Webinar Masterclass",
+    issuer: "Pearson English Language Learning",
+    date: "28 May 2026",
+    description:
+      "Official Pearson Certificate awarded to MD SOHANOR RAHMAN SHIFAT for attending 'Teaching PTE Pronunciation: Techniques for Accuracy and Intelligibility' with Magda Woodham (I Teach PTE webinar series).",
+  },
+  {
+    id: "ceo-c8",
+    pdf: "/images/ceo/ceo-sifat-c8.pdf",
+    title: "Paraphrasing: Teaching Learners to Use Their Own Words",
+    category: "Webinar Masterclass",
+    issuer: "Pearson English Language Learning",
+    date: "30 July 2026",
+    description:
+      "Official Pearson Certificate awarded to MD SOHANOR RAHMAN SHIFAT for attending 'Paraphrasing: Teaching Learners to Use Their Own Words' with Magda Woodham (PTE Power Hour webinar series).",
+  },
+];
+
 // 1. Founder & CEO (Kept for direct profile link, but excluded from INSTRUCTORS mentor cards)
 export const FOUNDER_PROFILE: Instructor = {
   id: "sifat-hasan",
   slug: "sifat-hasan",
-  name: "Sifat Hasan",
+  name: "Md Sohanor Rahman Shifat",
   role: "Founder & Chief Executive Officer (CEO)",
   title: "Founder & Chief Executive Officer (CEO) | Universal Language",
   organization: "Universal Language",
-  scoreHighlight: "PTE 90/90 Overall",
-  badge: "Pearson Master Trainer",
-  image: "/images/instructors/showkat.jpg",
-  experience: "8+ Years Expertise",
-  studentsTrained: "650+ Successful Candidates",
-  targetSuccessRate: "98.8% First-Time Pass",
+  scoreHighlight: "Pearson Trained Leader",
+  badge: "Founder & Chief Executive Officer",
+  image: "/images/ceo/ceo-sifat-pp.jpeg",
+  experience: "3+ Years PTE Sector",
+  studentsTrained: "600+ Student Leads Guided",
+  targetSuccessRate: "Platform Founder",
   shortBio:
-    "Visionary educator and certified Pearson Master Trainer who pioneered algorithm-calibrated PTE training frameworks in Bangladesh.",
+    "Founder & CEO of Universal Language, dedicated to connecting students with quality language learning opportunities, PTE preparation resources, and professional instructors.",
   fullBio: [
-    "Sifat Hasan is the visionary Founder and Chief Academic Director of Universal Language. Having achieved a perfect 90/90 score on the PTE Academic exam himself, Sifat has spent the past decade demystifying the proprietary automated AI scoring algorithms used by Pearson.",
-    "His proprietary 'Algorithmic Fluency & Acoustic Calibration' method has empowered over 650 students—from medical doctors and nurses to IT professionals and engineers—to secure PR pathways and unconditional university admissions across Australia, Canada, the UK, and New Zealand.",
-    "Trained under senior Pearson South Asia academic leadership, Sifat is renowned for his precise diagnostic audits, turning students stuck at 58–64 into 79+ high-scorers within 4 to 6 weeks.",
+    "Md Sohanor Rahman Shifat is the Founder & CEO of UNIVERSAL LANGUAGE, an educational initiative focused on connecting students with quality language learning opportunities, PTE preparation resources, and suitable professional instructors.",
+    "With 3+ years of experience in the PTE education sector, he has developed a strong understanding of PTE Academic, student requirements, examination strategies, scoring methodologies, and the evolving digital learning environment.",
+    "Since entering the PTE education sector, Shifat has worked with 600+ student leads, gaining extensive practical experience in student communication, lead generation, follow-up, digital marketing, enrollment coordination, and education-focused business development. As the founder of Universal Language, he oversees the platform's day-to-day operations, manages student inquiries, coordinates with learners and instructors, and works to create a smooth journey from initial enquiry to enrollment.",
+    "He regularly participates in Pearson webinars, workshops, and professional training sessions, keeping himself updated with the latest PTE scoring system, AI-based evaluation methods, examination strategies, and relevant Pearson policies and updates. His continuous engagement with industry developments allows him to maintain a strong understanding of the changing PTE assessment and preparation landscape.",
+    "Alongside managing Universal Language, Shifat focuses on student engagement, lead generation, digital marketing, enrollment management, and platform growth, with the goal of building a trusted and accessible digital education ecosystem for language learners. His experience combines knowledge of the PTE education sector with practical expertise in student acquisition, communication, and educational platform management.",
+    "He completed his Higher Secondary Certificate (HSC) from Dhaka City College, Dhaka, and is currently pursuing his undergraduate studies under the University of Dhaka. Through Universal Language, Shifat aims to expand access to quality language education and connect students with the right learning opportunities and professional guidance.",
   ],
   quote:
-    "PTE is not an exam of general literary English. It is an algorithmic evaluation system. Once you understand the machine's acoustic model and semantic weight, a 79+ or 90 score is entirely reproducible.",
+    "Through Universal Language, our mission is to expand access to quality language education and connect every student with the right learning opportunities, authentic preparation resources, and professional guidance.",
   specialties: [
-    "Pearson AI Scoring Algorithm Reverse-Engineering",
-    "Speaking Acoustic Flow & Pitch Calibration",
-    "High-Yield Read Aloud & Repeat Sentence Frameworks",
-    "One-on-One Score Gap Diagnostic Auditing",
-    "Australian & UK High-Point Visa Strategy",
+    "PTE Education Sector Leadership & Ecosystem Growth",
+    "600+ Student Leads Management & Enrollment Coordination",
+    "Pearson AI Scoring & Automated Evaluation Analysis",
+    "Student Communication & Academic Advisory",
+    "Education-Focused Digital Marketing & Lead Strategy",
+    "Platform Operations & Quality Assurance",
   ],
   certifications: [
-    "Pearson South Asia Certified PTE Academic Trainer",
-    "Advanced Acoustic Voice Modulation Practitioner",
-    "Certified Language Assessment Specialist (Cambridge CELTA Alum)",
+    "Pearson PTE: PTE Academic for Teachers — Speaking (July 2026)",
+    "Pearson PTE: PTE Academic for Teachers — Listening",
+    "Pearson PTE: PTE Academic for Teachers — Writing",
+    "Pearson PTE: PTE Academic for Teachers — Reading",
+    "Pearson PTE: PTE Academic for Teachers — Introduction to PTE Academic & Scoring",
+    "Pearson PTE: Teaching PTE Pronunciation — Techniques for Accuracy and Intelligibility (May 2026)",
+    "Pearson PTE: Paraphrasing — Teaching Learners to Use Their Own Words (July 2026)",
+    "Global Scale of English (GSE) Assessment Framework",
   ],
   education: [
-    "Master of Education (M.Ed.) — Higher Education Pedagogy",
-    "B.Sc. in Computer Science & Information Systems",
+    "Undergraduate Studies — University of Dhaka (Ongoing)",
+    "Higher Secondary Certificate (HSC) — Dhaka City College, Dhaka",
   ],
   featuredCourses: [
     {
-      title: "PTE 79+ Guaranteed Masterclass",
-      duration: "6 Weeks • 24 Live Sessions",
+      title: "Universal Language PTE Academic Program",
+      duration: "Comprehensive Roadmap",
       description:
-        "Intensive algorithmic training covering all 20 question types with daily 1-on-1 AI diagnostic feedback.",
+        "Student-centric language training linking learners with certified Pearson trainers, diagnostic mocks, and personalized study roadmaps.",
     },
     {
-      title: "PTE Fast-Track Crash Batch",
-      duration: "3 Weeks • 14 Sessions",
+      title: "1-on-1 Student Consultation & Study Abroad Advisory",
+      duration: "Direct Advisory",
       description:
-        "High-intensity targeted bootcamp designed for repeat test-takers needing an urgent 10+ score jump.",
+        "Personalized enrollment guidance, target score alignment, and study abroad visa pathway consultation.",
     },
   ],
   scorecardHighlights: [
-    { label: "PTE Overall", value: "90/90", sublabel: "Official Scorecard" },
-    { label: "Speaking Fluency", value: "90/90", sublabel: "Zero Accent Bias" },
-    { label: "Writing Logic", value: "90/90", sublabel: "Structured Grammar" },
-    { label: "Listening Precision", value: "90/90", sublabel: "Acoustic Mapping" },
+    { label: "Experience", value: "3+ Years", sublabel: "PTE Sector Leadership" },
+    { label: "Student Reach", value: "600+", sublabel: "Student Leads & Inquiries" },
+    { label: "Credentials", value: "8 Pearson Certs", sublabel: "Training & Webinars" },
+    { label: "Academic", value: "Univ. of Dhaka", sublabel: "Undergraduate Studies" },
   ],
   socials: {
     whatsapp: "8801772224283",
-    email: "sifat@universallanguage.com.bd",
-    linkedin: "https://linkedin.com",
+    email: "info@universallanguage.com.bd",
     location: "Dhaka, Bangladesh",
   },
 };
@@ -635,6 +736,12 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "jamius" && inst.id === "jamius-shams") ||
       (slug === "jamius-shams" && inst.id === "jamius-shams") ||
       (slug === "papon" && inst.id === "papon-miah") ||
-      (slug === "papon-miah" && inst.id === "papon-miah")
+      (slug === "papon-miah" && inst.id === "papon-miah") ||
+      (slug === "sifat-hasan" && inst.id === "sifat-hasan") ||
+      (slug === "sifat" && inst.id === "sifat-hasan") ||
+      (slug === "shifat" && inst.id === "sifat-hasan") ||
+      (slug === "md-sohanor-rahman-shifat" && inst.id === "sifat-hasan") ||
+      (slug === "ceo" && inst.id === "sifat-hasan") ||
+      (slug === "founder" && inst.id === "sifat-hasan")
   );
 }

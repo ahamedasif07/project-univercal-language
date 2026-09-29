@@ -8,22 +8,22 @@ import { AccreditationsSection } from "@/components/modules/home/accreditations-
 export const metadata: Metadata = {
   title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",
   description:
-    "Meet Sifat Hasan (Founder & CEO), MD Nakibul Quader Chowdhury (Head Instructor), Amatulla Tasnim, Jamius Shams, and Papon Miah. Discover Universal Language's certified faculty.",
+    "Meet Md Sohanor Rahman Shifat (Founder & CEO), MD Nakibul Quader Chowdhury (Head Instructor), Amatulla Tasnim, Jamius Shams, and Papon Miah. Discover Universal Language's certified faculty.",
   alternates: {
     canonical: "https://universallanguage.com.bd/about",
   },
   openGraph: {
     title: "About Universal Language Academy",
     description:
-      "Elite Pearson-certified language coaching in Dhaka, Bangladesh. Led by Founder & CEO Sifat Hasan and master faculty to achieve 79+ first-attempt milestones.",
+      "Elite Pearson-certified language coaching in Dhaka, Bangladesh. Led by Founder & CEO Md Sohanor Rahman Shifat and certified faculty to achieve target milestones.",
     url: "https://universallanguage.com.bd/about",
     siteName: "Universal Language",
     images: [
       {
-        url: "/images/instructors/showkat.jpg",
+        url: "/images/ceo/ceo-sifat-pp.jpeg",
         width: 1200,
-        height: 630,
-        alt: "Sifat Hasan - Founder & CEO of Universal Language",
+        height: 1200,
+        alt: "Md Sohanor Rahman Shifat - Founder & CEO of Universal Language",
       },
     ],
   },
@@ -42,9 +42,9 @@ const aboutJsonLd = {
         "Premier Pearson PTE Academic, German & foreign language coaching in Dhaka, Bangladesh. Official Pearson exam voucher booking and Alfa PTE AI practice portal.",
       founder: {
         "@type": "Person",
-        name: "Sifat Hasan",
+        name: "Md Sohanor Rahman Shifat",
         jobTitle: "Founder & Chief Executive Officer (CEO)",
-        image: "https://universallanguage.com.bd/images/instructors/showkat.jpg",
+        image: "https://universallanguage.com.bd/images/ceo/ceo-sifat-pp.jpeg",
       },
       address: {
         "@type": "PostalAddress",
@@ -56,15 +56,15 @@ const aboutJsonLd = {
     {
       "@type": "Person",
       "@id": "https://universallanguage.com.bd/#founder",
-      name: "Sifat Hasan",
+      name: "Md Sohanor Rahman Shifat",
       jobTitle: "Founder & Chief Executive Officer (CEO)",
       worksFor: {
         "@type": "EducationalOrganization",
         name: "Universal Language",
       },
-      image: "https://universallanguage.com.bd/images/instructors/showkat.jpg",
+      image: "https://universallanguage.com.bd/images/ceo/ceo-sifat-pp.jpeg",
       description:
-        "Founder & CEO of Universal Language, Master of Education, Pearson South Asia Certified Master Trainer.",
+        "Founder & CEO of Universal Language, 3+ years experience in the PTE education sector with 600+ student leads guided and Pearson Teacher Training Academy certifications.",
     },
   ],
 };

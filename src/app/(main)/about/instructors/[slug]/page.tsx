@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import {
   Award,
@@ -36,6 +36,25 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  if (
+    slug === "sifat-hasan" ||
+    slug === "sifat" ||
+    slug === "shifat" ||
+    slug === "md-sohanor-rahman-shifat" ||
+    slug === "ceo" ||
+    slug === "founder"
+  ) {
+    return {
+      title: "Md Sohanor Rahman Shifat - Founder & CEO | Universal Language",
+      description:
+        "Founder & CEO of Universal Language, PTE education leader with 3+ years experience and 8 Pearson credentials.",
+      alternates: {
+        canonical: "https://universallanguage.com.bd/about/ceo",
+      },
+    };
+  }
+
   const instructor = getInstructorBySlug(slug);
 
   if (!instructor) {
@@ -55,6 +74,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function InstructorDetailPage({ params }: PageProps) {
   const { slug } = await params;
+
+  if (
+    slug === "sifat-hasan" ||
+    slug === "sifat" ||
+    slug === "shifat" ||
+    slug === "md-sohanor-rahman-shifat" ||
+    slug === "ceo" ||
+    slug === "founder"
+  ) {
+    redirect("/about/ceo");
+  }
+
   const instructor = getInstructorBySlug(slug);
 
   if (!instructor) {
