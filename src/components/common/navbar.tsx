@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { MAIN_NAV_ITEMS } from "@/config/constants";
+import { MAIN_NAV_ITEMS, CONTACT_INFO } from "@/config/constants";
 import { ThemeToggle } from "./theme-toggle";
 import { AnimatedLogo } from "./animated-logo";
 import {
@@ -25,6 +25,10 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(true);
+
+  const whatsappEnrollUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
+    "Hello Universal Language, I want to enroll in a course."
+  )}`;
 
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
@@ -261,14 +265,19 @@ export function Navbar() {
           <ThemeToggle />
 
           {/* Theme-aligned Luxury CTA: "Enroll Now" */}
-          <Link href="/register" className="inline-block group focus:outline-none">
+          <a
+            href={whatsappEnrollUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block group focus:outline-none"
+          >
             <button className="relative overflow-hidden inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-xl text-xs md:text-[13px] font-semibold tracking-wider uppercase text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-primary hover:via-blue-600 hover:to-indigo-600 dark:from-primary dark:via-blue-500 dark:to-indigo-500 shadow-[0_4px_14px_-2px_rgba(11,58,130,0.35),inset_0_1px_1px_rgba(255,255,255,0.35)] dark:shadow-[0_4px_16px_-2px_rgba(59,130,246,0.4),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_6px_22px_-2px_rgba(11,58,130,0.5)] dark:hover:shadow-[0_6px_24px_-2px_rgba(59,130,246,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer">
               {/* Shimmer Sheen Reflection */}
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
               <span className="relative z-10">Enroll Now</span>
               <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-          </Link>
+          </a>
         </div>
 
         {/* Medium & Mobile Screens: Theme Toggle + shadcn Sheet Menu */}
@@ -418,8 +427,10 @@ export function Navbar() {
 
               {/* Mobile Bottom CTA + Copyright */}
               <div className="pt-6 border-t border-border/40 space-y-4">
-                <Link
-                  href="/register"
+                <a
+                  href={whatsappEnrollUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full block group focus:outline-none"
                 >
@@ -428,7 +439,7 @@ export function Navbar() {
                     <span className="relative z-10">Enroll Now</span>
                     <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </button>
-                </Link>
+                </a>
 
                 <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
                   <span>Universal Language</span>

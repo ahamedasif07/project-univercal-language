@@ -39,7 +39,7 @@ const PACKAGES: Array<{
   },
   {
     name: "Crash Booster",
-    short: "10 Days",
+    short: "1 Month",
     gradient: "from-rose-600 to-pink-600",
     features: [true, false, "partial", true, true, true, false, false],
   },

@@ -31,7 +31,7 @@ export const POSTER_SLIDES: PosterSlide[] = [
     title: "PTE Premium Course",
     badge: "35% Special Discount",
     tag: "Focused Mini-Batch (4-8 Students)",
-    image: "/images/dic-image-1.jpeg?v=20261003",
+    image: "/images/dic-image-1.jpeg",
     alt: "PTE Premium Course at Universal Language with 35% Discount - 18 Live Classes, 4-8 Students, 5 Mock Tests",
     discountText: "35% OFF • 18 Live Classes • 4-8 Students • 5 Mock Tests",
   },
@@ -40,7 +40,7 @@ export const POSTER_SLIDES: PosterSlide[] = [
     title: "PTE One to One Course",
     badge: "35% Special Discount",
     tag: "Personalized 1-on-1 Mentorship",
-    image: "/images/dic-image-2.jpeg?v=20261003",
+    image: "/images/dic-image-2.jpeg",
     alt: "PTE One to One Course at Universal Language with 35% Discount - 24 Live Classes, 1 Student, 5 Mock Tests",
     discountText: "35% OFF • 24 Live Classes • 1 Student • 5 Mock Tests",
   },
@@ -49,7 +49,7 @@ export const POSTER_SLIDES: PosterSlide[] = [
     title: "PTE Crash Course",
     badge: "35% Special Discount",
     tag: "Fast-Track Mini-Batch (2-3 Students)",
-    image: "/images/dic-image-3.jpeg?v=20261003",
+    image: "/images/dic-image-3.jpeg",
     alt: "PTE Crash Course at Universal Language with 35% Discount - 18 Live Classes, 2-3 Students, 5 Mock Tests",
     discountText: "35% OFF • 18 Live Classes • 2-3 Students • 5 Mock Tests",
   },
@@ -58,13 +58,13 @@ export const POSTER_SLIDES: PosterSlide[] = [
     title: "Official PTE Exam Registration",
     badge: "৳500 Instant Discount",
     tag: "Pearson Authorized Test Center",
-    image: "/images/dialog-image-new.jpeg?v=20261003",
+    image: "/images/dialog-image-new.jpeg",
     alt: "Official Pearson PTE Exam Registration at Universal Language - BDT 25,500 (Regular BDT 26,000)",
     discountText: "BDT 25,500 (Reg. 26,000) • Official Slot Booking Support",
   },
 ];
 
-const AUTOPLAY_INTERVAL = 6000; // ms
+const AUTOPLAY_INTERVAL = 3000; // ms
 
 // Function to generate the dedicated WhatsApp enrollment link with the selected course flyer
 function getWhatsAppEnrollUrl(slide: PosterSlide) {
@@ -104,7 +104,7 @@ export function PromoSlider({ className }: { className?: string }) {
     setProgress(0);
   };
 
-  // Progress Bar & Auto-Advance Timer
+  // Progress Bar & Auto-Advance Timer (clean increment without side effects in state updater)
   useEffect(() => {
     if (isPaused) return;
 
@@ -113,16 +113,23 @@ export function PromoSlider({ className }: { className?: string }) {
 
     const interval = setInterval(() => {
       setProgress((old) => {
-        if (old >= 100) {
-          goToNext();
-          return 0;
+        const next = old + increment;
+        if (next >= 100) {
+          return 100;
         }
-        return old + increment;
+        return next;
       });
     }, stepMs);
 
     return () => clearInterval(interval);
-  }, [isPaused, goToNext]);
+  }, [isPaused, currentIndex]);
+
+  // Transition to next slide cleanly when progress reaches 100%
+  useEffect(() => {
+    if (progress >= 100) {
+      goToNext();
+    }
+  }, [progress, goToNext]);
 
   // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -184,7 +191,7 @@ export function PromoSlider({ className }: { className?: string }) {
                     src={slide.image}
                     alt={slide.alt}
                     fill
-                    priority={idx === 0}
+                    priority
                     unoptimized
                     sizes="(max-width: 768px) 100vw, 470px"
                     className="object-contain w-full h-full transition-transform duration-500 group-hover/poster:scale-[1.01]"

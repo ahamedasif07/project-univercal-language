@@ -257,7 +257,8 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
   const isMostPopular = item.badge === "Most Popular";
   const isOfficialService = item.category === "service";
 
-  const whatsappLink = `https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20${encodeURIComponent(
+  const whatsappNumber = item.whatsappNumber || "8801772224283";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Universal%20Language,%20I%20am%20interested%20in%20${encodeURIComponent(
     item.title
   )}%20(${item.currency}%20${item.price.toLocaleString()}).%20Please%20provide%20guidance.`;
 

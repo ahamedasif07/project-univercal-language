@@ -65,6 +65,8 @@ export interface CoursePackage {
   category: PackageCategory;
   examType?: CourseExamType;
   title: string;
+  whatsappNumber?: string;
+  phoneFormatted?: string;
   heroHighlight: string;
   heroTitle: string;
   heroSubtitle: string;
@@ -139,12 +141,13 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     tagline: "Complete A-Z course – fastest route to 79+ in PTE",
     shortDescription:
       "Our flagship 1-on-1 intensive program designed for serious aspirants aiming for 65+ to 79+ in the shortest possible timeframe.",
-    price: 10500,
-    originalPrice: 12500,
+    price: 16000,
+    originalPrice: 25000,
     currency: "BDT",
+    priceNote: "36% OFF",
     format: "PRIVATE (1:1)",
-    classesCount: "12 One-to-One Intensive Masterclasses",
-    duration: "3 to 4 Weeks",
+    classesCount: "24 One-to-One Intensive Masterclasses",
+    duration: "2 Months",
     tickerItems: [
       "Most Popular PTE Course",
       "Fastest Route to 79+ in PTE",
@@ -229,7 +232,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       highlight: "Included?",
       items: [
         {
-          title: "APEUni VIP Account (30 Days)",
+          title: "APEUni VIP Account (60 Days)",
           description: "Full unlimited AI scoring tool access with real exam algorithm.",
           iconName: "Laptop",
         },
@@ -292,8 +295,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     },
     ctaBanner: {
       heading: "Enroll in the Complete PTE A-Z Masterclass",
-      priceText: "BDT 10,500",
-      subText: "12 One-to-One Classes | 3 to 4 Weeks Sprint",
+      priceText: "BDT 16,000",
+      subText: "24 One-to-One Classes | 2 Months Comprehensive Mentorship",
       buttonText: "Book Your Consultation Now",
     },
     faqs: [
@@ -303,19 +306,19 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
           "Because it delivers the highest return on investment. The 1-on-1 format means the mentor focuses purely on your specific score leaks, resulting in a 94.6% first-attempt success rate.",
       },
       {
-        question: "Can I finish this course in 2 to 3 weeks if my exam date is near?",
+        question: "Can I finish this course faster if my exam date is near?",
         answer:
-          "Yes! Since this is a private 1-on-1 course, we can schedule 4 to 5 classes per week so you can finish the full curriculum in under 3 weeks.",
+          "Yes! Since this is a private 1-on-1 course, we can customize your schedule with more frequent classes per week so you can finish the full curriculum at your preferred pace.",
       },
       {
         question: "Is the fee payable in installments?",
         answer:
-          "Yes, we provide an easy 2-part installment option: 50% upon enrollment and 50% after the 6th class.",
+          "Yes, we provide an easy 2-part installment option: 50% upon enrollment and 50% after the 12th class.",
       },
       {
         question: "Are mock tests and AI software access included?",
         answer:
-          "Yes, the BDT 10,500 fee is all-inclusive with 30 days of VIP AI practice portal access, materials, and mock audits.",
+          "Yes, the BDT 16,000 fee is all-inclusive with 60 days of VIP AI practice portal access, materials, and mock audits.",
       },
     ],
   },
@@ -328,24 +331,24 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     examType: "pte",
     title: "Crash PTE (Score Booster)",
     heroHighlight: "Crash PTE",
-    heroTitle: "Score Booster Sprint (10 Days)",
+    heroTitle: "Score Booster Sprint (1 Month)",
     heroSubtitle:
-      "Short on time? An intensive 10-day 1-on-1 boot camp pinpointed directly at high-mark questions, template refinement, and rapid score gains.",
+      "Short on time? An intensive 1-month 1-on-1 boot camp (15 masterclasses) pinpointed directly at high-mark questions, template refinement, and rapid score gains.",
     badge: "Fastest Improvement",
     badgeType: "booster",
     thumbnailImage:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
     tagline: "One-to-one coaching for fast score improvement",
     shortDescription:
-      "Short on time? A super-focused 10-day 1-on-1 boot camp pinpointed directly at high-mark questions and instant score jumps.",
+      "Short on time? A super-focused 1-month 1-on-1 boot camp (15 master classes) pinpointed directly at high-mark questions and instant score jumps.",
     price: 9000,
     originalPrice: 11000,
     currency: "BDT",
     format: "PRIVATE (1:1)",
-    classesCount: "10 Master Classes",
-    duration: "10 Days Intensive",
+    classesCount: "15 Master Classes",
+    duration: "1 Month",
     tickerItems: [
-      "10 Days Fast-Track Score Booster",
+      "15 Classes Fast-Track Score Booster",
       "One-to-One Coaching for Rapid Improvement",
       "Score Gap Autopsy",
       "Immediate Oral Fluency Jump",
@@ -355,7 +358,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       badge: "Emergency Sprint",
       heading: "Fix Your Score Leaks Fast. Refine Templates. Walk in Confident.",
       description:
-        "Targeted specifically for students who already took the PTE exam and missed their target by 3-8 points, or those with an upcoming test date within the next 10-14 days. We don't waste time on low-weightage tasks; we fix your specific score leaks immediately.",
+        "Targeted specifically for students who already took the PTE exam and missed their target by 3-8 points, or those with an upcoming test date within the next 2-4 weeks. We don't waste time on low-weightage tasks; we fix your specific score leaks immediately.",
       features: [
         {
           title: "Scorecard Autopsy",
@@ -390,10 +393,10 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       ],
     },
     learningJourney: {
-      heading: "The 10-Day",
+      heading: "The 1-Month",
       highlight: "Sprint",
       phase1: {
-        badge: "DAYS 1 - 5",
+        badge: "CLASSES 1 - 8",
         title: "Scorecard Autopsy & Speaking/Writing Emergency Drills",
         description:
           "Identify lost points from previous attempts and immediately correct Read Aloud, Repeat Sentence, and Essay formulation.",
@@ -406,7 +409,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
         ],
       },
       phase2: {
-        badge: "DAYS 6 - 10",
+        badge: "CLASSES 9 - 15",
         title: "High-Yield Tasks, Prediction Bank & Center Simulation",
         description:
           "Master the top repeated questions for Write From Dictation and Reading FIB, followed by a scored full mock test.",
@@ -424,7 +427,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       highlight: "Included?",
       items: [
         {
-          title: "10-Day AI Practice Portal",
+          title: "1-Month AI Practice Portal",
           description: "Full AI scoring platform access during your intensive boot camp.",
           iconName: "Laptop",
         },
@@ -460,29 +463,29 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       highlight: "For?",
       subtitle: "Designed for test takers under tight timelines",
       checklist: [
-        "Students with an upcoming exam date in 1 to 2 weeks",
+        "Students with an upcoming exam date in 2 to 4 weeks",
         "Test-takers who got 55-62 and urgently need to cross 65+",
         "Candidates who scored 72-76 and need that final push to 79+",
         "Those who need immediate template correction and mock test diagnostics",
-        "Applicants who cannot commit to a 2-month course and want an intensive sprint",
+        "Applicants who want a high-impact 1-month 1-on-1 sprint",
       ],
     },
     ctaBanner: {
-      heading: "Book the 10-Day Crash Score Booster",
+      heading: "Book the Crash PTE Score Booster",
       priceText: "BDT 9,000",
-      subText: "10 Master Classes | 10 Days Sprint",
+      subText: "15 Master Classes | 1 Month Sprint",
       buttonText: "Book Your Consultation Now",
     },
     faqs: [
       {
-        question: "Can my score really improve in just 10 days?",
+        question: "Can my score really improve in 1 month with 15 classes?",
         answer:
           "Yes! Most students missing their target score by a few marks don't suffer from bad English—they lose marks from bad mic positioning, wrong pacing, or spending time on low-value questions. Fixing these in 1:1 sessions produces immediate score jumps.",
       },
       {
-        question: "Can I take two classes in one day if my exam is next week?",
+        question: "Can I take more frequent classes if my exam date is sooner?",
         answer:
-          "Yes, we can arrange 2 sessions per day (e.g. morning and evening) so you complete the full 10 sessions in 5 to 7 days.",
+          "Yes, we can arrange 4 to 5 sessions per week so you can complete the 15 masterclasses at an accelerated pace.",
       },
     ],
   },
@@ -504,16 +507,17 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop",
     tagline: "Affordable small-group coaching with personalized attention",
     shortDescription:
-      "Top-tier coaching at our most affordable budget. Small intimate batches (max 5-6 students) with peer practice and live mentoring.",
-    price: 7000,
-    originalPrice: 9000,
+      "Top-tier coaching at our most affordable budget. Small intimate batches (max 5-6 students) with peer practice and live mentoring across 24 master classes.",
+    price: 7499,
+    originalPrice: 9500,
     currency: "BDT",
+    priceNote: "21% OFF",
     format: "Small Group Batch",
-    classesCount: "12 Master Classes",
-    duration: "1 Month",
+    classesCount: "24 Master Classes",
+    duration: "2 Months",
     tickerItems: [
       "Small-Group Coaching (Max 5-6 Students)",
-      "Affordable Premier Training in Dhaka",
+      "24 Master Classes Across 2 Months",
       "Live Interactive Speaking Practice",
       "Full Course Materials & Portal Included",
       "Recorded Class Backups",
@@ -522,7 +526,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       badge: "Collaborative Learning",
       heading: "Small Batch. Dedicated Attention. Budget-Friendly Excellence.",
       description:
-        "Get the comprehensive Universal Language curriculum at a budget-friendly rate. Unlike generic institutes with 25-30 students per room, our Focused Batch limits seats to only 5 to 6 students so everyone gets individual speaking practice, live feedback, and personalized attention.",
+        "Get the comprehensive Universal Language curriculum at a budget-friendly rate. Unlike generic institutes with 25-30 students per room, our Focused Batch limits seats to only 5 to 6 students so everyone gets individual speaking practice, live feedback, and personalized attention across 24 master classes.",
       features: [
         {
           title: "Max 5-6 Students",
@@ -557,11 +561,11 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       ],
     },
     learningJourney: {
-      heading: "The 1-Month",
+      heading: "The 2-Month",
       highlight: "Curriculum",
       phase1: {
-        badge: "WEEKS 1 - 2",
-        title: "Speaking & Writing Modules with Live Drills",
+        badge: "MONTH 1",
+        title: "Speaking & Writing Modules with Live Drills (Classes 1 - 12)",
         description:
           "Master the oral fluency algorithms and tested essay templates through interactive group presentations.",
         topics: [
@@ -573,8 +577,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
         ],
       },
       phase2: {
-        badge: "WEEKS 3 - 4",
-        title: "Reading, Listening & Batch Mock Test Simulation",
+        badge: "MONTH 2",
+        title: "Reading, Listening & Batch Mock Test Simulation (Classes 13 - 24)",
         description:
           "Tackle academic collocations and high-yield listening questions, concluding with a simulated mock exam.",
         topics: [
@@ -591,7 +595,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       highlight: "Included?",
       items: [
         {
-          title: "1-Month AI Practice Portal",
+          title: "2-Month AI Practice Portal",
           description: "Complete access to question banks and scored evaluations.",
           iconName: "Laptop",
         },
@@ -629,22 +633,22 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       checklist: [
         "College & university students seeking budget-friendly premier training",
         "Learners who thrive in interactive peer groups and competitive study environments",
-        "Anyone planning to take the PTE exam within the next 1 to 2 months",
+        "Anyone planning to take the PTE exam within the next 2 to 3 months",
         "Friends or study partners preparing together for study abroad visas",
         "Students wanting live trainer interaction without paying full 1-on-1 private fees",
       ],
     },
     ctaBanner: {
       heading: "Join the Upcoming Focused Batch",
-      priceText: "BDT 7,000",
-      subText: "12 Classes | 1 Month Duration | Max 6 Seats",
+      priceText: "BDT 7,499",
+      subText: "24 Classes | 2 Months Duration | Max 6 Seats",
       buttonText: "Book Your Consultation Now",
     },
     faqs: [
       {
         question: "How many students are in one batch?",
         answer:
-          "We strictly limit each batch to 5-6 students. This ensures that every student speaks live and gets individual attention in every single session.",
+          "We strictly limit each batch to 5-6 students. This ensures that every student speaks live and gets individual attention in every single session across all 24 classes.",
       },
       {
         question: "What happens if I miss a live class?",
@@ -955,7 +959,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     tagline: "Prepare with verified AI practice portals (Alfa PTE / APEUni / Official Pearson)",
     shortDescription:
       "Get official VIP subscriptions to the world's best AI scoring portals (Alfa PTE, APEUni, Official Pearson Practice) with instant activation.",
-    price: 1200,
+    price: 1500,
     priceNote: "Starting from",
     currency: "BDT",
     format: "Software Subscription",
@@ -965,8 +969,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       {
         name: "Alfa PTE (1 Month VIP)",
         duration: "1 Month",
-        price: 1200,
-        originalPrice: 1500,
+        price: 1500,
+        originalPrice: 1800,
         currency: "BDT",
         popular: false,
         features: ["Full AI Scoring", "Unlimited Practice", "Monthly Prediction Bank", "Pronunciation Feedback"],
@@ -991,7 +995,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       },
     ],
     tickerItems: [
-      "Alfa PTE VIP 1 Month - BDT 1,200",
+      "Alfa PTE VIP 1 Month - BDT 1,500",
       "APEUni VIP 1 Month - BDT 2,000",
       "Official Pearson Practice 1 Week - BDT 4,150",
       "Instant Activation in 10 Minutes",
@@ -1035,7 +1039,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
           "The world's leading third-party practice environments with updated weekly exam predictions, AI pronunciation feedback, and full question banks.",
         topics: [
           "APEUni VIP 30 Days (BDT 2,000)",
-          "Alfa PTE VIP 30 Days (BDT 1,200)",
+          "Alfa PTE VIP 30 Days (BDT 1,500)",
           "Over 5,000+ Real Repeated Exam Questions",
           "Cross-Platform Access on Smartphone & Laptop",
         ],
@@ -1081,7 +1085,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     },
     ctaBanner: {
       heading: "Get Your AI Practice Portal Subscription",
-      priceText: "Starting from BDT 1,200",
+      priceText: "Starting from BDT 1,500",
       subText: "Alfa PTE • APEUni • Official Pearson Practice",
       buttonText: "Book Your Consultation Now",
     },
@@ -1251,6 +1255,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     slug: "basic-to-ielts",
     category: "course",
     examType: "ielts",
+    whatsappNumber: "8801705568596",
+    phoneFormatted: "+880 1705-568596",
     title: "Basic to IELTS Course",
     heroHighlight: "Basic to Advance",
     heroTitle: "IELTS Preparation Course",
@@ -1556,6 +1562,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     slug: "ielts-crash-course",
     category: "course",
     examType: "ielts",
+    whatsappNumber: "8801705568596",
+    phoneFormatted: "+880 1705-568596",
     title: "IELTS Crash Course",
     heroHighlight: "Intensive Fast-Track",
     heroTitle: "IELTS Preparation Program",

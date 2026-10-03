@@ -8,14 +8,14 @@ import { Container } from "@/components/common/container";
 
 const DECISION_TREE = [
   {
-    q: "Intermediate English & need full PTE A-Z in 3-4 weeks?",
+    q: "Intermediate English & need full PTE A-Z in 2 months (24 classes)?",
     a: "Complete PTE A-Z Masterclass",
     slug: "complete-pte-a-z-masterclass",
     accent: "border-l-blue-500 bg-blue-500/5",
     pill: "bg-blue-500/15 text-blue-700 dark:text-blue-300 border-blue-500/30",
   },
   {
-    q: "Exam in 10 days & need a fast score boost?",
+    q: "Need a fast 1-on-1 score booster in 1 month (15 classes)?",
     a: "Crash PTE Score Booster",
     slug: "crash-pte-score-booster",
     accent: "border-l-rose-500 bg-rose-500/5",

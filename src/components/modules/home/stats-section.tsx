@@ -20,7 +20,7 @@ interface StatItem {
 const STATS: StatItem[] = [
   {
     id: "students",
-    value: 150,
+    value: 650,
     suffix: "+",
     label: "Students Mentored",
     highlight: "Focused 1-to-1 personalized coaching",
@@ -37,12 +37,13 @@ const STATS: StatItem[] = [
     highlight: "Scored required points on first attempt",
     icon: Target,
     gradient: "from-emerald-600 to-teal-600",
-    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    badgeColor:
+      "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
     borderColor: "hover:border-emerald-500/40",
   },
   {
     id: "improvement",
-    value: 18,
+    value: 56,
     prefix: "+",
     suffix: " Pts",
     label: "Avg. Score Increase",
@@ -61,7 +62,8 @@ const STATS: StatItem[] = [
     highlight: "Verified feedback from successful students",
     icon: Star,
     gradient: "from-purple-600 to-violet-600",
-    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+    badgeColor:
+      "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
     borderColor: "hover:border-purple-500/40",
   },
 ];
@@ -161,7 +163,8 @@ export function StatsSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            As a boutique Pearson-certified academy, we believe in authentic numbers and guaranteed individual attention over empty promises.
+            As a boutique Pearson-certified academy, we believe in authentic numbers and
+            guaranteed individual attention over empty promises.
           </p>
         </div>
 
