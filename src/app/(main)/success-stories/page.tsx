@@ -1,32 +1,56 @@
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Trophy,
   ShieldCheck,
-  CheckCircle2,
   ArrowRight,
-  Award,
-  Users2,
-  CalendarCheck,
-  PhoneCall,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { SuccessStoriesSection } from "@/components/modules/home/success-stories-section";
 import { TestimonialSliderSection } from "@/components/modules/home/testimonial-slider-section";
+import { siteConfig } from "@/config/site";
+import { STUDENT_SUCCESS_STORIES } from "@/data/success-stories";
 
 export const metadata: Metadata = {
-  title: "Success Stories & Verified Reviews | Universal Language",
+  title: "Success Stories & Pearson Verified Scorecards | Universal Language",
   description:
-    "Explore authentic Pearson PTE Academic scorecards and verified reviews from Bangladeshi students who achieved 79+ and 90/90 on their very first attempt with Universal Language.",
+    "Explore authentic Pearson PTE Academic scorecards from Bangladeshi students who achieved 77+, 71+, and target scores on their first attempt with Universal Language.",
   alternates: {
-    canonical: "https://universallanguage.com.bd/success-stories",
+    canonical: `${siteConfig.url}/success-stories`,
   },
+  openGraph: {
+    title: "Pearson PTE Academic Verified Scorecards | Universal Language Hall of Fame",
+    description:
+      "Authentic Pearson PTE Academic score reports from Saima Rahman Anika (77/90), Md Ashikur Rahman (71/90), and more.",
+    url: `${siteConfig.url}/success-stories`,
+  },
+};
+
+const successStoriesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Pearson PTE Academic Verified Student Scorecards",
+  description: "Official Pearson score reports of students from Universal Language Academy",
+  itemListElement: STUDENT_SUCCESS_STORIES.map((student, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Person",
+      name: student.name,
+      description: `Scored Overall ${student.overallScore}/90 in Pearson PTE Academic. Goal: ${student.targetGoal}`,
+      award: `PTE Academic ${student.overallScore}/90 - ${student.badge}`,
+    },
+  })),
 };
 
 export default function SuccessStoriesPage() {
   return (
     <div className="w-full min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(successStoriesJsonLd) }}
+      />
+
       {/* ── 1. Hero with matching visible light blue background ── */}
       <section className="relative pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-gradient-to-b from-blue-100/75 via-blue-50/50 to-background dark:from-blue-950/50 dark:via-slate-950/40 dark:to-background">
         {/* Rich visible ambient blue lighting */}

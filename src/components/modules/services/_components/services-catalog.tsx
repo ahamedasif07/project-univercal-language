@@ -8,13 +8,10 @@ import {
   Clock,
   Users,
   CheckCircle2,
-  Star,
   Zap,
   GraduationCap,
   ShieldCheck,
   BookOpen,
-  Laptop,
-  PhoneCall,
 } from "lucide-react";
 import { COURSES_AND_SERVICES, CoursePackage } from "@/data/courses";
 import { Container } from "@/components/common/container";
@@ -59,27 +56,6 @@ const CARD_ACCENTS = [
   "from-teal-600 via-emerald-600 to-green-600",
   "from-amber-500 via-orange-500 to-yellow-500",
 ];
-
-// ─── Feature icon mapping ────────────────────────────────────────────────────
-function FeatureIcon({ name }: { name: string }) {
-  const map: Record<string, React.ElementType> = {
-    BookOpen,
-    Users,
-    Mic: PhoneCall,
-    MessageSquare: PhoneCall,
-    Laptop,
-    Zap,
-    ShieldCheck,
-    Award: Star,
-    FileText: BookOpen,
-    Clock,
-    GraduationCap,
-    CheckCircle2,
-    PhoneCall,
-  };
-  const Icon = map[name] ?? CheckCircle2;
-  return <Icon className="w-3.5 h-3.5" />;
-}
 
 // ─── Single Course / Service Card ───────────────────────────────────────────
 function ServiceCard({ item, index }: { item: CoursePackage; index: number }) {

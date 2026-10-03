@@ -47,11 +47,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setCoursesDropdownOpen(false);
     setMobileMenuOpen(false);
-  }, [pathname]);
+  }
 
   // GSAP Initial Entrance Animation
   useEffect(() => {

@@ -44,7 +44,7 @@ export function BlogsHero() {
             transition={{ duration: 0.55, delay: 0.16 }}
             className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
           >
-            Expert strategies, study guides, and exam insights from Universal Language's
+            Expert strategies, study guides, and exam insights from Universal Language&apos;s
             certified PTE, IELTS, German, and study abroad mentors.
           </motion.p>
         </div>

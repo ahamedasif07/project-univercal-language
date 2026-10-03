@@ -40,7 +40,7 @@ export default function AuthLayout({
               <span className="text-blue-300">Global Universities</span>
             </h2>
             <p className="text-blue-100/80 text-base leading-relaxed">
-              Bangladesh's most trusted Pearson-certified language academy. Score high,
+              Bangladesh&apos;s most trusted Pearson-certified language academy. Score high,
               study abroad, and build your future with expert mentors.
             </p>
           </div>
@@ -60,8 +60,8 @@ export default function AuthLayout({
           {/* Testimonial quote */}
           <div className="rounded-2xl bg-white/8 border border-white/12 p-5 space-y-2.5">
             <p className="text-sm text-blue-100/90 italic leading-relaxed">
-              "After 1 month of mentorship at Universal Language, I scored PTE 86 on my
-              first attempt. The diagnostic method is genuinely different."
+              &ldquo;After 1 month of mentorship at Universal Language, I scored PTE 86 on my
+              first attempt. The diagnostic method is genuinely different.&rdquo;
             </p>
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-400 flex items-center justify-center text-white text-xs font-black">

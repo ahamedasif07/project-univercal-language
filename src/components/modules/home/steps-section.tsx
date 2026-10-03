@@ -13,10 +13,8 @@ import {
   PhoneCall,
   CheckCircle2,
   Clock,
-  ShieldCheck,
   Award,
   ChevronRight,
-  Check,
 } from "lucide-react";
 
 interface ProcessStep {

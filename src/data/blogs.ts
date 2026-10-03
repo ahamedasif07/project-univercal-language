@@ -1,5 +1,3 @@
-import { BookOpen, Clock, User } from "lucide-react";
-
 export interface BlogPost {
   slug: string;
   title: string;

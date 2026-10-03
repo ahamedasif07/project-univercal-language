@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, Suspense } from "react";
+import React, { useState, useMemo, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -35,13 +36,14 @@ function CoursesServicesContent() {
       : "all"
   );
 
-  // Sync tab if URL changes
-  useEffect(() => {
-    const tabParam = searchParams.get("tab") as ActiveCourseTab;
+  const tabParam = searchParams.get("tab") as ActiveCourseTab;
+  const [prevTabParam, setPrevTabParam] = useState(tabParam);
+  if (prevTabParam !== tabParam) {
+    setPrevTabParam(tabParam);
     if (tabParam && ["all", "pte", "ielts", "duolingo", "service"].includes(tabParam)) {
       setActiveTab(tabParam);
     }
-  }, [searchParams]);
+  }
 
   const pteCount = useMemo(
     () => COURSES_AND_SERVICES.filter((i) => i.examType === "pte").length,
@@ -274,11 +276,12 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
       <div>
         {/* Compact Photo Header (Height reduced to h-36 sm:h-40 for sleek minimal look) */}
         <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
-          <img
+          <Image
             src={item.thumbnailImage}
             alt={item.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
           />
           {/* Subtle Dark Gradient Vignette for high text contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b2545]/90 via-[#0b2545]/40 to-black/25" />

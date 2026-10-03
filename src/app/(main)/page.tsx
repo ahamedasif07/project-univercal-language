@@ -5,7 +5,6 @@ import { CoursesServicesSection } from "@/components/modules/home/courses-servic
 import { CoursePromoSection } from "@/components/modules/home/promo-slider";
 import { DestinationsSection } from "@/components/modules/home/destinations-section";
 import { StepsSection } from "@/components/modules/home/steps-section";
-import { AccreditationsSection } from "@/components/modules/home/accreditations-section";
 import { SuccessStoriesSection } from "@/components/modules/home/success-stories-section";
 import { TestimonialSliderSection } from "@/components/modules/home/testimonial-slider-section";
 import { FaqSection } from "@/components/modules/home/faq-section";

@@ -1,21 +1,80 @@
 import React from "react";
 import type { Metadata } from "next";
-import { HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
+import { HelpCircle, MessageCircle } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { FaqSection } from "@/components/modules/home/faq-section";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | Universal Language",
   description:
     "Find answers to common questions about Universal Language's Pearson PTE coaching, NSDA government accreditation, exam voucher booking, and score guarantee programs.",
   alternates: {
-    canonical: "https://universallanguage.com.bd/faq",
+    canonical: `${siteConfig.url}/faq`,
   },
+  openGraph: {
+    title: "Frequently Asked Questions | Universal Language",
+    description:
+      "All common questions answered regarding Pearson PTE Academic coaching, IELTS, exam booking in Dhaka, and Alfa PTE AI practice.",
+    url: `${siteConfig.url}/faq`,
+  },
+};
+
+const faqPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is Universal Language officially registered with the Government?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, absolutely. Universal Language is officially registered under the Prime Minister's Office — National Skills Development Authority (NSDA). This statutory registration certifies that our training infrastructure, curriculum standards, and learning hours are officially recognized by Bangladesh national skills frameworks.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is your mentorship different from other coaching centres?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our lead mentors are trained and certified directly by Pearson's South Asia Academic Lead. Unlike institutions that rely on leaked internet templates which Pearson's 2024 AI algorithm actively penalizes, we teach Pearson's authentic pedagogical scaffolding, speech acoustic fluency correction, and rubric-based summarization techniques.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I book my Pearson PTE exam without an international credit card?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Universal Language is an authorized Pearson PTE Academic test voucher and booking partner. You can reserve your preferred exam slot and test center in Dhaka without any credit card endorsement, foreign currency markups, or payment failure risks using local bKash, Nagad, or direct bank transfer.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is your Alfa PTE AI partnership, and how does it help students?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "As an official Alfa PTE Institutional Partner, every enrolled student receives VIP access to Pearson-calibrated artificial intelligence scoring software. This provides real-time acoustic feedback on oral fluency, pronunciation pitch, and high-frequency real exam questions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "My English foundation is weak (below 50). Can I realistically achieve 65+ or 79+?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Over 96% of our students achieve their target score on their first attempt after our mentorship. We begin with a 10-minute diagnostic evaluation to identify your exact score leaks, followed by a customized 3 to 6-week daily drill schedule.",
+      },
+    },
+  ],
 };
 
 export default function FaqPage() {
   return (
     <div className="w-full min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
+
       {/* ── 1. Hero with matching visible light blue background ── */}
       <section className="relative pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-gradient-to-b from-blue-100/75 via-blue-50/50 to-background dark:from-blue-950/50 dark:via-slate-950/40 dark:to-background">
         {/* Rich visible ambient blue lighting */}
@@ -58,18 +117,19 @@ export default function FaqPage() {
             <h3 className="text-2xl font-black text-foreground">
               Didn&apos;t Find Your Answer?
             </h3>
-            <p className="text-sm text-muted-foreground max-w-md mx-auto">
-              Our academic advisors are available on WhatsApp to answer any specific questions regarding your preparation.
+            <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+              Our academic counselors are available on WhatsApp for direct assistance with
+              batch schedules, fees, and free diagnostic booking.
             </p>
             <div className="pt-2">
               <a
-                href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20have%20a%20question%20regarding%20your%20coaching%20programs."
+                href="https://wa.me/8801772224283?text=Hello%20Universal%20Language,%20I%20have%20a%20question%20regarding%20your%20PTE%20courses."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-[#082b61] hover:to-[#0b3a82] shadow-md transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 hover:from-[#082b61] hover:to-[#0b3a82] shadow-md transition-all cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Ask on WhatsApp</span>
+                <span>Chat on WhatsApp Directly</span>
               </a>
             </div>
           </div>

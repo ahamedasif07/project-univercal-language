@@ -3,7 +3,6 @@ import { AboutHero } from "./_components/about-hero";
 import { AboutFounder } from "./_components/about-founder";
 import { AboutPhilosophy } from "./_components/about-philosophy";
 import { AboutFaculty } from "./_components/about-faculty";
-import { AccreditationsSection } from "@/components/modules/home/accreditations-section";
 
 export const metadata: Metadata = {
   title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",

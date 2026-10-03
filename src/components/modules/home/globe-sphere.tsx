@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import * as THREE from "three";
 import { X, GraduationCap, FileText, Globe2, ChevronRight } from "lucide-react";
 
@@ -484,9 +485,12 @@ export function GlobeSphere() {
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src={`/flags/${selected.id}.svg`}
                   alt={selected.name}
+                  width={55}
+                  height={35}
+                  unoptimized
                   className="w-[55px] h-[35px] rounded-md object-cover shadow-md border-2 border-white/60 dark:border-white/20 shrink-0"
                 />
                 <div>

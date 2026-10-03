@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, Zap, BookOpen, Globe2, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Users, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/common/container";
 
 const WHY_ITEMS = [

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Compass, ShieldCheck, ArrowRight } from "lucide-react";
+import { Compass, ArrowRight } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { StepsSection } from "@/components/modules/home/steps-section";
 

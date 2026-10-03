@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   MessageSquareQuote,
 } from "lucide-react";
-import { STUDENT_TESTIMONIALS, StudentTestimonial } from "@/data/testimonials";
+import { STUDENT_TESTIMONIALS } from "@/data/testimonials";
 
 export function TestimonialSliderSection() {
   const [currentIndex, setCurrentIndex] = useState(0);

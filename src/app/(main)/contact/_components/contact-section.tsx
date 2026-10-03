@@ -11,7 +11,6 @@ import {
   Copy,
   Check,
   ExternalLink,
-  MessageCircle,
   AlertCircle,
 } from "lucide-react";
 import { Container } from "@/components/common/container";

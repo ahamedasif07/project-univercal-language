@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, ArrowLeft, ArrowRight, BookOpen, Share2, Calendar } from "lucide-react";
 import { Container } from "@/components/common/container";
-import { BlogPost, BLOG_POSTS, CATEGORY_COLORS } from "@/data/blogs";
+import { BlogPost, CATEGORY_COLORS } from "@/data/blogs";
 
 interface BlogPostViewProps {
   post: BlogPost;
@@ -27,13 +27,13 @@ const ARTICLE_BODY: Record<string, React.ReactNode> = {
         Why Template-Based Preparation Fails
       </h2>
       <p>
-        Pearson's scoring algorithm was significantly updated in 2024 to detect and
+        Pearson&apos;s scoring algorithm was significantly updated in 2024 to detect and
         penalize recycled internet templates. Students who memorize leaked speaking
-        templates often score lower after Pearson's AI flags their responses as
+        templates often score lower after Pearson&apos;s AI flags their responses as
         inauthentic — regardless of grammar or vocabulary accuracy.
       </p>
       <p>
-        Universal Language mentors are trained directly by Pearson South Asia's academic
+        Universal Language mentors are trained directly by Pearson South Asia&apos;s academic
         lead to teach authentic pedagogical scaffolding — the same framework Pearson uses
         internally to develop its test questions.
       </p>
@@ -48,15 +48,15 @@ const ARTICLE_BODY: Record<string, React.ReactNode> = {
         strong.
       </p>
       <blockquote className="border-l-4 border-primary pl-5 italic text-muted-foreground bg-muted/30 py-4 pr-4 rounded-r-xl">
-        "After my diagnostic, my mentor identified that I was losing points on Repeat
+        &ldquo;After my diagnostic, my mentor identified that I was losing points on Repeat
         Sentence due to stress pattern errors — not grammar. Fixing just that one skill
-        pushed me from 68 to 79 in three weeks." — Tanvir Hasan, PTE 86
+        pushed me from 68 to 79 in three weeks.&rdquo; &mdash; Tanvir Hasan, PTE 86
       </blockquote>
       <h2 className="text-xl sm:text-2xl font-black text-foreground mt-8 mb-4">
         The 3-Phase Study Framework
       </h2>
       <p>
-        Our mentors structure every student's journey into three phases: Foundation
+        Our mentors structure every student&apos;s journey into three phases: Foundation
         Calibration (Week 1-2), Skill-Specific Drilling (Week 3-5), and Mock Exam
         Simulation (Week 6). Each phase builds on acoustic feedback from the Alfa PTE AI
         portal before culminating in a full timed practice exam under real test conditions.

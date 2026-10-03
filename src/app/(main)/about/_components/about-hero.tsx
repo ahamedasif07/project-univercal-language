@@ -7,9 +7,6 @@ import {
   ShieldCheck,
   ArrowRight,
   GraduationCap,
-  Award,
-  Users2,
-  CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 

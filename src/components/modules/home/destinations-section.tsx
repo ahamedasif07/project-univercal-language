@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import Image from "next/image";
 import {
   GraduationCap,
   Globe2,
@@ -734,20 +735,24 @@ export function DestinationsSection() {
               <div>
                 {/* Landmark Photo Header with Flag Overlaid */}
                 <div className="relative h-44 w-full overflow-hidden bg-muted">
-                  <img
+                  <Image
                     src={country.landmarkImage}
                     alt={country.landmarkName}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
+                    fill
+                    unoptimized
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
                   {/* Flag Badge on Top Left */}
                   <div className="absolute top-3 left-3 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 shadow-md">
-                    <img
+                    <Image
                       src={country.flagSvg}
                       alt={`${country.name} Flag`}
+                      width={32}
+                      height={20}
+                      unoptimized
                       className="w-[32px] h-[20px] rounded object-cover shadow-sm"
                     />
                     <span className="text-[11px] font-bold text-white tracking-wider uppercase">
@@ -828,19 +833,24 @@ export function DestinationsSection() {
               <div>
                 {/* Sheet Hero Image Banner with Flag Overlay */}
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-muted">
-                  <img
+                  <Image
                     src={activeCountry.landmarkImage}
                     alt={activeCountry.landmarkName}
-                    className="w-full h-full object-cover"
+                    fill
+                    unoptimized
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                   {/* Top Left Flag Badge & Name */}
                   <div className="absolute bottom-4 left-6 right-6 flex items-end justify-between">
                     <div className="flex items-center gap-3.5">
-                      <img
+                      <Image
                         src={activeCountry.flagSvg}
                         alt={`${activeCountry.name} Flag`}
+                        width={55}
+                        height={35}
+                        unoptimized
                         className="w-[55px] h-[35px] rounded-md object-cover shadow-lg border-2 border-white/80 dark:border-white/20"
                       />
                       <div>

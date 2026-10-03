@@ -364,7 +364,7 @@ export function CertificateCorners() {
 }
 
 // Clean Vector QR Code Simulation
-export function CertificateQrCode({ code }: { code: string }) {
+export function CertificateQrCode({ code }: { code?: string }) {
   return (
     <div className="flex flex-col items-center sm:items-end">
       <div className="p-1.5 bg-white rounded-lg border border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-center">
@@ -403,7 +403,7 @@ export function CertificateQrCode({ code }: { code: string }) {
         </svg>
       </div>
       <div className="text-[9px] font-mono text-muted-foreground mt-1 text-center sm:text-right">
-        SCAN TO VERIFY
+        {code || "SCAN TO VERIFY"}
       </div>
     </div>
   );

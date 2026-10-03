@@ -4,19 +4,13 @@ import Link from "next/link";
 import { Metadata } from "next";
 import {
   Award,
-  BadgeCheck,
   Briefcase,
   CheckCircle2,
   ChevronRight,
   GraduationCap,
   ShieldCheck,
-  TrendingUp,
-  Users,
   MessageCircle,
-  Mail,
-  MapPin,
   ArrowRight,
-  BookOpen,
 } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { FOUNDER_PROFILE } from "@/data/instructors";

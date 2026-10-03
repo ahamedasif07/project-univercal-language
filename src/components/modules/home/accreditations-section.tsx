@@ -3,11 +3,6 @@
 import React, { useState } from "react";
 import {
   ShieldCheck,
-  Building2,
-  GraduationCap,
-  Award,
-  Globe2,
-  FileCheck,
   Lock,
 } from "lucide-react";
 import {

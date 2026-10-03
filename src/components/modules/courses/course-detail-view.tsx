@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   BookOpen,
   Users,
@@ -220,10 +221,13 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
               <div className="rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-primary/20 dark:border-primary/40 shadow-lg overflow-hidden">
                 {/* Photo Header (Compact & Classy) */}
                 <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <img
+                  <Image
                     src={course.thumbnailImage}
                     alt={course.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                    className="object-cover"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b2545]/90 via-[#0b2545]/30 to-transparent" />
                   <div className="absolute bottom-2.5 left-4 right-4 flex items-center justify-between text-white text-xs">
