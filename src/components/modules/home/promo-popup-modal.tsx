@@ -37,11 +37,11 @@ export function PromoPopupModal() {
   // WhatsApp link with selected course flyer details
   const phoneNumber = "8801772224283";
   const whatsappMessage = [
-    "Hello Universal Language! I saw your Duolingo English Test (DET) course catalog on your website popup:",
-    "📚 Program: Duolingo English Test Product Catalog",
-    "🎯 Available Packages: Full Course (BDT 15,000) | Premium 1-to-1 (BDT 20,000) | Exam Purchase Support (BDT 10,000)",
+    "Hello Universal Language! I saw your Official PTE Exam Registration offer on your website popup:",
+    "📚 Program: Pearson PTE Academic Exam Registration",
+    "🎯 Offer: BDT 25,500 (Regular BDT 26,000 - Instant BDT 500 Discount)",
     "🖼️ Selected Flyer: https://universallanguagebd.com/images/dialog-image-new.jpeg",
-    "I would like to enroll / inquire about the Duolingo English Test preparation. Please guide me.",
+    "I would like to book my official PTE exam slot. Please guide me through the registration process.",
   ].join("\n");
 
   const whatsappEnrollUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
@@ -53,7 +53,7 @@ export function PromoPopupModal() {
       className="fixed inset-0 z-[100000] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label="Duolingo English Test Catalog Offer"
+      aria-label="Pearson PTE Exam Registration Offer"
     >
       {/* Softer, lighter backdrop with subtle blur (Clicking outside closes modal) */}
       <div
@@ -84,13 +84,14 @@ export function PromoPopupModal() {
           rel="noopener noreferrer"
           onClick={handleClose}
           className="block relative aspect-square w-full cursor-pointer group select-none transition-transform duration-300 hover:scale-[1.01]"
-          title="Click to open WhatsApp and inquire about Duolingo English Test"
+          title="Click to open WhatsApp and book PTE Exam Registration"
         >
           <Image
-            src="/images/dialog-image-new.jpeg"
-            alt="Universal Language Duolingo English Test Product Catalog"
+            src="/images/dialog-image-new.jpeg?v=20261003"
+            alt="Universal Language Official Pearson PTE Exam Registration Offer"
             fill
             priority
+            unoptimized
             sizes="(max-width: 768px) 90vw, 430px"
             className="object-contain w-full h-full"
           />

@@ -30,28 +30,37 @@ export const POSTER_SLIDES: PosterSlide[] = [
     id: 1,
     title: "PTE Premium Course",
     badge: "35% Special Discount",
-    tag: "Pearson Certified Strategy",
-    image: "/images/dic-image-1.jpeg",
+    tag: "Focused Mini-Batch (4-8 Students)",
+    image: "/images/dic-image-1.jpeg?v=20261003",
     alt: "PTE Premium Course at Universal Language with 35% Discount - 18 Live Classes, 4-8 Students, 5 Mock Tests",
     discountText: "35% OFF • 18 Live Classes • 4-8 Students • 5 Mock Tests",
   },
   {
     id: 2,
-    title: "PTE Practical Simulation & Focused Course",
+    title: "PTE One to One Course",
     badge: "35% Special Discount",
-    tag: "Focused-Based Mini-Batch",
-    image: "/images/dic-image-2.jpeg",
-    alt: "PTE Practical Simulation and Focused-Based Mini-Batch Course with 35% Discount at Universal Language",
-    discountText: "35% OFF • 1 Month Premium Portal • Pearson Guided Strategies",
+    tag: "Personalized 1-on-1 Mentorship",
+    image: "/images/dic-image-2.jpeg?v=20261003",
+    alt: "PTE One to One Course at Universal Language with 35% Discount - 24 Live Classes, 1 Student, 5 Mock Tests",
+    discountText: "35% OFF • 24 Live Classes • 1 Student • 5 Mock Tests",
   },
   {
     id: 3,
-    title: "PTE Simulation & Mini-Batch Masterclass",
+    title: "PTE Crash Course",
     badge: "35% Special Discount",
-    tag: "Pearson Certified Partner",
-    image: "/images/dic-image-3.jpeg",
-    alt: "Official Pearson Partner PTE Focused-Based Mini-Batch Course with 35% Discount",
-    discountText: "35% OFF • 18 Live Classes • 1 Month Portal • 5 Mock Tests",
+    tag: "Fast-Track Mini-Batch (2-3 Students)",
+    image: "/images/dic-image-3.jpeg?v=20261003",
+    alt: "PTE Crash Course at Universal Language with 35% Discount - 18 Live Classes, 2-3 Students, 5 Mock Tests",
+    discountText: "35% OFF • 18 Live Classes • 2-3 Students • 5 Mock Tests",
+  },
+  {
+    id: 4,
+    title: "Official PTE Exam Registration",
+    badge: "৳500 Instant Discount",
+    tag: "Pearson Authorized Test Center",
+    image: "/images/dialog-image-new.jpeg?v=20261003",
+    alt: "Official Pearson PTE Exam Registration at Universal Language - BDT 25,500 (Regular BDT 26,000)",
+    discountText: "BDT 25,500 (Reg. 26,000) • Official Slot Booking Support",
   },
 ];
 
@@ -60,11 +69,12 @@ const AUTOPLAY_INTERVAL = 6000; // ms
 // Function to generate the dedicated WhatsApp enrollment link with the selected course flyer
 function getWhatsAppEnrollUrl(slide: PosterSlide) {
   const phoneNumber = "8801772224283";
+  const cleanImagePath = slide.image.split("?")[0];
   const message = [
-    `Hello Universal Language, I want to enroll in this course:`,
-    `📚 Course: ${slide.title}`,
+    `Hello Universal Language, I want to enroll in / book this offer:`,
+    `📚 Program: ${slide.title}`,
     `🎯 Offer: ${slide.badge} (${slide.discountText})`,
-    `🖼️ Selected Flyer: https://universallanguagebd.com${slide.image}`,
+    `🖼️ Selected Flyer: https://universallanguagebd.com${cleanImagePath}`,
     `Please share the batch schedule, enrollment process, and fee details.`,
   ].join("\n");
 
@@ -175,6 +185,7 @@ export function PromoSlider({ className }: { className?: string }) {
                     alt={slide.alt}
                     fill
                     priority={idx === 0}
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, 470px"
                     className="object-contain w-full h-full transition-transform duration-500 group-hover/poster:scale-[1.01]"
                   />
@@ -250,7 +261,11 @@ export function PromoSlider({ className }: { className?: string }) {
             >
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-10.416c-5.522 0-10 4.477-10 10 0 1.769.459 3.498 1.338 5.023l-1.422 5.195 5.344-1.401c1.465.799 3.117 1.22 4.74 1.22 5.523 0 10-4.478 10-10 0-5.523-4.477-10-10-10z" />
             </svg>
-            <span>Enroll via WhatsApp (Claim 35% Discount)</span>
+            <span>
+              {activeSlide.id === 4
+                ? "Book Exam via WhatsApp (Claim ৳500 Discount)"
+                : "Enroll via WhatsApp (Claim 35% Discount)"}
+            </span>
             <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover/cta:translate-x-1" />
           </a>
         </div>
