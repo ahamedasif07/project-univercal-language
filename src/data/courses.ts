@@ -35,6 +35,30 @@ export interface PricingOption {
   features: string[];
 }
 
+export interface CourseCurriculumModule {
+  moduleNumber?: number;
+  title: string;
+  lecturesCountBadge: string;
+  subtitle?: string;
+  description?: string;
+  note?: string;
+  isFree?: boolean;
+  lectures: string[];
+}
+
+export interface CurriculumOverview {
+  totalLectures: string;
+  freeReviewSessions: string;
+  modulesCount: string;
+  examFocus: string;
+  totalSummary: string;
+}
+
+export interface WhatYouWillGainItem {
+  title: string;
+  description: string;
+}
+
 export interface CoursePackage {
   id: string;
   slug: string;
@@ -56,8 +80,14 @@ export interface CoursePackage {
   format: string;
   classesCount: string;
   duration: string;
+  classDuration?: string;
+  weeklySchedule?: string;
+  totalHours?: string;
   pricingOptions?: PricingOption[];
   tickerItems: string[];
+  curriculumOverview?: CurriculumOverview;
+  curriculumModules?: CourseCurriculumModule[];
+  whatYouWillGain?: WhatYouWillGainItem[];
   overview: {
     badge: string;
     heading: string;
@@ -1574,6 +1604,604 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
         question: "How long does it take to get DET results?",
         answer:
           "Results are delivered to your portal within 48 hours of completing the test.",
+      },
+    ],
+  },
+
+  // 7. Basic to IELTS Course (Basic to Advance)
+  {
+    id: "basic-to-ielts",
+    slug: "basic-to-ielts",
+    category: "course",
+    examType: "ielts",
+    title: "Basic to IELTS Course",
+    heroHighlight: "Basic to Advance",
+    heroTitle: "IELTS Preparation Course",
+    heroSubtitle:
+      "Build your English skills from the basics and progress towards IELTS exam preparation with our structured Basic to IELTS Course. Designed for learners who want to strengthen their grammar, improve their reading, listening, writing, and speaking skills, and develop the confidence needed for the IELTS examination.",
+    badge: "Basic to Advance",
+    badgeType: "popular",
+    thumbnailImage:
+      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop",
+    tagline: "Build foundational grammar & master all 4 IELTS test modules",
+    shortDescription:
+      "28 sessions (26 lectures + 2 free review sessions). 2 hours per class, 3 classes per week (approx. 9–10 weeks). Zero-level grammar to high-band IELTS exam readiness.",
+    price: 15000,
+    originalPrice: 19000,
+    currency: "BDT",
+    format: "LIVE INTERACTIVE (Online / Hybrid)",
+    classesCount: "28 Total Sessions (26 Lectures + 2 Free Review)",
+    duration: "Approx. 9–10 Weeks (3 Classes / Week • 2 Hours / Class)",
+    classDuration: "2 Hours / Session",
+    weeklySchedule: "3 Classes / Week",
+    totalHours: "56 Hours Total Live Training",
+    tickerItems: [
+      "2 Hours Per Class",
+      "3 Classes Per Week",
+      "26 Learning Lectures",
+      "2 Free Review Sessions",
+      "5 Core Modules",
+      "Basic Grammar to IELTS",
+      "Academic & General Training",
+      "Mock Tests & Band Scoring",
+    ],
+    curriculumOverview: {
+      totalLectures: "26",
+      freeReviewSessions: "2",
+      modulesCount: "5 Modules",
+      examFocus: "IELTS Exam Preparation",
+      totalSummary:
+        "Total: 28 sessions, including 26 subject-based lectures and 2 free review sessions. Each class duration is 2 hours, held 3 times a week (approx. 9–10 weeks, 56 hours total).",
+    },
+    curriculumModules: [
+      {
+        moduleNumber: 1,
+        title: "Module 1: Basic Grammar",
+        lecturesCountBadge: "8 Classes",
+        subtitle: "8 Lectures · Build a strong English foundation",
+        description:
+          "Learn the essential grammar rules needed to construct correct sentences and communicate confidently in English.",
+        lectures: [
+          "1. Word Classes, Pronouns & Noun Basics — Parts of speech, pronouns, and nouns.",
+          "2. Subject–Verb Agreement — Matching subjects and verbs correctly.",
+          "3. Articles, Prefixes & Suffixes — Correct article usage and word formation.",
+          "4. Infinitives & the Verb “To Be” — Using to + verb and am, is, are.",
+          "5. Modal Verbs — Using can, could, may, might, should, must, and other modals.",
+          "6. Passive Voice — Understanding and forming passive sentences.",
+          "7. How a Sentence Is Built — Sentence structure, word order, and basic sentence construction.",
+          "8. Sentence Types — Simple, compound, and complex sentences.",
+        ],
+      },
+      {
+        moduleNumber: 2,
+        title: "Module 2: IELTS Reading",
+        lecturesCountBadge: "6 Classes",
+        subtitle: "6 Lectures · Improve comprehension and accuracy",
+        lectures: [
+          "9. Introduction to IELTS Reading and Question Types",
+          "10. Skimming and Scanning Techniques",
+          "11. True, False, Not Given & Yes, No, Not Given",
+          "12. Matching Headings, Information & Paragraphs",
+          "13. Sentence Completion, Summary Completion & Short Answers",
+          "14. Time Management, Vocabulary in Context & Reading Practice",
+        ],
+      },
+      {
+        moduleNumber: 3,
+        title: "Module 3: IELTS Listening",
+        lecturesCountBadge: "4 Classes",
+        subtitle: "4 Lectures · Develop listening accuracy",
+        lectures: [
+          "15. IELTS Listening Format, Sections & Question Types",
+          "16. Form, Note, Table & Sentence Completion",
+          "17. Multiple Choice, Matching & Map Labelling",
+          "18. Listening for Keywords, Spelling, Numbers & Distractors",
+        ],
+      },
+      {
+        moduleNumber: 4,
+        title: "Module 4: IELTS Writing",
+        lecturesCountBadge: "5 Classes",
+        subtitle: "5 Lectures · Develop structured writing skills",
+        note: "Task 1 content can be adapted according to whether the student is preparing for IELTS Academic or General Training.",
+        lectures: [
+          "19. IELTS Writing Overview, Assessment Criteria & Paragraph Structure",
+          "20. Writing Task 1 — Charts, Graphs, Tables & Data Description (Academic)",
+          "21. Writing Task 1 — Letter Writing (General Training)",
+          "22. Writing Task 2 — Essay Structure, Opinion & Discussion Essays",
+          "23. Coherence, Cohesion, Vocabulary, Grammar & Writing Practice",
+        ],
+      },
+      {
+        moduleNumber: 5,
+        title: "Module 5: IELTS Speaking",
+        lecturesCountBadge: "3 Classes",
+        subtitle: "3 Lectures · Build fluency and confidence",
+        lectures: [
+          "24. Speaking Part 1 — Introduction & Familiar Topics",
+          "25. Speaking Part 2 — Cue Cards & Long-Turn Speaking",
+          "26. Speaking Part 3 — Discussion, Opinions & Fluency Practice",
+        ],
+      },
+      {
+        title: "Free Review Sessions",
+        lecturesCountBadge: "FREE",
+        subtitle: "2 Additional Sessions · Included in the course",
+        isFree: true,
+        lectures: [
+          "27. Review Session 1: Grammar & Skills Revision — Review essential grammar rules and key concepts from Reading and Listening.",
+          "28. Review Session 2: IELTS Practice & Feedback — Review Writing and Speaking, discuss common mistakes, and practise key exam skills.",
+        ],
+      },
+    ],
+    whatYouWillGain: [
+      {
+        title: "A Strong English Foundation",
+        description: "Understand essential grammar and build accurate sentences from the basics.",
+      },
+      {
+        title: "Four-Skill IELTS Preparation",
+        description: "Learn the formats, strategies, and question types for Reading, Listening, Writing, and Speaking.",
+      },
+      {
+        title: "Practical Learning & Revision",
+        description: "Strengthen your understanding through guided practice and two additional review sessions.",
+      },
+      {
+        title: "Dedicated Intensive Class Format",
+        description: "2 hours per class, 3 classes per week (56 total hours of live mentor-guided training).",
+      },
+    ],
+    overview: {
+      badge: "Course Overview",
+      heading: "Build Your English Skills from the Basics. Progress to High IELTS Band Scores.",
+      description:
+        "Build your English skills from the basics and progress towards IELTS exam preparation with our structured Basic to IELTS Course. Designed for learners who want to strengthen their grammar, improve reading, listening, writing, and speaking skills, and develop the confidence needed for the IELTS examination.",
+      features: [
+        {
+          title: "Basic Grammar to IELTS",
+          description: "8 dedicated foundation classes before transitioning to IELTS modules.",
+          iconName: "BookOpen",
+        },
+        {
+          title: "2 Hours Per Class",
+          description: "Intensive 120-minute sessions ensuring deep conceptual mastery.",
+          iconName: "Clock",
+        },
+        {
+          title: "3 Classes Per Week",
+          description: "Consistent 3-day weekly routine providing optimal retention.",
+          iconName: "Calendar",
+        },
+        {
+          title: "Full 4-Skill Mastery",
+          description: "Reading (6 classes), Listening (4), Writing (5), Speaking (3).",
+          iconName: "Award",
+        },
+        {
+          title: "2 Free Review Sessions",
+          description: "Comprehensive grammar, practice, and diagnostic mock feedback.",
+          iconName: "CheckCircle2",
+        },
+        {
+          title: "Academic & General Adaptable",
+          description: "Task 1 custom-tailored for Academic charts or General letters.",
+          iconName: "PenTool",
+        },
+      ],
+    },
+    learningJourney: {
+      heading: "The Learning",
+      highlight: "Journey",
+      phase1: {
+        badge: "PHASE 1",
+        title: "Module 1: Basic Grammar Foundation (8 Classes)",
+        description:
+          "Build a rock-solid foundation in English grammar, sentence building, verb tenses, and syntax before approaching test tasks.",
+        topics: [
+          "Word Classes, Pronouns & Noun Basics",
+          "Subject–Verb Agreement",
+          "Articles, Prefixes & Suffixes",
+          "Infinitives & the Verb “To Be”",
+          "Modal Verbs (can, could, may, might, should, must)",
+          "Passive Voice Construction",
+          "How a Sentence Is Built & Sentence Types (Simple, Compound, Complex)",
+          "Diagnostic Grammar Review & Writing Drills",
+        ],
+      },
+      phase2: {
+        badge: "PHASE 2",
+        title: "IELTS 4-Module Preparation & Free Review (20 Classes)",
+        description:
+          "Master Reading, Listening, Writing, and Speaking with question-type analysis, timed strategies, and two comprehensive review sessions.",
+        topics: [
+          "Reading: Skimming, Scanning, Headings, T/F/NG, Sentence Completion",
+          "Listening: Form, Note, Table Completion, Multiple Choice, Map Labelling",
+          "Writing: Task 1 (Academic Graphs / GT Letters) & Task 2 Essay Formulas",
+          "Speaking: Part 1 Topics, Part 2 Cue Cards, Part 3 Extended Opinions",
+          "Free Review Session 1: Grammar & Reading/Listening Concept Revision",
+          "Free Review Session 2: Writing & Speaking Practice with Direct Feedback",
+        ],
+      },
+    },
+    whatIsIncluded: {
+      heading: "What is",
+      highlight: "Included?",
+      items: [
+        {
+          title: "26 Structured Live Lectures",
+          description: "Comprehensive step-by-step curriculum across Grammar and 4 IELTS modules.",
+          iconName: "BookOpen",
+        },
+        {
+          title: "2 Free Review Sessions",
+          description: "Extra revision classes for grammar, skills, and full mock feedback.",
+          iconName: "Award",
+        },
+        {
+          title: "2 Hours Per Class (56 Hrs Live)",
+          description: "In-depth 120-minute sessions with live interactive drills and doubt clearing.",
+          iconName: "Clock",
+        },
+        {
+          title: "Weekly 3-Day Schedule",
+          description: "Optimized 3 days a week schedule that balances study, work, and revision.",
+          iconName: "Calendar",
+        },
+        {
+          title: "Writing Line-by-Line Evaluation",
+          description: "Detailed band descriptor feedback on Task 1 and Task 2 essays.",
+          iconName: "PenTool",
+        },
+        {
+          title: "Speaking Mock Interviews",
+          description: "1-on-1 mock speaking simulations with fluency and lexical coaching.",
+          iconName: "Mic",
+        },
+        {
+          title: "Cambridge IELTS Practice Bank",
+          description: "Authentic Cambridge practice tests, audio tracks, and vocabulary lists.",
+          iconName: "Laptop",
+        },
+        {
+          title: "Priority Mentor WhatsApp Support",
+          description: "Direct connection with your instructor for home assignments and queries.",
+          iconName: "PhoneCall",
+        },
+      ],
+    },
+    whoIsThisFor: {
+      heading: "Who is This Course",
+      highlight: "For?",
+      subtitle: "Ideal for learners starting from the basics who want to target IELTS Band 7.0+",
+      checklist: [
+        "Students who want to strengthen their core English grammar before starting IELTS",
+        "Candidates aiming for IELTS Academic for university admissions in UK, Australia, Canada, USA, Europe",
+        "Applicants preparing for IELTS General Training for immigration or work permits",
+        "Learners who prefer a structured, step-by-step roadmap with 2-hour classes 3 times a week",
+        "Anyone who needs dedicated review sessions and personalized mentor feedback",
+      ],
+    },
+    ctaBanner: {
+      heading: "Enroll in Basic to IELTS Course",
+      priceText: "BDT 15,000",
+      subText: "28 Total Sessions | 2 Hours/Class • 3 Days/Week | Complete Grammar + IELTS",
+      buttonText: "Enroll in Basic to IELTS Course Now",
+    },
+    faqs: [
+      {
+        question: "How long is each class and what is the weekly schedule?",
+        answer:
+          "Each class is 2 hours long (120 minutes). Classes take place 3 days a week, making for approximately 9 to 10 weeks of structured training across 28 total sessions (56 hours total).",
+      },
+      {
+        question: "Can beginners with weak grammar join this course?",
+        answer:
+          "Yes! Module 1 is dedicated entirely to Basic Grammar across 8 lectures, building your sentence construction, verb tenses, and word classes before introducing IELTS test modules.",
+      },
+      {
+        question: "Is this suitable for both Academic and General Training IELTS?",
+        answer:
+          "Yes. Writing Task 1 lessons are tailored specifically to your test format—Academic data charts and diagrams, or General Training letter writing.",
+      },
+      {
+        question: "What happens during the 2 Free Review Sessions?",
+        answer:
+          "Review Session 1 focuses on revising core grammar, reading, and listening concepts. Review Session 2 covers writing and speaking practice with common mistake analysis and personalized feedback.",
+      },
+    ],
+  },
+
+  // 8. IELTS Crash Course
+  {
+    id: "ielts-crash-course",
+    slug: "ielts-crash-course",
+    category: "course",
+    examType: "ielts",
+    title: "IELTS Crash Course",
+    heroHighlight: "Intensive Fast-Track",
+    heroTitle: "IELTS Preparation Program",
+    heroSubtitle:
+      "Our IELTS Crash Course is designed for students who want to prepare for the IELTS examination through a focused, structured, and practical learning experience. The course covers all four IELTS modules Reading, Listening, Writing, and Speaking with targeted strategies, question-type analysis, and exam-focused practice.",
+    badge: "Fast-Track Crash Course",
+    badgeType: "booster",
+    thumbnailImage:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
+    tagline: "Focused 4-module mastery with targeted shortcuts & test-day strategies",
+    shortDescription:
+      "18 sessions (16 subject lectures + 2 free review sessions). 2 hours per class, 3 classes per week (6 weeks duration). Fast-track strategies for all 4 modules.",
+    price: 10000,
+    originalPrice: 13000,
+    currency: "BDT",
+    format: "LIVE INTENSIVE (Online / Hybrid)",
+    classesCount: "18 Total Sessions (16 Lectures + 2 Free Review)",
+    duration: "6 Weeks (3 Classes / Week • 2 Hours / Class)",
+    classDuration: "2 Hours / Session",
+    weeklySchedule: "3 Classes / Week",
+    totalHours: "36 Hours Total Live Training",
+    tickerItems: [
+      "2 Hours Per Class",
+      "3 Classes Per Week",
+      "16 Subject-Based Lectures",
+      "2 Free Review Sessions",
+      "4 IELTS Modules",
+      "Exam-Focused Strategies",
+      "Reading, Listening, Writing, Speaking",
+      "Academic & General Training",
+    ],
+    curriculumOverview: {
+      totalLectures: "16",
+      freeReviewSessions: "2",
+      modulesCount: "4 Modules",
+      examFocus: "All IELTS Skills • Strategies & Practice",
+      totalSummary:
+        "Total: 18 sessions - 16 subject-based lectures and 2 additional free review sessions. Each class duration is 2 hours, held 3 times a week (6 weeks, 36 hours total).",
+    },
+    curriculumModules: [
+      {
+        moduleNumber: 1,
+        title: "Module 1: IELTS Reading",
+        lecturesCountBadge: "4 Classes",
+        subtitle: "4 Lectures · Strategies for accuracy and speed",
+        lectures: [
+          "1. IELTS Reading Format & Question Types — Understand the test structure, instructions, and common question patterns.",
+          "2. Skimming, Scanning & Time Management — Locate information quickly and manage the reading passages effectively.",
+          "3. True/False/Not Given & Matching Questions — Learn how to identify evidence and avoid common traps.",
+          "4. Completion Questions & Reading Practice — Practise sentence, summary, and note completion, along with other common question types.",
+        ],
+      },
+      {
+        moduleNumber: 2,
+        title: "Module 2: IELTS Listening",
+        lecturesCountBadge: "4 Classes",
+        subtitle: "4 Lectures · Improve listening accuracy",
+        lectures: [
+          "5. IELTS Listening Format & Question Types — Understand the four sections and the different types of questions.",
+          "6. Form, Note, Table & Sentence Completion — Practise identifying key information and recording accurate answers.",
+          "7. Multiple Choice, Matching & Map Labelling — Develop strategies for selecting answers and following directions.",
+          "8. Keywords, Distractors & Listening Practice — Recognise paraphrasing, spelling, numbers, and misleading information.",
+        ],
+      },
+      {
+        moduleNumber: 3,
+        title: "Module 3: IELTS Writing",
+        lecturesCountBadge: "4 Classes",
+        subtitle: "4 Lectures · Structure, coherence and task response",
+        note: "Task 1 lessons can be adapted to the student's chosen IELTS format: Academic or General Training.",
+        lectures: [
+          "9. Writing Task 1: Understanding the Task — Learn how to analyse charts, graphs, tables, and diagrams for Academic IELTS.",
+          "10. Writing Task 1: Report Writing & Letter Writing — Practise data descriptions for Academic IELTS or letter writing for General Training.",
+          "11. Writing Task 2: Essay Structure & Question Analysis — Understand essay types, brainstorming, introductions, body paragraphs, and conclusions.",
+          "12. Writing Improvement & Practice — Focus on coherence, cohesion, vocabulary, grammar, and the IELTS writing assessment criteria.",
+        ],
+      },
+      {
+        moduleNumber: 4,
+        title: "Module 4: IELTS Speaking",
+        lecturesCountBadge: "4 Classes",
+        subtitle: "4 Lectures · Fluency, vocabulary and confidence",
+        lectures: [
+          "13. Speaking Part 1: Introduction & Familiar Topics — Practise answering questions about daily life, studies, work, and personal interests.",
+          "14. Speaking Part 2: Cue Cards — Learn how to organise ideas and deliver a structured long-turn response.",
+          "15. Speaking Part 3: Discussion & Opinion Development — Develop answers using explanations, examples, comparisons, and reasons.",
+          "16. Fluency, Vocabulary & Speaking Practice — Improve pronunciation, coherence, natural expression, and confidence through guided practice.",
+        ],
+      },
+      {
+        title: "Free Review Sessions",
+        lecturesCountBadge: "FREE",
+        subtitle: "2 Additional Sessions · Included at no extra cost",
+        isFree: true,
+        lectures: [
+          "17. Review Session 1: Reading & Listening Revision — Review important strategies, practise common question types, and discuss frequent mistakes.",
+          "18. Review Session 2: Writing & Speaking Revision — Review writing structure, speaking techniques, common errors, and practical improvement strategies.",
+        ],
+      },
+    ],
+    whatYouWillGain: [
+      {
+        title: "Reading Strategies",
+        description: "Learn to approach different question types, locate answers efficiently, and manage time.",
+      },
+      {
+        title: "Listening Techniques",
+        description: "Practise identifying keywords, understanding paraphrases, and avoiding common traps.",
+      },
+      {
+        title: "Writing Skills",
+        description: "Understand task requirements, organise ideas, and develop clear, coherent responses.",
+      },
+      {
+        title: "Speaking Confidence",
+        description: "Practise all three speaking parts and develop fluency, vocabulary, and structured answers.",
+      },
+      {
+        title: "Practical Learning & Revision",
+        description: "Review common errors and refine exam timing during two additional free review sessions.",
+      },
+      {
+        title: "Fast-Track 6-Week Routine",
+        description: "2 hours per session, 3 days a week (36 total hours of exam-focused live coaching).",
+      },
+    ],
+    overview: {
+      badge: "Course Overview",
+      heading: "Fast-Track Exam Preparation. Master All 4 IELTS Modules with Target Strategies.",
+      description:
+        "Our IELTS Crash Course is designed for students who want to prepare for the IELTS examination through a focused, structured, and practical learning experience. The course covers all four IELTS modules Reading, Listening, Writing, and Speaking with targeted strategies, question-type analysis, and exam-focused practice.",
+      features: [
+        {
+          title: "Exam-Focused 4 Modules",
+          description: "Reading (4), Listening (4), Writing (4), Speaking (4) lectures.",
+          iconName: "Award",
+        },
+        {
+          title: "2 Hours Per Class",
+          description: "120 minutes of high-intensity practice and strategy drills per session.",
+          iconName: "Clock",
+        },
+        {
+          title: "3 Classes Per Week",
+          description: "Fast-paced 3 days a week schedule completing all skills in 6 weeks.",
+          iconName: "Calendar",
+        },
+        {
+          title: "2 Free Review Sessions",
+          description: "Bonus sessions for Reading/Listening and Writing/Speaking revision.",
+          iconName: "CheckCircle2",
+        },
+        {
+          title: "Band Scoring Shortcuts",
+          description: "Proven techniques to identify traps and maximize band criteria points.",
+          iconName: "Zap",
+        },
+        {
+          title: "Academic & GT Flexible",
+          description: "Adapts Task 1 for academic graph descriptions or GT letters.",
+          iconName: "PenTool",
+        },
+      ],
+    },
+    learningJourney: {
+      heading: "The Learning",
+      highlight: "Journey",
+      phase1: {
+        badge: "PHASE 1",
+        title: "Reading & Listening Core Mastery (8 Classes)",
+        description:
+          "Develop rapid scanning, keyword identification, note completion, and question-type accuracy under timed exam conditions.",
+        topics: [
+          "IELTS Reading Format & Question Types",
+          "Skimming, Scanning & Time Management",
+          "True/False/Not Given & Matching Questions",
+          "Completion Questions & Reading Practice",
+          "IELTS Listening Format, Sections & Question Types",
+          "Form, Note, Table & Sentence Completion",
+          "Multiple Choice, Matching & Map Labelling",
+          "Keywords, Distractors & Audio Traps",
+        ],
+      },
+      phase2: {
+        badge: "PHASE 2",
+        title: "Writing & Speaking Acceleration + Review (10 Classes)",
+        description:
+          "Achieve high cohesion, lexical precision, and fluent oral responses with Task 1/2 formulas and two complete review sessions.",
+        topics: [
+          "Task 1: Academic Data Description & GT Letter Writing",
+          "Task 2: Essay Structures, Brainstorming & Question Analysis",
+          "Writing Coherence, Cohesion, Grammar & Band Descriptors",
+          "Speaking Part 1: Introduction & Familiar Topics",
+          "Speaking Part 2: Cue Cards & Long-Turn Structuring",
+          "Speaking Part 3: In-Depth Discussion & Opinion Expression",
+          "Free Review Session 1: Reading & Listening Revision",
+          "Free Review Session 2: Writing & Speaking Practice & Feedback",
+        ],
+      },
+    },
+    whatIsIncluded: {
+      heading: "What is",
+      highlight: "Included?",
+      items: [
+        {
+          title: "16 Subject-Based Lectures",
+          description: "Targeted question-type analysis across Reading, Listening, Writing, and Speaking.",
+          iconName: "BookOpen",
+        },
+        {
+          title: "2 Free Review Sessions",
+          description: "Additional revision classes for error correction and exam readiness.",
+          iconName: "Award",
+        },
+        {
+          title: "2 Hours Per Session (36 Hrs Live)",
+          description: "Intensive 120-minute classes packed with practical test tips.",
+          iconName: "Clock",
+        },
+        {
+          title: "3 Days A Week Schedule",
+          description: "Convenient 6-week fast-track program with morning and evening slots.",
+          iconName: "Calendar",
+        },
+        {
+          title: "Writing Assessment & Corrections",
+          description: "Diagnostic essay audits highlighting grammatical and lexical errors.",
+          iconName: "PenTool",
+        },
+        {
+          title: "Live Speaking Mock Sessions",
+          description: "Real exam simulation with pronunciation and fluency coaching.",
+          iconName: "Mic",
+        },
+        {
+          title: "IELTS Cambridge Test Bank",
+          description: "Official past exam question sets and audio recordings.",
+          iconName: "Laptop",
+        },
+        {
+          title: "Direct WhatsApp Mentor Support",
+          description: "Priority assistance for daily doubt clearing and guidance.",
+          iconName: "PhoneCall",
+        },
+      ],
+    },
+    whoIsThisFor: {
+      heading: "Who is This Course",
+      highlight: "For?",
+      subtitle: "For candidates with basic English proficiency needing rapid exam preparation",
+      checklist: [
+        "Students who already have basic grammar skills and need quick, focused IELTS preparation",
+        "Candidates with upcoming exam dates within 1 to 2 months",
+        "Test takers aiming to jump from Band 5.5/6.0 to Band 7.0+",
+        "Applicants wanting targeted strategies for Reading, Listening, Writing, and Speaking",
+        "Busy university students or job holders needing a 6-week intensive 3-day/week program",
+      ],
+    },
+    ctaBanner: {
+      heading: "Enroll in IELTS Crash Course",
+      priceText: "BDT 10,000",
+      subText: "18 Total Sessions | 2 Hours/Class • 3 Days/Week | Complete 4-Module Preparation",
+      buttonText: "Enroll in IELTS Crash Course Now",
+    },
+    faqs: [
+      {
+        question: "How long is the IELTS Crash Course and what is the schedule?",
+        answer:
+          "The course lasts 6 weeks across 18 total sessions (16 lectures + 2 free review sessions). Each session is 2 hours long, held 3 days a week (36 total live training hours).",
+      },
+      {
+        question: "Who should choose the Crash Course instead of Basic to IELTS?",
+        answer:
+          "If your basic English grammar is already comfortable and you need immediate, intensive exam preparation for an upcoming test date, the Crash Course is perfect. If you need foundational grammar first, choose the Basic to IELTS Course.",
+      },
+      {
+        question: "Does the Crash Course cover all four skills?",
+        answer:
+          "Yes! The course allocates 4 dedicated 2-hour lectures to Reading, 4 to Listening, 4 to Writing, and 4 to Speaking, plus 2 free review sessions.",
+      },
+      {
+        question: "Are mock tests and reviews included?",
+        answer:
+          "Yes! 2 Free Review Sessions are included at no extra cost to revise common errors and practice under authentic exam conditions.",
       },
     ],
   },

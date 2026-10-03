@@ -322,7 +322,7 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
             <div className="px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-750 flex items-center gap-1.5">
               <Clock className="w-3 h-3 text-primary shrink-0" />
               <span className="font-semibold text-slate-700 dark:text-slate-300 truncate">
-                {item.duration}
+                {item.classDuration ? `${item.classDuration} • 3/Wk` : item.duration}
               </span>
             </div>
             <div className="px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-750 flex items-center gap-1.5">

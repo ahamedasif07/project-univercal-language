@@ -130,7 +130,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
               <div className="relative rounded-3xl overflow-hidden border-2 border-primary/30 dark:border-primary/40 shadow-2xl bg-slate-900 group">
                 <div className="relative aspect-[3/4] w-full">
                   <Image
-                    src={instructor.image}
+                    src={instructor.image || "/images/instructors/placeholder-avatar.jpg"}
                     alt={instructor.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 42vw"
@@ -555,7 +555,7 @@ export default async function InstructorDetailPage({ params }: PageProps) {
                 >
                   <div className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-slate-900">
                     <Image
-                      src={other.image}
+                      src={other.image || "/images/instructors/placeholder-avatar.jpg"}
                       alt={other.name}
                       fill
                       sizes="96px"

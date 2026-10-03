@@ -8,7 +8,7 @@ import { AccreditationsSection } from "@/components/modules/home/accreditations-
 export const metadata: Metadata = {
   title: "About Us | Pearson-Certified PTE & Language Academy | Universal Language",
   description:
-    "Meet Md Sohanor Rahman Shifat (Founder & CEO), MD Nakibul Quader Chowdhury (Head Instructor), Amatulla Tasnim, Jamius Shams, and Papon Miah. Discover Universal Language's certified faculty.",
+    "Meet Md Sohanor Rahman Shifat (Founder & CEO), MD Nakibul Quader Chowdhury (Head Instructor), Amatulla Tasnim, Shams Tashin, and Papon Miah. Discover Universal Language's certified faculty.",
   alternates: {
     canonical: "https://universallanguage.com.bd/about",
   },
@@ -82,7 +82,7 @@ export default function AboutPage() {
       <AboutFounder />
       <AboutPhilosophy />
       <AboutFaculty />
-      <AccreditationsSection />
+      {/* <AccreditationsSection /> */}
     </div>
   );
 }

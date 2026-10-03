@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1067" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1b36" />
+      <stop offset="40%" stop-color="#081426" />
+      <stop offset="100%" stop-color="#030812" />
+    </linearGradient>
+
+    <radialGradient id="ambientGlow1" cx="50%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#1d4ed8" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#081426" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="ambientGlow2" cx="50%" cy="75%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#030812" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Avatar Lighting & Shadows -->
+    <linearGradient id="silhouetteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="45%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="rimLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6" />
+    </linearGradient>
+
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="lapelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="badgeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <!-- Filter for soft drop shadow -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+    <filter id="badgeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="800" height="1067" fill="url(#bgGrad)" />
+
+  <!-- Ambient Lighting Overlays -->
+  <circle cx="400" cy="380" r="360" fill="url(#ambientGlow1)" />
+  <circle cx="400" cy="800" r="420" fill="url(#ambientGlow2)" />
+
+  <!-- Subtle Decorative Geometric Tech Circles -->
+  <circle cx="400" cy="400" r="310" stroke="#38bdf8" stroke-opacity="0.08" stroke-width="1.5" fill="none" stroke-dasharray="6 8" />
+  <circle cx="400" cy="400" r="270" stroke="#60a5fa" stroke-opacity="0.12" stroke-width="1.5" fill="none" />
+  <circle cx="400" cy="400" r="230" stroke="#93c5fd" stroke-opacity="0.06" stroke-width="1" fill="none" stroke-dasharray="4 6" />
+
+  <!-- Avatar Group with Soft Shadow -->
+  <g filter="url(#softShadow)">
+    <!-- Base Outer Glow Rim for Torso/Shoulders -->
+    <path
+      d="M160,940 C170,820 220,720 280,680 C320,653 360,650 400,650 C440,650 480,653 520,680 C580,720 630,820 640,940 Z"
+      fill="url(#rimLight)"
+      opacity="0.3"
+      transform="scale(1.02) translate(-8, -8)"
+    />
+
+    <!-- Shoulders / Torso (Suit / Blazer Silhouette) -->
+    <path
+      d="M170,950 C180,825 230,725 290,685 C330,658 370,655 400,655 C430,655 470,658 510,685 C570,725 620,825 630,950 L630,1067 L170,1067 Z"
+      fill="url(#suitGrad)"
+      stroke="url(#rimLight)"
+      stroke-width="1.5"
+    />
+
+    <!-- Suit Lapels & Professional Collar Lines -->
+    <path
+      d="M340,660 L380,780 L400,860 L350,960 L310,950 L340,660 Z"
+      fill="url(#lapelGrad)"
+      opacity="0.8"
+    />
+    <path
+      d="M460,660 L420,780 L400,860 L450,960 L490,950 L460,660 Z"
+      fill="url(#lapelGrad)"
+      opacity="0.8"
+    />
+
+    <!-- Shirt / Tie V-Shape -->
+    <polygon points="380,660 420,660 400,770" fill="#64748b" opacity="0.6" />
+    <polygon points="393,760 407,760 404,870 396,870" fill="#0284c7" opacity="0.85" />
+
+    <!-- Neck -->
+    <rect x="366" y="520" width="68" height="145" rx="14" fill="url(#silhouetteGrad)" />
+    <!-- Neck shadow under chin -->
+    <ellipse cx="400" cy="545" rx="34" ry="12" fill="#0f172a" opacity="0.5" />
+
+    <!-- Head Outline Glow -->
+    <ellipse
+      cx="400"
+      cy="380"
+      rx="125"
+      ry="155"
+      fill="none"
+      stroke="url(#rimLight)"
+      stroke-width="2"
+      opacity="0.4"
+    />
+
+    <!-- Head Silhouette -->
+    <ellipse
+      cx="400"
+      cy="380"
+      rx="120"
+      ry="150"
+      fill="url(#silhouetteGrad)"
+      stroke="#475569"
+      stroke-width="1"
+    />
+
+    <!-- Modern Stylized Hair Cutout Silhouette -->
+    <path
+      d="M280,360 C280,260 320,230 400,230 C480,230 520,260 520,360 C520,310 490,260 400,260 C320,260 290,310 280,360 Z"
+      fill="#1e293b"
+      opacity="0.75"
+    />
+  </g>
+
+  <!-- Professional Center Badge / Icon Emblem -->
+  <g filter="url(#badgeShadow)" transform="translate(400, 480)">
+    <circle cx="0" cy="0" r="32" fill="#0b1e3b" stroke="url(#badgeGlow)" stroke-width="2" />
+    <!-- User / Shield Minimal Icon Inside Badge -->
+    <path
+      d="M-10,-6 C-10,-11 -5,-16 0,-16 C5,-16 10,-11 10,-6 C10,-1 5,4 0,4 C-5,4 -10,-1 -10,-6 Z"
+      fill="#38bdf8"
+    />
+    <path
+      d="M-16,14 C-16,8 -8,6 0,6 C8,6 16,8 16,14 L16,16 L-16,16 Z"
+      fill="#38bdf8"
+      opacity="0.9"
+    />
+  </g>
+
+  <!-- Clean Bottom Watermark Badge -->
+  <g transform="translate(400, 990)">
+    <rect
+      x="-130"
+      y="-20"
+      width="260"
+      height="40"
+      rx="20"
+      fill="#08172e"
+      fill-opacity="0.85"
+      stroke="#38bdf8"
+      stroke-opacity="0.25"
+      stroke-width="1"
+    />
+    <text
+      x="0"
+      y="5"
+      fill="#94a3b8"
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      font-size="13"
+      font-weight="600"
+      letter-spacing="2"
+      text-anchor="middle"
+    >FACULTY MENTOR</text>
+  </g>
+</svg>

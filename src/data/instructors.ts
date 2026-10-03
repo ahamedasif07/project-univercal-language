@@ -73,6 +73,8 @@ export interface CeoCertificate {
   description: string;
 }
 
+export const DEFAULT_INSTRUCTOR_AVATAR = "/images/instructors/placeholder-avatar.jpg";
+
 export const CEO_CERTIFICATES: CeoCertificate[] = [
   {
     id: "ceo-c1",
@@ -493,31 +495,31 @@ export const INSTRUCTORS: Instructor[] = [
     },
   },
 
-  // Instructor: Jamius Shams
+  // Instructor: Shams Tashin
   {
-    id: "jamius-shams",
-    slug: "jamius-shams",
-    name: "Jamius Shams",
+    id: "shams-tashin",
+    slug: "shams-tashin",
+    name: "Shams Tashin",
     role: "English Language Trainer | IELTS & Spoken English",
     title: "English Language Trainer & IELTS Specialist | Universal Language",
     organization: "Universal Language",
-    scoreHighlight: "IELTS Band 7.0 (C1)",
+    scoreHighlight: "IELTS Band 7.5 (C1)",
     badge: "IELTS & Spoken English Specialist",
-    image: "/images/instructors/jamius shams.jpeg",
+    image: "/images/instructors/shams-tashin.jpg",
     experience: "Active IELTS & Spoken Trainer",
     studentsTrained: "25+ Cohort Students",
     targetSuccessRate: "CEFR C1 Level Standard",
     shortBio:
-      "English Language Trainer with overall Band 7.0 (CEFR Level C1), delivering online, offline, and hybrid classes that turn practical, confidence-building strategies into measurable student progress.",
+      "English Language Trainer with overall Band 7.5 (CEFR Level C1), delivering online, offline, and hybrid classes that turn practical, confidence-building strategies into measurable student progress.",
     fullBio: [
-      "Jamius Shams is an accomplished English Language Trainer at Universal Language specializing in IELTS Academic and Spoken English. Holding an official overall Band 7.0 (CEFR Level C1) credential, Jamius brings pedagogical clarity, linguistic articulation, and real exam expertise to his students.",
-      "Delivering high-impact online, offline, and hybrid sessions, Jamius has conducted rigorous IELTS Academic and Spoken English batches. He excels at breaking down intricate question types, band descriptors, and strict time-management techniques into clear, practical, and executable steps.",
+      "Shams Tashin is an accomplished English Language Trainer at Universal Language specializing in IELTS Academic and Spoken English. Holding an official overall Band 7.5 (CEFR Level C1) credential, Shams brings pedagogical clarity, linguistic articulation, and real exam expertise to his students.",
+      "Delivering high-impact online, offline, and hybrid sessions, Shams has conducted rigorous IELTS Academic and Spoken English batches. He excels at breaking down intricate question types, band descriptors, and strict time-management techniques into clear, practical, and executable steps.",
       "With a recognized specialization in Writing and Speaking evaluation, his teaching style is centered on personalized diagnostic feedback, rigorous mock test simulations, and interactive language club facilitation—empowering learners to build authentic fluency, grammatical range, lexical precision, and test-day confidence.",
     ],
     quote:
       "Language proficiency and exam success are not achieved through rote memorization. They are built through clear structure, individual attention, and steady diagnostic progress.",
     specialties: [
-      "IELTS Academic Comprehensive Preparation (Band 7.0)",
+      "IELTS Academic Comprehensive Preparation (Band 7.5)",
       "Task 1 & Task 2 Writing Evaluation & Band Scoring",
       "Speaking Mock Interviews & Fluency Coaching",
       "Reading & Listening Strategy & Time Management",
@@ -527,7 +529,7 @@ export const INSTRUCTORS: Instructor[] = [
       "Fluency Building & Language Club Facilitation",
     ],
     certifications: [
-      "IELTS Academic Overall Band 7.0 (CEFR Level C1)",
+      "IELTS Academic Overall Band 7.5 (CEFR Level C1)",
       "Professional Communication Certification — 8th National English Language Summit (2025)",
       "Advanced Workshops on Professional Articulation & Impactful Communication",
       "Diagnostic Assessment & Speaking Mock Evaluation Specialist",
@@ -570,7 +572,7 @@ export const INSTRUCTORS: Instructor[] = [
     ],
     featuredCourses: [
       {
-        title: "IELTS Academic Band 7.0+ Comprehensive Batch",
+        title: "IELTS Academic Band 7.5+ Comprehensive Batch",
         duration: "8 Weeks • 32 Live Sessions",
         description:
           "Complete preparation across all 4 modules with intensive Writing Task 1 & 2 evaluation, live Speaking mock interviews, and timed Reading/Listening techniques.",
@@ -583,7 +585,7 @@ export const INSTRUCTORS: Instructor[] = [
       },
     ],
     scorecardHighlights: [
-      { label: "Overall Band", value: "7.0", sublabel: "Official IELTS" },
+      { label: "Overall Band", value: "7.5", sublabel: "Official IELTS" },
       { label: "CEFR Level", value: "C1", sublabel: "Advanced Fluency" },
       { label: "Teaching Format", value: "Hybrid", sublabel: "Online & Offline" },
       { label: "Focus Skill", value: "W & S", sublabel: "Writing & Speaking" },
@@ -733,8 +735,11 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "nakibul-quader-chowdhury" && inst.id === "nakibul-quader-chowdhury") ||
       (slug === "amatulla" && inst.id === "amatulla-tasnim") ||
       (slug === "tasnim" && inst.id === "amatulla-tasnim") ||
-      (slug === "jamius" && inst.id === "jamius-shams") ||
-      (slug === "jamius-shams" && inst.id === "jamius-shams") ||
+      (slug === "shams-tashin" && inst.id === "shams-tashin") ||
+      (slug === "shams" && inst.id === "shams-tashin") ||
+      (slug === "tashin" && inst.id === "shams-tashin") ||
+      (slug === "jamius" && inst.id === "shams-tashin") ||
+      (slug === "jamius-shams" && inst.id === "shams-tashin") ||
       (slug === "papon" && inst.id === "papon-miah") ||
       (slug === "papon-miah" && inst.id === "papon-miah") ||
       (slug === "sifat-hasan" && inst.id === "sifat-hasan") ||

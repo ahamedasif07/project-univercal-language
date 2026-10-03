@@ -122,7 +122,7 @@ export default function HomePage() {
       <StepsSection />
 
       {/* 7. Institutional Accreditation & Statutory Trust (Is this genuine and legal?) */}
-      <AccreditationsSection />
+      {/* <AccreditationsSection /> */}
 
       {/* 8. Concrete Evidence: Authentic Pearson Scorecards Hall of Fame */}
       <SuccessStoriesSection />

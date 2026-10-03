@@ -155,26 +155,42 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                 </div>
 
                 <div className="p-3 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Classes</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {course.weeklySchedule ? "Schedule" : "Classes"}
+                  </div>
                   <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 mt-0.5">
-                    {course.classesCount}
+                    {course.weeklySchedule ? course.weeklySchedule : course.classesCount}
                   </div>
                 </div>
 
                 <div className="p-3 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Duration</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {course.classDuration ? "Per Class" : "Duration"}
+                  </div>
                   <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 mt-0.5">
-                    {course.duration}
+                    {course.classDuration ? course.classDuration : course.duration}
                   </div>
                 </div>
 
                 <div className="p-3 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">First-Try Pass</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {course.totalHours ? "Total Live" : "First-Try Pass"}
+                  </div>
                   <div className="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                    96.8% Success
+                    {course.totalHours ? course.totalHours : "96.8% Success"}
                   </div>
                 </div>
               </div>
+
+              {/* Special Schedule Callout Badge */}
+              {course.classDuration && (
+                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-primary/10 border border-primary/20 text-primary dark:text-blue-300 text-xs sm:text-sm font-bold">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <span>
+                    ⏰ Class Duration: {course.classDuration} • 📅 Weekly Routine: {course.weeklySchedule || "3 Classes / Week"} • 📚 {course.classesCount}
+                  </span>
+                </div>
+              )}
 
               {/* Direct Action Buttons */}
               <div className="pt-3 flex flex-wrap items-center gap-3">
@@ -367,84 +383,309 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-16">
         {/* Tab 1: Class Curriculum & Modules (Modular Interactive Roadmap) */}
         {activeTab === "syllabus" && (
-          <section className="space-y-8 animate-fadeIn">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                Structured Class-by-Class Roadmap
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
-                Complete Curriculum &amp; Skill Milestones
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Every session is structured around Pearson AI machine-scoring algorithms to guarantee tangible score jumps.
-              </p>
-            </div>
+          <section className="space-y-10 animate-fadeIn">
+            {course.curriculumModules && course.curriculumModules.length > 0 ? (
+              <div className="space-y-10">
+                {/* 1. Course Overview Card (as shown in user's curriculum screenshots) */}
+                <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-6">
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                      Pedagogical Framework &amp; Session Matrix
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                      Course Overview
+                    </h3>
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                      {course.overview.description}
+                    </p>
+                  </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Module Phase 1 Card */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-primary dark:bg-blue-950 dark:text-blue-300 border border-blue-200/70">
-                    {course.learningJourney.phase1.badge}
-                  </span>
-                  <span className="text-xs font-semibold text-slate-400">Foundation Milestone</span>
+                  {/* 4 Metric Stats Grid (exact match to user screenshot) */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 flex flex-col justify-between">
+                      <BookOpen className="w-6 h-6 text-primary mb-3" />
+                      <div>
+                        <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                          {course.curriculumOverview?.totalLectures || "26"}
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">
+                          Learning Lectures
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 flex flex-col justify-between">
+                      <Users className="w-6 h-6 text-primary mb-3" />
+                      <div>
+                        <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                          {course.curriculumOverview?.freeReviewSessions || "2"}
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">
+                          Free Review Sessions
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 flex flex-col justify-between">
+                      <GraduationCap className="w-6 h-6 text-primary mb-3" />
+                      <div>
+                        <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                          {course.curriculumOverview?.modulesCount || "5 Modules"}
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">
+                          Core learning areas
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 flex flex-col justify-between">
+                      <Award className="w-6 h-6 text-primary mb-3" />
+                      <div>
+                        <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                          IELTS
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">
+                          Exam preparation
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Highlight callout with 2-hour duration and 3 classes per week */}
+                  <div className="p-4 rounded-2xl bg-primary/5 dark:bg-blue-950/40 border border-primary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
+                    <p className="text-slate-700 dark:text-slate-300 font-medium">
+                      {course.curriculumOverview?.totalSummary ||
+                        `Total: ${course.classesCount}, including ${course.curriculumOverview?.totalLectures} lectures and ${course.curriculumOverview?.freeReviewSessions} free review sessions.`}
+                    </p>
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary text-white font-bold text-xs shrink-0 self-start sm:self-auto shadow-xs">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>2 Hours/Class • 3 Classes/Week</span>
+                    </div>
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#0b2545] dark:text-white">
-                  {course.learningJourney.phase1.title}
-                </h3>
+                {/* 2. Complete Course Curriculum Title */}
+                <div className="space-y-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                    Comprehensive Class-by-Class Breakdown
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                    Complete Course Curriculum
+                  </h3>
+                </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {course.learningJourney.phase1.description}
-                </p>
+                {/* 3. Module Cards List */}
+                <div className="space-y-6">
+                  {course.curriculumModules.map((mod, modIdx) => (
+                    <div
+                      key={modIdx}
+                      className={cn(
+                        "rounded-3xl border overflow-hidden transition-all duration-300 shadow-xs",
+                        mod.isFree
+                          ? "bg-emerald-50/20 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800"
+                          : "bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800"
+                      )}
+                    >
+                      {/* Module Header Bar */}
+                      <div className="p-6 border-b border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-start sm:items-center gap-3.5">
+                          <div
+                            className={cn(
+                              "w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-xs",
+                              mod.isFree
+                                ? "bg-emerald-500 text-white"
+                                : "bg-primary/10 text-primary dark:bg-blue-950 dark:text-blue-300"
+                            )}
+                          >
+                            {mod.isFree ? (
+                              <CheckCircle2 className="w-5 h-5 text-white" />
+                            ) : mod.title.toLowerCase().includes("reading") ? (
+                              <BookOpen className="w-5 h-5" />
+                            ) : mod.title.toLowerCase().includes("listening") ? (
+                              <Headphones className="w-5 h-5" />
+                            ) : mod.title.toLowerCase().includes("writing") ? (
+                              <PenTool className="w-5 h-5" />
+                            ) : mod.title.toLowerCase().includes("speaking") ? (
+                              <Mic className="w-5 h-5" />
+                            ) : (
+                              <FileText className="w-5 h-5" />
+                            )}
+                          </div>
+                          <div>
+                            <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                              {mod.title}
+                            </h4>
+                            {mod.subtitle && (
+                              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                                {mod.subtitle}
+                              </p>
+                            )}
+                          </div>
+                        </div>
 
-                <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Core Learning Competencies:
+                        <span
+                          className={cn(
+                            "px-3 py-1 rounded-full text-xs font-bold self-start sm:self-center uppercase tracking-wider",
+                            mod.isFree
+                              ? "bg-emerald-500 text-white shadow-xs"
+                              : "bg-blue-50 text-primary dark:bg-blue-950 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800"
+                          )}
+                        >
+                          {mod.lecturesCountBadge}
+                        </span>
+                      </div>
+
+                      {/* Module Content */}
+                      <div className="p-6 sm:p-7 space-y-4">
+                        {mod.description && (
+                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                            {mod.description}
+                          </p>
+                        )}
+
+                        {/* Lecture list */}
+                        <div className="space-y-2.5">
+                          {mod.lectures.map((lec, lecIdx) => (
+                            <div
+                              key={lecIdx}
+                              className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-start gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-200"
+                            >
+                              <span className="w-6 h-6 rounded-full bg-primary/10 text-primary dark:bg-blue-950 dark:text-blue-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                                ✓
+                              </span>
+                              <span className="leading-relaxed font-medium">{lec}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {mod.note && (
+                          <div className="mt-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 font-medium flex items-start gap-2">
+                            <HelpCircle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
+                            <span>{mod.note}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 4. What You Will Gain Section (matching user screenshot 5) */}
+                {course.whatYouWillGain && course.whatYouWillGain.length > 0 && (
+                  <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-6">
+                    <div className="space-y-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                        Tangible Outcomes &amp; Skills
+                      </span>
+                      <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                        What You Will Gain
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {course.whatYouWillGain.map((gain, gIdx) => (
+                        <div
+                          key={gIdx}
+                          className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-start gap-3.5"
+                        >
+                          <div className="w-7 h-7 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                            <CheckCircle2 className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                              {gain.title}
+                            </h4>
+                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                              {gain.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <ul className="space-y-2">
-                    {course.learningJourney.phase1.topics.map((topic, idx) => (
-                      <li key={idx} className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                        <span>{topic}</span>
-                      </li>
-                    ))}
-                  </ul>
+                )}
+              </div>
+            ) : (
+              /* Fallback to Phase 1 and Phase 2 (PTE Courses) */
+              <div className="space-y-8">
+                <div className="space-y-2 max-w-2xl">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                    Structured Class-by-Class Roadmap
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
+                    Complete Curriculum &amp; Skill Milestones
+                  </h2>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    Every session is structured around Pearson AI machine-scoring algorithms to guarantee tangible score jumps.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Module Phase 1 Card */}
+                  <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-5">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-primary dark:bg-blue-950 dark:text-blue-300 border border-blue-200/70">
+                        {course.learningJourney.phase1.badge}
+                      </span>
+                      <span className="text-xs font-semibold text-slate-400">Foundation Milestone</span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-[#0b2545] dark:text-white">
+                      {course.learningJourney.phase1.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {course.learningJourney.phase1.description}
+                    </p>
+
+                    <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                      <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Core Learning Competencies:
+                      </div>
+                      <ul className="space-y-2">
+                        {course.learningJourney.phase1.topics.map((topic, idx) => (
+                          <li key={idx} className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <span>{topic}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Module Phase 2 Card */}
+                  <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0b2545] to-[#0c1f3d] text-white border border-blue-900 shadow-xl space-y-5">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white">
+                        {course.learningJourney.phase2.badge}
+                      </span>
+                      <span className="text-xs font-semibold text-blue-200">Exam Ready Milestone</span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white">
+                      {course.learningJourney.phase2.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-blue-100 leading-relaxed">
+                      {course.learningJourney.phase2.description}
+                    </p>
+
+                    <div className="space-y-2 pt-2 border-t border-blue-800/60">
+                      <div className="text-xs font-bold text-blue-300 uppercase tracking-wider">
+                        Scoring Algorithms &amp; Strategies:
+                      </div>
+                      <ul className="space-y-2">
+                        {course.learningJourney.phase2.topics.map((topic, idx) => (
+                          <li key={idx} className="text-xs sm:text-sm text-blue-100 flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 text-cyan-300 shrink-0 mt-0.5" />
+                            <span>{topic}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Module Phase 2 Card */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0b2545] to-[#0c1f3d] text-white border border-blue-900 shadow-xl space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white">
-                    {course.learningJourney.phase2.badge}
-                  </span>
-                  <span className="text-xs font-semibold text-blue-200">Exam Ready Milestone</span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white">
-                  {course.learningJourney.phase2.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-blue-100 leading-relaxed">
-                  {course.learningJourney.phase2.description}
-                </p>
-
-                <div className="space-y-2 pt-2 border-t border-blue-800/60">
-                  <div className="text-xs font-bold text-blue-300 uppercase tracking-wider">
-                    Scoring Algorithms &amp; Strategies:
-                  </div>
-                  <ul className="space-y-2">
-                    {course.learningJourney.phase2.topics.map((topic, idx) => (
-                      <li key={idx} className="text-xs sm:text-sm text-blue-100 flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-300 shrink-0 mt-0.5" />
-                        <span>{topic}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            )}
           </section>
         )}
 
