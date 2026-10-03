@@ -8,13 +8,6 @@ import { Container } from "@/components/common/container";
 
 const DECISION_TREE = [
   {
-    q: "Completely new to PTE or English is weak?",
-    a: "PTE Foundation Course",
-    slug: "pte-foundation-to-expert",
-    accent: "border-l-emerald-500 bg-emerald-500/5",
-    pill: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
-  },
-  {
     q: "Intermediate English & need full PTE A-Z in 3-4 weeks?",
     a: "Complete PTE A-Z Masterclass",
     slug: "complete-pte-a-z-masterclass",
