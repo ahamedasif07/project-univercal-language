@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import {
   Star,
   Quote,
@@ -179,25 +178,13 @@ export function TestimonialSliderSection() {
 
                   {/* Bottom Row: Profile & Target */}
                   <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative w-11 h-11 rounded-full overflow-hidden border border-slate-200 dark:border-white/10 shrink-0 shadow-2xs bg-slate-100 dark:bg-slate-800">
-                        <Image
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="44px"
-                        />
-                      </div>
-
-                      <div className="min-w-0 space-y-0.5">
-                        <h4 className="text-sm font-bold text-slate-800 dark:text-slate-100 truncate">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                          {testimonial.course}
-                        </p>
-                      </div>
+                    <div className="min-w-0 space-y-0.5">
+                      <h4 className="text-sm font-bold text-slate-800 dark:text-slate-100 truncate">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                        {testimonial.course}
+                      </p>
                     </div>
 
                     {/* Target Country Flag */}

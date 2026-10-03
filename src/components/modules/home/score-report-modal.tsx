@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import { motion, animate } from "framer-motion";
 import {
   ShieldCheck,
   CheckCircle2,
-  Calendar,
   Award,
   Headphones,
   BookOpen,
@@ -14,7 +13,6 @@ import {
   Building2,
   GraduationCap,
   Trophy,
-  QrCode,
   X,
 } from "lucide-react";
 import {
@@ -27,45 +25,40 @@ import {
 } from "@/components/ui/dialog";
 import { StudentSuccessStory } from "@/data/success-stories";
 
-function AnimatedScoreCounter({
+/**
+ * Butter-smooth 60/120fps direct-DOM number counter.
+ * Updates DOM node directly without causing React component re-renders.
+ */
+function SmoothScoreCounter({
   target,
-  started,
-  duration = 1100,
+  duration = 1.1,
+  delay = 0.1,
 }: {
   target: number;
-  started: boolean;
   duration?: number;
+  delay?: number;
 }) {
-  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!started) {
-      setCount(0);
-      return;
-    }
+    const node = countRef.current;
+    if (!node) return;
 
-    let startTimestamp: number | null = null;
-    let frameId: number;
+    node.textContent = "0";
 
-    const animate = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      // Smooth cubic ease-out curve
-      const ease = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(ease * target));
+    const controls = animate(0, target, {
+      duration,
+      delay,
+      ease: [0.16, 1, 0.3, 1], // Smooth cubic-bezier easeOutExpo
+      onUpdate(value) {
+        node.textContent = Math.round(value).toString();
+      },
+    });
 
-      if (progress < 1) {
-        frameId = requestAnimationFrame(animate);
-      } else {
-        setCount(target);
-      }
-    };
+    return () => controls.stop();
+  }, [target, duration, delay]);
 
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, [started, target, duration]);
-
-  return <span>{count}</span>;
+  return <span ref={countRef}>0</span>;
 }
 
 interface ScoreReportModalProps {
@@ -79,20 +72,6 @@ export function ScoreReportModal({
   isOpen,
   onClose,
 }: ScoreReportModalProps) {
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      // Small timeout so modal enters before animation starts
-      const timer = setTimeout(() => {
-        setHasAnimated(true);
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      setHasAnimated(false);
-    }
-  }, [isOpen]);
-
   if (!student) return null;
 
   const skillItems = [
@@ -154,7 +133,7 @@ export function ScoreReportModal({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         hideCloseButton
-        className="max-w-3xl max-h-[90vh] sm:max-h-[88vh] p-0 flex flex-col border border-slate-200/80 dark:border-slate-800 shadow-2xl rounded-3xl bg-slate-50 dark:bg-slate-950 overflow-hidden"
+        className="max-w-3xl max-h-[90vh] sm:max-h-[88vh] p-0 flex flex-col border border-border/80 shadow-2xl rounded-3xl bg-background overflow-hidden"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>
@@ -165,7 +144,7 @@ export function ScoreReportModal({
           </DialogDescription>
         </DialogHeader>
 
-        {/* ── Top Header Ribbon: Congratulations & Student Info (Fixed at top) ── */}
+        {/* ── Top Header Ribbon: Congratulations & Student Info ── */}
         <div className="relative px-5 sm:px-6 py-3.5 bg-gradient-to-r from-[#061e47] via-[#0b3a82] to-[#1d5ec9] text-white flex items-center justify-between gap-3 border-b border-blue-500/20 shrink-0 select-none z-10">
           <div className="flex items-center gap-2.5 min-w-0">
             <span className="p-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 shrink-0">
@@ -173,10 +152,10 @@ export function ScoreReportModal({
             </span>
             <div className="min-w-0">
               <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-blue-200 truncate">
-                Congratulations • Proud Moment
+                Congratulations • Verified Result
               </div>
               <div className="text-xs sm:text-sm font-extrabold text-white truncate">
-                Student of Universal Language
+                Universal Language Student Achievement
               </div>
             </div>
           </div>
@@ -194,10 +173,15 @@ export function ScoreReportModal({
           </div>
         </div>
 
-        {/* ── Main Scorecard Canvas (Scrollable for full viewing on all screens) ── */}
+        {/* ── Main Scorecard Canvas ── */}
         <div className="flex-1 overflow-y-auto p-5 sm:p-7 space-y-6 overscroll-contain">
           {/* Top Pearson Document Bar */}
-          <div className="rounded-2xl border border-border/80 bg-card p-4 sm:p-5 shadow-xs">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-2xl border border-border/80 bg-card p-4 sm:p-5 shadow-xs"
+          >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 mb-4 border-b border-border/60 gap-2">
               <div className="flex items-center gap-2">
                 <span className="font-serif font-black tracking-tight text-lg text-primary">
@@ -209,31 +193,33 @@ export function ScoreReportModal({
                 </span>
               </div>
               <div className="text-[11px] font-mono text-muted-foreground">
-                Score Report Code: <span className="font-bold text-foreground">{student.testDetails.registrationId}</span>
+                Score Report Code:{" "}
+                <span className="font-bold text-foreground">
+                  {student.testDetails.registrationId}
+                </span>
               </div>
             </div>
 
-            {/* Candidate Summary Grid */}
+            {/* Candidate Summary Grid (Clean, Without Image) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
-              {/* Photo & Identity Details */}
+              {/* Identity & Verification Details */}
               <div className="md:col-span-8 flex items-center gap-4">
-                <div className="relative w-18 h-22 sm:w-20 sm:h-24 rounded-xl overflow-hidden border-2 border-primary/30 shrink-0 shadow-sm bg-muted">
-                  <Image
-                    src={student.image}
-                    alt={student.name}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
-                  <div className="absolute bottom-0 inset-x-0 bg-primary/90 text-[9px] text-white font-bold text-center py-0.5 uppercase tracking-wider">
-                    Candidate
-                  </div>
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary/15 via-primary/10 to-blue-500/10 border border-primary/25 text-primary dark:text-blue-400 flex flex-col items-center justify-center shrink-0 shadow-xs">
+                  <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7 text-primary dark:text-blue-400" />
+                  <span className="text-[8px] font-black uppercase tracking-wider text-primary dark:text-blue-300 mt-0.5">
+                    Verified
+                  </span>
                 </div>
 
                 <div className="space-y-1 min-w-0">
-                  <h3 className="text-base sm:text-lg font-black text-foreground truncate">
-                    {student.name}
-                  </h3>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-base sm:text-lg font-black text-foreground truncate">
+                      {student.name}
+                    </h3>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">
+                      {student.badge}
+                    </span>
+                  </div>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
                     <div>
                       <span className="font-semibold text-foreground/80">Test Taker ID:</span>{" "}
@@ -248,35 +234,36 @@ export function ScoreReportModal({
                       {student.testDetails.countryOfResidence}
                     </div>
                     <div>
-                      <span className="font-semibold text-foreground/80">Target Goal:</span>{" "}
+                      <span className="font-semibold text-foreground/80">Destination:</span>{" "}
                       {student.targetCountry} {student.targetCountryFlag}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Huge Overall Score Block (Blue Pearson Brand) with Count-Up Animation */}
-              <div className="md:col-span-4 flex flex-col items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-[#0b2545] via-[#0b3a82] to-[#124285] text-white shadow-md text-center">
+              {/* Big Overall Score Block with Smooth Counter Animation */}
+              <motion.div
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="md:col-span-4 flex flex-col items-center justify-center p-4 rounded-2xl bg-gradient-to-br from-[#061e47] via-[#0b3a82] to-[#124b9e] text-white shadow-md text-center border border-blue-400/20"
+              >
                 <span className="text-[11px] font-bold uppercase tracking-wider text-blue-200">
                   Overall Score
                 </span>
-                <div className="text-4xl sm:text-5xl font-black tracking-tight text-white my-0.5">
-                  <AnimatedScoreCounter
-                    target={student.overallScore}
-                    started={hasAnimated}
-                    duration={1200}
-                  />
-                  <span className="text-lg font-medium text-blue-200/80">/90</span>
+                <div className="text-4xl sm:text-5xl font-black tracking-tight text-white my-0.5 flex items-baseline justify-center">
+                  <SmoothScoreCounter target={student.overallScore} duration={1.2} delay={0.15} />
+                  <span className="text-lg font-medium text-blue-200/80 ml-1">/90</span>
                 </div>
                 <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-cyan-300">
                   <CheckCircle2 className="w-3 h-3" />
                   {student.cefrLevel}
                 </span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* ── 4 Communicative Skills Cards with Animated Radial Progress Rings (Round Design) ── */}
+          {/* ── 4 Communicative Skills Cards with GPU-accelerated Radial Rings & Smooth Number Counters ── */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
@@ -285,7 +272,7 @@ export function ScoreReportModal({
               </h4>
               <span className="text-[11px] text-muted-foreground font-medium flex items-center gap-1.5">
                 <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Target Met: 79+ Each Band
+                Target Met: {student.overallScore >= 79 ? "79+ Superior Band" : "Target Score Achieved"}
               </span>
             </div>
 
@@ -293,14 +280,21 @@ export function ScoreReportModal({
               {skillItems.map((skill, idx) => {
                 const Icon = skill.icon;
                 const radius = 38;
-                const circumference = 2 * Math.PI * radius; // ~238.761
+                const circumference = 2 * Math.PI * radius; // ~238.76
                 const targetOffset =
                   circumference - (skill.score / 90) * circumference;
 
                 return (
-                  <div
+                  <motion.div
                     key={skill.name}
-                    className={`relative flex flex-col items-center justify-between p-3.5 sm:p-4 rounded-3xl border ${skill.bgLight} shadow-2xs hover:shadow-md transition-all duration-300 hover:scale-[1.02] text-center group`}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.15 + idx * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className={`relative flex flex-col items-center justify-between p-3.5 sm:p-4 rounded-2xl border ${skill.bgLight} shadow-2xs hover:shadow-md transition-all duration-200 text-center group`}
                   >
                     {/* Top Row: Skill Name & Icon Badge */}
                     <div className="flex items-center justify-between w-full pb-1.5 border-b border-border/40">
@@ -312,7 +306,7 @@ export function ScoreReportModal({
                       </div>
                     </div>
 
-                    {/* Circular / Radial Progress Ring (Round Design) */}
+                    {/* Circular / Radial Progress Ring (Smooth GPU Animated) */}
                     <div className="relative flex items-center justify-center my-2 sm:my-2.5">
                       <svg
                         className="w-20 h-20 sm:w-22 sm:h-22 -rotate-90 transform"
@@ -343,8 +337,8 @@ export function ScoreReportModal({
                           className={skill.ringTrack}
                         />
 
-                        {/* Animated Gradient Score Ring */}
-                        <circle
+                        {/* Smooth Animated Radial Score Ring */}
+                        <motion.circle
                           cx="50"
                           cy="50"
                           r={radius}
@@ -353,24 +347,23 @@ export function ScoreReportModal({
                           strokeWidth="7"
                           strokeLinecap="round"
                           strokeDasharray={circumference}
-                          style={{
-                            strokeDashoffset: hasAnimated
-                              ? targetOffset
-                              : circumference,
-                            transition:
-                              "stroke-dashoffset 1100ms cubic-bezier(0.16, 1, 0.3, 1)",
-                            transitionDelay: `${idx * 120}ms`,
+                          initial={{ strokeDashoffset: circumference }}
+                          animate={{ strokeDashoffset: targetOffset }}
+                          transition={{
+                            duration: 1.1,
+                            ease: [0.16, 1, 0.3, 1],
+                            delay: 0.2 + idx * 0.08,
                           }}
                         />
                       </svg>
 
-                      {/* Center Score Counter inside Circle */}
+                      {/* Center Score Display with Butter-Smooth Counter */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
                         <span className="text-2xl sm:text-3xl font-black text-foreground tracking-tight leading-none">
-                          <AnimatedScoreCounter
+                          <SmoothScoreCounter
                             target={skill.score}
-                            started={hasAnimated}
-                            duration={1000 + idx * 100}
+                            duration={1.1}
+                            delay={0.2 + idx * 0.08}
                           />
                         </span>
                         <span className="text-[10px] font-bold text-muted-foreground/80 mt-0.5">
@@ -382,16 +375,21 @@ export function ScoreReportModal({
                     {/* Bottom Status Badge */}
                     <div className="w-full pt-1.5 border-t border-border/40 flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
                       <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
-                      <span>{skill.score >= 79 ? "Superior 79+" : "Passed"}</span>
+                      <span>{skill.score >= 79 ? "Superior 79+" : "Competent"}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
 
           {/* ── Test Centre & University Target Info ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"
+          >
             <div className="p-3.5 rounded-2xl border border-border/80 bg-card space-y-1">
               <div className="font-bold text-foreground flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5 text-primary" />
@@ -411,17 +409,22 @@ export function ScoreReportModal({
                 {student.targetGoal}
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* ── Student Direct Advice Quote ── */}
-          <div className="p-4 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/50">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="p-4 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/50"
+          >
             <div className="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-blue-300 mb-1">
               Student Preparation Experience ({student.duration}):
             </div>
             <p className="text-xs text-foreground/90 italic leading-relaxed">
               &ldquo;{student.testimonial}&rdquo;
             </p>
-          </div>
+          </motion.div>
 
           {/* ── Modal Footer Close ── */}
           <div className="pt-2 flex justify-end">
@@ -438,3 +441,4 @@ export function ScoreReportModal({
     </Dialog>
   );
 }
+
