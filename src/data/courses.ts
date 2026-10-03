@@ -1316,298 +1316,6 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     ],
   },
 
-  // 8. IELTS Academic Masterclass
-  {
-    id: "ielts-masterclass",
-    slug: "ielts-academic-masterclass",
-    category: "course",
-    examType: "ielts",
-    title: "IELTS Academic Masterclass",
-    heroHighlight: "IELTS Academic",
-    heroTitle: "Band 7.5+ Masterclass in Bangladesh",
-    heroSubtitle:
-      "Comprehensive British Council & IDP aligned training for Academic and General Training. Master Task 1 & 2 writing frameworks, active listening cues, and 1-on-1 speaking interview simulations.",
-    badge: "Target Band 7.5+",
-    badgeType: "popular",
-    thumbnailImage:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
-    tagline: "British Council trained mentors – Target Band 7.5+ in 6 weeks",
-    shortDescription:
-      "Flagship IELTS preparation covering Academic & General Training Reading, Writing Task 1 & 2, Listening, and Mock Speaking audits with certified examiners.",
-    price: 12000,
-    originalPrice: 15000,
-    currency: "BDT",
-    format: "HYBRID (1:1 & BATCH)",
-    classesCount: "16 Live Masterclasses",
-    duration: "1.5 Months",
-    tickerItems: [
-      "IELTS Band 7.5+ Guarantee Track",
-      "British Council Certified Trainers",
-      "Unlimited Essay Corrections & Line Audits",
-      "One-on-One Speaking Mock Interviews",
-      "Cambridge 1-19 Exam Papers Breakdown",
-    ],
-    overview: {
-      badge: "Flagship IELTS Program",
-      heading: "Master Cambridge Test Standards. Perfect Your Writing. Speak Fluently.",
-      description:
-        "Designed for students aiming for UK, Canada, Australia, and European university admissions. Our certified IELTS mentors systematically train you on lexical resource, grammatical range, coherence & cohesion, and task achievement for high-band scores.",
-      features: [
-        {
-          title: "Examiner-Grade Writing Audits",
-          description: "Line-by-line feedback on Task 1 data reports and Task 2 opinion/discussion essays.",
-          iconName: "FileText",
-        },
-        {
-          title: "1-on-1 Speaking Simulation",
-          description: "Live mock interviews with lexical scoring, fluency timing, and pronunciation checks.",
-          iconName: "Mic",
-        },
-        {
-          title: "Speed Reading & Skimming Hacks",
-          description: "Techniques for True/False/Not Given, Heading Matching, and summary completion.",
-          iconName: "BookOpen",
-        },
-        {
-          title: "Full Cambridge Practice Bank",
-          description: "Complete Cambridge IELTS 10-19 solved questions and audio tracks.",
-          iconName: "Laptop",
-        },
-      ],
-    },
-    learningJourney: {
-      heading: "Your IELTS",
-      highlight: "Journey",
-      phase1: {
-        badge: "WEEKS 1 - 3",
-        title: "Writing Frameworks & Speaking Confidence",
-        description:
-          "Master Academic Task 1 charts/diagrams and Task 2 complex essay patterns, combined with Part 1, 2, and 3 speaking cue card drills.",
-        topics: [
-          "Academic Task 1 Data Breakdown & Comparison Language",
-          "Task 2 4-Paragraph Essay Formula (Agree/Disagree, Discuss Both Views)",
-          "Lexical Resource & Cohesive Devices without memorized clichés",
-          "Speaking Part 2 Cue Card 1-Minute Preparation Blueprint",
-          "Pronunciation, Idiomatic Phrasing & Natural Pausing",
-        ],
-      },
-      phase2: {
-        badge: "WEEKS 4 - 6",
-        title: "Reading Precision, Listening Traps & Full Mocks",
-        description:
-          "Eliminate speed bottlenecks in Reading Passages 1-3, master fast audio accents in Listening Sections 3-4, and complete 4 full-length exam simulations.",
-        topics: [
-          "Skimming, Scanning & Keyword Parallelism in Academic Reading",
-          "True / False / Not Given Elimination Logic",
-          "Listening Note-Taking & Distractor Elimination",
-          "4 Full-Length Scored Mock Tests with Examiner Scorecard",
-          "Final Pre-Exam Confidence Briefing",
-        ],
-      },
-    },
-    whatIsIncluded: {
-      heading: "What is",
-      highlight: "Included?",
-      items: [
-        {
-          title: "16 Live Interactive Classes",
-          description: "In-depth module-by-module coaching with experienced IELTS specialists.",
-          iconName: "Users",
-        },
-        {
-          title: "Unlimited Essay Feedback",
-          description: "Personal corrections on your essays with band descriptor scoring.",
-          iconName: "PenTool",
-        },
-        {
-          title: "5 Live Speaking Mock Interviews",
-          description: "One-on-one evaluations with immediate audio analysis.",
-          iconName: "Headphones",
-        },
-        {
-          title: "Cambridge Digital Vault",
-          description: "Cambridge 1-19 tests, audio files, and model answers.",
-          iconName: "BookOpen",
-        },
-      ],
-    },
-    whoIsThisFor: {
-      heading: "Who is This Course",
-      highlight: "For?",
-      subtitle: "For aspirants aiming for Band 6.5 to 8.0+",
-      checklist: [
-        "Students applying to UK, Canada, Australia, Europe, or USA universities",
-        "Candidates stuck at Band 6.0 in Writing or Speaking needing 7.0+",
-        "Immigration and express entry applicants needing high CLB 9+ scores",
-        "Those wanting examiner-calibrated feedback rather than generic advice",
-      ],
-    },
-    ctaBanner: {
-      heading: "Achieve Your Target IELTS Band 7.5+",
-      priceText: "BDT 12,000",
-      subText: "16 Live Masterclasses | 1.5 Months | Cambridge Materials Included",
-      buttonText: "Enroll in IELTS Course Now",
-    },
-    faqs: [
-      {
-        question: "Does this course cover both Academic and General Training?",
-        answer:
-          "Yes, we provide specialized parallel tracks for both Academic (university admissions) and General Training (work permit & immigration).",
-      },
-      {
-        question: "How are Speaking mocks conducted?",
-        answer:
-          "Speaking mocks are conducted 1-on-1 via live video or in-person session, exactly matching the 11-14 minute real test format.",
-      },
-    ],
-  },
-
-  // 9. Duolingo English Test (DET) Mastery
-  {
-    id: "duolingo-mastery",
-    slug: "duolingo-english-test-mastery",
-    category: "course",
-    examType: "duolingo",
-    title: "Duolingo English Test (DET) Mastery",
-    heroHighlight: "Duolingo (DET)",
-    heroTitle: "Target 125+ Score Program in Bangladesh",
-    heroSubtitle:
-      "Master the fast-growing online adaptive test accepted by 5,000+ top universities worldwide. Complete preparation covering Interactive Reading, Writing Samples, Speaking Production, and Adaptive AI scoring.",
-    badge: "125+ Score Guarantee Track",
-    badgeType: "popular",
-    thumbnailImage:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
-    tagline: "Adaptive AI Test Prep – 125+ in 3 to 4 Weeks",
-    shortDescription:
-      "Dedicated Duolingo English Test coaching covering computer-adaptive question algorithms, Subscores (Literacy, Comprehension, Conversation, Production), and timed drills.",
-    price: 10000,
-    originalPrice: 13000,
-    currency: "BDT",
-    format: "ONLINE (1:1 & SMALL GROUP)",
-    classesCount: "12 Master Classes",
-    duration: "1 Month",
-    tickerItems: [
-      "Accepted by 5,000+ Global Universities",
-      "Adaptive Computer Algorithm Decoded",
-      "Literacy, Conversation & Production Drills",
-      "Instant Diagnostic Score Assessment",
-      "Free Exam Booking & Voucher Guidance",
-    ],
-    overview: {
-      badge: "Modern AI Test Prep",
-      heading: "Ace the Duolingo English Test. Fast, Affordable, University-Accepted.",
-      description:
-        "The Duolingo English Test is adaptive, convenient, and accepted by thousands of universities worldwide (including USA, Canada, UK, and Australia). We train you to beat the difficulty curve, maintain typing speed, and excel in both open-ended production and interactive reading.",
-      features: [
-        {
-          title: "Adaptive Algorithm Hacks",
-          description: "How to trigger higher difficulty bands early to ensure high baseline scores.",
-          iconName: "Zap",
-        },
-        {
-          title: "Interactive Reading Mastery",
-          description: "Complete C-Test missing letter passages and text reconstruction.",
-          iconName: "BookOpen",
-        },
-        {
-          title: "Speaking & Writing Production",
-          description: "Timed templates for Describe an Image, Writing Sample, and Speaking Interview.",
-          iconName: "Mic",
-        },
-        {
-          title: "Mock Test Evaluations",
-          description: "Full simulation tests on authentic adaptive platforms with subscore breakdown.",
-          iconName: "Laptop",
-        },
-      ],
-    },
-    learningJourney: {
-      heading: "The DET",
-      highlight: "Curriculum",
-      phase1: {
-        badge: "WEEKS 1 - 2",
-        title: "Test Mechanics, C-Tests & Speaking Drills",
-        description:
-          "Master Read and Complete (C-test), Read and Select, Listen and Type, and 90-second speaking prompts.",
-        topics: [
-          "Understanding the DET Computer Adaptive Scoring Algorithm",
-          "Read and Complete: Grammar & Contextual Word Filling",
-          "Listen and Type: High-Speed Audio Capture Drills",
-          "Read Aloud: Pronunciation, Rhythm & Acoustic AI Sensors",
-          "Speaking: Describe an Image in 90 Seconds without Pausing",
-        ],
-      },
-      phase2: {
-        badge: "WEEKS 3 - 4",
-        title: "Interactive Reading, Extended Writing & Full Simulation",
-        description:
-          "Conquer the interactive reading section, write 5-minute academic responses with high lexical variety, and sit for realistic mock exams.",
-        topics: [
-          "Interactive Reading: Complete the Passage & Highlight Passage Details",
-          "Writing Sample: 5-Minute Timed Essay with High Lexical Diversity",
-          "Speaking Sample: Unscripted Argumentative Response for Admissions Officers",
-          "2 Full-Length Timed Computer Adaptive Mock Tests",
-          "Official Test-Day Rules, Lighting, and Camera Verification Protocol",
-        ],
-      },
-    },
-    whatIsIncluded: {
-      heading: "What is",
-      highlight: "Included?",
-      items: [
-        {
-          title: "12 Live Master Sessions",
-          description: "Covering all 14 DET question types and computer scoring nuances.",
-          iconName: "Laptop",
-        },
-        {
-          title: "DET Practice Platform Access",
-          description: "Over 2,000+ realistic practice questions with speech recognition.",
-          iconName: "CheckCircle2",
-        },
-        {
-          title: "Writing & Speaking Evaluations",
-          description: "Personalized reviews by certified English mentors.",
-          iconName: "PenTool",
-        },
-        {
-          title: "Official Booking Assistance",
-          description: "Voucher purchase and test environment check support.",
-          iconName: "ShieldCheck",
-        },
-      ],
-    },
-    whoIsThisFor: {
-      heading: "Who is This Course",
-      highlight: "For?",
-      subtitle: "For test takers wanting a fast, flexible, modern English test",
-      checklist: [
-        "Applicants targeting universities in USA, Canada, UK, and Europe accepting DET",
-        "Students who want an affordable exam (DET costs only $65 vs $220 for other tests)",
-        "Anyone who needs official test scores within 48 hours for immediate university deadlines",
-        "Learners who prefer taking the test from the comfort of their home",
-      ],
-    },
-    ctaBanner: {
-      heading: "Prepare for Your Duolingo English Test",
-      priceText: "BDT 10,000",
-      subText: "12 Master Classes | 1 Month Duration | Full Practice Materials",
-      buttonText: "Enroll in Duolingo Course Now",
-    },
-    faqs: [
-      {
-        question: "Is Duolingo English Test accepted for university admissions?",
-        answer:
-          "Yes! Over 5,000 university programs globally—including NYU, Columbia, Yale, McGill, and many UK & Australian universities—accept DET for undergraduate and graduate admissions.",
-      },
-      {
-        question: "How long does it take to get DET results?",
-        answer:
-          "Results are delivered to your portal within 48 hours of completing the test.",
-      },
-    ],
-  },
-
   // 7. Basic to IELTS Course (Basic to Advance)
   {
     id: "basic-to-ielts",
@@ -1626,9 +1334,10 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     tagline: "Build foundational grammar & master all 4 IELTS test modules",
     shortDescription:
       "28 sessions (26 lectures + 2 free review sessions). 2 hours per class, 3 classes per week (approx. 9–10 weeks). Zero-level grammar to high-band IELTS exam readiness.",
-    price: 15000,
-    originalPrice: 19000,
+    price: 13999,
+    originalPrice: 20000,
     currency: "BDT",
+    priceNote: "30% OFF",
     format: "LIVE INTERACTIVE (Online / Hybrid)",
     classesCount: "28 Total Sessions (26 Lectures + 2 Free Review)",
     duration: "Approx. 9–10 Weeks (3 Classes / Week • 2 Hours / Class)",
@@ -1884,8 +1593,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     },
     ctaBanner: {
       heading: "Enroll in Basic to IELTS Course",
-      priceText: "BDT 15,000",
-      subText: "28 Total Sessions | 2 Hours/Class • 3 Days/Week | Complete Grammar + IELTS",
+      priceText: "BDT 13,999 (30% OFF)",
+      subText: "Regular ৳20,000 | Save ৳6,001 on your enrolment | 28 Sessions | 2 Hours/Class • 3 Days/Week",
       buttonText: "Enroll in Basic to IELTS Course Now",
     },
     faqs: [
@@ -1930,9 +1639,10 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     tagline: "Focused 4-module mastery with targeted shortcuts & test-day strategies",
     shortDescription:
       "18 sessions (16 subject lectures + 2 free review sessions). 2 hours per class, 3 classes per week (6 weeks duration). Fast-track strategies for all 4 modules.",
-    price: 10000,
-    originalPrice: 13000,
+    price: 8999,
+    originalPrice: 12000,
     currency: "BDT",
+    priceNote: "25% OFF",
     format: "LIVE INTENSIVE (Online / Hybrid)",
     classesCount: "18 Total Sessions (16 Lectures + 2 Free Review)",
     duration: "6 Weeks (3 Classes / Week • 2 Hours / Class)",
@@ -2178,8 +1888,8 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     },
     ctaBanner: {
       heading: "Enroll in IELTS Crash Course",
-      priceText: "BDT 10,000",
-      subText: "18 Total Sessions | 2 Hours/Class • 3 Days/Week | Complete 4-Module Preparation",
+      priceText: "BDT 8,999 (25% OFF)",
+      subText: "Regular ৳12,000 | Save ৳3,001 on your enrolment | 18 Sessions (16 Lectures + 2 Free Review) | 2 Hours/Class • 3 Days/Week",
       buttonText: "Enroll in IELTS Crash Course Now",
     },
     faqs: [

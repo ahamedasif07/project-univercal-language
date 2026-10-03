@@ -147,18 +147,20 @@ function CoursesServicesContent() {
               <span>IELTS Course ({ieltsCount})</span>
             </button>
 
-            {/* Duolingo Course Tab */}
-            <button
-              onClick={() => setActiveTab("duolingo")}
-              className={cn(
-                "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
-                activeTab === "duolingo"
-                  ? "bg-primary text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              )}
-            >
-              <span>Duolingo Course ({duolingoCount})</span>
-            </button>
+            {/* Duolingo Course Tab (Shown only if courses exist) */}
+            {duolingoCount > 0 && (
+              <button
+                onClick={() => setActiveTab("duolingo")}
+                className={cn(
+                  "relative px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5",
+                  activeTab === "duolingo"
+                    ? "bg-primary text-white shadow-xs font-bold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                )}
+              >
+                <span>Duolingo Course ({duolingoCount})</span>
+              </button>
+            )}
 
             {/* Official Services Tab */}
             <button
@@ -374,25 +376,31 @@ function HumanizedCourseCard({ item }: { item: CoursePackage }) {
       {/* Card Footer: Pricing and Dual Action Buttons */}
       <div className="p-4 pt-0 space-y-2.5 border-t border-slate-100 dark:border-slate-800/80">
         {/* Pricing Display */}
-        <div className="flex items-baseline justify-between pt-2">
+        <div className="flex items-end justify-between pt-2">
           <div>
             {item.originalPrice && (
-              <span className="text-[10px] text-slate-400 line-through mr-1.5">
-                {item.currency} {item.originalPrice.toLocaleString()}
-              </span>
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="text-[11px] text-slate-400 line-through">
+                  ৳{item.originalPrice.toLocaleString()}
+                </span>
+                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.2 rounded">
+                  Save ৳{(item.originalPrice - item.price).toLocaleString()}
+                </span>
+              </div>
             )}
-            <div className="flex items-baseline gap-1">
-              <span className="text-[11px] font-bold text-primary">
-                {item.priceNote ? `${item.priceNote} ` : ""}
-                {item.currency}
-              </span>
+            <div className="flex items-baseline gap-1.5">
               <span className="text-xl sm:text-2xl font-black text-[#0b2545] dark:text-white tracking-tight">
-                {item.price.toLocaleString()}
+                ৳{item.price.toLocaleString()}
               </span>
+              {item.priceNote && (
+                <span className="text-[10px] font-extrabold text-white bg-primary px-1.5 py-0.5 rounded">
+                  {item.priceNote}
+                </span>
+              )}
             </div>
           </div>
 
-          <span className="text-[10px] font-semibold text-primary dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-800/60">
+          <span className="text-[10px] font-semibold text-primary dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-800/60 self-end mb-1">
             {isOfficialService ? "Official" : "All-Inclusive"}
           </span>
         </div>

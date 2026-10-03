@@ -254,11 +254,16 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
                     {course.originalPrice && (
                       <div className="text-right">
                         <span className="text-xs text-slate-400 line-through block">
-                          {course.currency} {course.originalPrice.toLocaleString()}
+                          ৳{course.originalPrice.toLocaleString()}
                         </span>
-                        <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">
-                          Save {course.currency} {(course.originalPrice - course.price).toLocaleString()}
-                        </span>
+                        <div className="flex items-center gap-1 justify-end mt-0.5">
+                          <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">
+                            Save ৳{(course.originalPrice - course.price).toLocaleString()}
+                          </span>
+                          <span className="text-[10px] font-black text-white bg-primary px-1.5 py-0.5 rounded">
+                            {Math.round(((course.originalPrice - course.price) / course.originalPrice) * 100)}% OFF
+                          </span>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -288,22 +293,53 @@ export function CourseDetailView({ course, relatedCourses }: CourseDetailViewPro
 
                   {/* Value Highlights */}
                   <div className="space-y-2.5 text-xs text-slate-700 dark:text-slate-300">
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                      <span>Dedicated 1-on-1 Certified Pearson Trainer</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                      <span>VIP 30-Day APEUni / Alfa AI Scoring Portal</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                      <span>Speaking Audio Review &amp; Accent Neutralization</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                      <span>Pay in BDT via bKash / Nagad / Bank Transfer</span>
-                    </div>
+                    {course.examType === "ielts" ? (
+                      <>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>All four IELTS modules included</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>
+                            {course.curriculumOverview?.totalLectures || "16"} subject-based lectures
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>2 additional free review sessions</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>
+                            2 Hours/Class • 3 Classes/Week • Live Mentorship
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>Pay in BDT via bKash / Nagad / Bank Transfer</span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>Dedicated 1-on-1 Certified Pearson Trainer</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>VIP 30-Day APEUni / Alfa AI Scoring Portal</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>Speaking Audio Review &amp; Accent Neutralization</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                          <span>Pay in BDT via bKash / Nagad / Bank Transfer</span>
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   {/* Primary WhatsApp Booking Action */}
