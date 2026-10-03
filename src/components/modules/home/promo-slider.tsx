@@ -55,6 +55,33 @@ export const POSTER_SLIDES: PosterSlide[] = [
   },
   {
     id: 4,
+    title: "IELTS Basic to IELTS Course",
+    badge: "30% Special Discount",
+    tag: "1-1 Guidance • British Council Partner",
+    image: "/images/dic-image-4.jpeg",
+    alt: "IELTS Basic to IELTS Course at Universal Language with 30% Discount - 28 Live Classes + 2 Free Review Classes",
+    discountText: "30% OFF • 28 Live + 2 Review Classes • 1 Month Portal • Unlimited Mocks",
+  },
+  {
+    id: 5,
+    title: "IELTS Crash Course",
+    badge: "25% Special Discount",
+    tag: "Practical Simulation & Mini-Batch",
+    image: "/images/dic-image-5.jpeg",
+    alt: "IELTS Crash Course at Universal Language with 25% Discount - 16 Live Classes + 2 Free Review Classes",
+    discountText: "25% OFF • 16 Live + 2 Review Classes • 1 Month Portal • Mocks",
+  },
+  {
+    id: 6,
+    title: "Duolingo English Test (DET)",
+    badge: "Official Prep & Voucher",
+    tag: "Live Classes & Technical Guidance",
+    image: "/images/dic-image-6.jpeg",
+    alt: "Duolingo English Test Product Catalog at Universal Language - Full Course BDT 15k, 1-to-1 BDT 20k, Exam Purchase BDT 10k",
+    discountText: "Full Course BDT 15k • 1-to-1 BDT 20k • Official Exam Purchase BDT 10k",
+  },
+  {
+    id: 7,
     title: "Official PTE Exam Registration",
     badge: "৳500 Instant Discount",
     tag: "Pearson Authorized Test Center",
@@ -64,7 +91,7 @@ export const POSTER_SLIDES: PosterSlide[] = [
   },
 ];
 
-const AUTOPLAY_INTERVAL = 3000; // ms
+const AUTOPLAY_INTERVAL = 3800; // ms
 
 // Function to generate the dedicated WhatsApp enrollment link with the selected course flyer
 function getWhatsAppEnrollUrl(slide: PosterSlide) {
@@ -81,55 +108,43 @@ function getWhatsAppEnrollUrl(slide: PosterSlide) {
   return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 }
 
+function getCtaButtonText(slide: PosterSlide) {
+  if (slide.id === 7) return "Book Exam via WhatsApp (Claim ৳500 Discount)";
+  if (slide.id === 6) return "Inquire via WhatsApp (Duolingo Course & Voucher)";
+  if (slide.id === 4) return "Enroll via WhatsApp (Claim 30% Discount)";
+  if (slide.id === 5) return "Enroll via WhatsApp (Claim 25% Discount)";
+  return "Enroll via WhatsApp (Claim 35% Discount)";
+}
+
 export function PromoSlider({ className }: { className?: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
   const totalSlides = POSTER_SLIDES.length;
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    setProgress(0);
   }, [totalSlides]);
 
   const goToPrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-    setProgress(0);
   }, [totalSlides]);
 
   const goToIndex = (idx: number) => {
     setCurrentIndex(idx);
-    setProgress(0);
   };
 
-  // Progress Bar & Auto-Advance Timer (clean increment without side effects in state updater)
+  // Clean auto-advance timer on interval (no cascading renders)
   useEffect(() => {
     if (isPaused) return;
 
-    const stepMs = 50;
-    const increment = (stepMs / AUTOPLAY_INTERVAL) * 100;
-
-    const interval = setInterval(() => {
-      setProgress((old) => {
-        const next = old + increment;
-        if (next >= 100) {
-          return 100;
-        }
-        return next;
-      });
-    }, stepMs);
-
-    return () => clearInterval(interval);
-  }, [isPaused, currentIndex]);
-
-  // Transition to next slide cleanly when progress reaches 100%
-  useEffect(() => {
-    if (progress >= 100) {
+    const timer = setInterval(() => {
       goToNext();
-    }
-  }, [progress, goToNext]);
+    }, AUTOPLAY_INTERVAL);
+
+    return () => clearInterval(timer);
+  }, [isPaused, goToNext]);
 
   // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -158,27 +173,23 @@ export function PromoSlider({ className }: { className?: string }) {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      aria-label="PTE Course Promotional Offers Carousel"
+      aria-label="Course Promotional Offers Carousel"
     >
       {/* Ambient Multi-Layered Backlight Glow */}
       <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-tr from-primary/25 via-blue-600/20 to-blue-400/20 blur-2xl -z-10 opacity-70 group-hover:opacity-95 transition-opacity duration-700" />
 
       {/* Main Unified Poster Display & Enrollment Card */}
       <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-border/80 dark:border-white/15 bg-card flex flex-col">
-        {/* ── 1. Poster Image Frame (Aspect 4/5 - Matches the exact 1080x1350 / 1122x1402 poster ratio) ── */}
-        {/* Completely unobstructed: No overlays, no text coverings, 100% full view */}
+        {/* ── 1. Poster Image Frame (Aspect 4/5) with True Horizontal Sliding Track ── */}
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-950/5 dark:bg-slate-950/40">
-          {POSTER_SLIDES.map((slide, idx) => {
-            const isActive = idx === currentIndex;
-            return (
+          <div
+            className="flex w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {POSTER_SLIDES.map((slide, idx) => (
               <div
                 key={slide.id}
-                className={cn(
-                  "absolute inset-0 transition-opacity duration-500 ease-out",
-                  isActive
-                    ? "opacity-100 z-10 pointer-events-auto"
-                    : "opacity-0 z-0 pointer-events-none"
-                )}
+                className="w-full h-full shrink-0 relative"
               >
                 <a
                   href={getWhatsAppEnrollUrl(slide)}
@@ -191,15 +202,15 @@ export function PromoSlider({ className }: { className?: string }) {
                     src={slide.image}
                     alt={slide.alt}
                     fill
-                    priority
+                    priority={idx === 0}
                     unoptimized
                     sizes="(max-width: 768px) 100vw, 470px"
                     className="object-contain w-full h-full transition-transform duration-500 group-hover/poster:scale-[1.01]"
                   />
                 </a>
               </div>
-            );
-          })}
+            ))}
+          </div>
 
           {/* Previous & Next Navigation Arrows (Cleanly placed on side edges) */}
           <button
@@ -228,27 +239,36 @@ export function PromoSlider({ className }: { className?: string }) {
         {/* ── 2. Dedicated Slide Enrollment Section (Placed SEPARATELY below the image, NEVER covering it) ── */}
         <div className="p-3.5 sm:p-4 bg-card/95 dark:bg-card border-t border-border/70 dark:border-white/10 flex flex-col gap-3">
           {/* Active Course Details & Offer Badges */}
-          <div className="flex items-start justify-between gap-2.5">
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2 mb-1 flex-wrap">
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
-                  {activeSlide.badge}
-                </span>
-                <span className="text-[11px] font-bold text-primary dark:text-blue-400 truncate">
-                  {activeSlide.tag}
-                </span>
-              </div>
-              <h3 className="text-sm sm:text-base font-extrabold text-foreground truncate">
-                {activeSlide.title}
-              </h3>
-              <p className="text-xs text-muted-foreground truncate mt-0.5">
-                {activeSlide.discountText}
-              </p>
-            </div>
+          <div className="flex items-start justify-between gap-2.5 min-h-[64px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSlide.id}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="min-w-0 flex-1"
+              >
+                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-xs">
+                    {activeSlide.badge}
+                  </span>
+                  <span className="text-[11px] font-bold text-primary dark:text-blue-400 truncate">
+                    {activeSlide.tag}
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-extrabold text-foreground truncate">
+                  {activeSlide.title}
+                </h3>
+                <p className="text-xs text-muted-foreground truncate mt-0.5">
+                  {activeSlide.discountText}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Slide Index Pill */}
             <span className="shrink-0 px-2 py-1 rounded-md bg-muted text-[11px] font-mono font-bold text-muted-foreground border border-border/50">
-              0{currentIndex + 1} / 0{totalSlides}
+              {String(currentIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
             </span>
           </div>
 
@@ -268,11 +288,7 @@ export function PromoSlider({ className }: { className?: string }) {
             >
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-10.416c-5.522 0-10 4.477-10 10 0 1.769.459 3.498 1.338 5.023l-1.422 5.195 5.344-1.401c1.465.799 3.117 1.22 4.74 1.22 5.523 0 10-4.478 10-10 0-5.523-4.477-10-10-10z" />
             </svg>
-            <span>
-              {activeSlide.id === 4
-                ? "Book Exam via WhatsApp (Claim ৳500 Discount)"
-                : "Enroll via WhatsApp (Claim 35% Discount)"}
-            </span>
+            <span>{getCtaButtonText(activeSlide)}</span>
             <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover/cta:translate-x-1" />
           </a>
         </div>
@@ -290,7 +306,7 @@ export function PromoSlider({ className }: { className?: string }) {
               className={cn(
                 "h-2 rounded-full transition-all duration-300 cursor-pointer",
                 idx === currentIndex
-                  ? "w-7 bg-primary dark:bg-blue-400"
+                  ? "w-6 bg-primary dark:bg-blue-400"
                   : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
               )}
             />
@@ -300,12 +316,18 @@ export function PromoSlider({ className }: { className?: string }) {
         {/* Slide Counter / Auto-advance Progress Line */}
         <div className="flex items-center gap-2 flex-1 max-w-[200px]">
           <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider truncate">
-            Auto-Slide
+            {isPaused ? "Paused" : "Auto-Slide"}
           </span>
           <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-[#0b3a82] via-primary to-blue-500 rounded-full transition-all duration-100 ease-linear"
-              style={{ width: `${progress}%` }}
+            <motion.div
+              key={`${currentIndex}-${isPaused}`}
+              initial={{ width: "0%" }}
+              animate={{ width: isPaused ? "0%" : "100%" }}
+              transition={{
+                duration: AUTOPLAY_INTERVAL / 1000,
+                ease: "linear",
+              }}
+              className="h-full bg-gradient-to-r from-[#0b3a82] via-primary to-blue-500 rounded-full"
             />
           </div>
         </div>
