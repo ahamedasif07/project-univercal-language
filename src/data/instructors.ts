@@ -594,6 +594,104 @@ export const INSTRUCTORS: Instructor[] = [
       location: "Dhaka, Bangladesh",
     },
   },
+
+  // Instructor: Khairul Islam
+  {
+    id: "khairul-islam",
+    slug: "khairul-islam",
+    name: "Khairul Islam",
+    role: "English Language & IELTS Instructor",
+    title: "English Language & IELTS Trainer | Universal Language",
+    organization: "Universal Language",
+    scoreHighlight: "IELTS Band 7.0",
+    badge: "IELTS & Grammar Specialist",
+    image: "/images/instructors/khirul-islam-pp.jpeg",
+    experience: "Active IELTS & English Trainer",
+    studentsTrained: "40+ Enrolled Students",
+    targetSuccessRate: "Band 7.0+ Target Track",
+    shortBio:
+      "English Language & IELTS Trainer with official Band 7.0 and Northern University academic background, specializing in foundational grammar, Reading comprehension hacks, and structured IELTS test strategies.",
+    fullBio: [
+      "Khairul Islam is an energetic and dedicated English Language & IELTS Trainer at Universal Language. Holding an official IELTS Band 7.0 credential and an academic background in Computer Science from Northern University Bangladesh, Khairul blends structured analytical thinking with student-centric coaching methods.",
+      "Having guided students across foundational grammar through to intensive IELTS test preparation, Khairul specializes in simplifying complex grammatical structures and teaching active reading-scanning techniques. He ensures candidates master True/False/Not Given, Paragraph Headings, and complex academic texts without getting overwhelmed by strict time limits.",
+      "At Universal Language, Khairul works closely with learners across both the Basic to IELTS and IELTS Crash Courses. His coaching methodology emphasizes diagnostic feedback, continuous error tracking, structured vocabulary building, and realistic mock exam simulations that give students the clarity and confidence required to attain their target band score.",
+    ],
+    quote:
+      "Achieving a high band score in IELTS begins with building strong grammatical foundations and mastering strategic comprehension under real exam time pressure.",
+    specialties: [
+      "IELTS Academic & General Training (Band 7.0)",
+      "Basic to IELTS Foundation Building",
+      "Reading Module Time-Management & Question Decoding",
+      "Listening Speed & Predictive Note-Taking",
+      "Sentence Structure, Word Forms & Grammatical Range",
+      "Diagnostic Weakness Feedback & Error Logging",
+      "Interactive Mock Testing & Strategy Analysis",
+      "Online, Offline & Hybrid Classroom Mentorship",
+    ],
+    certifications: [
+      "IELTS Academic Overall Band 7.0 (CEFR Level C1)",
+      "Northern University Bangladesh — Computer Science & Engineering",
+      "Advanced Teacher Training in English Language Teaching (ELT)",
+      "Diagnostic Assessment & IELTS Mock Evaluation Specialist",
+    ],
+    education: [
+      "B.Sc. in Computer Science & Engineering (CSE) — Northern University Bangladesh",
+    ],
+    workExperience: [
+      {
+        role: "English Language & IELTS Instructor",
+        organization: "Universal Language",
+        period: "2025 – Present",
+        highlights: [
+          "Conduct Basic to IELTS and IELTS Crash Course sessions covering core grammar rules and test strategies.",
+          "Train students on speed-reading, paragraph skimming, keyword spotting, and distractor elimination in IELTS Reading.",
+          "Deliver structured listening practice focusing on accent recognition, spelling accuracy, and multi-speaker dialogues.",
+          "Perform diagnostic speaking and writing assessments with personalized error logs for each learner.",
+          "Facilitate interactive language drills and weekly revision sessions to solidify test-day readiness.",
+        ],
+      },
+    ],
+    awards: [
+      {
+        title: "Academic Excellence Award",
+        organization: "Northern University Bangladesh",
+        year: "2024–2025",
+      },
+      {
+        title: "IELTS Band 7.0 Credential Holder",
+        organization: "Official IELTS Test Center",
+        year: "2025",
+      },
+      {
+        title: "Outstanding Student Mentor Award",
+        organization: "Universal Language Faculty",
+        year: "2026",
+      },
+    ],
+    featuredCourses: [
+      {
+        title: "Basic to IELTS Foundation Course",
+        duration: "Approx. 9–10 Weeks • 28 Sessions",
+        description:
+          "Comprehensive grammar foundation transitioning seamlessly into all four IELTS test modules with 2-hour classes 3 times a week.",
+      },
+      {
+        title: "IELTS Crash Course (Fast-Track)",
+        duration: "6 Weeks • 18 Total Sessions",
+        description:
+          "Intensive 4-module mastery with test shortcuts, question-type strategies, and 2 free review sessions.",
+      },
+    ],
+    scorecardHighlights: [
+      { label: "Overall Band", value: "7.0", sublabel: "Official IELTS" },
+      { label: "University", value: "Northern", sublabel: "Northern University BD" },
+      { label: "Core Focus", value: "R & L", sublabel: "Reading & Listening" },
+      { label: "Specialty", value: "Grammar", sublabel: "Basic to Advanced" },
+    ],
+    socials: {
+      location: "Dhaka, Bangladesh",
+    },
+  },
   // Instructor: Papon Miah
   {
     id: "papon-miah",
@@ -740,6 +838,10 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "tashin" && inst.id === "shams-tashin") ||
       (slug === "jamius" && inst.id === "shams-tashin") ||
       (slug === "jamius-shams" && inst.id === "shams-tashin") ||
+      (slug === "khairul-islam" && inst.id === "khairul-islam") ||
+      (slug === "khirul-islam" && inst.id === "khairul-islam") ||
+      (slug === "khairul" && inst.id === "khairul-islam") ||
+      (slug === "khirul" && inst.id === "khairul-islam") ||
       (slug === "papon" && inst.id === "papon-miah") ||
       (slug === "papon-miah" && inst.id === "papon-miah") ||
       (slug === "sifat-hasan" && inst.id === "sifat-hasan") ||

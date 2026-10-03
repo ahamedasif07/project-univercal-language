@@ -1316,6 +1316,152 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     ],
   },
 
+  // Duolingo English Test (DET) Mastery
+  {
+    id: "duolingo-mastery",
+    slug: "duolingo-english-test-mastery",
+    category: "course",
+    examType: "duolingo",
+    title: "Duolingo English Test (DET) Mastery",
+    heroHighlight: "Duolingo (DET)",
+    heroTitle: "Target 125+ Score Program in Bangladesh",
+    heroSubtitle:
+      "Master the fast-growing online adaptive test accepted by 5,000+ top universities worldwide. Complete preparation covering Interactive Reading, Writing Samples, Speaking Production, and Adaptive AI scoring.",
+    badge: "125+ Score Guarantee Track",
+    badgeType: "popular",
+    thumbnailImage:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
+    tagline: "Adaptive AI Test Prep – 125+ in 3 to 4 Weeks",
+    shortDescription:
+      "Dedicated Duolingo English Test coaching covering computer-adaptive question algorithms, Subscores (Literacy, Comprehension, Conversation, Production), and timed drills.",
+    price: 10000,
+    originalPrice: 13000,
+    currency: "BDT",
+    format: "ONLINE (1:1 & SMALL GROUP)",
+    classesCount: "12 Master Classes",
+    duration: "1 Month",
+    tickerItems: [
+      "Accepted by 5,000+ Global Universities",
+      "Adaptive Computer Algorithm Decoded",
+      "Literacy, Conversation & Production Drills",
+      "Instant Diagnostic Score Assessment",
+      "Free Exam Booking & Voucher Guidance",
+    ],
+    overview: {
+      badge: "Modern AI Test Prep",
+      heading: "Ace the Duolingo English Test. Fast, Affordable, University-Accepted.",
+      description:
+        "The Duolingo English Test is adaptive, convenient, and accepted by thousands of universities worldwide (including USA, Canada, UK, and Australia). We train you to beat the difficulty curve, maintain typing speed, and excel in both open-ended production and interactive reading.",
+      features: [
+        {
+          title: "Adaptive Algorithm Hacks",
+          description: "How to trigger higher difficulty bands early to ensure high baseline scores.",
+          iconName: "Zap",
+        },
+        {
+          title: "Interactive Reading Mastery",
+          description: "Complete C-Test missing letter passages and text reconstruction.",
+          iconName: "BookOpen",
+        },
+        {
+          title: "Speaking & Writing Production",
+          description: "Timed templates for Describe an Image, Writing Sample, and Speaking Interview.",
+          iconName: "Mic",
+        },
+        {
+          title: "Mock Test Evaluations",
+          description: "Full simulation tests on authentic adaptive platforms with subscore breakdown.",
+          iconName: "Laptop",
+        },
+      ],
+    },
+    learningJourney: {
+      heading: "The DET",
+      highlight: "Curriculum",
+      phase1: {
+        badge: "WEEKS 1 - 2",
+        title: "Test Mechanics, C-Tests & Speaking Drills",
+        description:
+          "Master Read and Complete (C-test), Read and Select, Listen and Type, and 90-second speaking prompts.",
+        topics: [
+          "Understanding the DET Computer Adaptive Scoring Algorithm",
+          "Read and Complete: Grammar & Contextual Word Filling",
+          "Listen and Type: High-Speed Audio Capture Drills",
+          "Read Aloud: Pronunciation, Rhythm & Acoustic AI Sensors",
+          "Speaking: Describe an Image in 90 Seconds without Pausing",
+        ],
+      },
+      phase2: {
+        badge: "WEEKS 3 - 4",
+        title: "Interactive Reading, Extended Writing & Full Simulation",
+        description:
+          "Conquer the interactive reading section, write 5-minute academic responses with high lexical variety, and sit for realistic mock exams.",
+        topics: [
+          "Interactive Reading: Complete the Passage & Highlight Passage Details",
+          "Writing Sample: 5-Minute Timed Essay with High Lexical Diversity",
+          "Speaking Sample: Unscripted Argumentative Response for Admissions Officers",
+          "2 Full-Length Timed Computer Adaptive Mock Tests",
+          "Official Test-Day Rules, Lighting, and Camera Verification Protocol",
+        ],
+      },
+    },
+    whatIsIncluded: {
+      heading: "What is",
+      highlight: "Included?",
+      items: [
+        {
+          title: "12 Live Master Sessions",
+          description: "Covering all 14 DET question types and computer scoring nuances.",
+          iconName: "Laptop",
+        },
+        {
+          title: "DET Practice Platform Access",
+          description: "Over 2,000+ realistic practice questions with speech recognition.",
+          iconName: "CheckCircle2",
+        },
+        {
+          title: "Writing & Speaking Evaluations",
+          description: "Personalized reviews by certified English mentors.",
+          iconName: "PenTool",
+        },
+        {
+          title: "Official Booking Assistance",
+          description: "Voucher purchase and test environment check support.",
+          iconName: "ShieldCheck",
+        },
+      ],
+    },
+    whoIsThisFor: {
+      heading: "Who is This Course",
+      highlight: "For?",
+      subtitle: "For test takers wanting a fast, flexible, modern English test",
+      checklist: [
+        "Applicants targeting universities in USA, Canada, UK, and Europe accepting DET",
+        "Students who want an affordable exam (DET costs only $65 vs $220 for other tests)",
+        "Anyone who needs official test scores within 48 hours for immediate university deadlines",
+        "Learners who prefer taking the test from the comfort of their home",
+      ],
+    },
+    ctaBanner: {
+      heading: "Prepare for Your Duolingo English Test",
+      priceText: "BDT 10,000",
+      subText: "12 Master Classes | 1 Month Duration | Full Practice Materials",
+      buttonText: "Enroll in Duolingo Course Now",
+    },
+    faqs: [
+      {
+        question: "Is Duolingo English Test accepted for university admissions?",
+        answer:
+          "Yes! Over 5,000 university programs globally—including NYU, Columbia, Yale, McGill, and many UK & Australian universities—accept DET for undergraduate and graduate admissions.",
+      },
+      {
+        question: "How long does it take to get DET results?",
+        answer:
+          "Results are delivered to your portal within 48 hours of completing the test.",
+      },
+    ],
+  },
+
   // 7. Basic to IELTS Course (Basic to Advance)
   {
     id: "basic-to-ielts",
