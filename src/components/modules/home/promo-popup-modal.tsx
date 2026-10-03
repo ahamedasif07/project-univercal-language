@@ -40,7 +40,7 @@ export function PromoPopupModal() {
     "Hello Universal Language! I saw your Duolingo English Test (DET) course catalog on your website popup:",
     "📚 Program: Duolingo English Test Product Catalog",
     "🎯 Available Packages: Full Course (BDT 15,000) | Premium 1-to-1 (BDT 20,000) | Exam Purchase Support (BDT 10,000)",
-    "🖼️ Selected Flyer: https://universallanguagebd.com/images/dialog-image.jpeg",
+    "🖼️ Selected Flyer: https://universallanguagebd.com/images/dialog-image-new.jpeg",
     "I would like to enroll / inquire about the Duolingo English Test preparation. Please guide me.",
   ].join("\n");
 
@@ -83,11 +83,11 @@ export function PromoPopupModal() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleClose}
-          className="block relative aspect-[4/5] w-full cursor-pointer group select-none transition-transform duration-300 hover:scale-[1.01]"
+          className="block relative aspect-square w-full cursor-pointer group select-none transition-transform duration-300 hover:scale-[1.01]"
           title="Click to open WhatsApp and inquire about Duolingo English Test"
         >
           <Image
-            src="/images/dialog-image.jpeg"
+            src="/images/dialog-image-new.jpeg"
             alt="Universal Language Duolingo English Test Product Catalog"
             fill
             priority
