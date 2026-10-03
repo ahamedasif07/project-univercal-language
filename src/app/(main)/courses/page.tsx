@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { CoursesServicesSection } from "@/components/modules/home/courses-services-section";
-import { GraduationCap, CheckCircle2, PhoneCall, Sparkles } from "lucide-react";
+import { GraduationCap, CheckCircle2, PhoneCall, Target } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "All Courses & Official Services | Universal Language",
@@ -21,7 +21,7 @@ export default function CoursesPage() {
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5" />
+            <Target className="w-3.5 h-3.5" />
             <span>Target Score Guaranteed Mentorship</span>
           </div>
 
