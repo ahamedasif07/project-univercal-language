@@ -74,14 +74,14 @@ const FAQS: FaqItem[] = [
   {
     id: "score-guarantee",
     category: "coaching",
-    badge: "Target 79+ Roadmap",
+    badge: "Target 75+ Roadmap",
     question:
-      "My English foundation is weak (below 50). Can I realistically achieve 65+ or 79+?",
+      "My English foundation is weak (below 50). Can I realistically achieve 65+ or 75+?",
     answer:
       "Yes. Over 96% of our students achieve their target score on their first attempt after our mentorship. We begin with a 10-minute diagnostic evaluation to identify your exact score leaks (e.g. Read Aloud pitch, repeat sentence memory, or write-from-dictation spelling). Then, we build a customized 3 to 6-week daily drill schedule that bridges foundation gaps systematically.",
     highlights: [
       "Diagnostic Speaking Analysis",
-      "45 to 79+ Roadmap",
+      "45 to 75+ Roadmap",
       "96% First-Attempt Success",
     ],
   },

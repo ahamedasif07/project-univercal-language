@@ -131,16 +131,16 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     examType: "pte",
     title: "Complete PTE A-Z Masterclass",
     heroHighlight: "Complete PTE A-Z",
-    heroTitle: "Fastest Route to 79+ in PTE",
+    heroTitle: "Fastest Route to 75+ in PTE",
     heroSubtitle:
-      "Our flagship 1-on-1 intensive program designed for ambitious test-takers aiming for 65+ to 79+ in the shortest possible timeframe with proven proprietary templates.",
+      "Our flagship 1-on-1 intensive program designed for ambitious test-takers aiming for 65+ to 75+ in the shortest possible timeframe with proven proprietary frameworks.",
     badge: "Most Popular",
     badgeType: "popular",
     thumbnailImage:
       "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop",
-    tagline: "Complete A-Z course – fastest route to 79+ in PTE",
+    tagline: "Complete A-Z course – fastest route to 75+ in PTE",
     shortDescription:
-      "Our flagship 1-on-1 intensive program designed for serious aspirants aiming for 65+ to 79+ in the shortest possible timeframe.",
+      "Our flagship 1-on-1 intensive program designed for serious aspirants aiming for 65+ to 75+ in the shortest possible timeframe.",
     price: 16000,
     originalPrice: 25000,
     currency: "BDT",
@@ -150,7 +150,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     duration: "2 Months",
     tickerItems: [
       "Most Popular PTE Course",
-      "Fastest Route to 79+ in PTE",
+      "Fastest Route to 75+ in PTE",
       "100% Tested 90/90 Templates",
       "Private 1-on-1 Intensive Mentorship",
       "VIP APEUni Portal Included",
@@ -158,9 +158,9 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
     ],
     overview: {
       badge: "Flagship Program",
-      heading: "Master Every Question Type. Deploy Flawless Templates. Secure 79+.",
+      heading: "Master Every Question Type. Deploy Flawless Strategies. Secure 75+.",
       description:
-        "The PTE A-Z Masterclass is Bangladesh's most proven and trusted 1-on-1 coaching program. We cut out all fluff and teach you the exact proprietary templates, high-frequency question secrets, and Pearson AI scoring shortcuts that deliver 79+ band scores.",
+        "The PTE A-Z Masterclass is Bangladesh's most proven and trusted 1-on-1 coaching program. We cut out all fluff and teach you the exact proprietary frameworks, high-frequency question patterns, and Pearson AI scoring shortcuts that deliver 75+ band scores.",
       features: [
         {
           title: "Tested 90/90 Templates",
@@ -283,9 +283,9 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       highlight: "For?",
       subtitle: "Tailored for ambitious test takers who need guaranteed score results",
       checklist: [
-        "Applicants needing Australia PR 20 points (79+ each band) or Canada Express Entry",
+        "Applicants needing high immigration points for Australia PR (75+ each band) or Canada Express Entry",
         "Students aiming for top universities requiring 58+ to 65+ minimum scores",
-        "Repeated test-takers stuck at 60-64 unable to cross the critical 65 or 79 mark",
+        "Repeated test-takers stuck at 60-64 unable to cross the critical 65 or 75 mark",
         "Busy professionals seeking flexible 1-on-1 evening or weekend timings",
         "Those who want proven, time-tested templates rather than memorizing textbooks",
         "Students who want direct 1-to-1 attention from a 90/90 certified instructor",
@@ -465,7 +465,7 @@ export const COURSES_AND_SERVICES: CoursePackage[] = [
       checklist: [
         "Students with an upcoming exam date in 2 to 4 weeks",
         "Test-takers who got 55-62 and urgently need to cross 65+",
-        "Candidates who scored 72-76 and need that final push to 79+",
+        "Candidates who scored 68-72 and need that final push to 75+",
         "Those who need immediate template correction and mock test diagnostics",
         "Applicants who want a high-impact 1-month 1-on-1 sprint",
       ],

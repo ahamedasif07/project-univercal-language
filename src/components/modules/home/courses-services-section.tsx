@@ -93,16 +93,15 @@ function CoursesServicesContent() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
-            Choose The Right{" "}
+            Explore Certified Courses &amp;{" "}
             <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
-              Course &amp; Package
-            </span>{" "}
-            For You
+              Customized Study Tracks
+            </span>
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Comprehensive preparation for PTE Academic, IELTS, and Duolingo English Test (DET)
-            with 1-on-1 private mentoring, proven templates, and official test center support.
+            Comprehensive preparation programs for PTE Academic, IELTS, and Duolingo English Test (DET)
+            powered by individualized private mentorship, accredited strategies, and direct Pearson test center support.
           </p>
         </div>
 

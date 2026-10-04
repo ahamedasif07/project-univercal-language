@@ -51,11 +51,11 @@ export const STUDENT_TESTIMONIALS: StudentTestimonial[] = [
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop",
     targetCountry: "Australia",
     targetFlag: "🇦🇺",
-    course: "Target 79+ PR Pathway",
+    course: "Target 75+ PR Pathway",
     scoreBadge: "Overall 86 (Superior Band)",
     rating: 5,
     review:
-      "I urgently needed superior English (79+ in every section) for 20 PR points. The daily WhatsApp speaking reviews and rhythm drills helped me clear the benchmark smoothly. Scored 86 overall on my very first try.",
+      "I urgently needed superior English (75+ in every section) for maximum PR points. The daily WhatsApp speaking reviews and rhythm drills helped me clear the benchmark smoothly. Scored 86 overall on my very first try.",
     date: "January 2025",
   },
   {
@@ -111,7 +111,7 @@ export const STUDENT_TESTIMONIALS: StudentTestimonial[] = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop",
     targetCountry: "New Zealand",
     targetFlag: "🇳🇿",
-    course: "Exam Booking & 79+ Masterclass",
+    course: "Exam Booking & 75+ Masterclass",
     scoreBadge: "Overall 89 (90 Speaking)",
     rating: 5,
     review:

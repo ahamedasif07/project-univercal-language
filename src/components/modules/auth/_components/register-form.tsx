@@ -18,7 +18,7 @@ import {
 const COURSES = [
   "PTE Foundation to Expert",
   "PTE Intensive Live Batch",
-  "Target 79+ PR Pathway",
+  "Target 75+ PR Pathway",
   "Crash PTE Score Booster",
   "Weekend Executive Batch",
   "German Language A1–B1",

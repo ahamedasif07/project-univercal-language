@@ -29,7 +29,7 @@ export function ContactSection() {
     name: "",
     phone: "",
     email: "",
-    exam: "PTE Academic Masterclass (Target 79+)",
+    exam: "PTE Academic Masterclass (Target 75+)",
     message: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
@@ -335,7 +335,7 @@ export function ContactSection() {
                       onChange={(e) => setFormData({ ...formData, exam: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer"
                     >
-                      <option value="PTE Academic Masterclass (Target 79+)">PTE Academic Masterclass (Target 79+)</option>
+                      <option value="PTE Academic Masterclass (Target 75+)">PTE Academic Masterclass (Target 75+)</option>
                       <option value="PTE Fast-Track Crash Batch">PTE Fast-Track Crash Batch</option>
                       <option value="German Language (A1–B2 Pathway)">German Language (A1–B2 Pathway)</option>
                       <option value="IELTS Academic (Band 7.5+)">IELTS Academic (Band 7.5+)</option>

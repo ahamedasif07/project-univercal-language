@@ -13,10 +13,10 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "how-to-score-79-plus-pte",
-    title: "How to Score 79+ in PTE Academic on Your First Attempt",
+    slug: "how-to-score-75-plus-pte",
+    title: "How to Score 75+ in PTE Academic on Your First Attempt",
     excerpt:
-      "A step-by-step breakdown of the exact study framework our mentors use to push students from 55 to 79+ in under 6 weeks — without relying on leaked templates.",
+      "A step-by-step breakdown of the proven study framework our mentors use to push students from 55 to 75+ in under 6 weeks — without relying on generic shortcuts.",
     category: "PTE Tips",
     categoryColor: "blue",
     readTime: "8 min read",
@@ -63,9 +63,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "australia-pr-pte-superior-english",
-    title: "Australia PR: Why You Need Superior English (79+ in Every Section)",
+    title: "Australia PR: Scoring Strategies to Secure High Points (75+ Benchmark)",
     excerpt:
-      "For Australian PR, scoring 65 overall is not enough — you need 79+ in all four skills for 20 immigration points. Here is what that actually requires and how our students achieve it.",
+      "For Australian immigration points, aiming high makes all the difference. Learn how targeting 75+ in all four bands unlocks maximum PR points and how our students consistently achieve it.",
     category: "Study Abroad",
     categoryColor: "rose",
     readTime: "7 min read",

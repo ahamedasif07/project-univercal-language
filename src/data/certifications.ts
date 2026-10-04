@@ -91,7 +91,7 @@ export const OFFICIAL_CERTIFICATIONS: CertificationItem[] = [
     issuerLogoType: "pearson",
     shortHighlight:
       "Certified masterclass led directly by Pearson South Asia Lead for enabling skills and score jumps.",
-    tags: ["South Asia Lead Certified", "45 to 79+ Pedagogy"],
+    tags: ["South Asia Lead Certified", "45 to 75+ Pedagogy"],
     authorityLocation: "Noida / London",
     verificationCode: "PEARSON-TT-SK-2023-4109",
     issueDate: "19 September 2023",
@@ -119,7 +119,7 @@ export const OFFICIAL_CERTIFICATIONS: CertificationItem[] = [
         "Acoustic Speech Intelligibility Remediation",
         "Targeted Read-Aloud & Repeat-Sentence Coaching",
         "Scaffolded Summarization for Non-Native Writers",
-        "Diagnostic Score Gap Analysis (45 to 79+ Roadmap)",
+        "Diagnostic Score Gap Analysis (45 to 75+ Roadmap)",
       ],
       verificationUrl: "https://pearsonpte.com/verify-credential/PEARSON-TT-SK-2023-4109",
     },

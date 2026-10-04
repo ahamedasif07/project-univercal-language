@@ -42,7 +42,7 @@ const STEPS = [
     icon: Trophy,
     title: "First-Attempt Target Score Execution",
     description:
-      "Enter the test center with complete mental calmness and strategic confidence, securing your 79+ or 90 to unlock your dream visa or admission.",
+      "Enter the test center with complete mental calmness and strategic confidence, securing your 75+ or 90 to unlock your dream visa or admission.",
     highlight: "98.8% First-attempt milestone",
   },
 ];
@@ -68,7 +68,7 @@ export function AboutMethodology() {
 
           <p className="text-base text-muted-foreground leading-relaxed">
             How we eliminate uncertainty and reliably guide test-takers from confusing mock results to
-            verified 79+ and 90 scorecard breakthroughs.
+            verified 75+ and 90 scorecard breakthroughs.
           </p>
         </div>
 

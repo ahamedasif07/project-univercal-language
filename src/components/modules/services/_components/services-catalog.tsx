@@ -274,13 +274,13 @@ export function ServicesCatalog() {
             <span>Official Pearson Authorized Academy</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
-            Choose the Right Package{" "}
+            Select Your Custom{" "}
             <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
-              For You
+              Preparation Track
             </span>
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Price applicable to Bangladesh-based students. Contact us for international rates.
+            Standard tuition fees for Bangladesh-based applicants. For international candidate enrollment, feel free to reach out directly.
           </p>
         </div>
 

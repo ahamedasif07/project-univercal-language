@@ -93,8 +93,8 @@ export default function SuccessStoriesPage() {
                   <div className="text-[11px] text-muted-foreground font-medium">Verified Scorecards</div>
                 </div>
                 <div className="space-y-0.5 text-center">
-                  <div className="text-xl sm:text-2xl font-black text-foreground">79+ / 90</div>
-                  <div className="text-[11px] text-muted-foreground font-medium">PR Cutoff Pathway</div>
+                  <div className="text-xl sm:text-2xl font-black text-foreground">75+ / 90</div>
+                  <div className="text-[11px] text-muted-foreground font-medium">Top Score Pathway</div>
                 </div>
                 <div className="space-y-0.5 text-center">
                   <div className="text-xl sm:text-2xl font-black text-primary">100%</div>

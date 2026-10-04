@@ -94,7 +94,7 @@ export const DESTINATIONS: DestinationCountry[] = [
     visas: [
       { title: "Student Visa", code: "Subclass 500", desc: "Full study rights with up to 48h work permit per fortnight." },
       { title: "Temporary Graduate Visa", code: "Subclass 485", desc: "Post-study work stream allowing 2 to 4 years work experience." },
-      { title: "Skilled Independent Visa", code: "Subclass 189/190", desc: "Permanent residency pathway awarding bonus points for PTE 79+." },
+      { title: "Skilled Independent Visa", code: "Subclass 189/190", desc: "Permanent residency pathway awarding top bonus points for PTE 75+." },
     ],
     topUniversities: [
       "University of Melbourne",
@@ -104,7 +104,7 @@ export const DESTINATIONS: DestinationCountry[] = [
       "University of Queensland",
     ],
     keyPerks: [
-      "PTE 79+ awards maximum 20 PR points",
+      "Superior PTE scores (75+) award vital PR points",
       "Transparent PR pathways via regional study",
       "High minimum wage & strong graduate employment rate",
       "World top-50 universities in Group of Eight",

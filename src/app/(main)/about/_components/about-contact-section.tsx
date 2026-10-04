@@ -236,7 +236,7 @@ export function AboutContactSection() {
                         onChange={(e) => setFormData({ ...formData, exam: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       >
-                        <option value="PTE Academic Masterclass (Target 79+)">PTE Academic Masterclass (Target 79+)</option>
+                        <option value="PTE Academic Masterclass (Target 75+)">PTE Academic Masterclass (Target 75+)</option>
                         <option value="PTE Fast-Track Crash Batch">PTE Fast-Track Crash Batch</option>
                         <option value="German Language (A1–B2)">German Language (A1–B2 Pathway)</option>
                         <option value="IELTS Academic Prep">IELTS Academic (Band 7.5+)</option>
@@ -253,7 +253,7 @@ export function AboutContactSection() {
                       rows={2}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="e.g. Need 79+ for Australian PR, previous attempt 64..."
+                      placeholder="e.g. Need 75+ for Australian visa, previous attempt 64..."
                       className="w-full px-3.5 py-2.5 rounded-xl bg-muted/40 border border-border/80 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />
                   </div>

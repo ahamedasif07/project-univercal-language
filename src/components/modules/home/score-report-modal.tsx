@@ -343,7 +343,7 @@ function ScoreReportContent({
                 </h4>
                 <span className="text-[11px] text-muted-foreground font-medium flex items-center gap-1.5">
                   <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Target Met: {student.overallScore >= 79 ? "79+ Superior Band" : "Target Score Achieved"}
+                  Target Met: {student.overallScore >= 75 ? "75+ Target Met" : "Target Score Achieved"}
                 </span>
               </div>
 
@@ -446,7 +446,7 @@ function ScoreReportContent({
                       {/* Bottom Status Badge */}
                       <div className="w-full pt-1.5 border-t border-border/40 flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
                         <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
-                        <span>{skill.score >= 79 ? "Superior 79+" : "Competent"}</span>
+                        <span>{skill.score >= 75 ? "Target 75+" : "Competent"}</span>
                       </div>
                     </motion.div>
                   );

@@ -364,14 +364,14 @@ export function CoursePromoSection() {
             {/* Headline */}
             <div className="space-y-2.5">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-foreground leading-[1.15]">
-                Score 79+ in PTE Academic in Just{" "}
+                Achieve 75+ in PTE Academic in Just{" "}
                 <motion.span
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                   className="relative inline-block text-primary dark:text-blue-400 whitespace-nowrap"
                 >
-                  24 Classes!
+                  24 Sessions!
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-3 text-primary/80 dark:text-blue-400/90 overflow-visible"
                     viewBox="0 0 120 14"
@@ -412,19 +412,19 @@ export function CoursePromoSection() {
               </h2>
 
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
-                Skip the crowded batches. Learn directly from a Pearson Certified Expert
-                with personalized coaching, real-time AI mock scoring, and official
-                Pearson exam booking assistance.
+                Move beyond overcrowded classrooms. Gain direct mentorship from certified
+                Pearson educators with real-time AI mock scoring diagnostics, individual feedback,
+                and seamless exam slot booking assistance.
               </p>
             </div>
 
             {/* Minimal & Punchy Value Checklist */}
             <div className="space-y-2.5 w-full text-left pt-0.5">
               {[
-                "100+ students successfully scored 79+ on first attempt",
-                "Private 1-to-1 coaching & focused mini-batches (4-8 students)",
-                "Score Guarantee — free repeat classes if needed",
-                "Full 1-month AI practice portal with 5 complete mock tests",
+                "100+ candidates successfully achieved 75+ on their first sitting",
+                "Tailored 1-on-1 coaching & intimate mini-cohorts (4-8 learners)",
+                "Score Confidence Commitment — complimentary refresher sessions if needed",
+                "Full 30-day AI test simulator access with 5 realistic mock assessments",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5">
                   <div className="h-4.5 w-4.5 rounded-full bg-primary/15 text-primary dark:text-blue-400 flex items-center justify-center shrink-0">

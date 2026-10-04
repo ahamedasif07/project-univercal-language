@@ -18,7 +18,7 @@ const ARTICLE_BODY: Record<string, React.ReactNode> = {
     <div className="space-y-6 text-base sm:text-lg text-foreground/85 leading-relaxed">
       <p>
         Language learning is one of the most powerful investments you can make in your
-        future. Whether your goal is PTE 79+ for Australian PR, a German B1 certificate
+        future. Whether your goal is PTE 75+ for Australian immigration, a German B1 certificate
         for your winter semester, or an IELTS band 7 for your UK university application,
         the difference between success and failure almost always comes down to
         <strong> the quality and authenticity of your preparation method.</strong>

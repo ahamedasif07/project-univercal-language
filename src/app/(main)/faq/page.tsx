@@ -58,7 +58,7 @@ const faqPageJsonLd = {
     },
     {
       "@type": "Question",
-      name: "My English foundation is weak (below 50). Can I realistically achieve 65+ or 79+?",
+      name: "My English foundation is weak (below 50). Can I realistically achieve 65+ or 75+?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Yes. Over 96% of our students achieve their target score on their first attempt after our mentorship. We begin with a 10-minute diagnostic evaluation to identify your exact score leaks, followed by a customized 3 to 6-week daily drill schedule.",

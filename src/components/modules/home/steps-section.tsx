@@ -65,7 +65,7 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     step: "03",
-    title: "Custom 79+ Study Blueprint",
+    title: "Custom 75+ Study Blueprint",
     stage: "Personalized Plan",
     timeline: "Week 01",
     description:
@@ -113,17 +113,17 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     step: "06",
-    title: "Score 79+ & Fast-Track Visa Launch",
+    title: "Secure 75+ & Fast-Track Visa Launch",
     stage: "Score & Fly!",
     timeline: "Success",
     description:
-      "Secure your 79+ (Band 8.0 equivalent) on your very first try and transition directly into university admission processing and visa filing.",
+      "Secure your 75+ score benchmark on your very first try and smoothly transition into university admission processing and visa filing.",
     icon: PlaneTakeoff,
     gradient: "from-[#071f43] via-[#0b427b] to-[#059669]",
     iconGradient: "from-[#0b427b] to-emerald-600",
     badgeAccent: "bg-emerald-500/20 text-emerald-100 border-emerald-400/30",
     highlights: [
-      "Guaranteed 79+ First-Attempt Methodology",
+      "Guaranteed 75+ First-Attempt Methodology",
       "End-to-End Admission & Visa Launch Support",
     ],
   },
@@ -134,7 +134,7 @@ export function StepsSection() {
     <section
       id="how-it-works"
       className="relative py-12 sm:py-16 lg:py-20 overflow-hidden border-b border-border/40 bg-gradient-to-b from-background via-muted/20 to-background"
-      aria-label="Proven 6-Step Methodology to 79+"
+      aria-label="Proven 6-Stage Roadmap to 75+"
     >
       {/* Background Soft Glow Accents in Brand Royal Blue */}
       <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[550px] h-[340px] bg-primary/8 dark:bg-primary/15 blur-[140px] rounded-full pointer-events-none -z-10" />
@@ -148,21 +148,21 @@ export function StepsSection() {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-2xs">
             <Award className="w-3.5 h-3.5" />
-            <span>Proven 6-Step Methodology</span>
+            <span>Structured 6-Stage Roadmap</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.15]">
-            From Enrollment to{" "}
+            Your Proven Pathway to a{" "}
             <span className="bg-gradient-to-r from-[#0b3a82] via-primary to-blue-600 dark:from-blue-400 dark:via-primary dark:to-indigo-300 bg-clip-text text-transparent">
-              79+ Target Score
+              75+ Target Score
             </span>{" "}
-            in 6 Simple Steps
+            in 6 Guided Milestones
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            We&apos;ve streamlined everything so you can focus on scoring, not figuring
-            out what to do next. A scientifically structured preparation framework
-            engineered to eliminate retake anxiety on your very first attempt.
+            A goal-oriented preparation framework built to remove guesswork and eliminate exam stress.
+            We guide you step by step with personalized attention, ensuring you enter the test center
+            fully confident and primed to succeed on your first sitting.
           </p>
         </div>
 
