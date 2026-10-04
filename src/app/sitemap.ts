@@ -4,6 +4,8 @@ import { COURSES_AND_SERVICES } from "@/data/courses";
 import { BLOG_POSTS } from "@/data/blogs";
 import { INSTRUCTORS } from "@/data/instructors";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url.replace(/\/$/, "");
   const currentDate = new Date().toISOString();
