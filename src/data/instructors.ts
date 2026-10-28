@@ -495,6 +495,135 @@ export const INSTRUCTORS: Instructor[] = [
     },
   },
 
+  // Instructor: Saima Rahman Anika
+  {
+    id: "saima-rahman-anika",
+    slug: "saima-rahman-anika",
+    name: "Saima Rahman Anika",
+    role: "PTE Trainer | English Language Mentor",
+    title: "PTE Trainer & English Language Mentor | Universal Language",
+    organization: "Universal Language",
+    scoreHighlight: "PTE Score: 77",
+    badge: "PTE Trainer & English Mentor",
+    image: "/images/instructors/saima-pp.jpeg",
+    experience: "PTE Trainer at Universal Language",
+    studentsTrained: "PTE Aspirants Mentored",
+    targetSuccessRate: "High Target Achievement",
+    shortBio:
+      "Dedicated PTE Trainer and English Language Mentor at Universal Language, holding BBA & MBA in Marketing from University of Dhaka, focused on speaking fluency, practical exam strategies, and helping students achieve target PTE scores.",
+    fullBio: [
+      "Saima Rahman Anika is a dedicated PTE Trainer and English Language Mentor at Universal Language, passionate about helping students strengthen their English proficiency and achieve their desired PTE scores. She holds both a Bachelor of Business Administration (BBA) and a Master of Business Administration (MBA) in Marketing from the University of Dhaka. She completed her Secondary School Certificate (SSC) and Higher Secondary Certificate (HSC) at Viqarunnisa Noon School and College.",
+      "With experience in both teaching and administrative positions, Saima has developed strong communication, organizational, interpersonal, and problem-solving skills. Her involvement as a member of the Dhaka University Career Club has further contributed to her teamwork, leadership, and professional development.",
+      "With a strong interest in English language education, she focuses on helping learners improve their speaking fluency, pronunciation, vocabulary, grammar, reading comprehension, listening skills, and academic writing. Her teaching approach emphasizes clarity, practical exam strategies, structured practice, and constructive feedback.",
+    ],
+    quote:
+      "My teaching approach focuses on clarity, practicality, consistency, and confidence. I aim to explain complex concepts in a simple and understandable way, provide exam-oriented strategies, encourage regular practice, and help students identify and improve their weaknesses.",
+    specialties: [
+      "PTE Academic Exam Preparation",
+      "Speaking & Pronunciation Development",
+      "Reading & Listening Strategies",
+      "Writing Skills & Response Structure",
+      "Fluency, Rhythm & Intonation Calibration",
+      "Practice-Based Learning & Constructive Feedback",
+      "Vocabulary & Grammar Mastery",
+      "Diagnostic Weakness Identification & Error Correction",
+    ],
+    certifications: [
+      "Official Pearson PTE Academic Score: 77",
+      "Pearson PTE Power Hour: Paraphrasing — Teaching Learners to Use Their Own Words (July 2026)",
+      "Pearson PTE Power Hour: Spelling — Making Accuracy a Classroom Habit (October 2026)",
+      "Global Scale of English (GSE) Assessment Framework",
+    ],
+    education: [
+      "Master of Business Administration (MBA) in Marketing — University of Dhaka",
+      "Bachelor of Business Administration (BBA) in Marketing — University of Dhaka",
+      "Higher Secondary Certificate (HSC) — Viqarunnisa Noon School and College",
+      "Secondary School Certificate (SSC) — Viqarunnisa Noon School and College",
+    ],
+    workExperience: [
+      {
+        role: "PTE Trainer & English Language Mentor",
+        organization: "Universal Language",
+        period: "Present",
+        highlights: [
+          "Conduct PTE Academic exam preparation sessions focusing on speaking fluency, pronunciation, writing structure, reading comprehension, and listening strategies.",
+          "Provide practical exam-oriented strategies, structured practice drills, and constructive feedback to help learners achieve their desired PTE scores.",
+          "Design customized diagnostic study plans helping students systematically identify and eliminate score bottlenecks.",
+        ],
+      },
+      {
+        role: "Executive Member",
+        organization: "Dhaka University Career Club (DUCC)",
+        period: "University of Dhaka",
+        highlights: [
+          "Active involvement contributing to leadership development, teamwork, organizational coordination, and career development initiatives.",
+        ],
+      },
+    ],
+    awards: [
+      {
+        title: "Official PTE Academic Score 77",
+        organization: "Pearson PTE",
+        year: "2026",
+      },
+      {
+        title: "DU Career Club Membership Recognition",
+        organization: "Dhaka University Career Club",
+        year: "University of Dhaka",
+      },
+      {
+        title: "Viqarunnisa Noon Alumni Recognition",
+        organization: "Viqarunnisa Noon School & College",
+        year: "SSC & HSC",
+      },
+    ],
+    certificatesGallery: [
+      {
+        id: "saima-c1",
+        image: "/images/instructors/saima-c1.jpeg",
+        title: "Paraphrasing: Teaching Learners to Use Their Own Words",
+        issuer: "Pearson English Language Learning",
+        year: "July 2026",
+        badge: "PTE Power Hour",
+        description:
+          "Official Pearson Certificate of Completion for attending 'Paraphrasing: Teaching Learners to Use Their Own Words' with Magda Woodham, part of the PTE Power Hour webinar series and Global Scale of English.",
+      },
+      {
+        id: "saima-c2",
+        image: "/images/instructors/saima-c2.jpeg",
+        title: "Spelling: Making Accuracy a Classroom Habit",
+        issuer: "Pearson English Language Learning",
+        year: "October 2026",
+        badge: "PTE Power Hour",
+        description:
+          "Official Pearson Certificate of Completion for attending 'Spelling: Making Accuracy a Classroom Habit' with Magda Woodham, part of the PTE Power Hour webinar series and Global Scale of English.",
+      },
+    ],
+    featuredCourses: [
+      {
+        title: "PTE Academic Comprehensive Score Booster",
+        duration: "6 Weeks • 24 Live Sessions",
+        description:
+          "Master speaking fluency, pronunciation, reading strategies, and structured writing templates under realistic exam conditions.",
+      },
+      {
+        title: "PTE Speaking & Pronunciation Fluency Clinic",
+        duration: "4 Weeks • 16 Intensive Classes",
+        description:
+          "Personalized coaching on rhythm, intonation, oral acoustics, and machine-scoring optimization to eliminate score bottlenecks.",
+      },
+    ],
+    scorecardHighlights: [
+      { label: "PTE Score", value: "77", sublabel: "Official Pearson Score" },
+      { label: "Academic", value: "DU MBA", sublabel: "University of Dhaka" },
+      { label: "College", value: "VNC", sublabel: "Viqarunnisa Noon" },
+      { label: "Core Focus", value: "Fluency", sublabel: "PTE & English Skills" },
+    ],
+    socials: {
+      location: "Dhaka, Bangladesh",
+    },
+  },
+
   // Instructor: Shams Tashin
   {
     id: "shams-tashin",
@@ -833,6 +962,11 @@ export function getInstructorBySlug(slug: string): Instructor | undefined {
       (slug === "nakibul-quader-chowdhury" && inst.id === "nakibul-quader-chowdhury") ||
       (slug === "amatulla" && inst.id === "amatulla-tasnim") ||
       (slug === "tasnim" && inst.id === "amatulla-tasnim") ||
+      (slug === "saima" && inst.id === "saima-rahman-anika") ||
+      (slug === "saima-rahman" && inst.id === "saima-rahman-anika") ||
+      (slug === "saima-anika" && inst.id === "saima-rahman-anika") ||
+      (slug === "anika" && inst.id === "saima-rahman-anika") ||
+      (slug === "saima-rahman-anika" && inst.id === "saima-rahman-anika") ||
       (slug === "shams-tashin" && inst.id === "shams-tashin") ||
       (slug === "shams" && inst.id === "shams-tashin") ||
       (slug === "tashin" && inst.id === "shams-tashin") ||
