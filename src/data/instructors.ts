@@ -601,7 +601,7 @@ export const INSTRUCTORS: Instructor[] = [
     certificatesGallery: [
       {
         id: "saima-c1",
-        image: "/images/instructors/saima-c1.jpeg",
+        image: "/images/instructors/Saima-Rahman-c1.jpeg",
         title: "Paraphrasing: Teaching Learners to Use Their Own Words",
         issuer: "Pearson English Language Learning",
         year: "July 2026",
@@ -611,13 +611,23 @@ export const INSTRUCTORS: Instructor[] = [
       },
       {
         id: "saima-c2",
-        image: "/images/instructors/saima-c2.jpeg",
+        image: "/images/instructors/Saima-Rahman-c2.jpeg",
         title: "Spelling: Making Accuracy a Classroom Habit",
         issuer: "Pearson English Language Learning",
         year: "October 2026",
         badge: "PTE Power Hour",
         description:
           "Official Pearson Certificate of Completion for attending 'Spelling: Making Accuracy a Classroom Habit' with Magda Woodham, part of the PTE Power Hour webinar series and Global Scale of English.",
+      },
+      {
+        id: "saima-c3",
+        image: "/images/instructors/Saima-Rahman-c3.jpeg",
+        title: "Official PTE Academic Score Certificate",
+        issuer: "Pearson PTE",
+        year: "2026",
+        badge: "PTE Score 77",
+        description:
+          "Official Pearson PTE Academic Score Certificate awarded to Saima Rahman Anika, verifying an overall score of 77.",
       },
     ],
     featuredCourses: [
