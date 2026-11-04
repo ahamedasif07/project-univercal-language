@@ -60,7 +60,8 @@ export const POSTER_SLIDES: PosterSlide[] = [
     tag: "1-1 Guidance • British Council Partner",
     image: "/images/dic-image-4.jpeg",
     alt: "IELTS Basic to IELTS Course at Universal Language with 30% Discount - 28 Live Classes + 2 Free Review Classes",
-    discountText: "30% OFF • 28 Live + 2 Review Classes • 1 Month Portal • Unlimited Mocks",
+    discountText:
+      "30% OFF • 28 Live + 2 Review Classes • 1 Month Portal • Unlimited Mocks",
   },
   {
     id: 5,
@@ -187,10 +188,7 @@ export function PromoSlider({ className }: { className?: string }) {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {POSTER_SLIDES.map((slide, idx) => (
-              <div
-                key={slide.id}
-                className="w-full h-full shrink-0 relative"
-              >
+              <div key={slide.id} className="w-full h-full shrink-0 relative">
                 <a
                   href={getWhatsAppEnrollUrl(slide)}
                   target="_blank"
@@ -268,7 +266,8 @@ export function PromoSlider({ className }: { className?: string }) {
 
             {/* Slide Index Pill */}
             <span className="shrink-0 px-2 py-1 rounded-md bg-muted text-[11px] font-mono font-bold text-muted-foreground border border-border/50">
-              {String(currentIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
+              {String(currentIndex + 1).padStart(2, "0")} /{" "}
+              {String(totalSlides).padStart(2, "0")}
             </span>
           </div>
 
@@ -413,8 +412,8 @@ export function CoursePromoSection() {
 
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
                 Move beyond overcrowded classrooms. Gain direct mentorship from certified
-                Pearson educators with real-time AI mock scoring diagnostics, individual feedback,
-                and seamless exam slot booking assistance.
+                Pearson educators with real-time AI mock scoring diagnostics, individual
+                feedback, and seamless exam slot booking assistance.
               </p>
             </div>
 
