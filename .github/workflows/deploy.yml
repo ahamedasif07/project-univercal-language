@@ -1,4 +1,4 @@
-name: Build and Deploy to Hostinger
+name: Deploy to Hostinger
 
 on:
   push:
@@ -24,9 +24,12 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Deploy to 'deploy' branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          publish_branch: deploy
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ./public_html/
+          dangerous-clean-slate: false
