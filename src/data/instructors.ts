@@ -156,6 +156,26 @@ export const CEO_CERTIFICATES: CeoCertificate[] = [
     description:
       "Official Pearson Certificate awarded to MD SOHANOR RAHMAN SHIFAT for attending 'Paraphrasing: Teaching Learners to Use Their Own Words' with Magda Woodham (PTE Power Hour webinar series).",
   },
+  {
+    id: "ceo-c9",
+    pdf: "/images/ceo/ceo-sifat-c9.jpeg",
+    title: "Paraphrasing: Teaching Learners to Use Their Own Words",
+    category: "Webinar Masterclass",
+    issuer: "Pearson English Language Learning",
+    date: "30 July 2026",
+    description:
+      "Official Pearson Certificate awarded to MD SOHANOR RAHMAN SHIFAT for attending 'Paraphrasing: Teaching Learners to Use Their Own Words' with Magda Woodham (PTE Power Hour webinar series).",
+  },
+  {
+    id: "ceo-c10",
+    pdf: "/images/ceo/ceo-sifat-c10.jpeg",
+    title: "Spelling: Making Accuracy a Classroom Habit",
+    category: "Webinar Masterclass",
+    issuer: "Pearson English Language Learning",
+    date: "22 October 2026",
+    description:
+      "Official Pearson Certificate awarded to MD SOHANOR RAHMAN SHIFAT for attending 'Spelling: Making Accuracy a Classroom Habit' with Magda Woodham (PTE Power Hour webinar series).",
+  },
 ];
 
 // 1. Founder & CEO (Kept for direct profile link, but excluded from INSTRUCTORS mentor cards)
@@ -200,6 +220,7 @@ export const FOUNDER_PROFILE: Instructor = {
     "Pearson PTE: PTE Academic for Teachers — Introduction to PTE Academic & Scoring",
     "Pearson PTE: Teaching PTE Pronunciation — Techniques for Accuracy and Intelligibility (May 2026)",
     "Pearson PTE: Paraphrasing — Teaching Learners to Use Their Own Words (July 2026)",
+    "Pearson PTE: Spelling — Making Accuracy a Classroom Habit (October 2026)",
     "Global Scale of English (GSE) Assessment Framework",
   ],
   education: [
@@ -223,7 +244,7 @@ export const FOUNDER_PROFILE: Instructor = {
   scorecardHighlights: [
     { label: "Experience", value: "3+ Years", sublabel: "PTE Sector Leadership" },
     { label: "Student Reach", value: "600+", sublabel: "Student Leads & Inquiries" },
-    { label: "Credentials", value: "8 Pearson Certs", sublabel: "Training & Webinars" },
+    { label: "Credentials", value: "10 Pearson Certs", sublabel: "Training & Webinars" },
     { label: "Academic", value: "Univ. of Dhaka", sublabel: "Undergraduate Studies" },
   ],
   socials: {

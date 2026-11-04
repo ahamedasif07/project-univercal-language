@@ -50,7 +50,7 @@ export function CeoCertificates() {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary dark:text-blue-300 text-xs font-bold uppercase tracking-wider mb-3">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Verified Accreditations (8)</span>
+              <span>Verified Accreditations ({CEO_CERTIFICATES.length})</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight">
               Official Pearson Certifications &amp; Accreditations
@@ -62,7 +62,7 @@ export function CeoCertificates() {
 
           <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
             <FileText className="w-4 h-4 text-primary" />
-            <span>Interactive PDF Credentials</span>
+            <span>Interactive Verified Credentials</span>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export function CeoCertificates() {
                     </span>
                   </div>
                   <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/15 backdrop-blur-md text-white border border-white/20">
-                    PDF Verified
+                    {cert.pdf.toLowerCase().endsWith(".pdf") ? "PDF Verified" : "Verified"}
                   </span>
                 </div>
 
@@ -119,7 +119,7 @@ export function CeoCertificates() {
               <div className="pt-3 border-t border-border/60 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-1 text-primary font-bold">
                   <Eye className="w-3.5 h-3.5" />
-                  <span>Inspect PDF</span>
+                  <span>{cert.pdf.toLowerCase().endsWith(".pdf") ? "Inspect PDF" : "Inspect Certificate"}</span>
                 </div>
                 <span className="text-[11px] text-muted-foreground font-medium">
                   {cert.date || "Pearson TTA"}
